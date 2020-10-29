@@ -1,0 +1,10 @@
+<app-navbar-panel (isShowSidebar)="sidenav.toggle($event)" [isMenuOpened]="isShowSidebar"></app-navbar-panel>
+
+<mat-sidenav-container class="layout">
+    <mat-sidenav #sidenav mode="side" [(opened)]="isShowSidebar" class="layout-sidebar" [mode]="mobileQuery.matches ? 'over' : 'side'" [fixedInViewport]="mobileQuery.matches">
+        <app-sidebar-panel></app-sidebar-panel>
+    </mat-sidenav>
+    <mat-sidenav-content class="layout-content">
+        <ng-content></ng-content>
+    </mat-sidenav-content>
+</mat-sidenav-container>

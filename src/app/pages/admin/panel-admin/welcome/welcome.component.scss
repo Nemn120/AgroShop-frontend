@@ -1,0 +1,26 @@
+@import "src/themes/styles/variables";
+@import "src/themes/styles/colors";
+.layout {
+    width: 100%;
+}
+
+.layout-sidebar {
+    height: calc(100vh - 64px);
+    background-color: #32AE7E;
+    margin-top: 64px;
+    @media (max-width: $small) {
+        width: 150px;
+    }
+    box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.14),
+    0 1px 18px 0 rgba(0, 0, 0, 0.12),
+    0 3px 5px -1px rgba(0, 0, 0, 0.2);
+}
+
+.layout-content {
+    background-color: $background-color;
+    height: calc(100vh - 64px);
+    margin-top: 64px;
+    @media (max-width: $small) {
+        width: 100%;
+    }
+}
