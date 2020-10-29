@@ -6,7 +6,7 @@
 
 .layout-sidebar {
     height: calc(100vh - 64px);
-    background-color: #32AE7E;
+    background-color: #37966F;
     margin-top: 64px;
     @media (max-width: $small) {
         width: 150px;
@@ -17,10 +17,37 @@
 }
 
 .layout-content {
-    background-color: $background-color;
+    background-color: #E5E5E5;
     height: calc(100vh - 64px);
     margin-top: 64px;
     @media (max-width: $small) {
         width: 100%;
     }
+}
+
+.layout-data {
+    // box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.14), 0 1px 18px 0 rgba(0, 0, 0, 0.12), 0 3px 5px -1px rgba(0, 0, 0, 0.2);
+    //  background-color: #FFFBE6;
+    padding: 20px;
+    // height: 100%;
+    margin: 50px;
+    margin-top: 20px //  border: 1px solid black
+}
+
+.layout-data2 {
+    //   box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.14), 0 1px 18px 0 rgba(0, 0, 0, 0.12), 0 3px 5px -1px rgba(0, 0, 0, 0.2);
+    //  background-color: #B9E4C9;
+    padding: 10px;
+    margin: 50px;
+    margin-bottom: 10px;
+    //  border: 1px solid black
+    color: #232F34;
+    border-bottom: 1px solid black;
+    font-weight: 700;
+    font-size: 25px;
+    height: 32px;
+}
+
+table {
+    width: 100%;
 }

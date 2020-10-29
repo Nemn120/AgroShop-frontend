@@ -10,9 +10,9 @@ export class SidebarPanelComponent {
   config = {
     paddingAtStart: true,
     classname: 'my-custom-class',
-    listBackgroundColor: '#32AE7E',
+    listBackgroundColor: '#37966F',
     fontColor: '#2F2018',
-    backgroundColor: '#32AE7E',
+    backgroundColor: '#37966F',
     selectedListFontColor: '#FFFF',
   };
 
