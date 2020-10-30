@@ -12,6 +12,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatFabMenuModule } from '@angular-material-extensions/fab-menu';
 import { EcoFabSpeedDialModule } from '@ecodev/fab-speed-dial';
+import { PanelAdminModule } from './pages/admin/panel-admin/panel-admin.module';
 
 export function tokenGetter() {
   let tk = sessionStorage.getItem(environment.TOKEN_NAME);
@@ -31,6 +32,7 @@ export function tokenGetter() {
     EcoFabSpeedDialModule,
     MaterialModule,
     FlexLayoutModule,
+    PanelAdminModule,
    /*JwtModule.forRoot({
       config: {
         tokenGetter: tokenGetter,

@@ -9,8 +9,6 @@
     </div>
 
     <div class="header-toolbar">
-        <span>NOTIFICACIONES</span>
-        <span>MIS DATOS</span>
-        <span>ETC</span>
+        <app-user-profile [user]="user$ | async" (signOut)="signOut()"></app-user-profile>
     </div>
 </mat-toolbar>

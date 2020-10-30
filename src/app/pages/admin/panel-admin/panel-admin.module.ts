@@ -8,6 +8,7 @@ import { CommonModule } from '@angular/common';
 import { WelcomeComponent } from './welcome/welcome.component';
 import { RouterModule, Routes } from '@angular/router';
 import { NgMaterialMultilevelMenuModule } from 'ng-material-multilevel-menu';
+import { UserProfileComponent } from './user-profile/user-profile.component';
 const routes: Routes = [
   {
     path: '', component: WelcomeComponent,
@@ -16,7 +17,7 @@ const routes: Routes = [
 
 
 @NgModule({
-  declarations: [NavbarPanelComponent, SidebarPanelComponent, WelcomeComponent],
+  declarations: [NavbarPanelComponent, SidebarPanelComponent, WelcomeComponent,UserProfileComponent],
   imports: [
     RouterModule.forChild(routes),
     CommonModule,
@@ -25,7 +26,7 @@ const routes: Routes = [
     
   ],
   exports:[
-    NavbarPanelComponent, SidebarPanelComponent
+    WelcomeComponent
   ]
 })
 export class PanelAdminModule { }
