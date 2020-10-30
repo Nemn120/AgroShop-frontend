@@ -45,7 +45,6 @@ testem.log
 .DS_Store
 Thumbs.db
 .firebaserc
-angular.json
 firebase.json
 .firebase/hosting.ZGlzdA.cache
 .firebase/hosting.ZGlzdFxwYWxsZXZhcg.cache
