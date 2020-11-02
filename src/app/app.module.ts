@@ -13,6 +13,8 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatFabMenuModule } from '@angular-material-extensions/fab-menu';
 import { EcoFabSpeedDialModule } from '@ecodev/fab-speed-dial';
 import { PanelAdminModule } from './pages/admin/panel-admin/panel-admin.module';
+import { RegistryComponent } from './pages/authorization/registry/registry.component';
+import { RegistryFormComponent } from './pages/authorization/registry/registry-form/registry-form.component';
 
 export function tokenGetter() {
   let tk = sessionStorage.getItem(environment.TOKEN_NAME);
@@ -23,6 +25,8 @@ export function tokenGetter() {
 @NgModule({
   declarations: [
     AppComponent,
+    RegistryComponent,
+    RegistryFormComponent
   ],
   imports: [
     BrowserModule,
@@ -43,7 +47,7 @@ export function tokenGetter() {
     */
     MatFabMenuModule,
 
-   
+
   ],
   providers: [
     { provide: LocationStrategy, useClass: HashLocationStrategy}
@@ -51,8 +55,8 @@ export function tokenGetter() {
   bootstrap: [AppComponent],
   exports:[
     FlexLayoutModule,
-   
-    
+
+
   ],
 })
 export class AppModule { }

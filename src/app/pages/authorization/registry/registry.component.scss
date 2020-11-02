@@ -1,0 +1,105 @@
+
+*{
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+
+}
+
+
+.registry-container{
+  /*
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  top:150px;
+  */
+  background: #193B01;
+  height: 100%;
+  width: 100%;
+}
+
+
+.registry-form{
+  height: 700px;
+  width: 450px;
+  position: absolute;
+  top:50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  background: #5EB503;
+  border-radius: 50px;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
+.title{
+  text-align: center;
+  font-family: 'Lobster', cursive;
+  font-size: 80px;
+  font-weight: bold;
+  height: 20%;
+
+}
+
+.profiles{
+  height: 80%;
+
+}
+
+.profiles p{
+  text-align: center;
+  font-family: 'Lobster', cursive;
+  font-size: 60px;
+  position: relative;
+  top: 20px;
+  color: #193B01;
+}
+
+.profiles .profiles-button{
+
+  display: flex;
+
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  top:75px;
+}
+
+.profiles .profiles-button .farmer{
+  width: 80%;
+  height: 80px;
+  margin-bottom: 20px;
+  border-radius: 30px;
+  font-family: 'Lobster', cursive;
+  font-size: 50px;
+  color: #fff;
+  background: #193B01;
+  border: none;
+  outline: none;
+}
+
+.profiles .profiles-button .driver{
+  width: 80%;
+  height: 80px;
+  margin-bottom: 20px;
+  border-radius: 30px;
+  font-family: 'Lobster', cursive;
+  font-size: 50px;
+  color: #fff;
+  background: #193B01;
+  border: none;
+  outline: none;
+}
+
+.profiles .profiles-button .customer{
+  width: 80%;
+  height: 80px;
+  border-radius: 30px;
+  font-family: 'Lobster', cursive;
+  font-size: 50px;
+  color: #fff;
+  background: #193B01;
+  border: none;
+  outline: none;
+}

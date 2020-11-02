@@ -1,0 +1,62 @@
+*{
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  border: solid 2px crimson;
+}
+
+.registry-container{
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  //flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  overflow: scroll;
+}
+
+.registry-form{
+  height: 700px;
+  width: 500px;
+  display: flex;
+  flex-direction: column;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
+.title{
+  text-align: center;
+  font-family: 'Lobster', cursive;
+  font-size: 80px;
+  font-weight: bold;
+  height:120px;
+}
+
+.title p{
+  height: 100%;
+}
+
+.title-registry{
+  text-align: center;
+  font-family: 'Lobster', cursive;
+  font-size: 40px;
+  font-weight: bold;
+  height: 60px;
+}
+
+.title-registry p{
+  height: 100%;
+}
+
+.title-farmer{
+  text-align: center;
+  font-family: 'Lobster', cursive;
+  font-size: 40px;
+  font-weight: bold;
+  height: 60px;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Itim&display=swap');
+.title-farmer p{
+  height: 100%;
+  font-family: 'Itim', cursive;
+}
