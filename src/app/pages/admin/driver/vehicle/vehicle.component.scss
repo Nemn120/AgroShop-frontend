@@ -1,3 +1,4 @@
+
 .title-component{
     min-height: 50px;
     display: flex;
@@ -5,11 +6,13 @@
 }
 
 .container{
-    margin:auto;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
 }
 
 .title-text{
-    display: flex;
     justify-content: flex-start;
     width: 30%;
     margin-left: 10px;
@@ -22,9 +25,12 @@
 }
 
 .mat-card{
+    min-width: 250px;
     max-width: 270px;
     height: 350px;
     display: inline-block;
+    justify-content: center;
+    text-align: center;
 }
 
 .mat-card-actions{

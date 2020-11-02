@@ -28,8 +28,8 @@ export class VehicleComponent implements OnInit {
   newVehicle(){
     let dialogConfig = new MatDialogConfig();
     dialogConfig.autoFocus = true;
-    dialogConfig.width = "80%";
-    dialogConfig.minHeight = "50%";
+    dialogConfig.width = "60%";
+    dialogConfig.minHeight = "40%";
     this.dialog.open(NewVehicleComponent, dialogConfig);
   }
 
