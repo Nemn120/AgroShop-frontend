@@ -10,6 +10,9 @@ import { RouterModule, Routes } from '@angular/router';
 import { NgMaterialMultilevelMenuModule } from 'ng-material-multilevel-menu';
 import { UserProfileComponent } from './user-profile/user-profile.component';
 import { CarDiaLogComponent } from './car-dia-log/car-dia-log.component';
+import { SharedModule } from 'src/app/_shared/shared.module';
+import { DialogoConfirmacionComponent } from 'src/app/_shared/dialogo-confirmacion/dialogo-confirmacion.component';
+import { ReactiveFormsModule } from '@angular/forms';
 const routes: Routes = [
   {
     path: '', component: WelcomeComponent,
@@ -23,14 +26,17 @@ const routes: Routes = [
     RouterModule.forChild(routes),
     CommonModule,
     MaterialModule,
-    NgMaterialMultilevelMenuModule 
+    NgMaterialMultilevelMenuModule,
+    SharedModule,
+    ReactiveFormsModule
     
   ],
   exports:[
+    RouterModule,
     WelcomeComponent
   ],
   entryComponents:[
-    CarDiaLogComponent
+    CarDiaLogComponent,DialogoConfirmacionComponent
   ],
 })
 export class PanelAdminModule { }

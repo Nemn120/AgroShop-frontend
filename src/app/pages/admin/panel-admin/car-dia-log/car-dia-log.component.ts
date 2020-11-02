@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { SelectionModel } from '@angular/cdk/collections';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { MatTableDataSource } from '@angular/material/table';
+import { DialogoConfirmacionComponent } from 'src/app/_shared/dialogo-confirmacion/dialogo-confirmacion.component';
 
 
 @Component({
@@ -40,6 +41,26 @@ export class CarDiaLogComponent implements OnInit {
       return `${this.isAllSelected() ? 'select' : 'deselect'} all`;
     }
     return `${this.selection.isSelected(row) ? 'deselect' : 'select'} row ${row.id + 1}`;
+  }
+
+  sendOrder():void{
+    const numSelected = this.selection.selected;
+    const params = {
+      title: 'Generar pedido',
+      description: '¿Desea realizar el pedido?',
+      inputData: true
+    };
+    this.dialogo
+      .open(DialogoConfirmacionComponent, {
+        data: params
+      })
+      .afterClosed()
+      .subscribe((confirmado) => {
+        if (confirmado) {
+                      
+          }
+        
+      }); 
   }
 
 }
