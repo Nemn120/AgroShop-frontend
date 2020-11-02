@@ -4,6 +4,8 @@ import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { User } from 'src/app/_model/user';
 import { AuthService } from 'src/app/_service/auth.service';
+import { CarDiaLogComponent } from '../car-dia-log/car-dia-log.component';
+import {MatDialog} from '@angular/material/dialog';
 
 @Component({
   selector: 'app-navbar-panel',
@@ -18,7 +20,7 @@ export class NavbarPanelComponent {
   public emails$: Observable<any[]>
 
   constructor(
-    private router: Router,  private userService: AuthService,
+    private router: Router,  private userService: AuthService,public dialog: MatDialog,
   ) {
     this.user$ = this.userService.getUser();
   }
@@ -30,6 +32,14 @@ export class NavbarPanelComponent {
 
   public signOut(): void {
    console.log("SALIR");
+  }
+
+  openDialogCar(){
+   
+    this.dialog.open(CarDiaLogComponent, {
+        width: '60%',
+        height: '80%',
+      });
   }
 
 }

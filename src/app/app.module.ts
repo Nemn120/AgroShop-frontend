@@ -33,13 +33,13 @@ export function tokenGetter() {
     MaterialModule,
     FlexLayoutModule,
     PanelAdminModule,
-   JwtModule.forRoot({
+   /*JwtModule.forRoot({
       config: {
         tokenGetter: tokenGetter,
         whitelistedDomains: ['localhost:8080'],
         blacklistedRoutes: ['http://localhost:8080/oauth/token']
       }
-    }),
+    }),*/
     
     MatFabMenuModule,
 

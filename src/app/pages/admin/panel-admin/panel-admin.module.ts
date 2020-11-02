@@ -9,6 +9,7 @@ import { WelcomeComponent } from './welcome/welcome.component';
 import { RouterModule, Routes } from '@angular/router';
 import { NgMaterialMultilevelMenuModule } from 'ng-material-multilevel-menu';
 import { UserProfileComponent } from './user-profile/user-profile.component';
+import { CarDiaLogComponent } from './car-dia-log/car-dia-log.component';
 const routes: Routes = [
   {
     path: '', component: WelcomeComponent,
@@ -17,7 +18,7 @@ const routes: Routes = [
 
 
 @NgModule({
-  declarations: [NavbarPanelComponent, SidebarPanelComponent, WelcomeComponent,UserProfileComponent],
+  declarations: [NavbarPanelComponent, SidebarPanelComponent, WelcomeComponent,UserProfileComponent, CarDiaLogComponent],
   imports: [
     RouterModule.forChild(routes),
     CommonModule,
@@ -27,6 +28,9 @@ const routes: Routes = [
   ],
   exports:[
     WelcomeComponent
-  ]
+  ],
+  entryComponents:[
+    CarDiaLogComponent
+  ],
 })
 export class PanelAdminModule { }
