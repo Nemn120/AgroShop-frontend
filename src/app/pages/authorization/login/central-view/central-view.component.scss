@@ -1,5 +1,33 @@
-.mat-card {
-    border-radius: 25px;
-    ;
-    padding: 10%;
-}
+    .centrar {
+        text-align: center;
+        justify-content: center;
+    }
+    
+    .general {
+        border-radius: 50px;
+        padding: 10%;
+        font-family: 'Times New Roman', Times, serif;
+        font-weight: bold
+    }
+    
+    .titulo {
+        font-family: 'Times New Roman', Times, serif;
+        font-weight: bold;
+        font-size: xx-large;
+    }
+    
+    .btn-ingresar {
+        font-family: 'Times New Roman', Times, serif;
+        font-weight: bold;
+        height: 50px;
+        width: 80%;
+        border-radius: 20px;
+        font-size: xx-large;
+    }
+    
+    .btn-registrarse {
+        font-family: 'Times New Roman', Times, serif;
+        width: 50%;
+        border-radius: 20px;
+        font-size: large;
+    }
