@@ -13,6 +13,9 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatFabMenuModule } from '@angular-material-extensions/fab-menu';
 import { EcoFabSpeedDialModule } from '@ecodev/fab-speed-dial';
 import { PanelAdminModule } from './pages/admin/panel-admin/panel-admin.module';
+import { CentralViewComponent } from './pages/authorization/login/central-view/central-view.component';
+import { LoginComponent } from './pages/authorization/login/login.component';
+import { CentralContentComponent } from './pages/authorization/login/central-view/central-content/central-content.component';
 
 export function tokenGetter() {
   let tk = sessionStorage.getItem(environment.TOKEN_NAME);
@@ -23,6 +26,10 @@ export function tokenGetter() {
 @NgModule({
   declarations: [
     AppComponent,
+
+    LoginComponent,
+    CentralViewComponent,
+    CentralContentComponent,
   ],
   imports: [
     BrowserModule,
