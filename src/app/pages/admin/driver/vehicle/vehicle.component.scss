@@ -1,0 +1,51 @@
+.title-component{
+    min-height: 50px;
+    display: flex;
+    width: 100%;
+}
+
+.container{
+    margin:auto;
+}
+
+.title-text{
+    display: flex;
+    justify-content: flex-start;
+    width: 30%;
+    margin-left: 10px;
+}
+
+.title-button{
+    display: flex;
+    justify-content: flex-end;
+    width: 70%;
+}
+
+.mat-card{
+    max-width: 270px;
+    height: 350px;
+    display: inline-block;
+}
+
+.mat-card-actions{
+    text-align: center;
+}
+
+.mat-card-title{
+    text-align: center;
+}
+
+.mat-card-subtitle{
+    text-align: center;
+}
+
+.mat-card-header{
+    justify-content: center;
+}
+
+.mat-card-content{
+    justify-content: center;
+    text-align: center;
+}
+
+

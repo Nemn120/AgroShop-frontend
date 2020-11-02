@@ -1,0 +1,25 @@
+<mat-toolbar class="title-component" color="primary">
+    <div class="title-text">
+        <p>Mis vehiculos</p>
+    </div>
+    <div class="title-button">
+        <button class="button-new" mat-raised-button (click)="newVehicle()">Registrar vehiculo</button>
+    </div>
+</mat-toolbar>
+
+<div class="container">
+    <mat-card *ngFor="let car of [1,2,3,4,5]"> 
+        <mat-card-header>
+            <mat-card-title>Carro {{car}}</mat-card-title>
+            <mat-card-subtitle>Hyundai</mat-card-subtitle>
+        </mat-card-header>
+        <img mat-card-image src="../../../../../assets/images/hyundai-facebook.jpg" alt="" >
+        <hr>
+        <mat-card-content>
+            <p>RUC: 88172881</p>
+        </mat-card-content>
+        <mat-card-actions>
+            <button mat-raised-button color="primary" (click)="moreDetails()">Más Datos</button>
+        </mat-card-actions>
+    </mat-card>
+</div>

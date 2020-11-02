@@ -11,8 +11,10 @@ const routes: Routes = [
   {
     path: 'product', loadChildren: () => import('./pages/admin/product/product.module').then(m => m.ProductModule)
   },
+  { path: 'driver', loadChildren: () => import('./pages/admin/driver/driver.module').then(m => m.DriverModule)},
 
-  { path: '**', pathMatch: 'full', redirectTo: '/product' },
+  { path: '**', pathMatch: 'full', redirectTo: '/driver' },
+  
 ];
 
 @NgModule({
