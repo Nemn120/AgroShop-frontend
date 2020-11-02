@@ -22,6 +22,7 @@ export class VehicleComponent implements OnInit {
     dialogConfig.autoFocus = true;
     dialogConfig.width = "60%";
     dialogConfig.minHeight = "40%";
+    dialogConfig.minWidth = "370px";
     this.dialog.open(VehicleDetailComponent, dialogConfig);
   }
 
@@ -30,6 +31,7 @@ export class VehicleComponent implements OnInit {
     dialogConfig.autoFocus = true;
     dialogConfig.width = "60%";
     dialogConfig.minHeight = "40%";
+    dialogConfig.minWidth = "370px";
     this.dialog.open(NewVehicleComponent, dialogConfig);
   }
 

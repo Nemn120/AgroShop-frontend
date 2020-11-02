@@ -3,9 +3,12 @@
     min-height: 50px;
     display: flex;
     width: 100%;
+    flex-wrap: nowrap;
+    margin: 0;
 }
 
 .container{
+    margin-top: 60px;
     width: 100%;
     display: flex;
     justify-content: center;
@@ -14,20 +17,24 @@
 
 .title-text{
     justify-content: flex-start;
-    width: 30%;
-    margin-left: 10px;
+    width: 84%;
+    margin: 0;
+    align-items: center;
+    height: 100%;
 }
 
 .title-button{
     display: flex;
     justify-content: flex-end;
-    width: 70%;
+    height: 100%;
+    align-items: center;
 }
 
 .mat-card{
     min-width: 250px;
     max-width: 270px;
-    height: 350px;
+    min-height: 350px;
+    max-height: 450px;
     display: inline-block;
     justify-content: center;
     text-align: center;
@@ -54,4 +61,14 @@
     text-align: center;
 }
 
+.button-new{
+    background-color: white;
+    z-index: 3;
+    position: fixed;
+}
 
+.mat-toolbar{
+    width: 100%;
+    position: fixed;
+    z-index: 2;
+}

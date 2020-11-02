@@ -22,12 +22,7 @@
 }
 
 .mat-card-title{
-    font-size: 30px;
-    font-weight: bold;
-}
-
-.mat-card-subtitle{
-    font-size: 20px;
+    font-size: 25px;
 }
 
 .mat-card-content{
@@ -38,4 +33,12 @@
     margin-top: 10px;
     justify-content: center;
     text-align: center;
+}
+
+.mat-form-field{
+    display: flex;
+}
+
+.field-img{
+    justify-content: flex-end;
 }
