@@ -1,22 +1,44 @@
+import { HttpClient,HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import { Observable, of } from 'rxjs';
-
+import { environment } from 'src/environments/environment';
+import { Subject } from 'rxjs';
 import { User } from '../_model/user';
+import { SharedService } from './shared.service';
+import { JwtHelperService } from '@auth0/angular-jwt';
+import { RestService } from './rest.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  public login(): void {
-    localStorage.setItem('token', 'token');
+
+  url: string = `${environment.HOST}/oauth/token`;
+  constructor(private http: HttpClient, private router: Router,private restService:RestService,
+    private sharedService:SharedService){}    
+  public getJWTByCredentials(username:string,password:string){
+    const body = `grant_type=password&username=${encodeURIComponent(username)}&password=${encodeURIComponent(password)}`;
+    console.log(this.url);
+    return this.http.post(this.url, body, {
+     
+      headers: new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8').set('Authorization', 'Basic ' + btoa(environment.TOKEN_AUTH_USERNAME + ':' + environment.TOKEN_AUTH_PASSWORD))
+    });
   }
 
-  public sign(): void {
-    localStorage.setItem('token', 'token');
-  }
+  public login(username : string, password:string){
+    this.getJWTByCredentials(username,password).subscribe((data:any) =>{
+      if(data){
+        const helper = new JwtHelperService();
+        sessionStorage.setItem(environment.TOKEN_NAME, data.access_token);
+        const decodedToken = helper.decodeToken(data.access_token)
+        console.log(decodedToken);
+        return decodedToken;
+      }
+    }, error =>{
 
-  public signOut(): void {
-    localStorage.removeItem('token');
+    })  
+
   }
 
   public getUser(): Observable<User> {
@@ -25,5 +47,16 @@ export class AuthService {
       lastName: 'Apellido',
       email:'agroshop@gmail.com'
     });
+  }
+
+  public isLoggedIn() {
+    let token = sessionStorage.getItem(environment.TOKEN_NAME);
+    return token != null;
+  }
+
+  public closeSession() {   
+      sessionStorage.clear();
+      this.sharedService.userSession=undefined;
+      this.router.navigate(['']);
   }
 }
