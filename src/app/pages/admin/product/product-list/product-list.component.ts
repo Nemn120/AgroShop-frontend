@@ -36,14 +36,12 @@ export class ProductListComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.authService.login('admin','123');
+    console.log("LIST");
   }
 
   getProduct(){
-    let param={
-      id:0
-    }
-    this.restService.requestApiRestData('categoryproduct/gcp',param).subscribe(result=>{
+
+    this.restService.requestApiRestData('categoryproduct/gcp',{}).subscribe(result=>{
       console.log(result);
     })
   }

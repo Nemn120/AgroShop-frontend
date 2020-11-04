@@ -37,6 +37,7 @@
         "@angular/service-worker": "~9.0.5",
         "@auth0/angular-jwt": "^4.0.0",
         "@ecodev/fab-speed-dial": "^6.0.0",
+        "@fortawesome/fontawesome-free": "^5.15.1",
         "chart.js": "^2.9.3",
         "classlist.js": "^1.1.20150312",
         "exceljs": "^4.1.1",

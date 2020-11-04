@@ -15,8 +15,14 @@ import { RestService } from './rest.service';
 export class AuthService {
 
   url: string = `${environment.HOST}/oauth/token`;
-  constructor(private http: HttpClient, private router: Router,private restService:RestService,
-    private sharedService:SharedService){}    
+  isLogged:boolean=false;
+  constructor(
+    private http: HttpClient, 
+    private router: Router,
+    private restService:RestService,
+    private sharedService:SharedService)
+    {}    
+
   public getJWTByCredentials(username:string,password:string){
     const body = `grant_type=password&username=${encodeURIComponent(username)}&password=${encodeURIComponent(password)}`;
     console.log(this.url);
@@ -32,11 +38,32 @@ export class AuthService {
         const helper = new JwtHelperService();
         sessionStorage.setItem(environment.TOKEN_NAME, data.access_token);
         const decodedToken = helper.decodeToken(data.access_token)
-        console.log(decodedToken);
-        return decodedToken;
+        let param={
+          username:username,
+          userType:decodedToken.authorities[0]
+        }
+        this.restService.requestApiRestData("user/gubu",param).subscribe(result =>{
+          this.sharedService.userSession=result.data;
+          this.isLogged=true;
+          let param={
+            id: result.data.user.profile.idProfile
+          }
+          this.restService.requestApiRestData("menu/glmbi",param).subscribe(result =>{
+            this.sharedService.orderMenuOptionList(result.datalist);
+          console.log(result);
+          setTimeout(()=>{
+            this.router.navigate(['']);
+          },1000);
+          
+          },error=>{
+            console.error(error);
+          })
+        },error=>{
+          console.error(error);
+        })
       }
     }, error =>{
-
+      console.error(error);
     })  
 
   }
@@ -50,13 +77,16 @@ export class AuthService {
   }
 
   public isLoggedIn() {
-    let token = sessionStorage.getItem(environment.TOKEN_NAME);
+    /*let token = sessionStorage.getItem(environment.TOKEN_NAME);
     return token != null;
+    */
+    return this.sharedService.userSession != null;
   }
 
   public closeSession() {   
       sessionStorage.clear();
       this.sharedService.userSession=undefined;
-      this.router.navigate(['']);
+      this.isLogged=false;
+      this.router.navigate(['/auth']);
   }
 }
