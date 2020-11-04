@@ -1,14 +1,10 @@
 <div class="layout-data2">
 
     Mis Pedidos !
-    <button mat-button style="background-color:#37966F;float:right;color:white">Agregar</button>
+    <button mat-button style="background-color:#37966F;float:right;color:white" (click)="getProduct()">Agregar</button>
 </div>
 <div class="layout-data">
     <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
-
-        <!--- Note that these columns can be defined in any order.
-              The actual rendered columns are set as a property on the row definition" -->
-
         <!-- Position Column -->
         <ng-container matColumnDef="position">
             <th mat-header-cell *matHeaderCellDef> No. </th>

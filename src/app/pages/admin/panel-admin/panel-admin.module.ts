@@ -28,7 +28,10 @@ const routes: Routes = [
     MaterialModule,
     NgMaterialMultilevelMenuModule,
     SharedModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgMaterialMultilevelMenuModule
+     
+
     
   ],
   exports:[
