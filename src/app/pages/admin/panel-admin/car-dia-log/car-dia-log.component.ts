@@ -52,14 +52,16 @@ export class CarDiaLogComponent implements OnInit {
     };
     this.dialogo
       .open(DialogoConfirmacionComponent, {
-        data: params
+        data: params,
+        width: '40%',
+        height: '35%',
       })
       .afterClosed()
       .subscribe((confirmado) => {
         if (confirmado) {
-                      
+            console.log("Hola");          
           }
-        
+          this.dialog.close();
       }); 
   }
 

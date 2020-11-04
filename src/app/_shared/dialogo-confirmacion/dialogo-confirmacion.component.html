@@ -1,7 +1,7 @@
-<mat-toolbar color="primary">{{mensaje.title}}</mat-toolbar>
-    <p>{{mensaje.description}}</p>
+<mat-toolbar width="100%" color="primary">{{mensaje.title}}</mat-toolbar>
+    <p width="100%">{{mensaje.description}}</p>
 
-<div mat-dialog-actions class="buttons">
-    <button mat-button class="cancelar" (click)="cerrarDialogo()">Cancelar</button>
-    <button mat-button color="primary" (click)="confirmado()" cdkFocusInitial>Sí</button>
+<div  mat-dialog-actions class="buttons">
+    <button style="margin-left: 49%; width: 25%;" mat-raised-button color="accent" (click)="cerrarDialogo()">Cancelar</button>
+    <button style=" margin-left: 1%;width: 25%;" mat-raised-button color="primary" (click)="confirmado()" cdkFocusInitial>Sí</button>
 </div>
