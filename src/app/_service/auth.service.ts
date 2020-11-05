@@ -23,7 +23,7 @@ export class AuthService {
     return of({
       name: 'Nombre',
       lastName: 'Apellido',
-      email:'agroshop@gmail.com'
+      email: 'agroshop@gmail.com'
     });
   }
 }

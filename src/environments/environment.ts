@@ -5,8 +5,8 @@
 export const environment = {
   production: false,
 
-  HOST:"https://pallevar-backend-2020.herokuapp.com", // 
-  //HOST:"http://localhost:8080", 
+  //HOST:"https://pallevar-backend-2020.herokuapp.com", //
+  HOST:"http://localhost:8080",
   //HOST: "https://hidden-wildwood-21108.herokuapp.com",
   //HOST: "https://pallevar-backend-2020.herokuapp.com",
 
