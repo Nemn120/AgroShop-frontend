@@ -29,7 +29,7 @@ export class NavbarPanelComponent {
   }
 
   public signOut(): void {
-   console.log("SALIR");
+   this.userService.closeSession();
   }
 
 }
