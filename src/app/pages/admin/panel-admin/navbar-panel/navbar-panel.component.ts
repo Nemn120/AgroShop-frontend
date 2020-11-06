@@ -6,6 +6,7 @@ import { User } from 'src/app/_model/user';
 import { AuthService } from 'src/app/_service/auth.service';
 import { CarDiaLogComponent } from '../car-dia-log/car-dia-log.component';
 import {MatDialog} from '@angular/material/dialog';
+import { MatPaginatorIntl } from '@angular/material/paginator';
 
 @Component({
   selector: 'app-navbar-panel',
@@ -35,10 +36,13 @@ export class NavbarPanelComponent {
   }
 
   openDialogCar(){
-   
+    
     this.dialog.open(CarDiaLogComponent, {
-        width: '60%',
+      
+        width: '25%',
         height: '80%',
+        position: { right:'0px' }, 
+       
       });
   }
 

@@ -12,7 +12,8 @@ import { UserProfileComponent } from './user-profile/user-profile.component';
 import { CarDiaLogComponent } from './car-dia-log/car-dia-log.component';
 import { SharedModule } from 'src/app/_shared/shared.module';
 import { DialogoConfirmacionComponent } from 'src/app/_shared/dialogo-confirmacion/dialogo-confirmacion.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 const routes: Routes = [
   {
     path: '', component: WelcomeComponent,
@@ -29,7 +30,9 @@ const routes: Routes = [
     NgMaterialMultilevelMenuModule,
     SharedModule,
     ReactiveFormsModule,
-    NgMaterialMultilevelMenuModule
+    NgMaterialMultilevelMenuModule,
+    FormsModule,
+    BrowserAnimationsModule
      
 
     

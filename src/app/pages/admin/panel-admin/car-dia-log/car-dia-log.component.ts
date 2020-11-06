@@ -12,11 +12,12 @@ import { DialogoConfirmacionComponent } from 'src/app/_shared/dialogo-confirmaci
 })
 export class CarDiaLogComponent implements OnInit {
 
-  displayedColumns: string[] = ['select','position', 'name', 'weight', 'symbol'];
+  displayedColumns: string[] = ['select', 'name', 'weight', 'quantity'];
   data = Object.assign( ELEMENT_DATA);
   dataSource = new MatTableDataSource<Element>(this.data);
   selection = new SelectionModel<Element>(true, []);
   totalRow: number;
+  valor1=null;
   constructor( public dialogo: MatDialog,
     public dialog: MatDialogRef<CarDiaLogComponent>) { }
 
@@ -53,7 +54,7 @@ export class CarDiaLogComponent implements OnInit {
     this.dialogo
       .open(DialogoConfirmacionComponent, {
         data: params,
-        width: '40%',
+        width: '25%',
         height: '35%',
       })
       .afterClosed()
@@ -69,16 +70,14 @@ export class CarDiaLogComponent implements OnInit {
 
 export interface PeriodicElement {
   name: string;
-  position: number;
   weight: number;
-  symbol: string;
+  quantity: number;
 }
 
 const ELEMENT_DATA: PeriodicElement[] = [
-  {position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H'},
-  {position: 2, name: 'Helium', weight: 4.0026, symbol: 'He'},
-  {position: 3, name: 'Lithium', weight: 6.941, symbol: 'Li'},
-  {position: 4, name: 'Beryllium', weight: 9.0122, symbol: 'Be'},
-  {position: 5, name: 'Boron', weight: 10.811, symbol: 'B'},
+  {name: 'Hyd', weight: 1.0, quantity: 1},
+  {name: 'Hel', weight: 4.0, quantity: 1},
+  {name: 'Par', weight: 6.9, quantity: 1},
+  {name: 'Ber', weight: 9.0, quantity: 1},
   
 ];

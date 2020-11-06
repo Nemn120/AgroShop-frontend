@@ -1,4 +1,5 @@
-<mat-toolbar color="primary">
+
+<mat-toolbar color="primary"> 
     <span>Costo del carrito: </span>
     <div class="elipse" style="margin-left:auto;" mat-dialog-close><span>X</span></div>
 </mat-toolbar>
@@ -21,29 +22,29 @@
           </ng-container>
       
 
-        <!-- Position Column -->
-        <ng-container matColumnDef="position">
-            <mat-header-cell *matHeaderCellDef > No. </mat-header-cell>
-            <mat-cell *matCellDef="let element"> {{element.position}} </mat-cell>
-        </ng-container>
-
         <!-- Name Column -->
         <ng-container matColumnDef="name">
-            <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
+            <mat-header-cell *matHeaderCellDef>Nombre </mat-header-cell>
             <mat-cell *matCellDef="let element"> {{element.name}} </mat-cell>
         </ng-container>
 
         <!-- Weight Column -->
         <ng-container matColumnDef="weight">
-            <mat-header-cell *matHeaderCellDef> Weight </mat-header-cell>
+            <mat-header-cell *matHeaderCellDef> Precio </mat-header-cell>
             <mat-cell *matCellDef="let element"> {{element.weight}} </mat-cell>
         </ng-container>
 
         <!-- Symbol Column -->
-        <ng-container matColumnDef="symbol">
-            <mat-header-cell *matHeaderCellDef> Symbol </mat-header-cell>
-            <mat-cell *matCellDef="let element"> {{element.symbol}} </mat-cell>
+        <ng-container matColumnDef="quantity">
+            <mat-header-cell *matHeaderCellDef> Cantidad </mat-header-cell>
+            <mat-cell *matCellDef="let element"> 
+              <mat-form-field  class="example-form-field">
+              <input matInput type="number" [(ngModel)]="element.quantity" >
+              </mat-form-field>
+              <small *ngIf="element.quantity<=0" class="alerta" >Ingrese valor positivo</small>
+            </mat-cell> 
         </ng-container>
+        
 
       <!-- Symbol Column -->
       <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
@@ -51,6 +52,7 @@
       </mat-row>
 
   </mat-table>
+ 
 
 
 </div>
@@ -63,3 +65,4 @@
 <button style=" margin-left: 1%;width: 25%;" mat-raised-button color="primary" (click)="sendOrder()">
  Pedir
 </button>
+
