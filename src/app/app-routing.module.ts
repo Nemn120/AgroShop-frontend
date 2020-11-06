@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { WelcomeComponent } from './pages/admin/panel-admin/welcome/welcome.component';
 
 const routes: Routes = [
+
   {
     path:'',component:WelcomeComponent,children:[
   {
