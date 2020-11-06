@@ -15,6 +15,11 @@ import { EcoFabSpeedDialModule } from '@ecodev/fab-speed-dial';
 import { PanelAdminModule } from './pages/admin/panel-admin/panel-admin.module';
 import { RegistryComponent } from './pages/authorization/registry/registry.component';
 import { RegistryFormComponent } from './pages/authorization/registry/registry-form/registry-form.component';
+import { FormContainerComponent } from './pages/authorization/registry/form-container/form-container.component';
+import { FormsModule } from '@angular/forms';
+import { DriverFormContainerComponent } from './pages/authorization/registry/driver-form-container/driver-form-container.component';
+import { CustomerFormContainerComponent } from './pages/authorization/registry/customer-form-container/customer-form-container.component';
+
 
 export function tokenGetter() {
   let tk = sessionStorage.getItem(environment.TOKEN_NAME);
@@ -26,7 +31,10 @@ export function tokenGetter() {
   declarations: [
     AppComponent,
     RegistryComponent,
-    RegistryFormComponent
+    RegistryFormComponent,
+    FormContainerComponent,
+    DriverFormContainerComponent,
+    CustomerFormContainerComponent
   ],
   imports: [
     BrowserModule,
@@ -46,11 +54,13 @@ export function tokenGetter() {
     }),
     */
     MatFabMenuModule,
+   FormsModule,
 
 
   ],
   providers: [
-    { provide: LocationStrategy, useClass: HashLocationStrategy}
+    { provide: LocationStrategy, useClass: HashLocationStrategy},
+
   ],
   bootstrap: [AppComponent],
   exports:[
