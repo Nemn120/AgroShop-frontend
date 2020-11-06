@@ -10,7 +10,7 @@
         </div>
 
         <div class="header-search">
-            <input class="input-search" Placeholder="Search" />
+            <input matInput (keyup)="applyFilter($event)" class="input-search" Placeholder="Search" #input/>
             <button type="submit" class="button-search">
         <mat-icon class="icon-search">search</mat-icon>
       </button>
@@ -44,7 +44,7 @@
             <th mat-header-cell *matHeaderCellDef>Estado</th>
             <td mat-cell *matCellDef="let element">
                 <span>{{ element.status }}</span>
-                <button mat-icon-button color="primary" (click)="chargeDataStatus(element.id)">
+                <button *ngIf="element.status != 'Pendiente'" mat-icon-button color="primary" (click)="chargeDataStatus(element.id)">
           <mat-icon>edit</mat-icon>
         </button>
             </td>

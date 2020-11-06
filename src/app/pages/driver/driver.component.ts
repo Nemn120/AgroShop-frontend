@@ -43,7 +43,7 @@ export class DriverComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.getListDriverByStatus('Pendiente');
+    this.getListDriverByStatus('Aceptado');
   }
 
   getListDriverByStatus(status: string): void {
@@ -61,10 +61,16 @@ export class DriverComponent implements OnInit {
 
   chargeDataStatus(id: number) {
     this.ids.push(id);
-    this.changeStatusDriver(this.ids);
+    // this.changeStatusDriver(this.ids);
 
     Swal.fire({
-      title: 'Seguro que desea eliminar?',
+      title: 'Seguro de cambiar el estado?',
+      showClass: {
+        popup: 'animate__animated animate__fadeInDown'
+      },
+      hideClass: {
+        popup: 'animate__animated animate__fadeOutUp'
+      },
       icon: 'warning',
       showCancelButton: true,
       confirmButtonColor: 'green',
@@ -73,11 +79,11 @@ export class DriverComponent implements OnInit {
     }).then((result) => {
       if (result.isConfirmed) {
         Swal.fire(
-          'Deleted!',
-          'Your file has been deleted.',
+          'Cambio realizado con éxito!',
+          'El estado se ha cambiado.',
           'success'
         );
-        this.getListDriverByStatus('Pendiente');
+        this.getListDriverByStatus('Aceptado');
       }
     });
 
@@ -89,6 +95,11 @@ export class DriverComponent implements OnInit {
     };
     this.restService.requestApiRestData('driver/adr', param)
       .subscribe( result => console.log(result));
+  }
+
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
 }
