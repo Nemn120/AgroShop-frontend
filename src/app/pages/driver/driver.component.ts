@@ -4,26 +4,6 @@ import { DriverBean } from 'src/app/_model/DriverBean';
 import { RestService } from 'src/app/_service/rest.service';
 import Swal from 'sweetalert2';
 
-export interface PeriodicElement {
-  name: string;
-  position: number;
-  weight: number;
-  symbol: string;
-}
-
-const ELEMENT_DATA: PeriodicElement[] = [
-  {position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H'},
-  {position: 2, name: 'Helium', weight: 4.0026, symbol: 'He'},
-  {position: 3, name: 'Lithium', weight: 6.941, symbol: 'Li'},
-  {position: 4, name: 'Beryllium', weight: 9.0122, symbol: 'Be'},
-  {position: 5, name: 'Boron', weight: 10.811, symbol: 'B'},
-  {position: 6, name: 'Carbon', weight: 12.0107, symbol: 'C'},
-  {position: 7, name: 'Nitrogen', weight: 14.0067, symbol: 'N'},
-  {position: 8, name: 'Oxygen', weight: 15.9994, symbol: 'O'},
-  {position: 9, name: 'Fluorine', weight: 18.9984, symbol: 'F'},
-  {position: 10, name: 'Neon', weight: 20.1797, symbol: 'Ne'},
-];
-
 @Component({
   selector: 'app-driver',
   templateUrl: './driver.component.html',
@@ -36,11 +16,9 @@ export class DriverComponent implements OnInit {
 
   status: string[] = ['Pendiente', 'Aceptado'];
   ids: number[] = [];
+  drivers: any[] = [];
 
-  constructor(
-    private restService: RestService
-  ) {
-  }
+  constructor( private restService: RestService ) {}
 
   ngOnInit(): void {
     this.getListDriverByStatus('Aceptado');
@@ -53,15 +31,14 @@ export class DriverComponent implements OnInit {
     this.restService.requestApiRestData('driver/gldbs', param)
       .subscribe( result => {
         this.dataSource = new MatTableDataSource(result.datalist);
-        // this.drivers = result.datalist;
+        this.drivers = result.datalist;
         console.log(result.datalist);
       }
       );
   }
 
-  chargeDataStatus(id: number) {
+  setIds(id: number) {
     this.ids.push(id);
-    // this.changeStatusDriver(this.ids);
 
     Swal.fire({
       title: 'Seguro de cambiar el estado?',
@@ -78,6 +55,7 @@ export class DriverComponent implements OnInit {
       confirmButtonText: 'Cambiar estado'
     }).then((result) => {
       if (result.isConfirmed) {
+        this.changeStatusDriver(this.ids);
         Swal.fire(
           'Cambio realizado con éxito!',
           'El estado se ha cambiado.',
@@ -97,9 +75,17 @@ export class DriverComponent implements OnInit {
       .subscribe( result => console.log(result));
   }
 
-  applyFilter(event: Event) {
-    const filterValue = (event.target as HTMLInputElement).value;
-    this.dataSource.filter = filterValue.trim().toLowerCase();
+  searchDriver(termino: string): any {
+    const drivers: any[] = [];
+    const name = termino.toLowerCase();
+    this.drivers.forEach(driver => {
+      if (driver.user.username.toLowerCase().includes(name)) {
+        drivers.push(driver);
+      }
+    });
+    this.dataSource = new MatTableDataSource(drivers);
+    console.log('FILTRANDO...' + termino);
+    console.log(drivers);
   }
 
 }
