@@ -13,6 +13,9 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatFabMenuModule } from '@angular-material-extensions/fab-menu';
 import { EcoFabSpeedDialModule } from '@ecodev/fab-speed-dial';
 import { PanelAdminModule } from './pages/admin/panel-admin/panel-admin.module';
+import { ServerErrorsInterceptor } from './_service/server-errors.interceptor';
+import { AuthorizationModule } from './pages/authorization/authorization.module';
+import { LoginComponent } from './pages/authorization/login/login.component';
 
 export function tokenGetter() {
   let tk = sessionStorage.getItem(environment.TOKEN_NAME);
@@ -22,7 +25,7 @@ export function tokenGetter() {
 
 @NgModule({
   declarations: [
-    AppComponent,
+    AppComponent
   ],
   imports: [
     BrowserModule,
@@ -33,19 +36,23 @@ export function tokenGetter() {
     MaterialModule,
     FlexLayoutModule,
     PanelAdminModule,
-   /*JwtModule.forRoot({
+    AuthorizationModule,
+   JwtModule.forRoot({
       config: {
         tokenGetter: tokenGetter,
         whitelistedDomains: ['localhost:8080'],
         blacklistedRoutes: ['http://localhost:8080/oauth/token']
       }
     }),
-    */
     MatFabMenuModule,
 
    
   ],
   providers: [
+    {provide: HTTP_INTERCEPTORS,
+      useClass: ServerErrorsInterceptor,
+      multi: true
+    },
     { provide: LocationStrategy, useClass: HashLocationStrategy}
   ],
   bootstrap: [AppComponent],

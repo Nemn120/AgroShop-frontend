@@ -1,10 +1,20 @@
 
 .title-component{
     min-height: 50px;
-    display: flex;
     width: 100%;
     flex-wrap: nowrap;
-    margin: 0;
+    position: fixed;
+    z-index: 2;
+}
+
+.vehicle-btn{
+    background-color: white !important;
+    color: #009865 !important;
+    font-weight: bold !important;
+}
+
+.flexExpand {
+    flex: 1 1 auto;
 }
 
 .container{
@@ -15,21 +25,6 @@
     flex-wrap: wrap;
 }
 
-.title-text{
-    justify-content: flex-start;
-    width: 84%;
-    margin: 0;
-    align-items: center;
-    height: 100%;
-}
-
-.title-button{
-    display: flex;
-    justify-content: flex-end;
-    height: 100%;
-    align-items: center;
-}
-
 .mat-card{
     min-width: 250px;
     max-width: 270px;
@@ -38,6 +33,7 @@
     display: inline-block;
     justify-content: center;
     text-align: center;
+    border-radius: 15px;
 }
 
 .mat-card-actions{
@@ -59,16 +55,4 @@
 .mat-card-content{
     justify-content: center;
     text-align: center;
-}
-
-.button-new{
-    background-color: white;
-    z-index: 3;
-    position: fixed;
-}
-
-.mat-toolbar{
-    width: 100%;
-    position: fixed;
-    z-index: 2;
 }

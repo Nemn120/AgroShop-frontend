@@ -2,5 +2,5 @@
     <img src="../../../../../assets/images/fruta.jpg" height="300" width="200px">
 </div>
 
-<ng-material-multilevel-menu [configuration]='config' [items]='appitems' (selectedItem)="selectedItem($event)">
+<ng-material-multilevel-menu [configuration]='config' [items]='this.sharedData.appitems' (selectedItem)="selectedItem($event)">
 </ng-material-multilevel-menu>

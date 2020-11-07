@@ -22,7 +22,9 @@ const routes: Routes = [
     RouterModule.forChild(routes),
     CommonModule,
     MaterialModule,
-    NgMaterialMultilevelMenuModule 
+    NgMaterialMultilevelMenuModule
+     
+
     
   ],
   exports:[
