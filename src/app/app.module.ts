@@ -16,18 +16,17 @@ import { PanelAdminModule } from './pages/admin/panel-admin/panel-admin.module';
 import { ServerErrorsInterceptor } from './_service/server-errors.interceptor';
 import { AuthorizationModule } from './pages/authorization/authorization.module';
 import { LoginComponent } from './pages/authorization/login/login.component';
-import { DriverComponent } from './pages/driver/driver.component';
 import { FormsModule } from '@angular/forms';
 
 export function tokenGetter() {
-  let tk = sessionStorage.getItem(environment.TOKEN_NAME);
-  let token = tk != null ? tk : '';
+  const tk = sessionStorage.getItem(environment.TOKEN_NAME);
+  const token = tk != null ? tk : '';
   return token;
 }
 
 @NgModule({
   declarations: [
-    AppComponent,DriverComponent
+    AppComponent
   ],
   imports: [
     BrowserModule,
@@ -41,7 +40,7 @@ export function tokenGetter() {
     AuthorizationModule,
    JwtModule.forRoot({
       config: {
-        tokenGetter: tokenGetter,
+        tokenGetter,
         whitelistedDomains: ['localhost:8080'],
         blacklistedRoutes: ['http://localhost:8080/oauth/token']
       }
@@ -57,7 +56,7 @@ export function tokenGetter() {
     { provide: LocationStrategy, useClass: HashLocationStrategy}
   ],
   bootstrap: [AppComponent],
-  exports:[
+  exports: [
     FlexLayoutModule,
 
 

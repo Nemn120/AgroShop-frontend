@@ -5,7 +5,7 @@ import { WelcomeComponent } from './pages/admin/panel-admin/welcome/welcome.comp
 const routes: Routes = [
 
   {
-    path:'',component:WelcomeComponent,children:[
+    path: '', component: WelcomeComponent, children: [
   {
     path: 'panel', loadChildren: () => import('./pages/admin/panel-admin/panel-admin.module').then(m => m.PanelAdminModule)
   },
@@ -14,6 +14,9 @@ const routes: Routes = [
   },
   {
     path: 'product', loadChildren: () => import('./pages/admin/product/product.module').then(m => m.ProductModule)
+  },
+  {
+    path: 'driver', loadChildren: () => import('./pages/admin/driver-panel/driver-panel.module').then(m => m.DriverPanelModule)
   }
   ]},
   {

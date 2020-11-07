@@ -84,8 +84,8 @@ export class DriverComponent implements OnInit {
       }
     });
     this.dataSource = new MatTableDataSource(drivers);
-    console.log('FILTRANDO...' + termino);
-    console.log(drivers);
+    /* console.log('FILTRANDO...' + termino);
+    console.log(drivers); */
   }
 
 }
