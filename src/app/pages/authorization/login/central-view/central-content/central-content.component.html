@@ -1,6 +1,6 @@
 <div style="width: 100%;">
-    <h3 style="color:#193B01;">Usuario</h3>
-    <mat-form-field appearance="fill" style="width: 100%;color: white;">
+    <h3 style="color: #193B01;">Usuario</h3>
+    <mat-form-field appearance="fill" style="width: 100%;color: rgb(0, 0, 0);">
         <mat-label style="font-size:medium;">Ingrese su usuario</mat-label>
         <input matInput style="font-size: large;">
         <mat-icon matSuffix style="color: rgb(10, 10, 10);">person</mat-icon>
@@ -8,7 +8,7 @@
     </mat-form-field>
 
     <h3 style="color:#193B01;">Contraseña</h3>
-    <mat-form-field appearance="fill" style="width: 100%;color: white;">
+    <mat-form-field appearance="fill" style="width: 100%;color: rgb(0, 0, 0);">
         <mat-label style="font-size:medium;">Ingrese su contraseña</mat-label>
         <input matInput [type]="hide ? 'password' : 'text'" style="font-size: large;">
         <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">

@@ -56,14 +56,14 @@ export class AuthService {
           },1000);
           
           },error=>{
-            console.error(error);
+            console.error('error1',error);
           })
         },error=>{
-          console.error(error);
+          console.error('error2',error);
         })
       }
     }, error =>{
-      console.error(error);
+      console.error('error3',error);
     })  
 
   }
