@@ -6,6 +6,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { MaterialModule } from 'src/app/_material/material.module';
 import { CentralViewComponent } from './login/central-view/central-view.component';
 import { CentralContentComponent } from './login/central-view/central-content/central-content.component';
+import { ToolbarComponent } from '../public-view/toolbar/toolbar.component';
 
 const routes: Routes = [
   {
@@ -26,6 +27,10 @@ const routes: Routes = [
     CentralContentComponent,
     
     RegistryComponent,
+
+    ToolbarComponent,
+
+    
   ],
   imports: [
     CommonModule,
