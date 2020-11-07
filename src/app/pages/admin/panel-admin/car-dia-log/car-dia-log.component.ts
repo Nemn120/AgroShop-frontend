@@ -3,6 +3,7 @@ import { SelectionModel } from '@angular/cdk/collections';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { MatTableDataSource } from '@angular/material/table';
 import { DialogoConfirmacionComponent } from 'src/app/_shared/dialogo-confirmacion/dialogo-confirmacion.component';
+import { OrderDetailComponent } from 'src/app/_shared/order-detail/order-detail.component';
 
 
 @Component({
@@ -60,7 +61,11 @@ export class CarDiaLogComponent implements OnInit {
       .afterClosed()
       .subscribe((confirmado) => {
         if (confirmado) {
-            console.log("Hola");          
+            console.log("Hola");
+            this.closeDialog();
+                this.dialogo.open(OrderDetailComponent, {
+                  width: '600px',
+                });          
           }
           this.dialog.close();
       }); 

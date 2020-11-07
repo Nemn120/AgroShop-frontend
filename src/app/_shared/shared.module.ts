@@ -3,11 +3,12 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { DialogoConfirmacionComponent } from './dialogo-confirmacion/dialogo-confirmacion.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { OrderDetailComponent } from './order-detail/order-detail.component';
 
 
 
 @NgModule({
-  declarations: [DialogoConfirmacionComponent],
+  declarations: [DialogoConfirmacionComponent, OrderDetailComponent],
   imports: [
     
     CommonModule,
@@ -17,7 +18,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
   ],
   exports:[
-   DialogoConfirmacionComponent
+   DialogoConfirmacionComponent,OrderDetailComponent
   ],
   
  

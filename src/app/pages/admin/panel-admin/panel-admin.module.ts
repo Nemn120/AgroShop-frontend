@@ -14,6 +14,7 @@ import { SharedModule } from 'src/app/_shared/shared.module';
 import { DialogoConfirmacionComponent } from 'src/app/_shared/dialogo-confirmacion/dialogo-confirmacion.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { OrderDetailComponent } from 'src/app/_shared/order-detail/order-detail.component';
 const routes: Routes = [
   {
     path: '', component: WelcomeComponent,
@@ -42,7 +43,7 @@ const routes: Routes = [
     WelcomeComponent
   ],
   entryComponents:[
-    CarDiaLogComponent,DialogoConfirmacionComponent
+    CarDiaLogComponent,DialogoConfirmacionComponent,OrderDetailComponent
   ],
 })
 export class PanelAdminModule { }
