@@ -13,9 +13,8 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatFabMenuModule } from '@angular-material-extensions/fab-menu';
 import { EcoFabSpeedDialModule } from '@ecodev/fab-speed-dial';
 import { PanelAdminModule } from './pages/admin/panel-admin/panel-admin.module';
-import { CentralViewComponent } from './pages/authorization/login/central-view/central-view.component';
-import { LoginComponent } from './pages/authorization/login/login.component';
-import { CentralContentComponent } from './pages/authorization/login/central-view/central-content/central-content.component';
+import { ServerErrorsInterceptor } from './_service/server-errors.interceptor';
+import { AuthorizationModule } from './pages/authorization/authorization.module';
 
 export function tokenGetter() {
   let tk = sessionStorage.getItem(environment.TOKEN_NAME);
@@ -27,9 +26,7 @@ export function tokenGetter() {
   declarations: [
     AppComponent,
 
-    LoginComponent,
-    CentralViewComponent,
-    CentralContentComponent,
+    
   ],
   imports: [
     BrowserModule,
@@ -40,19 +37,23 @@ export function tokenGetter() {
     MaterialModule,
     FlexLayoutModule,
     PanelAdminModule,
-   /*JwtModule.forRoot({
+    AuthorizationModule,
+   JwtModule.forRoot({
       config: {
         tokenGetter: tokenGetter,
         whitelistedDomains: ['localhost:8080'],
         blacklistedRoutes: ['http://localhost:8080/oauth/token']
       }
     }),
-    */
     MatFabMenuModule,
 
    
   ],
   providers: [
+    {provide: HTTP_INTERCEPTORS,
+      useClass: ServerErrorsInterceptor,
+      multi: true
+    },
     { provide: LocationStrategy, useClass: HashLocationStrategy}
   ],
   bootstrap: [AppComponent],

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from 'src/app/_service/auth.service';
+import { RestService } from 'src/app/_service/rest.service';
 
 export interface PeriodicElement {
   name: string;
@@ -28,9 +30,20 @@ const ELEMENT_DATA: PeriodicElement[] = [
 export class ProductListComponent implements OnInit {
   displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
   dataSource = ELEMENT_DATA;
-  constructor() { }
+  constructor(
+    private restService:RestService,
+    private authService:AuthService
+  ) { }
 
   ngOnInit(): void {
+    console.log("LIST");
+  }
+
+  getProduct(){
+
+    this.restService.requestApiRestData('categoryproduct/gcp',{}).subscribe(result=>{
+      console.log(result);
+    })
   }
 
 }
