@@ -5,7 +5,6 @@
   box-sizing: border-box;
   padding: 0;
   margin: 0;
-
 }
 
 /*
@@ -44,29 +43,27 @@
 }
 
 .registry-form{
-
-  height: 524px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  height: 400px;
 }
 
 .mat-form-field{
-  display: block;
-  height: 50px;
-  margin: 20px;
 
+  margin-bottom: 20px;
+  width: 400px;
+  height: 40px;
+}
+
+.example-button-row{
+  height: 40px;
+  margin-top:30px;
 }
 
 
-
-
 .mat-button{
-  background-color: #5EB503;
-  color:#fff;
-  width: 150px;
-  height: 40px;
-  margin-top: 20px;
   float: right;
-  margin-right: 20px;
-  margin-top: 50px;
+  width: 120px;
   font-size: 20px;
-  border-radius: 20px;
 }

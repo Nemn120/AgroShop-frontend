@@ -14,12 +14,14 @@ import { MatFabMenuModule } from '@angular-material-extensions/fab-menu';
 import { EcoFabSpeedDialModule } from '@ecodev/fab-speed-dial';
 import { PanelAdminModule } from './pages/admin/panel-admin/panel-admin.module';
 import { RegistryComponent } from './pages/authorization/registry/registry.component';
-import { RegistryFormComponent } from './pages/authorization/registry/registry-form/registry-form.component';
-import { FormContainerComponent } from './pages/authorization/registry/form-container/form-container.component';
+import { FarmerFormContainerComponent } from './pages/authorization/registry/farmer-form-container/farmer-form-container.component';
 import { FormsModule } from '@angular/forms';
 import { DriverFormContainerComponent } from './pages/authorization/registry/driver-form-container/driver-form-container.component';
 import { CustomerFormContainerComponent } from './pages/authorization/registry/customer-form-container/customer-form-container.component';
 
+import { ServerErrorsInterceptor } from './_service/server-errors.interceptor';
+import { AuthorizationModule } from './pages/authorization/authorization.module';
+import { LoginComponent } from './pages/authorization/login/login.component';
 
 export function tokenGetter() {
   let tk = sessionStorage.getItem(environment.TOKEN_NAME);
@@ -30,11 +32,7 @@ export function tokenGetter() {
 @NgModule({
   declarations: [
     AppComponent,
-    RegistryComponent,
-    RegistryFormComponent,
-    FormContainerComponent,
-    DriverFormContainerComponent,
-    CustomerFormContainerComponent
+
   ],
   imports: [
     BrowserModule,
@@ -45,14 +43,14 @@ export function tokenGetter() {
     MaterialModule,
     FlexLayoutModule,
     PanelAdminModule,
-   /*JwtModule.forRoot({
+    AuthorizationModule,
+   JwtModule.forRoot({
       config: {
         tokenGetter: tokenGetter,
         whitelistedDomains: ['localhost:8080'],
         blacklistedRoutes: ['http://localhost:8080/oauth/token']
       }
     }),
-    */
     MatFabMenuModule,
    FormsModule,
 
@@ -61,6 +59,11 @@ export function tokenGetter() {
   providers: [
     { provide: LocationStrategy, useClass: HashLocationStrategy},
 
+    {provide: HTTP_INTERCEPTORS,
+      useClass: ServerErrorsInterceptor,
+      multi: true
+    },
+    { provide: LocationStrategy, useClass: HashLocationStrategy}
   ],
   bootstrap: [AppComponent],
   exports:[

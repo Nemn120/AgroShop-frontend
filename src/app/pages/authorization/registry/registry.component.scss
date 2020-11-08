@@ -1,3 +1,5 @@
+/*
+
 
 *{
   box-sizing: border-box;
@@ -8,13 +10,13 @@
 
 
 .registry-container{
-  /*
+  falta comentar
   display: flex;
   align-items: center;
   justify-content: center;
   position: relative;
   top:150px;
-  */
+  falta comentar
   background: #193B01;
   height: 100%;
   width: 100%;
@@ -28,6 +30,144 @@
   top:50%;
   left: 50%;
   transform: translate(-50%,-50%);
+  background: #5EB503;
+  border-radius: 50px;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
+.title{
+  text-align: center;
+  font-family: 'Lobster', cursive;
+  font-size: 80px;
+  font-weight: bold;
+  height: 20%;
+
+}
+
+.profiles{
+  height: 80%;
+
+}
+
+.profiles p{
+  text-align: center;
+  font-family: 'Lobster', cursive;
+  font-size: 60px;
+  position: relative;
+  top: 20px;
+  color: #193B01;
+}
+
+.profiles .profiles-button{
+
+  display: flex;
+
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  top:75px;
+}
+
+.profiles .profiles-button .farmer{
+  width: 80%;
+  height: 80px;
+  margin-bottom: 20px;
+  border-radius: 30px;
+  font-family: 'Lobster', cursive;
+  font-size: 50px;
+  color: #fff;
+  background: #193B01;
+  border: none;
+  outline: none;
+}
+
+.profiles .profiles-button .driver{
+  width: 80%;
+  height: 80px;
+  margin-bottom: 20px;
+  border-radius: 30px;
+  font-family: 'Lobster', cursive;
+  font-size: 50px;
+  color: #fff;
+  background: #193B01;
+  border: none;
+  outline: none;
+}
+
+.profiles .profiles-button .customer{
+  width: 80%;
+  height: 80px;
+  border-radius: 30px;
+  font-family: 'Lobster', cursive;
+  font-size: 50px;
+  color: #fff;
+  background: #193B01;
+  border: none;
+  outline: none;
+}
+
+
+*/
+
+
+*{
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+.background{
+  height: 100vh;
+  width: 100vw;
+  display:flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #5EB503;//rgb(125, 231, 125);
+  overflow: scroll;
+}
+
+.mat-card{
+  box-shadow: 1px 1px 10px 2px #888888;
+  height: 800px;
+  width: 1200px;
+  display: flex;
+
+}
+
+.registry-img{
+
+  height: 100%;
+  width: 700px;
+  background-color: #fff;
+}
+
+
+.registry-container{
+  height: 100%;
+  width: 500px;
+  background-color: #fff;
+}
+
+.registry-container2{
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+
+
+  background: #193B01;
+  height: 100%;
+  width: 100%;
+}
+
+
+.registry-form{
+  height: 700px;
+  width: 450px;
+  position: absolute;
+
+
   background: #5EB503;
   border-radius: 50px;
 }
