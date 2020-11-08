@@ -1,1 +1,70 @@
-<p>order-detail works!</p>
+<form class="example-form">
+    <p>
+        <mat-toolbar class="title-component">
+            <span>Detalle del pedido</span>
+
+        </mat-toolbar>
+    </p>
+    <mat-form-field class="example-full-width">
+        <mat-label>Nombre</mat-label>
+        <input matInput [(ngModel)]="this.nombre" name="nombre" readonly>
+    </mat-form-field>
+    <mat-form-field class="example-full-width">
+        <mat-label>Fecha</mat-label>
+        <input matInput [(ngModel)]="this.fecha" name="fecha" readonly>
+    </mat-form-field>
+    <mat-form-field class="example-full-width">
+        <mat-label>Telefono</mat-label>
+        <input matInput [(ngModel)]="this.phone" name="phone" readonly>
+    </mat-form-field>
+    <mat-form-field class="example-full-width" style="width: 25%;">
+        <mat-label>Cantidad de Productos</mat-label>
+        <input matInput [(ngModel)]="this.cantidadTotal" name="cantidad" readonly>
+    </mat-form-field>
+    <mat-form-field class="example-full-width" style="width: 50%;">
+        <mat-label>Direccion</mat-label>
+        <input matInput [(ngModel)]="this.address" name="address" readonly>
+    </mat-form-field>
+    <mat-form-field class="example-full-width" style="width: 25%;">
+        <mat-label>Total del Pedido</mat-label>
+        <input matInput [(ngModel)]="this.costoTotal" name="totalO" readonly>
+    </mat-form-field>
+
+    <br>
+
+    <mat-accordion displayMode="flat" multi class="mat-table">
+        <section matSort class="mat-elevation-z2 mat-header-row">
+            <span class="mat-header-cell" mat-sort-header="id">ID</span>
+            <span class="mat-header-cell" mat-sort-header="quantity">Cantidad</span>
+            <span class="mat-header-cell" mat-sort-header="total">Total</span>
+            <span class="mat-header-cell" mat-sort-header="createDate">Fecha</span>
+        </section>
+
+        <mat-expansion-panel *ngFor="let item of orderList">
+            <mat-expansion-panel-header class="mat-row">
+                <span class="mat-cell">{{item.id}}</span>
+                <span class="mat-cell">{{item.quantity}}</span>
+                <span class="mat-cell">S/. {{item.total}}</span>
+                <span class="mat-cell">{{item.createDate | date:'dd/MM/yyyy HH:mm:ss'}}</span>
+            </mat-expansion-panel-header>
+            <section matSort class="mat-elevation-z2 mat-header-row" style="background-color:#F4F4F4;">
+                <span class="mat-header-cell" mat-sort-header="name">Producto</span>
+                <span class="mat-header-cell" mat-sort-header="price">Precio</span>
+
+            </section>
+            <div *ngFor="let orderDetail of item.orderDetail" class="mat-row" style="background-color: #FAFAF8;">
+                <span class="mat-cell">{{orderDetail.product.name}}</span>
+                <span class="mat-cell">S/. {{orderDetail.price}}</span>
+
+            </div>
+        </mat-expansion-panel>
+
+    </mat-accordion>
+    <br>
+    <div class="parent">
+
+        <button style="margin-left: 4px; width: 90%;" mat-raised-button color="accent" (click)="closeDialog()">Cerrar</button>
+    </div>
+
+
+</form>
