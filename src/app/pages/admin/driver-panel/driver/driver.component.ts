@@ -1,8 +1,9 @@
-import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
-import { MatTableDataSource } from '@angular/material/table';
-import { DriverBean } from 'src/app/_model/DriverBean';
+import { Component, OnChanges, OnInit, SimpleChanges, AfterViewInit, ViewChild } from '@angular/core';
+import { MatSort } from '@angular/material/sort';
 import { RestService } from 'src/app/_service/rest.service';
+import {MatPaginator} from '@angular/material/paginator';
 import Swal from 'sweetalert2';
+import { MatTableDataSource } from '@angular/material/table';
 
 @Component({
   selector: 'app-driver',
@@ -14,14 +15,16 @@ export class DriverComponent implements OnInit {
   displayedColumns: string[] = ['id', 'user.username', 'user.profile.description', 'status'];
   dataSource: MatTableDataSource<any>;
 
+  @ViewChild(MatSort) sort: MatSort;
+  @ViewChild(MatPaginator) paginator: MatPaginator;
+
   status: string[] = ['Pendiente', 'Aceptado'];
   ids: number[] = [];
   drivers: any[] = [];
 
-  constructor( private restService: RestService ) {}
+  constructor( private restService: RestService ) { this.getListDriverByStatus('Aceptado'); }
 
   ngOnInit(): void {
-    this.getListDriverByStatus('Aceptado');
   }
 
   getListDriverByStatus(status: string): void {
@@ -31,6 +34,8 @@ export class DriverComponent implements OnInit {
     this.restService.requestApiRestData('driver/gldbs', param)
       .subscribe( result => {
         this.dataSource = new MatTableDataSource(result.datalist);
+        this.dataSource.sort = this.sort;
+        this.dataSource.paginator = this.paginator;
         this.drivers = result.datalist;
         console.log(result.datalist);
       }
@@ -84,8 +89,8 @@ export class DriverComponent implements OnInit {
       }
     });
     this.dataSource = new MatTableDataSource(drivers);
-    /* console.log('FILTRANDO...' + termino);
-    console.log(drivers); */
+    this.dataSource.sort = this.sort;
+    this.dataSource.paginator = this.paginator;
   }
 
 }
