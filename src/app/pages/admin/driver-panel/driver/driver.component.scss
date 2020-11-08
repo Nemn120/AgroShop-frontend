@@ -6,6 +6,7 @@
     float: right;
     padding-left: 65px;
     padding-top: 5px;
+    border-radius: 45px;
 }
 
 .header {
@@ -40,7 +41,7 @@ input::placeholder {
 
 .input-search {
     background: #F4FCE5;
-    //background-color: red;
+    margin: auto;
     border: 0;
     box-sizing: border-box;
     border-radius: 45px;
