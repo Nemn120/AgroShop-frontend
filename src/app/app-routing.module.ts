@@ -17,13 +17,16 @@ const routes: Routes = [
   },
   {
     path: 'driver', loadChildren: () => import('./pages/admin/driver-panel/driver-panel.module').then(m => m.DriverPanelModule)
+  },
+  {
+    path: 'order', loadChildren: () => import('./pages/admin/order/order.module').then(m => m.OrderModule)
   }
   ]},
   {
     path: 'auth', loadChildren: () => import('./pages/authorization/authorization.module').then(m => m.AuthorizationModule)
   },
 
-  { path: '**', pathMatch: 'full', redirectTo: '/auth' },
+  { path: '**', pathMatch: 'full', redirectTo: '/order/store' },
 ];
 
 @NgModule({
