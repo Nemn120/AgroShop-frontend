@@ -5,10 +5,10 @@ import { RegistryComponent } from './registry/registry.component';
 import { RouterModule, Routes } from '@angular/router';
 import { MaterialModule } from 'src/app/_material/material.module';
 import { CentralViewComponent } from './login/central-view/central-view.component';
-import { CentralContentComponent } from './login/central-view/central-content/central-content.component';
 import { ToolbarComponent } from '../public-view/toolbar/toolbar.component';
 import { RightBannerComponent } from './login/right-banner/right-banner.component';
 import { LeftBannerComponent } from './login/left-banner/left-banner.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 const routes: Routes = [
   {
@@ -26,8 +26,6 @@ const routes: Routes = [
   declarations: [
     LoginComponent,
     CentralViewComponent,
-    CentralContentComponent,
-    
     RegistryComponent,
 
     ToolbarComponent,
@@ -42,6 +40,9 @@ const routes: Routes = [
     CommonModule,
     MaterialModule,
     RouterModule.forChild(routes),
+
+    ReactiveFormsModule,
+    FormsModule,
   ],
   exports:[
     LoginComponent

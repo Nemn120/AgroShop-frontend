@@ -9,12 +9,29 @@
 
     <mat-card-content>
 
-        <app-central-content></app-central-content>
+        <div style="width: 100%;" [formGroup]="formulario">
+            <h3 style="color: #193B01;">Usuario</h3>
+            <mat-form-field appearance="fill" style="width: 100%;color: rgb(0, 0, 0);">
+                <mat-label style="font-size:medium;">Ingrese su usuario</mat-label>
+                <input matInput style="font-size: large;" formControlName="usuario">
+                <mat-icon matSuffix style="color: rgb(10, 10, 10);">person</mat-icon>
+
+            </mat-form-field>
+
+            <h3 style="color:#193B01;">Contraseña</h3>
+            <mat-form-field appearance="fill" style="width: 100%;color: rgb(0, 0, 0);">
+                <mat-label style="font-size:medium;">Ingrese su contraseña</mat-label>
+                <input matInput [type]="hide ? 'password' : 'text'" style="font-size: large;" formControlName="contraseña">
+                <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+              <mat-icon style="color: rgb(10, 10, 10);">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+              </button>
+            </mat-form-field>
+        </div>
 
     </mat-card-content>
     <mat-card-actions class="centrar">
 
-        <button mat-raised-button class="btn-ingresar" (click)="login()">Ingresar</button>
+        <button mat-raised-button class="btn-ingresar" [disabled]="!formulario.valid" (click)="login()">Ingresar</button>
         <br>
         <br>
         <a routerLink="." class="btn-registrarse" (click)="registry()">Registrarse</a>

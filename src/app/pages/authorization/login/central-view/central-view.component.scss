@@ -35,3 +35,9 @@
         font-size: large;
         color: #ABD902;
     }
+    /* Code witch overwrites input background-color */
+    
+    input {
+        box-shadow: 0 0 0px 1000px #5AAE03 inset;
+        /*font-weight: bold;*/
+    }
