@@ -1,10 +1,24 @@
-.central-view {
-    margin: 0 auto;
-    /*height: 70%;*/
-    width: 30%;
+.toolbar {
+    /*height: 13%;*/
+    height: 10%;
+    width: 100%;
 }
 
-.toolbar {
-    height: 13%;
-    width: 100%;
+.central-view {
+    /*margin: 0 auto;*/
+    margin-top: 2%;
+    width: 30%;
+    display: inline-block
+}
+
+.left-view {
+    /*margin: 0 auto;*/
+    width: 35%;
+    display: inline-block
+}
+
+.right-view {
+    /*margin: 0 auto;*/
+    width: 35%;
+    display: inline-block
 }
