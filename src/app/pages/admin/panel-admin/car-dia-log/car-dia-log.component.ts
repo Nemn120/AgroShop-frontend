@@ -16,6 +16,7 @@ export class CarDiaLogComponent implements OnInit {
   displayedColumns: string[] = ['select', 'name', 'weight', 'quantity'];
   typesOfShoes: string[] = ['Boots', 'Clogs', 'Loafers', 'Moccasins', 'Sneakers'];
   data = Object.assign( ELEMENT_DATA);
+  quantity=1;
   dataSource = new MatTableDataSource<Element>(this.data);
   selection = new SelectionModel<Element>(true, []);
   totalRow: number;
@@ -25,6 +26,7 @@ export class CarDiaLogComponent implements OnInit {
 
   ngOnInit(): void {
   }
+  
   isAllSelected() {
     const numSelected = this.selection.selected.length;
     const numRows = !!this.dataSource && this.dataSource.data.length;
