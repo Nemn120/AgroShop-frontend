@@ -1,0 +1,57 @@
+<mat-card>
+    <div class="header">
+        <div class="select-status">
+            <span class="text">Estado</span>
+            <mat-select>
+                <mat-option *ngFor="let item of status" [value]="item" ngDefaultControl (click)="getListDriverByStatus(item)">
+                    {{ item }}
+                </mat-option>
+            </mat-select>
+        </div>
+
+        <div class="header-search">
+            <input matInput (keyup)="searchDriver(input.value)" class="input-search" Placeholder="Search" #input/>
+            <button type="button" (click)="searchDriver(input.value)" class="button-search">
+        <mat-icon class="icon-search">search</mat-icon>
+      </button>
+        </div>
+    </div>
+
+    <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
+        <!--- Note that these columns can be defined in any order.
+              The actual rendered columns are set as a property on the row definition" -->
+
+        <!-- Position Column -->
+        <ng-container matColumnDef="id">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>No.</th>
+            <td mat-cell *matCellDef="let element">{{ element.id }}</td>
+        </ng-container>
+
+        <!-- Name Column -->
+        <ng-container matColumnDef="user.username">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Nombre</th>
+            <td mat-cell *matCellDef="let element">{{ element.user.username }}</td>
+        </ng-container>
+
+        <!-- Weight Column -->
+        <ng-container matColumnDef="user.profile.description">
+            <th mat-header-cell *matHeaderCellDef>Descripcion</th>
+            <td mat-cell *matCellDef="let element">{{ element.user.profile.description }}</td>
+        </ng-container>
+
+        <!-- Symbol Column -->
+        <ng-container matColumnDef="status">
+            <th mat-header-cell *matHeaderCellDef>Estado</th>
+            <td mat-cell *matCellDef="let element">
+                <span>{{ element.status }}</span>
+                <button *ngIf="element.status == 'Pendiente'" mat-icon-button color="primary" (click)="setIds(element.id)">
+          <mat-icon>edit</mat-icon>
+        </button>
+            </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    </table>
+    <mat-paginator [pageSizeOptions]="[5]" showFirstLastButtons></mat-paginator>
+</mat-card>
