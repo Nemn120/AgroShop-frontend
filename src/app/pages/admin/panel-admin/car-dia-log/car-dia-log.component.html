@@ -1,61 +1,19 @@
-
 <mat-toolbar color="primary"> 
-    <span>Costo del carrito: </span>
-    <div class="elipse" style="margin-left:auto;" mat-dialog-close><span>X</span></div>
+  <span>Carrito de compras</span>
+  <div class="elipse" style="margin-left:auto;" mat-dialog-close><span>X</span></div>
 </mat-toolbar>
-<br>
-<div class="example-container mat-elevation-z8" >
-    <mat-table #table [dataSource]="dataSource">
-        <ng-container  matColumnDef="select">
-            <mat-header-cell *matHeaderCellDef>
-              <mat-checkbox (change)="$event ? masterToggle() : null"
-                            [checked]="selection.hasValue() && isAllSelected()"
-                            [indeterminate]="selection.hasValue() && !isAllSelected()">
-              </mat-checkbox>
-            </mat-header-cell>
-            <mat-cell *matCellDef="let row">
-              <mat-checkbox (click)="$event.stopPropagation()"
-                            (change)="$event ? selection.toggle(row) : null"
-                            [checked]="selection.isSelected(row)">
-              </mat-checkbox>
-            </mat-cell>
-          </ng-container>
-      
-
-        <!-- Name Column -->
-        <ng-container matColumnDef="name">
-            <mat-header-cell *matHeaderCellDef>Nombre </mat-header-cell>
-            <mat-cell *matCellDef="let element"> {{element.name}} </mat-cell>
-        </ng-container>
-
-        <!-- Weight Column -->
-        <ng-container matColumnDef="weight">
-            <mat-header-cell *matHeaderCellDef> Precio </mat-header-cell>
-            <mat-cell *matCellDef="let element"> {{element.weight}} </mat-cell>
-        </ng-container>
-
-        <!-- Symbol Column -->
-        <ng-container matColumnDef="quantity">
-            <mat-header-cell *matHeaderCellDef> Cantidad </mat-header-cell>
-            <mat-cell *matCellDef="let element"> 
-              <mat-form-field  class="example-form-field">
-              <input matInput type="number" [(ngModel)]="element.quantity" >
-              </mat-form-field>
-              <small *ngIf="element.quantity<=0" class="alerta" >Ingrese valor positivo</small>
-            </mat-cell> 
-        </ng-container>
-        
-
-      <!-- Symbol Column -->
-      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-      <mat-row *matRowDef="let row; columns: displayedColumns;" (click)="selection.toggle(row)">
-      </mat-row>
-
-  </mat-table>
- 
 
 
-</div>
+    <mat-list class="lista">
+      <mat-selection-list #shoes>
+        <mat-list-option *ngFor="let shoe of typesOfShoes">
+          <img mat-list-avatar src="../../../../../assets/images/fruta.jpg" height="30px" width="20px" >
+          <h3 style="display: inline;"mat-line>{{shoe}}</h3>
+          <p mat-line>Precio: 12</p>
+        </mat-list-option>
+      </mat-selection-list>
+    </mat-list>
+    
 
 <br>
 
@@ -65,4 +23,3 @@
 <button style=" margin-left: 1%;width: 25%;" mat-raised-button color="primary" (click)="sendOrder()">
  Pedir
 </button>
-

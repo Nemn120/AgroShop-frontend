@@ -14,6 +14,7 @@ import { OrderDetailComponent } from 'src/app/_shared/order-detail/order-detail.
 export class CarDiaLogComponent implements OnInit {
 
   displayedColumns: string[] = ['select', 'name', 'weight', 'quantity'];
+  typesOfShoes: string[] = ['Boots', 'Clogs', 'Loafers', 'Moccasins', 'Sneakers'];
   data = Object.assign( ELEMENT_DATA);
   dataSource = new MatTableDataSource<Element>(this.data);
   selection = new SelectionModel<Element>(true, []);

@@ -39,7 +39,7 @@ export class NavbarPanelComponent {
     
     this.dialog.open(CarDiaLogComponent, {
       
-        width: '25%',
+        width: '30%',
         height: '80%',
         position: { right:'0px' }, 
        
