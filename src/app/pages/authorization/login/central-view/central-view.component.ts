@@ -40,6 +40,7 @@ export class CentralViewComponent implements OnInit {
     //this.formulario.reset();
 
     //this.authService.login('farmer2','123');
+    //this.authService.login('cliente123','123');
     this.authService.login(this.credenciales.usuario,this.credenciales.contraseña);
   }
   registry(){
