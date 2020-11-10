@@ -1,8 +1,7 @@
-/*import { Component, OnInit } from '@angular/core';
-import { AuthService } from 'src/app/_service/auth.service';*/
+
 import { RestService } from 'src/app/_service/rest.service';
 
-import {AfterViewInit, Component, ViewChild} from '@angular/core';
+import {AfterViewInit, Component, ViewChild,OnInit} from '@angular/core';
 import {MatPaginator} from '@angular/material/paginator';
 import {MatSort} from '@angular/material/sort';
 import {MatTableDataSource} from '@angular/material/table';
@@ -24,34 +23,13 @@ const NAMES: string[] = [
   'Isabella', 'Jasper', 'Cora', 'Levi', 'Violet', 'Arthur', 'Mia', 'Thomas', 'Elizabeth'
 ];
 
-/*
-export interface PeriodicElement {
-  name: string;
-  position: number;
-  weight: number;
-  symbol: string;
-}
-const ELEMENT_DATA: PeriodicElement[] = [
-  {position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H'},
-  {position: 2, name: 'Helium', weight: 4.0026, symbol: 'He'},
-  {position: 3, name: 'Lithium', weight: 6.941, symbol: 'Li'},
-  {position: 4, name: 'Beryllium', weight: 9.0122, symbol: 'Be'},
-  {position: 5, name: 'Boron', weight: 10.811, symbol: 'B'},
-  {position: 6, name: 'Carbon', weight: 12.0107, symbol: 'C'},
-  {position: 7, name: 'Nitrogen', weight: 14.0067, symbol: 'N'},
-  {position: 8, name: 'Oxygen', weight: 15.9994, symbol: 'O'},
-  {position: 9, name: 'Fluorine', weight: 18.9984, symbol: 'F'},
-  {position: 10, name: 'Neon', weight: 20.1797, symbol: 'Ne'},
-];*/
 
 @Component({
   selector: 'app-product-list',
   templateUrl: './product-list.component.html',
   styleUrls: ['./product-list.component.scss']
 })
-export class ProductListComponent implements /*OnInit */ AfterViewInit{
-  /*displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
-  dataSource = ELEMENT_DATA;*/
+export class ProductListComponent implements OnInit, AfterViewInit{
 
   displayedColumns: string[] = ['id', 'name', 'progress', 'color'];
   dataSource: MatTableDataSource<UserData>;
@@ -60,8 +38,7 @@ export class ProductListComponent implements /*OnInit */ AfterViewInit{
   @ViewChild(MatSort) sort: MatSort;
   constructor(
     private restService:RestService,
-    //private authService:AuthService
-    
+
   ) { 
     // Create 100 users
     const users = Array.from({length: 100}, (_, k) => createNewUser(k + 1));
@@ -69,14 +46,86 @@ export class ProductListComponent implements /*OnInit */ AfterViewInit{
     // Assign the data to the data source for the table to render
     this.dataSource = new MatTableDataSource(users);
   }
-/*
-  ngOnInit(): void {
-    console.log("LIST");
-  }*/
+
   ngAfterViewInit(){
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
   }
+
+  ngOnInit(){
+    /*this.productService.getListProductByOrganization().subscribe(data => {
+      this.dataSource = new MatTableDataSource(data);
+      this.dataSource.paginator = this.paginator;
+      this.dataSource.sort = this.sort;
+
+    }, error => {
+      this.productService.mensajeCambio.next("Error al mostrar productos");
+    });*/
+
+    
+    this.listProduct();
+    this.listAllProducts();
+  }
+
+//list product
+listAllProducts(){
+
+  let param={
+    data:{
+     
+    }
+  }
+  this.restService.requestApiRestData('product/gap',param)
+  .subscribe(data => {
+    console.log('productos! ',data);
+  }, error => {
+    console.log("Error al mostrar productos! ",error);
+  });
+    }
+
+
+//list product
+  listProduct(){
+
+let param={
+  data:{
+    userCreateId :1
+  }
+}
+this.restService.requestApiRestData('product/glpbf',param)
+.subscribe(data => {
+  console.log('mis productos! ',data);
+}, error => {
+  console.log("Error al mostrar mis productos! ",error);
+});
+  }
+//newProduct
+  newProduct(){
+    let param={
+      data:{
+        
+          name:"Caña",
+         
+          userCreateId:1,
+          category:{
+id:1
+          }
+          
+          
+      }
+  }
+  let currentFileUpload:File = new File([""], "blanco");
+    this.restService.requestApiRestData('product/sp',param,currentFileUpload).subscribe(result=>{
+      console.log(result);
+    })
+  }
+
+
+
+
+
+
+
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
@@ -86,13 +135,13 @@ export class ProductListComponent implements /*OnInit */ AfterViewInit{
     }
   }
 
-
+/*
   getProduct(){
 
     this.restService.requestApiRestData('categoryproduct/gcp',{}).subscribe(result=>{
       console.log(result);
     })
-  }
+  }*/
 
 }
 
