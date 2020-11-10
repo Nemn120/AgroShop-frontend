@@ -1,8 +1,10 @@
-import {UserBean} from './UserBean';
+import { MainBean } from './MainBean';
+import { UserBean } from './UserBean';
 
-export class DriverBean extends UserBean{
+export class DriverBean extends MainBean{
+  id: number;
   driverLicenseNumber: string;
-  userAccount: UserBean;
-  yearsOfExperience: number;
+  yearsOfExperience: string;
   qualification: number;
+  user: UserBean;
 }

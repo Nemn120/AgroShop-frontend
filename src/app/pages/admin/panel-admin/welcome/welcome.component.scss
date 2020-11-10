@@ -5,9 +5,9 @@
 }
 
 .layout-sidebar {
-    height: calc(100vh - 64px);
+    height: calc(100vh - 50px);
     background-color: #37966F;
-    margin-top: 64px;
+    margin-top: 50px;
     @media (max-width: $small) {
         width: 150px;
     }
@@ -17,9 +17,9 @@
 }
 
 .layout-content {
-    background-color: #E5E5E5;
-    height: calc(100vh - 64px);
-    margin-top: 64px;
+    background-color: #F5F5F5;
+    height: calc(100vh - 50px);
+    margin-top: 50px;
     @media (max-width: $small) {
         width: 100%;
     }

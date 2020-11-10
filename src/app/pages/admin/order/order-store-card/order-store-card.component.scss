@@ -1,0 +1,120 @@
+.content-item {
+    position: relative;
+    height: 330px;
+    padding: 16px!important;
+    background-color: #fff;
+    margin: 15px;
+}
+
+.category-item {
+    font-size: 1rem;
+    color: #1f520a;
+    .category-title {
+        background-color: #bbeaa77d;
+        border-radius: 10px;
+        display: block;
+        width: max-content;
+        padding: 2px 5px 2px 5px;
+    }
+}
+
+.item {
+    transition: all .1s ease 0s;
+}
+
+.content-item:hover {
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, .18);
+}
+
+.item-image {
+    border-radius: 10px 10px 0 0;
+    position: relative;
+}
+
+.image-src {
+    height: 220px;
+    width: 100%;
+}
+
+.item-data {
+    .item-title {
+        text-align: center;
+        height: 28px;
+    }
+    .item-description {
+        display: flex;
+        width: 100%;
+        line-height: 26px;
+        margin-top: 10px;
+        .item-price {
+            width: 50%;
+            font-size: 1.2em;
+            font-weight: 700;
+            margin-top: auto;
+            margin-bottom: auto;
+        }
+        .item-quantity {
+            width: 50%;
+            display: inline-flex;
+            .input-quantity {
+                // height: 40px;
+                vertical-align: middle;
+                display: inline;
+                border: 1px solid #ebebed;
+                border-radius: 20px;
+                //width: 90px!important;
+                padding: 5px 10px;
+            }
+            .btn-add {
+                background-color: #37966F;
+                color: #fff;
+                display: inline;
+                border: 1px solid transparent;
+                padding: 5px 10px;
+                transition-property: color, background-color, border-color, box-shadow;
+                box-shadow: 2px 15px 50px rgba(41, 44, 61, .1);
+                border-radius: 500px;
+            }
+        }
+    }
+}
+
+.image-src:hover {
+    opacity: 0.07;
+    -webkit-transition: opacity 500ms;
+    -moz-transition: opacity 500ms;
+    -o-transition: opacity 500ms;
+    -ms-transition: opacity 500ms;
+    transition: opacity 500ms;
+}
+
+.item-image:hover .info {
+    opacity: .65;
+}
+
+.item-image .info {
+    margin: auto;
+    color: #1e560a;
+    // text-align: center;
+    background-color: #ebefea;
+    transition: opacity .4s linear;
+    cursor: pointer;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    opacity: 0;
+}
+
+.info h2 {
+    text-align: center
+}
+
+.image-src:hover .info {
+    transform: translateX(0);
+}
+
+li {
+    text-align: left;
+}

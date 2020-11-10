@@ -3,8 +3,9 @@ import { Routes, RouterModule } from '@angular/router';
 import { WelcomeComponent } from './pages/admin/panel-admin/welcome/welcome.component';
 
 const routes: Routes = [
+
   {
-    path:'',component:WelcomeComponent,children:[
+    path: '', component: WelcomeComponent, children: [
   {
     path: 'panel', loadChildren: () => import('./pages/admin/panel-admin/panel-admin.module').then(m => m.PanelAdminModule)
   },
@@ -13,13 +14,19 @@ const routes: Routes = [
   },
   {
     path: 'product', loadChildren: () => import('./pages/admin/product/product.module').then(m => m.ProductModule)
+  },
+  {
+    path: 'driver', loadChildren: () => import('./pages/admin/driver-panel/driver-panel.module').then(m => m.DriverPanelModule)
+  },
+  {
+    path: 'order', loadChildren: () => import('./pages/admin/order/order.module').then(m => m.OrderModule)
   }
   ]},
   {
     path: 'auth', loadChildren: () => import('./pages/authorization/authorization.module').then(m => m.AuthorizationModule)
   },
 
-  { path: '**', pathMatch: 'full', redirectTo: '/auth' },
+  { path: '**', pathMatch: 'full', redirectTo: '/order/store' },
 ];
 
 @NgModule({
