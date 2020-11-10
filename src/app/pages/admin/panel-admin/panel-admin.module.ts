@@ -32,8 +32,7 @@ const routes: Routes = [
     SharedModule,
     ReactiveFormsModule,
     NgMaterialMultilevelMenuModule,
-    FormsModule,
-    BrowserAnimationsModule
+    FormsModule
      
 
     
