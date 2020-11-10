@@ -23,10 +23,10 @@
             <div class="item-description">
                 <div class="item-price">S/. 8.20</div>
                 <div class="item-quantity">
-                    <div class="input-quantity">
-                        5454
-                    </div>
-                    <div class="btn-add">
+                    <mat-form-field style="width:30px">
+                        <input matInput class="input-quantity" [(ngModel)]="quantity">
+                    </mat-form-field>
+                    <div class="btn-add" (click)="addProduct()">
                         <i class="fas fa-cart-plus" style="color: white;"></i>
                     </div>
                 </div>

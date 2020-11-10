@@ -7,6 +7,7 @@ import { MaterialModule } from 'src/app/_material/material.module';
 import { PanelAdminModule } from '../panel-admin/panel-admin.module';
 import { RouterModule, Routes } from '@angular/router';
 import { OrderStoreCardComponent } from './order-store-card/order-store-card.component';
+import { FormsModule } from '@angular/forms';
 
 const routes: Routes = [
   {
@@ -22,6 +23,7 @@ const routes: Routes = [
     CommonModule,
     MaterialModule,
     PanelAdminModule,
+    FormsModule,
     RouterModule.forChild(routes),
   ]
 })

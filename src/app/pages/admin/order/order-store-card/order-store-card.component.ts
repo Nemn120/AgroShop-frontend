@@ -7,9 +7,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class OrderStoreCardComponent implements OnInit {
 
+  quantity:number;
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  addProduct(){
+    console.log(this.quantity);
   }
 
 }
