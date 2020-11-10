@@ -12,7 +12,6 @@ export class RestService {
   constructor(private http: HttpClient)
    { }
 
-   
    requestApiRestData(path:string, param:any,file?:File){
      let paramApi;
      if(file){
