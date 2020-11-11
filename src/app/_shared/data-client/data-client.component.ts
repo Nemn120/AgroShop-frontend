@@ -2,10 +2,8 @@ import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA, MatDialog } from '@angular/material/dialog';
 import { OrderBean } from '../../_model/OrderBean';
 import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
-import { DialogoConfirmacionComponent } from '../../_shared/dialogo-confirmacion/dialogo-confirmacion.component';
-import { Message } from '../../_DTO/messageDTO';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-data-client',
@@ -39,35 +37,31 @@ export class DataClientComponent implements OnInit {
     this.order.phone = this.form.value['phone']
 
     // CUANDO ENVIA LA ORDEN
-  
+    Swal.fire({
+      title: 'Seguro de enviar sus datos?',
+      showClass: {
+        popup: 'animate__animated animate__fadeInDown'
+      },
+      hideClass: {
+        popup: 'animate__animated animate__fadeOutUp'
+      },
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: 'green',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Enviar datos'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire(
+          'Se han registrado sus datos',
+          'Los datos se han enviado.',
+          'success'
+        );
 
-      let ms = new Message();
-      ms.title = 'Confirmar Cambios';
-      ms.description = '¿Desea guardar los cambios establecidos?';
-      this.dialog
-        .open(DialogoConfirmacionComponent, {
-          data: ms,
-          width: '25%',
-          height: '35%',
-        })
-        .afterClosed()
-        .subscribe((confirmado: Boolean) => {
-          if (confirmado) {
-            this.order.id = this.data.id;
-            this.order.status = this.data.status;
-            if(this.order.status=="Pendiente"||this.order.status=="En proceso"){
-              //this.orderService.updateOrder(this.order).subscribe(data => { 
-              //this.snackBar.open(data.message, 'SUCESS', { duration: 5000 });
-             // });
-            //this.notification.openSnackBar('Ubicacion guardada exito');
-          //} else{
-          //  this.notification.openSnackBar('No se puede modificar los datos de este pedido');
-          }
-          }
-          setTimeout (x=>{
-            this.dialog.closeAll();
-          },2000);
-        });
+      }
+      this.cerrarDialogo();
+    });
+
 
     
     

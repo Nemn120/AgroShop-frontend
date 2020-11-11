@@ -2,13 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { SelectionModel } from '@angular/cdk/collections';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { MatTableDataSource } from '@angular/material/table';
-import { DialogoConfirmacionComponent } from 'src/app/_shared/dialogo-confirmacion/dialogo-confirmacion.component';
-import { OrderDetailComponent } from 'src/app/_shared/order-detail/order-detail.component';
 import { DataClientComponent } from 'src/app/_shared/data-client/data-client.component';
 import { SharedService } from 'src/app/_service/shared.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { OrderBean } from 'src/app/_model/OrderBean';
+import Swal from 'sweetalert2';
 
 
 @Component({
@@ -88,29 +87,32 @@ export class CarDiaLogComponent implements OnInit {
 
   sendOrderConfirm():void{
     const numSelected = this.selection.selected;
-    const params = {
-      title: 'Generar pedido',
-      description: '¿Desea realizar el pedido?',
-      inputData: true
-    };
-    this.dialogo
-      .open(DialogoConfirmacionComponent, {
-        data: params,
-        width: '25%',
-        height: '35%',
-      })
-      .afterClosed()
-      .subscribe((confirmado) => {
-        if (confirmado) {
-            console.log("Hola");
-            this.closeDialog();
-                this.dialogo.open(OrderDetailComponent, {
-                  width: '600px',
-                });          
-          }
-          this.dialog.close();
-      }); 
-  }
+    Swal.fire({
+      title: 'Seguro de enviar la orden?',
+      showClass: {
+        popup: 'animate__animated animate__fadeInDown'
+      },
+      hideClass: {
+        popup: 'animate__animated animate__fadeOutUp'
+      },
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: 'green',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Enviar orden'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire(
+          'Se ha enviado su orden',
+          'La orden ha sido registrada.',
+          'success'
+        );
+
+      }
+      this.closeDialog();
+    });
+
+}
 
 }
 
