@@ -15,19 +15,18 @@ export class NewVehicleComponent implements OnInit {
 
   constructor(
     private restService: RestService,
-    sharedService: SharedService
+    private sharedData: SharedService
   ) { }
 
   ngOnInit(): void {
     this.vehicle = new VehicleEntity();
+    this.vehicle.id = this.sharedData.userSession.id;
   }
 
   newVehicle(){
     console.log(this.vehicle);
     const param = {
-      data : {
-        VehicleEntity: this.vehicle
-      }
+      data : this.vehicle
     }
     this.restService.requestApiRestData('vehicle/sv',param).subscribe(result => {
       console.log(result);

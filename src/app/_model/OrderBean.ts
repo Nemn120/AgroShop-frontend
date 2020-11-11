@@ -1,18 +1,18 @@
 import { UserBean } from './UserBean';
 import { OrderDetailBean } from './OrderDetailBean';
 import { MainBean } from './MainBean';
+import { ClientBean } from './ClientBean';
+import { FarmerBean } from './FarmerBean';
 export class OrderBean extends MainBean{
      id:number;
-     status:string;
      total:number;
      quantity:number;
-     userOrder:UserBean;
+     client:ClientBean;
      phone:string;
      address:string;
-     orderDetail:OrderDetailBean[];
+     orderDetailList:OrderDetailBean[];
      deliveryDate : Date;
      attentDate : Date;
-     userAttendId:number;
-     userDeliveryId:number;
+     farmer:FarmerBean;
      reference:string;
 }

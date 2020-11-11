@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { DriverBean } from 'src/app/_model/DriverBean';
 import { AuthService } from 'src/app/_service/auth.service';
 import { RestService } from 'src/app/_service/rest.service';
+import { SharedService } from 'src/app/_service/shared.service';
 
 export interface PeriodicElement {
   name: string;
@@ -32,7 +34,8 @@ export class ProductListComponent implements OnInit {
   dataSource = ELEMENT_DATA;
   constructor(
     private restService:RestService,
-    private authService:AuthService
+    private authService:AuthService,
+    private sharedData:SharedService
   ) { }
 
   ngOnInit(): void {
@@ -40,8 +43,21 @@ export class ProductListComponent implements OnInit {
   }
 
   getProduct(){
+    let vehicleBean: any;
+    //vehicleBean.... // TODOS LOS DATOS RESTANTES SIN LA FOTO
+    vehicleBean.driver=new DriverBean();
+    vehicleBean.driver.id=this.sharedData.userSession.id // ID DEL CONDUCTOR , ID DEL CLIENTE
 
-    this.restService.requestApiRestData('categoryproduct/gcp',{}).subscribe(result=>{
+    let param={
+      data:vehicleBean
+    
+      
+    }
+  
+  let currentFileUpload:File = new File([""], "blanco");
+    this.restService.requestApiRestData('product/sp',param,currentFileUpload).subscribe(result=>{
+    //  this.restService.requestApiRestData('categoryproduct/gcp',{}).subscribe(result=>{  
+
       console.log(result);
     })
   }
