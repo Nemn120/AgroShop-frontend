@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DriverBean } from 'src/app/_model/DriverBean';
 import { AuthService } from 'src/app/_service/auth.service';
 import { RestService } from 'src/app/_service/rest.service';
 import { SharedService } from 'src/app/_service/shared.service';
@@ -42,14 +43,17 @@ export class ProductListComponent implements OnInit {
   }
 
   getProduct(){
+    let vehicleBean: any;
+    //vehicleBean.... // TODOS LOS DATOS RESTANTES SIN LA FOTO
+    vehicleBean.driver=new DriverBean();
+    vehicleBean.driver.id=this.sharedData.userSession.id // ID DEL CONDUCTOR , ID DEL CLIENTE
+
     let param={
-      data:{
-          name:"PAPA ROJA",
-          userCreateId:1,
+      data:vehicleBean
+    
       
-          
-      }
-  }
+    }
+  
   let currentFileUpload:File = new File([""], "blanco");
     this.restService.requestApiRestData('product/sp',param,currentFileUpload).subscribe(result=>{
     //  this.restService.requestApiRestData('categoryproduct/gcp',{}).subscribe(result=>{  
