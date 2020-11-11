@@ -43,16 +43,13 @@ export class ProductListComponent implements OnInit {
   }
 
   getProduct(){
-    let vehicleBean: any;
-    //vehicleBean.... // TODOS LOS DATOS RESTANTES SIN LA FOTO
-    vehicleBean.driver=new DriverBean();
-    vehicleBean.driver.id=this.sharedData.userSession.id // ID DEL CONDUCTOR , ID DEL CLIENTE
 
     let param={
-      data:vehicleBean
+      data:1
     
       
     }
+   
   
   let currentFileUpload:File = new File([""], "blanco");
     this.restService.requestApiRestData('product/sp',param,currentFileUpload).subscribe(result=>{
