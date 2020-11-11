@@ -1,0 +1,30 @@
+<mat-toolbar class="title-component" color="primary"style="width: 100%;">
+    <span>{{title}}</span>
+    <button mat-icon-button class="close-dialog" (click)="cerrarDialogo()"><mat-icon>cancel</mat-icon></button>
+</mat-toolbar>
+
+<br>
+
+<div mat-dialog-content>
+
+    <form [formGroup]="form" (ngSubmit)="enviarOrden()" #frmUsuario="ngForm">
+
+        <mat-form-field style="width: 100%;">
+            <input matInput placeholder="Direccion" formControlName="address" [formGroup]="form" required>
+        </mat-form-field>
+
+
+        <mat-form-field style="width: 100%;">
+            <input matInput placeholder="Referencia" formControlName="reference" [formGroup]="form" required>
+
+        </mat-form-field>
+
+
+        <mat-form-field style="width: 100%;">
+            <input matInput placeholder="Telefono" formControlName="phone" [formGroup]="form" required>
+        </mat-form-field>
+
+        <button style="width: 100%;" mat-raised-button color="primary" type="submit" [disabled]="frmUsuario.invalid">{{buttonTitle}}</button>
+    </form>
+
+</div>

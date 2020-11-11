@@ -13,8 +13,8 @@ import { CarDiaLogComponent } from './car-dia-log/car-dia-log.component';
 import { SharedModule } from 'src/app/_shared/shared.module';
 import { DialogoConfirmacionComponent } from 'src/app/_shared/dialogo-confirmacion/dialogo-confirmacion.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { OrderDetailComponent } from 'src/app/_shared/order-detail/order-detail.component';
+import { DataClientComponent } from 'src/app/_shared/data-client/data-client.component';
 const routes: Routes = [
   {
     path: '', component: WelcomeComponent,
@@ -42,7 +42,7 @@ const routes: Routes = [
     WelcomeComponent
   ],
   entryComponents:[
-    CarDiaLogComponent,DialogoConfirmacionComponent,OrderDetailComponent
+    CarDiaLogComponent,DialogoConfirmacionComponent,OrderDetailComponent,DataClientComponent
   ],
 })
 export class PanelAdminModule { }
