@@ -17,6 +17,7 @@ import { ServerErrorsInterceptor } from './_service/server-errors.interceptor';
 import { AuthorizationModule } from './pages/authorization/authorization.module';
 import { LoginComponent } from './pages/authorization/login/login.component';
 import { FormsModule } from '@angular/forms';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 
 export function tokenGetter() {
   const tk = sessionStorage.getItem(environment.TOKEN_NAME);
@@ -38,7 +39,8 @@ export function tokenGetter() {
     FlexLayoutModule,
     PanelAdminModule,
     AuthorizationModule,
-   JwtModule.forRoot({
+    MatSnackBarModule,
+    JwtModule.forRoot({
       config: {
         tokenGetter,
         whitelistedDomains: ['localhost:8080'],

@@ -5,7 +5,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { MaterialModule } from 'src/app/_material/material.module';
 
 const routes: Routes = [
-  { path: '', component: DriverComponent }
+  { path: 'list', component: DriverComponent }
 ];
 
 @NgModule({
