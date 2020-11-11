@@ -11,4 +11,5 @@ export class VehicleEntity extends MainBean{
     fuelType : string;
     netWeight : number;
     grossWeight : number;
+    photo : any;
 }

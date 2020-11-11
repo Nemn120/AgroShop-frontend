@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { VehicleEntity } from 'src/app/_model/VehicleEntity';
 import { RestService } from 'src/app/_service/rest.service';
+import { SharedService } from 'src/app/_service/shared.service'
 
 @Component({
   selector: 'app-new-vehicle',
@@ -13,7 +14,8 @@ export class NewVehicleComponent implements OnInit {
   idUser : number = 0;
 
   constructor(
-    private restService: RestService
+    private restService: RestService,
+    sharedService: SharedService
   ) { }
 
   ngOnInit(): void {
@@ -23,8 +25,9 @@ export class NewVehicleComponent implements OnInit {
   newVehicle(){
     console.log(this.vehicle);
     const param = {
-      data : this.vehicle,
-      id : 3
+      data : {
+        VehicleEntity: this.vehicle
+      }
     }
     this.restService.requestApiRestData('vehicle/sv',param).subscribe(result => {
       console.log(result);
