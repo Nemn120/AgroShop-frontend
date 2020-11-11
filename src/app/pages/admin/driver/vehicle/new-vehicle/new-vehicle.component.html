@@ -1,33 +1,54 @@
-
-
 <div class="vehicle-facts">
-    <div class="vehicle-img">
-        <img mat-card-image src="../../../../../assets/images/hyundai-facebook.jpg" alt="" >
-    </div>
     <div class="vehicle-content">
         <mat-card-title>Ingrese su vehiculo</mat-card-title>
         <hr>
-        <mat-card-content>
-            <form class="example-form">
-                <mat-form-field class="example-full-width" appearance="fill">
-                  <mat-label>MODELO</mat-label>
-                  <input matInput placeholder="Ex. Hyundai">
-                </mat-form-field>
-                <mat-form-field class="example-full-width" appearance="fill">
-                    <mat-label>RUC</mat-label>
-                    <input matInput placeholder="Ex. 987817262">
-                </mat-form-field>
-                <mat-form-field class="example-full-width" appearance="fill">
-                    <mat-label>PESO</mat-label>
-                    <input matInput placeholder="Ex. 20 Lbs">
-                </mat-form-field>
-                <div class="buttons">
-                    <div class="actions">
-                        <button class="first-btn" mat-raised-button color="primary" mat-dialog-close>Cancelar</button>
-                        <button mat-raised-button color="warn" mat-dialog-close>Ingresar</button>
-                    </div>
-                </div>
-              </form>
-        </mat-card-content>
+        <br>
+<div>
+    <mat-form-field class="example-full-width" appearance="outline">
+        <mat-label>Numero de placa</mat-label>
+        <input matInput [(ngModel)]="this.vehicle.plateNumber" name="plateNumber">
+    </mat-form-field>
+    <mat-form-field class="example-full-width" appearance="outline">
+        <mat-label>Numero de serie</mat-label>
+        <input matInput [(ngModel)]="this.vehicle.serialNumber" name="serialNumber">
+    </mat-form-field>
+    <mat-form-field class="example-full-width" appearance="outline">
+        <mat-label>Marca del vehiculo</mat-label>
+        <input matInput [(ngModel)]="this.vehicle.vehicleBrand" name="vehicleBrand">
+    </mat-form-field>
+    <mat-form-field class="example-full-width" appearance="outline">
+        <mat-label>Modelo del vehiculo</mat-label>
+        <input matInput [(ngModel)]="this.vehicle.vehicleModel" name="vehicleModel">
+    </mat-form-field>
+    <mat-form-field class="example-full-width" appearance="outline">
+        <mat-label>Año de uso</mat-label>
+        <input matInput [(ngModel)]="this.vehicle.yearsOfUse" name="yearsOfUse">
+    </mat-form-field>
+    <mat-form-field class="example-full-width" appearance="outline">
+        <mat-label>Estado del coche</mat-label>
+        <input matInput [(ngModel)]="this.vehicle.statusCar" name="statusCar">
+    </mat-form-field>
+    <mat-form-field class="example-full-width" appearance="outline" >
+        <mat-label>Peso neto</mat-label>
+        <input matInput [(ngModel)]="this.vehicle.netWeight" name="netWeight" type="number">
+        <span matSuffix> lb</span>
+    </mat-form-field>
+    <mat-form-field class="example-full-width" appearance="outline" >
+        <mat-label>Peso bruto</mat-label>
+        <input matInput [(ngModel)]="this.vehicle.grossWeight" name="grossWeight" type="number">
+        <span matSuffix> lb</span>
+    </mat-form-field>
+    <mat-form-field class="example-full-width" appearance="outline">
+        <mat-label>Tipo de combustible</mat-label>
+        <input matInput [(ngModel)]="this.vehicle.fuelType" name="fuelType">
+    </mat-form-field>
+</div>
+
+    <div class="buttons">
+        <div class="actions">
+            <button class="first-btn" mat-raised-button color="primary" mat-dialog-close>Cancelar</button>
+            <button mat-raised-button color="warn" (click)="newVehicle()" mat-dialog-close>Ingresar</button>
+        </div>
     </div>
+    
 </div>

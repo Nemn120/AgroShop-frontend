@@ -5,6 +5,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { MaterialModule } from '../../../_material/material.module';
 import { VehicleDetailComponent } from './vehicle/vehicle-detail/vehicle-detail.component';
 import { NewVehicleComponent } from './vehicle/new-vehicle/new-vehicle.component';
+import { FormsModule } from '@angular/forms';
 
 const routes: Routes = [
   {
@@ -18,7 +19,8 @@ const routes: Routes = [
   imports: [
     CommonModule,
     RouterModule.forChild(routes),
-    MaterialModule
+    MaterialModule,
+    FormsModule
   ],
   entryComponents: [VehicleDetailComponent,NewVehicleComponent]
 })

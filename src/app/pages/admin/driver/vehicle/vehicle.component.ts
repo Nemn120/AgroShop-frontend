@@ -5,6 +5,7 @@ import { NewVehicleComponent } from './new-vehicle/new-vehicle.component';
 import { RestService } from 'src/app/_service/rest.service';
 import { AuthService } from 'src/app/_service/auth.service'
 import { stringToKeyValue } from '@angular/flex-layout/extended/typings/style/style-transforms';
+import { VehicleEntity } from 'src/app/_model/VehicleEntity';
 
 @Component({
   selector: 'app-vehicle',
@@ -13,8 +14,8 @@ import { stringToKeyValue } from '@angular/flex-layout/extended/typings/style/st
 })
 export class VehicleComponent implements OnInit {
 
-  idUser : number;
-  VehicleEntity : object;
+  idUser : number = 0;
+  vehicle : VehicleEntity;
 
   constructor(
     public dialog: MatDialog,
@@ -23,25 +24,10 @@ export class VehicleComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    const param = {
-      username: 'admin'
-    };
-    this.restService.requestApiRestData('user/rubt',param).subscribe(result => {
-      this.idUser = result.index;
-      console.log(result);
-    });
-    this.getVehicleListByAccount();
+    //this.authService.login('condori','sirundercover1');
   }
 
   getVehicleListByAccount(){
-
-    const param2 = {
-      data : this.VehicleEntity,
-      id: this.idUser
-    }
-    this.restService.requestApiRestData('vehicle/gvlbd',param2).subscribe(result2 => {
-      console.log(result2);
-    })
   }
 
   moreDetails(){
@@ -56,7 +42,7 @@ export class VehicleComponent implements OnInit {
   newVehicle(){
     let dialogConfig = new MatDialogConfig();
     dialogConfig.autoFocus = true;
-    dialogConfig.width = "60%";
+    dialogConfig.width = "50%";
     dialogConfig.minHeight = "40%";
     dialogConfig.minWidth = "370px";
     this.dialog.open(NewVehicleComponent, dialogConfig);
