@@ -1,57 +1,36 @@
 
-import { RestService } from 'src/app/_service/rest.service';
-
-import { AfterViewInit, Component, ViewChild, OnInit } from '@angular/core';
+import {Component,OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
-import { ProductBean } from '../../../../_model/ProductBean';
-import { Router } from '@angular/router';
-import { MatSnackBar } from '@angular/material/snack-bar';
 
+import { RestService } from 'src/app/_service/rest.service';
+import { ProductBean } from '../../../../_model/ProductBean';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { ProductFormComponent } from '../product-form/product-form.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-product-list',
   templateUrl: './product-list.component.html',
   styleUrls: ['./product-list.component.scss']
 })
-export class ProductListComponent implements OnInit, AfterViewInit {
+export class ProductListComponent implements OnInit {
 
   displayedColumns: string[] = ['id', 'name', 'status', 'actions'];
   dataSource: MatTableDataSource<ProductBean>;
-
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
   constructor(
     private restService: RestService,
-    private router: Router,
     private _snackBar: MatSnackBar,
-  ) {
-    // Create 100 users
-    //const users = Array.from({ length: 100 }, (_, k) => createNewUser(k + 1));
-
-    // Assign the data to the data source for the table to render
-    //this.dataSource = new MatTableDataSource(users);
-  }
-
-  ngAfterViewInit() {
-    /*this.dataSource.paginator = this.paginator;
-    this.dataSource.sort = this.sort;*/
-  }
+    public dialog: MatDialog,
+  ) {}
 
   ngOnInit() {
-    /*this.productService.getListProductByOrganization().subscribe(data => {
-      this.dataSource = new MatTableDataSource(data);
-      this.dataSource.paginator = this.paginator;
-      this.dataSource.sort = this.sort;
-
-    }, error => {
-      this.productService.mensajeCambio.next("Error al mostrar productos");
-    });*/
-
-
+   
     this.listProduct();
 
   }
@@ -59,8 +38,8 @@ export class ProductListComponent implements OnInit, AfterViewInit {
   //list product all
   //this.restService.requestApiRestData('product/gap',param)
 
-  //list product
-  listProduct() {
+  //listProduct
+  public listProduct() {
 
     let param = {
       data: {
@@ -74,86 +53,82 @@ export class ProductListComponent implements OnInit, AfterViewInit {
         this.dataSource.paginator = this.paginator;
         this.dataSource.sort = this.sort;
       }, error => {
-        console.log("Error al mostrar mis productos! ", error);
+        console.log("Error al listar productos!", error);
+        this.message('Error al listar productos!', 'Error');
       });
   }
-  //newProduct
-  newProduct() {
+
+  //newAndUpdateProduct
+  newAndUpdateProduct(product?: ProductBean) {
+    let productSelect = product != null ? product : new ProductBean();
+    this.dialog.open(ProductFormComponent, {
+      width: '30%',
+      height: '50%',
+      data: productSelect
+    });
+  }
+
+newProduct(){
+
+/*
     let param = {
       data: {
-
         name: "Coliflor",
-        status:'Desactivo',
-
+        status: 'Desactivo',
         userCreateId: 1,
         category: {
           id: 1
         }
-
-
       }
     }
+
     let currentFileUpload: File = new File([""], "blanco");
     this.restService.requestApiRestData('product/sp', param, currentFileUpload).subscribe(result => {
       console.log(result);
-    })
+      this.message('Producto agregado con exito!', 'Create');
+      this.listProduct();
+    },error => {
+      console.log("Error al agregar producto! ", error);
+      this.message('Error al agregar producto!', 'Error');
+    });
+*/
   }
 
-
-  openDialog(){
+  openDialog() {
 
   }
-  deleteProduct(product: ProductBean){
 
-    let param={
+  //deleteProduct
+  deleteProduct(product: ProductBean) {
+
+    let param = {
       data: {
-        'id':product.id
+        'id': product.id
+      }
     }
-    }
-    
-    this.restService.requestApiRestData('product/dp',param).subscribe(data => {
-      console.log('se elimino con exito!',data);
-      this.message('Producto eliminado con exito!','Delete');
-     // this.router.navigate(['product/list']);
-    })
+
+    this.restService.requestApiRestData('product/dp', param).subscribe(data => {
+      console.log('se elimino con exito!', data);
+      this.message('Producto eliminado con exito!', 'Delete');
+      this.listProduct();
+
+    },error => {
+      console.log("Error al eliminar producto! ", error);
+      this.message('Error al eliminar producto!', 'Error');
+    });
+
   }
 
-  message(message: string, action: string){
-   
-      this._snackBar.open(message, action, {
-        duration: 2000,
-      });
-    
+  //messages
+  message(message: string, action: string) {
+
+    this._snackBar.open(message, action, {
+      duration: 2000,
+    });
+
   }
 
-  /*
-  deleteProduct(product: ProductBean){
-    let ms = new Message();
-    ms.title='Borrar producto'; 
-    ms.description = '¿Esta seguro de borrar el producto?';
-    this.dialogo
-      .open(DialogoConfirmacionComponent, {
-        data: ms
-      }).afterClosed()
-      .subscribe((confirmado: Boolean) => {
-        if(confirmado){
-          this.restService.requestApiRestData({id:product.id}).subscribe(data => {
-            this.restService.getListProductByOrganization().subscribe(data => {
-              this.productService.productCambio.next(data);
-              this.productService.mensajeCambio.next("Se elimino con éxito");
-            }, error => {
-              console.error(error);
-              this.productService.mensajeCambio.next("Error al mostrar listado de productos");
-            });
-          }, error => {
-            console.error(error);
-            this.productService.mensajeCambio.next("No eliminado");
-          });
-        }
-      });
-    
-  }*/
-
+//searchProduct
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
@@ -172,18 +147,3 @@ export class ProductListComponent implements OnInit, AfterViewInit {
     }*/
 
 }
-
-
-/** Builds and returns a new User. */
-/*
-function createNewUser(id: number): UserData {
-  const name = NAMES[Math.round(Math.random() * (NAMES.length - 1))] + ' ' +
-    NAMES[Math.round(Math.random() * (NAMES.length - 1))].charAt(0) + '.';
-
-  return {
-    id: id.toString(),
-    name: name,
-    progress: Math.round(Math.random() * 100).toString(),
-    color: COLORS[Math.round(Math.random() * (COLORS.length - 1))]
-  };
-}*/
