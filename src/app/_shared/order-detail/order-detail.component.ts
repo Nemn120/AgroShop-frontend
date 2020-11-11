@@ -35,7 +35,7 @@ export class OrderDetailComponent implements OnInit {
     })
     this.phone=this.orderList[0].phone;
     this.address=this.orderList[0].address;
-    this.nombre=this.orderList[0].userOrder.nombre;
+    //this.nombre=this.orderList[0].userOrder.nombre;
     
     
     this.fechaCreacion = new Date(this.orderList[0].createDate);

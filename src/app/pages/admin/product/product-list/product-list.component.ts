@@ -44,12 +44,16 @@ export class ProductListComponent implements OnInit {
   getProduct(){
     let param={
       data:{
-          name:"PAPA AZUL",
-          userCreateId:1
+          name:"PAPA ROJA",
+          userCreateId:1,
+      
+          
       }
   }
   let currentFileUpload:File = new File([""], "blanco");
     this.restService.requestApiRestData('product/sp',param,currentFileUpload).subscribe(result=>{
+    //  this.restService.requestApiRestData('categoryproduct/gcp',{}).subscribe(result=>{  
+
       console.log(result);
     })
   }

@@ -15,4 +15,5 @@ export class ProductSalesBean extends MainBean{
     weight:String;
     offerPrice:number;
     statusSales:String;
+    quantitySelect:number;
 }

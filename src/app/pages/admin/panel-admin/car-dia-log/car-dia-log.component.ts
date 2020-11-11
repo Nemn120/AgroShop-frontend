@@ -4,6 +4,7 @@ import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { MatTableDataSource } from '@angular/material/table';
 import { DialogoConfirmacionComponent } from 'src/app/_shared/dialogo-confirmacion/dialogo-confirmacion.component';
 import { OrderDetailComponent } from 'src/app/_shared/order-detail/order-detail.component';
+import { OrderService } from 'src/app/_service/order.service';
 
 
 @Component({
@@ -22,7 +23,8 @@ export class CarDiaLogComponent implements OnInit {
   totalRow: number;
   valor1=null;
   constructor( public dialogo: MatDialog,
-    public dialog: MatDialogRef<CarDiaLogComponent>) { }
+    public dialog: MatDialogRef<CarDiaLogComponent>,
+    public orderService:OrderService) { }
 
   ngOnInit(): void {
   }

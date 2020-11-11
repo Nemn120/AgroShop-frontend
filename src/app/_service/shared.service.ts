@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { UserBean } from '../_model/UserBean';
 import {MultilevelNodes} from 'ng-material-multilevel-menu';
+import { Subject } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
@@ -8,6 +9,7 @@ export class SharedService {
   userSession: any;
   appitems: MultilevelNodes[]=[]
   appitems1:any[]=[]
+  messageChange= new Subject<string>();
 
   constructor() { }
 
@@ -33,17 +35,15 @@ export class SharedService {
           items.push({
             label:menuItem.label,
             link:menuItem.link,
-            faIcon: menuItem.faIcon, //'favorite_border',
+            faIcon: menuItem.faIcon,
             id:menuItem.id
           })
         })
       
         this.appitems.push({
-          label:menu.label,
-         // icon: 'star_rate',
-          faIcon:menu.faIcon,//'fas fa-allergies',
+          label:menu.label,     
+          faIcon:menu.faIcon,
           items:items
-        //  icon: 'alarm'
         });
        
         
