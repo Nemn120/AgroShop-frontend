@@ -28,7 +28,6 @@ export class NavbarPanelComponent implements OnInit{
     private router: Router,  private userService: AuthService,public dialog: MatDialog,private orderService:OrderService
   ) {
     this.user$ = this.userService.getUser();
-    this.cantidad=this.orderService.getCountItemsCar();
     this.orderService.totalQuantitySubject.subscribe(data=>{
       this.cantidad=data;
     })
