@@ -60,4 +60,27 @@ input[type=number]:hover::-webkit-inner-spin-button {
 }
 .mat-dialog-container {
     padding: 0px !important;
+    position: absolute;
+    bottom: 0px;
+    width: 100%;
+    border-bottom: 20px;
+    padding-bottom: 20px;
+}
+
+.summary-order {
+    display: flex;
+    margin-bottom: 20px;
+    height: auto;
+}
+
+.total-price {
+    left: 0px;
+    font-weight: 400px;
+    font-size: 20px;
+}
+
+.total-price-value {
+    font-weight: 400px;
+    font-size: 20px;
+    padding-left: 20px;
 }

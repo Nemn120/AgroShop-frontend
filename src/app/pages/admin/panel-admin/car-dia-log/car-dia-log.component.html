@@ -1,12 +1,13 @@
-<mat-toolbar color="primary">
-    <span>Carrito de compras</span>
-    <div class="elipse" style="margin-left:155px;" mat-dialog-close><span>X</span></div>
+<mat-toolbar style="display: block;     background: #fcfcfc;
+color: #626262;">
+    <span style="    padding: 20px;margin-top: 20px;">Mis carrito de pedidos</span>
+    <div class="elipse" style="float:right" mat-dialog-close><span>X</span></div>
 </mat-toolbar>
 
 
 <mat-list class="lista">
-    <mat-selection-list #shoes>
-        <mat-list-option *ngFor="let item of this.orderService.orderDetailList">
+    <mat-selection-list #productSelect [(ngModel)]="orderDetailListSelect" (ngModelChange)="selectOrderProduct($event)">
+        <mat-list-option *ngFor="let item of this.orderService.orderDetailList" [value]="item">
             <img mat-list-avatar src="../../../../../assets/images/fruta.jpg" height="30px" width="20px">
             <div style="display: flex;">
                 <div style=" width: 65%;">
@@ -25,10 +26,20 @@
 <br>
 
 <div class="car-button">
-    <button style="margin-left: 49%; width: 25%;" mat-raised-button color="accent" (click)="closeDialog()">
-    Eliminar
-  </button>
-    <button style=" margin-left: 1%;width: 25%;" mat-raised-button color="primary" (click)="sendOrder()">
-   Pedir
-  </button>
+    <div class="summary-order" style="    border-bottom: 1px solid #a09b9b;
+    width: 17%;
+    border-top: 1px solid #a09b9b;
+    padding: 20px;">
+        <div class="total-price">Costo total:</div>
+        <div class="total-price-value">{{totalPrice}}</div>
+    </div>
+    <div class="summary-order">
+        <button style="width:100px" mat-raised-button color="primary" (click)="sendOrder()">
+      Pedir
+    </button>
+        <button style="margin-left:10px;width: 100px " mat-raised-button color="accent" (click)="deleteItemsSelect()">
+      Eliminar
+    </button>
+    </div>
+
 </div>
