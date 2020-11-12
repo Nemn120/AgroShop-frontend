@@ -10,7 +10,7 @@
         </div>
 
         <div class="header-search">
-            <input matInput (keyup)="searchDriver(input.value)" class="input-search" Placeholder="Search" #input/>
+            <input matInput (keyup)="searchDriver(input.value)" class="input-search" placeholder="DNI" #input/>
             <button type="button" (click)="searchDriver(input.value)" class="button-search">
         <mat-icon class="icon-search">search</mat-icon>
       </button>
@@ -27,16 +27,29 @@
             <td mat-cell *matCellDef="let element">{{ element.id }}</td>
         </ng-container>
 
+        <ng-container matColumnDef="datos">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Ver</th>
+            <td mat-cell *matCellDef="let element">
+                <mat-icon class="icon-info" (click)="openInfoDriverModal(element)">person</mat-icon>
+            </td>
+        </ng-container>
+
+        <!-- Position Column -->
+        <ng-container matColumnDef="user.documentNumber">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>DNI</th>
+            <td mat-cell *matCellDef="let element">{{ element.user.documentNumber }}</td>
+        </ng-container>
+
         <!-- Name Column -->
-        <ng-container matColumnDef="user.username">
+        <ng-container matColumnDef="user.name">
             <th mat-header-cell *matHeaderCellDef mat-sort-header>Nombre</th>
-            <td mat-cell *matCellDef="let element">{{ element.user.username }}</td>
+            <td mat-cell *matCellDef="let element">{{ element.user.name }}</td>
         </ng-container>
 
         <!-- Weight Column -->
-        <ng-container matColumnDef="user.profile.description">
-            <th mat-header-cell *matHeaderCellDef>Descripcion</th>
-            <td mat-cell *matCellDef="let element">{{ element.user.profile.description }}</td>
+        <ng-container matColumnDef="user.lastName">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Apellido</th>
+            <td mat-cell *matCellDef="let element">{{ element.user.lastName }}</td>
         </ng-container>
 
         <!-- Symbol Column -->
