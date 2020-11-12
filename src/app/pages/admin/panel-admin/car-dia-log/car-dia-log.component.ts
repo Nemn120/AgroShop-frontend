@@ -5,6 +5,8 @@ import { MatTableDataSource } from '@angular/material/table';
 import { DialogoConfirmacionComponent } from 'src/app/_shared/dialogo-confirmacion/dialogo-confirmacion.component';
 import { OrderDetailComponent } from 'src/app/_shared/order-detail/order-detail.component';
 import { OrderService } from 'src/app/_service/order.service';
+import { OrderDetailBean } from 'src/app/_model/OrderDetailBean';
+import { SharedService } from 'src/app/_service/shared.service';
 
 
 @Component({
@@ -14,44 +16,48 @@ import { OrderService } from 'src/app/_service/order.service';
 })
 export class CarDiaLogComponent implements OnInit {
 
-  displayedColumns: string[] = ['select', 'name', 'weight', 'quantity'];
-  typesOfShoes: string[] = ['Boots', 'Clogs', 'Loafers', 'Moccasins', 'Sneakers'];
-  data = Object.assign( ELEMENT_DATA);
-  quantity=1;
-  dataSource = new MatTableDataSource<Element>(this.data);
-  selection = new SelectionModel<Element>(true, []);
-  totalRow: number;
-  valor1=null;
+  
+  orderDetailListSelect:OrderDetailBean[]=[];
+  totalPrice:number=0;
   constructor( public dialogo: MatDialog,
     public dialog: MatDialogRef<CarDiaLogComponent>,
-    public orderService:OrderService) { }
+    public orderService:OrderService,
+    public sharedService:SharedService) { }
 
   ngOnInit(): void {
   }
   
-  isAllSelected() {
-    const numSelected = this.selection.selected.length;
-    const numRows = !!this.dataSource && this.dataSource.data.length;
-    return numSelected === numRows;
-  }
 
-  masterToggle() {
-    this.isAllSelected() ?
-      this.selection.clear() :
-      this.dataSource.data.forEach(row => this.selection.select(row));
-  }
   closeDialog() {
     this.dialog.close();
   }
-  checkboxLabel(row): string {
-    if (!row) {
-      return `${this.isAllSelected() ? 'select' : 'deselect'} all`;
+
+  selectOrderProduct(event:any){
+    this.orderDetailListSelect=event;
+    this.totalPrice=0;
+    if(this.orderDetailListSelect.length>0){
+      this.orderDetailListSelect.forEach(x =>{
+        if(x.quantity>x.productSales.availableQuantity){
+          x.quantity=x.productSales.availableQuantity
+          let index=this.orderService.orderDetailList.findIndex(data=>data.productSales.id==x.productSales.id);
+          this.orderService.orderDetailList[index].quantity=x.productSales.availableQuantity
+        }
+          
+        this.totalPrice+=x.price*x.quantity;
+      })
     }
-    return `${this.selection.isSelected(row) ? 'deselect' : 'select'} row ${row.id + 1}`;
+  }
+  deleteItemsSelect(){
+    
+    this.orderDetailListSelect.forEach(x=>{
+      this.orderService.orderDetailList=this.orderService.orderDetailList.filter(data=>data.productSales.id != x.productSales.id);
+    })
+    console.log(this.orderService.orderDetailList);
+    
   }
 
   sendOrder():void{
-    const numSelected = this.selection.selected;
+    console.log(this.orderDetailListSelect);
     const params = {
       title: 'Generar pedido',
       description: '¿Desea realizar el pedido?',
@@ -75,19 +81,4 @@ export class CarDiaLogComponent implements OnInit {
           this.dialog.close();
       }); 
   }
-
 }
-
-export interface PeriodicElement {
-  name: string;
-  weight: number;
-  quantity: number;
-}
-
-const ELEMENT_DATA: PeriodicElement[] = [
-  {name: 'Hyd', weight: 1.0, quantity: 1},
-  {name: 'Hel', weight: 4.0, quantity: 1},
-  {name: 'Par', weight: 6.9, quantity: 1},
-  {name: 'Ber', weight: 9.0, quantity: 1},
-  
-];
