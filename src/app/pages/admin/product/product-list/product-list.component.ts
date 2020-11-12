@@ -9,6 +9,7 @@ import { ProductBean } from '../../../../_model/ProductBean';
 import { ProductFormComponent } from '../product-form/product-form.component';
 import { MatDialog } from '@angular/material/dialog';
 import { ProductViewComponent } from '../product-view/product-view.component';
+import { SharedService } from 'src/app/_service/shared.service';
 
 @Component({
   selector: 'app-product-list',
@@ -26,6 +27,7 @@ export class ProductListComponent implements OnInit {
   constructor(
     private restService: RestService,
     public dialog: MatDialog,
+    private sharedService:SharedService
   ) {}
 
   ngOnInit() {
@@ -49,7 +51,7 @@ export class ProductListComponent implements OnInit {
 
     let param = {
       data: {
-        userCreateId: 1
+        userCreateId:this.sharedService.userSession.id
       }
     }
     this.restService.requestApiRestData('product/glpbf', param)
