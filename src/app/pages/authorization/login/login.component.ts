@@ -18,7 +18,9 @@ export class LoginComponent implements OnInit {
   }
 
   login(){
-    this.authService.login('condori','sirundercover1');
+    //this.authService.login('condori','sirundercover1');
+    this.authService.login('cliente123','123');
+   // this.authService.login('farmer2','123');
   }
   registry(){
     this.router.navigate(['auth/registry']);

@@ -9,6 +9,9 @@ import { WelcomeComponent } from './welcome/welcome.component';
 import { RouterModule, Routes } from '@angular/router';
 import { NgMaterialMultilevelMenuModule } from 'ng-material-multilevel-menu';
 import { UserProfileComponent } from './user-profile/user-profile.component';
+
+import { ProductModule } from '../product/product.module';
+import { OrderModule } from '../order/order.module';
 const routes: Routes = [
   {
     path: '', component: WelcomeComponent,
@@ -22,10 +25,8 @@ const routes: Routes = [
     RouterModule.forChild(routes),
     CommonModule,
     MaterialModule,
-    NgMaterialMultilevelMenuModule
-     
-
-    
+    NgMaterialMultilevelMenuModule,
+    OrderModule
   ],
   exports:[
     WelcomeComponent

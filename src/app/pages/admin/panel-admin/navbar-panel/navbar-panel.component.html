@@ -9,6 +9,7 @@
     </div>
 
     <div class="header-toolbar">
+      <input id="form-control" type="search" placeholder="Buscar producto" aria-label="Search" (keyup.enter)="showProduct(buscarProducto.value)" #buscarProducto>
         <app-user-profile [user]="user$ | async" (signOut)="signOut()"></app-user-profile>
     </div>
 </mat-toolbar>

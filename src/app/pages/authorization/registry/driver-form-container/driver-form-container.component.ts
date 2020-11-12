@@ -30,19 +30,19 @@ export class DriverFormContainerComponent implements OnInit {
 
   public register(): void{
     let newDriver = new DriverBean();
-    newDriver.userAccount = new UserBean();
+    newDriver.user = new UserBean();
     newDriver.driverLicenseNumber = this.driverForm.value['driverLicencia'];
-    newDriver.userAccount.documentNumber = this.driverForm.value['driverDNI'];
-    newDriver.userAccount.nombre = this.driverForm.value['driverName'];
-    newDriver.userAccount.lastName = this.driverForm.value['driverLastName'];
-    newDriver.userAccount.username = this.driverForm.value['driverUserName'];
-    newDriver.userAccount.password = this.driverForm.value['driverPassword'];
+    newDriver.user.documentNumber = this.driverForm.value['driverDNI'];
+    newDriver.user.nombre = this.driverForm.value['driverName'];
+    newDriver.user.lastName = this.driverForm.value['driverLastName'];
+    newDriver.user.username = this.driverForm.value['driverUserName'];
+    newDriver.user.password = this.driverForm.value['driverPassword'];
     let param = {
        userType: "DRIVER",
        userRegister:{
          user:{
-           username:newDriver.userAccount.username,
-           password:newDriver.userAccount.password
+           username:newDriver.user.username,
+           password:newDriver.user.password
          }
        }
     }

@@ -32,4 +32,9 @@ export class NavbarPanelComponent {
    this.userService.closeSession();
   }
 
+
+  public showProduct(nameProduct: string): void{
+  this.router.navigate(['order/search',nameProduct]);
+}
+
 }
