@@ -22,7 +22,12 @@ import { CustomerFormContainerComponent } from './pages/authorization/registry/c
 import { ServerErrorsInterceptor } from './_service/server-errors.interceptor';
 import { AuthorizationModule } from './pages/authorization/authorization.module';
 import { LoginComponent } from './pages/authorization/login/login.component';
+<<<<<<< HEAD
 
+=======
+import { FormsModule } from '@angular/forms';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
+>>>>>>> origin/develop
 
 export function tokenGetter() {
   const tk = sessionStorage.getItem(environment.TOKEN_NAME);
@@ -45,13 +50,14 @@ export function tokenGetter() {
     FlexLayoutModule,
     PanelAdminModule,
     AuthorizationModule,
-   JwtModule.forRoot({
+    MatSnackBarModule,
+   /*JwtModule.forRoot({
       config: {
         tokenGetter,
         whitelistedDomains: ['localhost:8080'],
         blacklistedRoutes: ['http://localhost:8080/oauth/token']
       }
-    }),
+    }),*/ 
     MatFabMenuModule,
    FormsModule,
 

@@ -2,6 +2,8 @@
 export class MainBean{
     createDate:Date;
     userCreateId:number;
-    organizationId:number;
-    sucursalId:number; // sprint 3
+    status:String;
+    updateDate:Date;
+    isDeleted:boolean;
+
 }

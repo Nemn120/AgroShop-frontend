@@ -7,7 +7,11 @@ import { MaterialModule } from 'src/app/_material/material.module';
 import { PanelAdminModule } from '../panel-admin/panel-admin.module';
 import { RouterModule, Routes } from '@angular/router';
 import { OrderStoreCardComponent } from './order-store-card/order-store-card.component';
+<<<<<<< HEAD
 import { SearchProductComponent } from './search-product/search-product.component';
+=======
+import { FormsModule } from '@angular/forms';
+>>>>>>> origin/develop
 
 const routes: Routes = [
   {
@@ -22,6 +26,11 @@ const routes: Routes = [
   imports: [
     CommonModule,
     MaterialModule,
+<<<<<<< HEAD
+=======
+    PanelAdminModule,
+    FormsModule,
+>>>>>>> origin/develop
     RouterModule.forChild(routes),
   ]
 })

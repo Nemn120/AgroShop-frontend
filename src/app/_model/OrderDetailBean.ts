@@ -1,16 +1,12 @@
-import { UserBean } from './UserBean';
-import { ProductBean } from './ProductBean';
+
 import { OrderBean } from './OrderBean';
 import { MainBean } from './MainBean';
-
+import { ProductSalesBean } from './ProductSalesBean';
 export class OrderDetailBean extends MainBean{
     id:number;
-    status:string;
     price:number;
-    userDelivery:UserBean;
-    product:ProductBean;
-    order:OrderBean;
-    deliveryDate:Date;
-    orderId:number;
-
+    customOrder:OrderBean;
+    quantity:number;
+    total:number;
+    productSales:ProductSalesBean;    
 }

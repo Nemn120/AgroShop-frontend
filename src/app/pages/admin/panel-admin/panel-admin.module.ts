@@ -9,9 +9,18 @@ import { WelcomeComponent } from './welcome/welcome.component';
 import { RouterModule, Routes } from '@angular/router';
 import { NgMaterialMultilevelMenuModule } from 'ng-material-multilevel-menu';
 import { UserProfileComponent } from './user-profile/user-profile.component';
+<<<<<<< HEAD
 
 import { ProductModule } from '../product/product.module';
 import { OrderModule } from '../order/order.module';
+=======
+import { CarDiaLogComponent } from './car-dia-log/car-dia-log.component';
+import { SharedModule } from 'src/app/_shared/shared.module';
+import { DialogoConfirmacionComponent } from 'src/app/_shared/dialogo-confirmacion/dialogo-confirmacion.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { OrderDetailComponent } from 'src/app/_shared/order-detail/order-detail.component';
+>>>>>>> origin/develop
 const routes: Routes = [
   {
     path: '', component: WelcomeComponent,
@@ -20,16 +29,30 @@ const routes: Routes = [
 
 
 @NgModule({
-  declarations: [NavbarPanelComponent, SidebarPanelComponent, WelcomeComponent,UserProfileComponent],
+  declarations: [NavbarPanelComponent, SidebarPanelComponent, WelcomeComponent,UserProfileComponent, CarDiaLogComponent],
   imports: [
     RouterModule.forChild(routes),
     CommonModule,
     MaterialModule,
     NgMaterialMultilevelMenuModule,
+<<<<<<< HEAD
     OrderModule
+=======
+    SharedModule,
+    ReactiveFormsModule,
+    NgMaterialMultilevelMenuModule,
+    FormsModule
+     
+
+    
+>>>>>>> origin/develop
   ],
   exports:[
+    RouterModule,
     WelcomeComponent
-  ]
+  ],
+  entryComponents:[
+    CarDiaLogComponent,DialogoConfirmacionComponent,OrderDetailComponent
+  ],
 })
 export class PanelAdminModule { }
