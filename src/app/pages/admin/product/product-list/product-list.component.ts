@@ -1,4 +1,3 @@
-
 import {Component,OnInit, ViewChild } from '@angular/core';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
@@ -9,6 +8,10 @@ import { ProductBean } from '../../../../_model/ProductBean';
 import { ProductFormComponent } from '../product-form/product-form.component';
 import { MatDialog } from '@angular/material/dialog';
 import { ProductViewComponent } from '../product-view/product-view.component';
+
+import { DriverBean } from 'src/app/_model/DriverBean';
+import { AuthService } from 'src/app/_service/auth.service';
+import { SharedService } from 'src/app/_service/shared.service';
 
 @Component({
   selector: 'app-product-list',
@@ -26,6 +29,10 @@ export class ProductListComponent implements OnInit {
   constructor(
     private restService: RestService,
     public dialog: MatDialog,
+
+    private authService:AuthService,
+    private sharedData:SharedService
+ 
   ) {}
 
   ngOnInit() {
@@ -63,6 +70,7 @@ export class ProductListComponent implements OnInit {
         this.restService.message('Error al listar productos!', 'Error');
       });
   }
+    
 
   //newAndUpdateProduct
   newAndUpdateProduct(product?: ProductBean) {
@@ -90,6 +98,17 @@ newProduct(){
 
     let currentFileUpload: File = new File([""], "blanco");
     this.restService.requestApiRestData('product/sp', param, currentFileUpload).subscribe(result => {
+    let param={
+      data:1
+    
+      
+    }
+   
+  
+  let currentFileUpload:File = new File([""], "blanco");
+    this.restService.requestApiRestData('product/sp',param,currentFileUpload).subscribe(result=>{
+    //  this.restService.requestApiRestData('categoryproduct/gcp',{}).subscribe(result=>{  
+
       console.log(result);
       this.message('Producto agregado con exito!', 'Create');
       this.listProduct();

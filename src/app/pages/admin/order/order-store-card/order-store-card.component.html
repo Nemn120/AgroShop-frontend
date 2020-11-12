@@ -1,6 +1,6 @@
 <div class="content-item">
     <div class="category-item">
-        <div class="category-title">Palta</div>
+        <div *ngIf="productSales.product.category" class="category-title">{{productSales.product.category.name}}</div>
     </div>
     <div class="item">
         <div class="item-image">
@@ -19,14 +19,14 @@
             <img class="image-src" src="assets/images/palta.jpg">
         </div>
         <div class="item-data">
-            <div class="item-title">Palta forte A1 x Caja</div>
+            <div class="item-title">{{productSales.product.name}}</div>
             <div class="item-description">
-                <div class="item-price">S/. 8.20</div>
+                <div class="item-price">S/. {{productSales.price}}</div>
                 <div class="item-quantity">
-                    <div class="input-quantity">
-                        5454
-                    </div>
-                    <div class="btn-add">
+                    <mat-form-field style="width:30px">
+                        <input matInput class="input-quantity" [(ngModel)]="productSales.quantitySelect">
+                    </mat-form-field>
+                    <div class="btn-add" (click)="addProduct()">
                         <i class="fas fa-cart-plus" style="color: white;"></i>
                     </div>
                 </div>

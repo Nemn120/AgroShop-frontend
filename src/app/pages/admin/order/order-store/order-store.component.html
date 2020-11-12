@@ -4,23 +4,10 @@
 <div class="layout-data">
     <div class="body-item">
         <div class="grid-item">
-            <app-order-store-card></app-order-store-card>
-            <app-order-store-card></app-order-store-card>
-            <app-order-store-card></app-order-store-card>
-            <app-order-store-card></app-order-store-card>
-            <app-order-store-card></app-order-store-card>
-            <app-order-store-card></app-order-store-card>
+            <div *ngFor="let item of productSalesList">
+                <app-order-store-card [productSales]="item"></app-order-store-card>
+            </div>
 
-            <app-order-store-card></app-order-store-card>
-            <app-order-store-card></app-order-store-card>
-            <app-order-store-card></app-order-store-card>
-
-            <app-order-store-card></app-order-store-card>
-            <app-order-store-card></app-order-store-card>
-            <app-order-store-card></app-order-store-card>
-            <app-order-store-card></app-order-store-card>
-            <app-order-store-card></app-order-store-card>
-            <app-order-store-card></app-order-store-card>
         </div>
     </div>
 
