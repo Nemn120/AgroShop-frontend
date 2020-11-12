@@ -49,19 +49,17 @@ export class ProductFormComponent implements OnInit {
       this.productSelect.name = this.data.name;
       this.productSelect.description = this.data.description;
       this.productSelect.category = this.data.category;
-/*
-      let param = { 
-          'id': 28,
-        
-      };*/
-      let param = { 
-        'id':this.productSelect.id,
+
+    
       
-    };
-      this.restService.requestApiRestData('product/gp', param).subscribe(data => {
+    
+      this.restService.getPhotoById(this.data.id).subscribe(data => {
         console.log('imagen: ',data);
         if (data.size > 0)
           this.imagenData = this.convertir(data);
+      }, error => {
+        console.log("Error al mostrar imagen! ", error);
+        this.restService.message('Error al mostrar imagen!', 'Error');
       });
   
     }
