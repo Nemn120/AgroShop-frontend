@@ -20,6 +20,7 @@
 
 .buttons{
     display: flex;
+    justify-content: center;
 }
 
 .actions{
@@ -29,9 +30,19 @@
 }
 
 .first-btn{
-    margin-right: 5px;
+    margin-right: 5%;
 }
 
 .mat-form-field{
     margin-right: 12px;
+}
+
+.btn-select{
+    display: block;
+    width: 100%;
+    justify-content: center !important;
+}
+
+.btn-form{
+    width: 20%;
 }

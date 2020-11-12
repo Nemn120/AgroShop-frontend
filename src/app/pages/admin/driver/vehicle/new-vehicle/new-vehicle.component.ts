@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { VehicleEntity } from 'src/app/_model/VehicleEntity';
 import { RestService } from 'src/app/_service/rest.service';
-import { SharedService } from 'src/app/_service/shared.service'
+import { SharedService } from 'src/app/_service/shared.service';
+import { DriverBean } from 'src/app/_model/DriverBean';
 
 @Component({
   selector: 'app-new-vehicle',
@@ -11,7 +12,11 @@ import { SharedService } from 'src/app/_service/shared.service'
 export class NewVehicleComponent implements OnInit {
 
   vehicle : VehicleEntity;
-  idUser : number = 0;
+  labelFile: string;
+  selectedFiles: FileList;
+  imagenData: any;
+  currentFileUpload: File;
+  IdSession : number;
 
   constructor(
     private restService: RestService,
@@ -20,17 +25,32 @@ export class NewVehicleComponent implements OnInit {
 
   ngOnInit(): void {
     this.vehicle = new VehicleEntity();
-    this.vehicle.id = this.sharedData.userSession.id;
   }
 
   newVehicle(){
-    console.log(this.vehicle);
+    this.IdSession = this.sharedData.userSession.id;
+    this.vehicle.driver = new DriverBean();
+    this.vehicle.driver.id = this.IdSession;
+    console.log("idNewVehicle: ",this.vehicle.id);
+    if (this.selectedFiles != null) {
+      this.currentFileUpload = this.selectedFiles.item(0);
+    } else {
+      this.currentFileUpload = new File([""], "blanco");
+    }
+    this.vehicle.photo = this.currentFileUpload;
     const param = {
       data : this.vehicle
     }
-    this.restService.requestApiRestData('vehicle/sv',param).subscribe(result => {
+    this.restService.requestApiRestData('vehicle/sv',param,this.currentFileUpload).subscribe(result => {
       console.log(result);
     })
+    
+    console.log("param: ",param);
+  }
+
+  selectFile(e: any) {
+    this.labelFile = e.target.files[0].name;
+    this.selectedFiles = e.target.files;
   }
 
 }

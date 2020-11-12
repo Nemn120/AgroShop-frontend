@@ -3,7 +3,7 @@
         <mat-card-title>Ingrese su vehiculo</mat-card-title>
         <hr>
         <br>
-<div>
+<div style="display: flex; flex-wrap: wrap;">
     <mat-form-field class="example-full-width" appearance="outline">
         <mat-label>Numero de placa</mat-label>
         <input matInput [(ngModel)]="this.vehicle.plateNumber" name="plateNumber">
@@ -42,13 +42,15 @@
         <mat-label>Tipo de combustible</mat-label>
         <input matInput [(ngModel)]="this.vehicle.fuelType" name="fuelType">
     </mat-form-field>
+    <button mat-raised-button color="primary" onclick="document.getElementById('flArchivo').click();" class="btn-select">Seleccionar Archivo</button>
+    <input id="flArchivo" type="file" (change)="selectFile($event)" style="display: none">
+    <br>
+    <p>{{labelFile}}</p>
 </div>
-
+    <br>
     <div class="buttons">
-        <div class="actions">
-            <button class="first-btn" mat-raised-button color="primary" mat-dialog-close>Cancelar</button>
-            <button mat-raised-button color="warn" (click)="newVehicle()" mat-dialog-close>Ingresar</button>
-        </div>
+        <button class="first-btn btn-form" mat-stroked-button color="basic" mat-dialog-close>Cancelar</button>
+        <button mat-raised-button class="btn-form" color="warn" (click)="newVehicle()" mat-dialog-close>Ingresar</button>
     </div>
     
 </div>

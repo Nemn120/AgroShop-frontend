@@ -3,19 +3,30 @@
             <img mat-card-image src="../../../../../assets/images/hyundai-facebook.jpg" alt="" >
     </div>
     <div class="vehicle-content">
-        <mat-card-title>Carro 1</mat-card-title>
-        <mat-card-subtitle>Hyundai</mat-card-subtitle>
-        <hr>
+        <mat-card-title style="display:flex !important">{{data.vehicleModel}}
+            <div style="display: flex; justify-content: flex-end;">
+                <mat-chip-list aria-label="Fish selection" style="justify-content: flex-end;">
+                    <mat-chip mat-icon-button [ngStyle]="{'background-color':this.setColorStatus(data.statusCar)}">
+                        <span style="color: white;">{{data.statusCar}}</span></mat-chip>
+                </mat-chip-list> 
+            </div>
+        </mat-card-title>
+        <mat-card-subtitle>Nro. Placa: {{data.plateNumber}}</mat-card-subtitle>
+        <hr size="6" style="background-color: black;">
         <mat-card-content style="width: 100%;">
-            <p>Numero de placa: 88172881</p>
-            <p>Numero de serie: JORDY</p>
-            <p>Marca del vehiculo: ASKJDJAJD</p>
-            <p>Modelo del vehiculo: ASDJASD</p>
-            <p>Años de uso: JADKASDKKX</p>
-            <p>Estado del coche: JADKASDKKX</p>
-            <p>Tipo de combustible: JADKASDKKX</p>
-            <p>Peso neto: JADKASDKKX</p>
-            <p>Peso bruto: JADKASDKKX</p>
+            <p class="subtitles">Datos del vehiculo</p>
+            <div style="display: flex; justify-content: space-around;">
+                <p class="dataVehicle">Numero de serie: {{data.serialNumber}}</p>
+                <p class="dataVehicle">Años de uso: {{data.yearsOfUse}}</p>
+            </div>
+            <div style="display: flex; justify-content: center;">
+                <p class="dataVehicle" style="display:inline-block; align-items: center;">Tipo de combustible: {{data.fuelType}}</p>
+            </div>
+            <p class="subtitles">Pesos</p>
+            <div style="display: flex; justify-content: space-around;">
+                <p class="dataVehicle">Peso neto: {{data.netWeight}} lb</p>
+                <p class="dataVehicle">Peso bruto: {{data.grossWeight}} lb</p>
+            </div>
         </mat-card-content>
     </div>
 </div>

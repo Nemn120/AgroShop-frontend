@@ -3,9 +3,9 @@ import { VehicleDetailComponent } from './vehicle-detail/vehicle-detail.componen
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { NewVehicleComponent } from './new-vehicle/new-vehicle.component';
 import { RestService } from 'src/app/_service/rest.service';
-import { AuthService } from 'src/app/_service/auth.service'
-import { stringToKeyValue } from '@angular/flex-layout/extended/typings/style/style-transforms';
 import { VehicleEntity } from 'src/app/_model/VehicleEntity';
+import { SharedService } from 'src/app/_service/shared.service';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-vehicle',
@@ -16,27 +16,42 @@ export class VehicleComponent implements OnInit {
 
   idUser : number = 0;
   vehicle : VehicleEntity;
+  cars : any[];
+  imagenData : any;
+  imagenEstado: boolean = false;
 
   constructor(
     public dialog: MatDialog,
     private restService: RestService,
-    private authService: AuthService
+    private sharedService : SharedService,
+    private sanitization: DomSanitizer
   ) { }
 
   ngOnInit(): void {
-    //this.authService.login('condori','sirundercover1');
+    this.idUser = this.sharedService.userSession.id;
+    let param = {
+      data:{
+        driver:{
+          id : this.idUser
+        }
+      }
+    }
+    this.restService.requestApiRestData('vehicle/gvlbd',param).subscribe(result =>{
+      this.cars = result.datalist;
+      //this.imagenData = this.convertir(result);
+      console.log("Result: ",result);
+    })
   }
 
-  getVehicleListByAccount(){
-  }
-
-  moreDetails(){
-    let dialogConfig = new MatDialogConfig();
-    dialogConfig.autoFocus = true;
-    dialogConfig.width = "60%";
-    dialogConfig.minHeight = "40%";
-    dialogConfig.minWidth = "370px";
-    this.dialog.open(VehicleDetailComponent, dialogConfig);
+  moreDetails(vehicleDetail : VehicleEntity){
+    let vehicleSelect = vehicleDetail != null ? vehicleDetail : new VehicleEntity();
+    this.dialog.open(VehicleDetailComponent, {
+      data: vehicleSelect,
+      width :'60%',
+      minHeight : "40%",
+      minWidth : "370px",
+      autoFocus :  true
+    });
   }
 
   newVehicle(){
@@ -48,4 +63,16 @@ export class VehicleComponent implements OnInit {
     this.dialog.open(NewVehicleComponent, dialogConfig);
   }
 
+  public convertir(data: any) {
+    let reader = new FileReader();
+    reader.readAsDataURL(data);
+    reader.onloadend = () => {
+      let base64 = reader.result;      
+      this.sanar(base64);
+    }
+  }
+
+  public sanar(base64 : any){
+    this.imagenData= this.sanitization.bypassSecurityTrustResourceUrl(base64);
+  }
 }

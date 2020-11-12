@@ -1,3 +1,4 @@
+import { DriverBean } from './DriverBean';
 import { MainBean } from './MainBean';
 export class VehicleEntity extends MainBean{
     id : number;
@@ -12,4 +13,5 @@ export class VehicleEntity extends MainBean{
     netWeight : number;
     grossWeight : number;
     photo : any;
+    driver : DriverBean
 }

@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
+import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { VehicleEntity } from 'src/app/_model/VehicleEntity';
 import { RestService } from 'src/app/_service/rest.service';
 import { SharedService } from 'src/app/_service/shared.service';
 
@@ -13,21 +15,20 @@ export class VehicleDetailComponent implements OnInit {
 
   constructor(
     private restService: RestService,
-    private sharedService : SharedService
+    private sharedService : SharedService,
+    @Inject(MAT_DIALOG_DATA) public data: VehicleEntity,
   ) { }
 
   ngOnInit(): void {
-    this.idUser = this.sharedService.userSession.id;
-    let param = {
-      data:{
-        driver:{
-          id : this.idUser
-        }
-      }
+    console.log(this.data);
+  }
+
+  public setColorStatus(status : string):string{
+    switch(status){
+      case 'Disponible': return '#239BAB';
+      case 'Malogrado' : return '#0CA05B' ;
+      default : return '#ffffff';
     }
-    this.restService.requestApiRestData('vehicle/gvlbd',param).subscribe(result =>{
-      console.log("carros: ",result);
-    })
   }
 
 }
