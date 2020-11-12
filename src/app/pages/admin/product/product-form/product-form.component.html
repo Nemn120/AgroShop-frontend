@@ -4,25 +4,35 @@
 
         <mat-form-field>
             <!-- Los datos ingresados lo guarda en la variable -->
-            <input matInput placeholder="Nombre" [(ngModel)]="data.name">
+            <input matInput placeholder="Nombre" [(ngModel)]="productSelect.name">
 
         </mat-form-field>
         <br>
         <mat-form-field>
-            <input matInput placeholder="Descripcion" [(ngModel)]="data.description" type="tel">
+            <input matInput placeholder="Descripcion" [(ngModel)]="productSelect.description" type="tel">
         </mat-form-field>
         <br>
-        <!--
+
+        <mat-form-field appearance="fill">
+            <mat-label>Estado</mat-label>
+            <mat-select [(ngModel)]="productSelect.status" name="food">
+                <mat-option *ngFor="let e of estados" [value]="e">
+                    {{e}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+
         <mat-form-field appearance="fill">
             <mat-label>Categoria</mat-label>
-            <mat-select [(ngModel)]="productSelect.categoryProduct">
+            <mat-select [(ngModel)]="productSelect.category">
                 <mat-option *ngFor="let cat of categorias" [value]="cat">
                     {{cat.name}}
                 </mat-option>
             </mat-select>
         </mat-form-field>
-        
+
         <br>
+
         <div>
             <button mat-button onclick="document.getElementById('flArchivo').click();">Seleccionar Archivo</button>
             <input id="flArchivo" type="file" (change)="selectFile($event)" style="display: none">
@@ -32,7 +42,7 @@
             <br>
         </div>
         <br>
-        -->
+
         <div style="float:left;">
             <button style="margin-left: 10px;" mat-raised-button color="primary" (click)="save()">Aceptar</button>
             <button style="margin-left: 4px;" mat-raised-button color="accent" (click)="closeDialog()">Cancelar</button>
@@ -40,13 +50,13 @@
     </mat-tab>
     <mat-tab label="Second">
 
-        <h1 mat-dialog-title>Favorite Animal</h1>
+        <h1 mat-dialog-title>Extra</h1>
         <div mat-dialog-content>
 
         </div>
         <div mat-dialog-actions>
             <button mat-button (click)="closeDialog()">Cerrar</button>
-            <!--<button mat-button [mat-dialog-close]="data.animal" cdkFocusInitial>Ok</button>-->
+
         </div>
     </mat-tab>
 

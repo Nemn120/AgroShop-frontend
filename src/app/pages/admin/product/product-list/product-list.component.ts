@@ -6,9 +6,9 @@ import { MatTableDataSource } from '@angular/material/table';
 
 import { RestService } from 'src/app/_service/rest.service';
 import { ProductBean } from '../../../../_model/ProductBean';
-import { MatSnackBar } from '@angular/material/snack-bar';
 import { ProductFormComponent } from '../product-form/product-form.component';
 import { MatDialog } from '@angular/material/dialog';
+import { ProductViewComponent } from '../product-view/product-view.component';
 
 @Component({
   selector: 'app-product-list',
@@ -25,13 +25,19 @@ export class ProductListComponent implements OnInit {
 
   constructor(
     private restService: RestService,
-    private _snackBar: MatSnackBar,
     public dialog: MatDialog,
   ) {}
 
   ngOnInit() {
    
     this.listProduct();
+
+
+    this.restService.messageChange.subscribe(data => {
+      console.log('messageChange: ',data);
+      this.listProduct();
+      this.restService.message(data.message, data.action);
+    });
 
   }
 
@@ -54,7 +60,7 @@ export class ProductListComponent implements OnInit {
         this.dataSource.sort = this.sort;
       }, error => {
         console.log("Error al listar productos!", error);
-        this.message('Error al listar productos!', 'Error');
+        this.restService.message('Error al listar productos!', 'Error');
       });
   }
 
@@ -62,8 +68,8 @@ export class ProductListComponent implements OnInit {
   newAndUpdateProduct(product?: ProductBean) {
     let productSelect = product != null ? product : new ProductBean();
     this.dialog.open(ProductFormComponent, {
-      width: '30%',
-      height: '50%',
+      /*width: '30%',
+      height: '50%',*/
       data: productSelect
     });
   }
@@ -94,9 +100,6 @@ newProduct(){
 */
   }
 
-  openDialog() {
-
-  }
 
   //deleteProduct
   deleteProduct(product: ProductBean) {
@@ -109,23 +112,22 @@ newProduct(){
 
     this.restService.requestApiRestData('product/dp', param).subscribe(data => {
       console.log('se elimino con exito!', data);
-      this.message('Producto eliminado con exito!', 'Delete');
+      this.restService.message('Producto eliminado con exito!', 'Delete');
       this.listProduct();
 
     },error => {
       console.log("Error al eliminar producto! ", error);
-      this.message('Error al eliminar producto!', 'Error');
+      this.restService.message('Error al eliminar producto!', 'Error');
     });
 
   }
 
-  //messages
-  message(message: string, action: string) {
-
-    this._snackBar.open(message, action, {
-      duration: 2000,
+  viewProduct(product: ProductBean){
+    this.dialog.open(ProductViewComponent, {
+     /* width: '30%',
+      height: '50%',*/
+      data: product
     });
-
   }
 
 //searchProduct
@@ -138,12 +140,5 @@ newProduct(){
     }
   }
 
-  /*
-    getProduct(){
-  
-      this.restService.requestApiRestData('categoryproduct/gcp',{}).subscribe(result=>{
-        console.log(result);
-      })
-    }*/
 
 }

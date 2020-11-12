@@ -1,0 +1,45 @@
+<h2>Descripcion del producto!</h2>
+<mat-tab-group mat-align-tabs="center">
+    <mat-tab label="First">
+        <br>
+        <mat-form-field>
+            <input matInput placeholder="Nombre" [(ngModel)]="this.data.name" readonly="readonly">
+
+        </mat-form-field>
+        <br>
+        <mat-form-field>
+            <input matInput placeholder="Descripcion" [(ngModel)]="this.data.description" readonly="readonly">
+        </mat-form-field>
+        <br>
+        <mat-form-field>
+            <input matInput placeholder="Categoria" [(ngModel)]="this.data.category.name" readonly="readonly">
+        </mat-form-field>
+
+
+        <!--
+        <br>
+     
+        <div>
+            <button mat-button onclick="document.getElementById('flArchivo').click();">Seleccionar Archivo</button>
+            <input id="flArchivo" type="file" (change)="selectFile($event)" style="display: none">
+            <br>
+            <img mat-card-image [src]="imagenData" *ngIf="imagenEstado" style="display: block; width:180px ;height:180px;margin: auto;" />
+            <p>{{labelFile}}</p>
+            <br>
+        </div>
+        <br>
+-->
+    </mat-tab>
+    <mat-tab label="Second">
+
+        <h1 mat-dialog-title>Extra</h1>
+        <div mat-dialog-content>
+
+        </div>
+        <div mat-dialog-actions>
+            <button mat-button (click)="closeDialog()">Cerrar</button>
+
+        </div>
+    </mat-tab>
+
+</mat-tab-group>

@@ -1,15 +1,23 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Router } from '@angular/router';
 import { environment } from 'src/environments/environment';
+import { MessageBean } from './../_model/MessageBean';
+import { Subject } from 'rxjs';
+
+import { MatSnackBar } from '@angular/material/snack-bar';
 @Injectable({
   providedIn: 'root'
 })
 export class RestService {
 
+  messageChange = new Subject<MessageBean>();
+
   urlHost: string = environment.HOST+'/';
 
-  constructor(private http: HttpClient)
+  constructor(
+    private http: HttpClient,
+    private _snackBar: MatSnackBar,
+    )
    { }
 
    
@@ -28,4 +36,12 @@ export class RestService {
     return this.http.post<any>(path,paramApi);
    }
 
+   //messages
+  message(message: string, action: string) {
+
+    this._snackBar.open(message, action, {
+      duration: 2000,
+    });
+
+  }
 }

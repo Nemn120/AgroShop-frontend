@@ -7,6 +7,7 @@ import { PanelAdminModule } from '../panel-admin/panel-admin.module';
 import { WelcomeComponent } from '../panel-admin/welcome/welcome.component';
 import { ProductFormComponent } from './product-form/product-form.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { ProductViewComponent } from './product-view/product-view.component';
 const routes: Routes = [
   {
     path: '', component:WelcomeComponent},
@@ -18,6 +19,7 @@ const routes: Routes = [
   declarations: [
     ProductListComponent,
     ProductFormComponent,
+    ProductViewComponent,
   ],
   imports: [
     CommonModule,
@@ -33,6 +35,7 @@ const routes: Routes = [
   ],
   entryComponents: [
     ProductFormComponent,
+    ProductViewComponent,
    ],
 })
 export class ProductModule { }
