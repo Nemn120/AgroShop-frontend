@@ -20,7 +20,6 @@ export class RestService {
     )
    { }
 
-   
    requestApiRestData(path:string, param:any,file?:File){
      let paramApi;
      if(file){

@@ -1,6 +1,6 @@
 .content-item {
     position: relative;
-    height: 330px;
+    height: 300px;
     padding: 16px!important;
     background-color: #fff;
     margin: 15px;
@@ -32,7 +32,7 @@
 }
 
 .image-src {
-    height: 220px;
+    height: 210px;
     width: 100%;
 }
 
@@ -44,8 +44,8 @@
     .item-description {
         display: flex;
         width: 100%;
-        line-height: 26px;
-        margin-top: 10px;
+        line-height: 25px;
+        height: 40px;
         .item-price {
             width: 50%;
             font-size: 1.2em;
@@ -64,6 +64,8 @@
                 border-radius: 20px;
                 //width: 90px!important;
                 padding: 5px 10px;
+                width: 30px !important;
+                background-color: rgb(226, 226, 225);
             }
             .btn-add {
                 background-color: #37966F;
@@ -74,6 +76,11 @@
                 transition-property: color, background-color, border-color, box-shadow;
                 box-shadow: 2px 15px 50px rgba(41, 44, 61, .1);
                 border-radius: 500px;
+                width: 20px;
+                height: 20px;
+                margin-left: 25px;
+                margin-top: auto;
+                margin-bottom: auto;
             }
         }
     }
