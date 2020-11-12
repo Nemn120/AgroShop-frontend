@@ -27,7 +27,9 @@ export class CarDiaLogComponent implements OnInit {
   constructor( public dialogo: MatDialog,
     public dialog: MatDialogRef<CarDiaLogComponent>,
     public orderService:OrderService,
-    public sharedService:SharedService) { }
+    public sharedService:SharedService,
+    private snackBar: MatSnackBar,
+    private router: Router) { }
 
   ngOnInit(): void {
   }
@@ -60,30 +62,62 @@ export class CarDiaLogComponent implements OnInit {
     console.log(this.orderService.orderDetailList);
     
   }
-
-  sendOrder():void{
+  sendOrder() {
+    
+    if (this.orderDetailListSelect.length > 0) {
+      if (!this.sharedService.userSession){
+        this.snackBar.open('Inicie sesión para enviar la orden', 'INFO', { duration: 5000 });
+        this.closeDialog();
+        this.router.navigate(['auth/login']);
+        return;
+      }
+      if(!this.orderDetailListSelect){//this.orderService.newOrder.address
+        this.sendOrderConfirm();
+      }else{
+        this.dialogo
+        .open(DataClientComponent, {
+          width:'25%',
+          data: new OrderBean()
+        })
+        .afterClosed()
+        .subscribe((confirmado) => {
+            if (confirmado){
+              this.sendOrderConfirm();
+            }       
+        });
+      }
+    } else {
+      //alert('Seleccione algun producto');
+    }
+  }
+  sendOrderConfirm():void{
     console.log(this.orderDetailListSelect);
-    const params = {
-      title: 'Generar pedido',
-      description: '¿Desea realizar el pedido?',
-      inputData: true
-    };
-    this.dialogo
-      .open(DialogoConfirmacionComponent, {
-        data: params,
-        width: '25%',
-        height: '35%',
-      })
-      .afterClosed()
-      .subscribe((confirmado) => {
-        if (confirmado) {
-            console.log("Hola");
-            this.closeDialog();
-                this.dialogo.open(OrderDetailComponent, {
-                  width: '600px',
-                });          
-          }
-          this.dialog.close();
-      }); 
+    Swal.fire({
+      title: 'Esta seguro de enviar la orden?',
+      showClass: {
+        popup: 'animate__animated animate__fadeInDown'
+      },
+      hideClass: {
+        popup: 'animate__animated animate__fadeOutUp'
+      },
+      icon: 'warning',
+      showCancelButton: true,
+      allowOutsideClick:false,
+      confirmButtonColor: 'green',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Generar orden'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire(
+          'Se han registrado su orden',
+          'La orden ha sido enviada.',
+          'success'
+        );
+
+      }
+      this.closeDialog();
+    });
+
+
   }
 }

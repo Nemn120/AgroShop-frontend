@@ -4,6 +4,9 @@ import { OrderBean } from '../../_model/OrderBean';
 import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import Swal from 'sweetalert2';
+import { OrderDetailBean } from 'src/app/_model/OrderDetailBean';
+import { OrderDetailComponent } from '../order-detail/order-detail.component';
+import { OrderService } from 'src/app/_service/order.service';
 
 @Component({
   selector: 'app-data-client',
@@ -26,6 +29,7 @@ export class DataClientComponent implements OnInit {
     private fb: FormBuilder,
     private snackBar: MatSnackBar,
     private dialogMap: MatDialog,
+    public orderService: OrderService
   
   ) { }
 
@@ -47,6 +51,7 @@ export class DataClientComponent implements OnInit {
       },
       icon: 'warning',
       showCancelButton: true,
+      allowOutsideClick:false,
       confirmButtonColor: 'green',
       cancelButtonColor: '#d33',
       confirmButtonText: 'Enviar datos'
@@ -57,14 +62,42 @@ export class DataClientComponent implements OnInit {
           'Los datos se han enviado.',
           'success'
         );
+        Swal.fire({
+          title: 'Esta seguro de enviar la orden?',
+          showClass: {
+            popup: 'animate__animated animate__fadeInDown'
+          },
+          hideClass: {
+            popup: 'animate__animated animate__fadeOutUp'
+          },
+          icon: 'warning',
+          showCancelButton: true,
+          allowOutsideClick:false,
+          confirmButtonColor: 'green',
+          cancelButtonColor: '#d33',
+          confirmButtonText: 'Generar orden'
+        }).then((result) => {
+          if (result.isConfirmed) {
+            //this.sendOrder(this.form.value.address,this.form.value.reference,this.form.value.phone);
+            Swal.fire(
+              'Se ha registrado su orden',
+              'La orden ha sido enviada.',
+              'success'
+            );
+    
+          }
+          this.cerrarDialogo();
+          this.dialog.open(OrderDetailComponent, {
+          width:'25%',
+          data: new OrderBean()
+        })
+        });
 
       }
       this.cerrarDialogo();
     });
 
 
-    
-    
   }
 
 
@@ -78,18 +111,8 @@ export class DataClientComponent implements OnInit {
         'reference': this.reference,
         'phone': this.phone,
       });
-    if (this.data) {
-      this.form.setValue({
-        'address': this.data.address,
-        'reference': this.data.reference,
-        'phone': this.data.phone,
-
-
-      })
-      this.title = "Actualizar lugar de entrega"
-      this.buttonTitle = "Actualizar"
-      this.isUpdateOrder = true;
-    }
+   
+    
   }
   public hasError = (controlName: string, errorName: string) => {
     return this.form.controls[controlName].hasError(errorName);
@@ -100,5 +123,13 @@ export class DataClientComponent implements OnInit {
   confirmado(): void {
 
     this.dialogo.close(true);
+  }
+  sendOrder(address:string,reference:string,phone:string) {
+    let orderSelect= new OrderBean();
+    orderSelect.address=this.form.value.address;
+    orderSelect.reference=this.form.value.reference;
+    orderSelect.phone=this.form.value.phone;
+
+    this.orderService.sendNewOrder(orderSelect.address,orderSelect.reference,orderSelect.phone);
   }
 }
