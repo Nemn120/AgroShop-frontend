@@ -16,27 +16,30 @@
         </mat-form-field>
 
 
-        <!--
-        <br>
-     
-        <div>
-            <button mat-button onclick="document.getElementById('flArchivo').click();">Seleccionar Archivo</button>
-            <input id="flArchivo" type="file" (change)="selectFile($event)" style="display: none">
-            <br>
-            <img mat-card-image [src]="imagenData" *ngIf="imagenEstado" style="display: block; width:180px ;height:180px;margin: auto;" />
-            <p>{{labelFile}}</p>
-            <br>
-        </div>
-        <br>
--->
+
+
+
     </mat-tab>
     <mat-tab label="Second">
 
-        <h1 mat-dialog-title>Extra</h1>
+        <h1 mat-dialog-title>Imagen del producto</h1>
         <div mat-dialog-content>
+
+
+            <div>
+                <button mat-button onclick="document.getElementById('flArchivo').click();">Seleccionar Archivo</button>
+                <input id="flArchivo" type="file" (change)="selectFile($event)" style="display: none">
+                <br>
+                <img mat-card-image [src]="imagenData" *ngIf="imagenEstado" style="display: block; width:180px ;height:180px;margin: auto;" />
+                <p>{{labelFile}}</p>
+                <br>
+            </div>
+
+
 
         </div>
         <div mat-dialog-actions>
+
             <button mat-button (click)="closeDialog()">Cerrar</button>
 
         </div>
