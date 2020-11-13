@@ -7,13 +7,14 @@
         <img class="perfil-img" src="../../../../../assets/images/user.png">
     </div>
     <div mat-dialog-content>
-        <p>DNI: {{data.user.documentNumber}}</p>
-        <p>EMAIL: {{data.user.email}}</p>
+        <p>FECHA DE REGISTRO: {{data.createDate | date}}</p>
+        <p>DIRECCIÓN: {{data.user.address}}</p>
+        <p>{{data.user.email}}</p>
+        <p>CELULAR: {{data.user.cellPhone}}</p>
+        <p>LICENCIA: {{data.driverLicenseNumber}}</p>
         <p>ESTADO: {{data.status}}</p>
         <p>CALIFICACIÓN: {{data.qualification}}</p>
         <p>EXPERIENCIA: {{data.yearsOfExperience}}</p>
-        <p>DIRECCIÓN: {{data.user.address}}</p>
-        <p>CUMPLEAÑO: {{data.user.birthdate}}</p>
-        <p>CELULAR: {{data.user.cellphone}}</p>
+        <p>DNI: {{data.user.documentNumber}}</p>
     </div>
 </div>

@@ -103,11 +103,6 @@ export class DriverComponent implements OnInit {
       width: 'auto', height: 'auto',
       data: driver
     });
-
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
-      // this.animal = result;
-    });
   }
 
 }
