@@ -44,8 +44,7 @@ export class NewVehicleComponent implements OnInit {
     this.restService.requestApiRestData('vehicle/sv',param,this.currentFileUpload).subscribe(result => {
       console.log(result);
     })
-    
-    console.log("param: ",param);
+
   }
 
   selectFile(e: any) {

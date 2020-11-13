@@ -25,8 +25,9 @@ export class VehicleDetailComponent implements OnInit {
 
   public setColorStatus(status : string):string{
     switch(status){
-      case 'Disponible': return '#239BAB';
-      case 'Malogrado' : return '#0CA05B' ;
+      case 'Disponible': return '#0B8F48';
+      case 'Malogrado' : return '#CD6804';
+      case 'Ocupado' : return '055387';
       default : return '#ffffff';
     }
   }

@@ -39,7 +39,7 @@ export class VehicleComponent implements OnInit {
     this.restService.requestApiRestData('vehicle/gvlbd',param).subscribe(result =>{
       this.cars = result.datalist;
       //this.imagenData = this.convertir(result);
-      console.log("Result: ",result);
+      console.log(result);
     })
   }
 
