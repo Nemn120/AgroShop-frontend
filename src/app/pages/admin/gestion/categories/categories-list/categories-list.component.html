@@ -1,0 +1,64 @@
+<div class="layout-data2">
+    Mis Categorias!
+    <button mat-button style="background-color:#37966F;float:right;color:white" (click)="newAndUpdateCategory()">Agregar</button>
+</div>
+<div class="layout-data">
+
+    <mat-form-field>
+        <mat-label>Buscar categoria</mat-label>
+        <input matInput (keyup)="applyFilter($event)" placeholder="Ingresar nombre a buscar" #input>
+    </mat-form-field>
+
+    <div class="mat-elevation-z8">
+        <table mat-table [dataSource]="dataSource" matSort>
+
+            <!-- ID Column -->
+            <ng-container matColumnDef="id">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> ID </th>
+                <td mat-cell *matCellDef="let row"> {{row.id}} </td>
+            </ng-container>
+
+            <!-- Name Column -->
+            <ng-container matColumnDef="name">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Nombre </th>
+                <td mat-cell *matCellDef="let row"> {{row.name}} </td>
+            </ng-container>
+
+
+            <!-- Description Column -->
+            <ng-container matColumnDef="description">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Descripcion </th>
+                <td mat-cell *matCellDef="let row"> {{row.description}} </td>
+            </ng-container>
+
+            <!-- Color Column -->
+            <ng-container matColumnDef="actions">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Acciones </th>
+                <td mat-cell *matCellDef="let row">
+                    <!--[style.color]="'gray'"-->
+                    <button mat-icon-button (click)="viewCategory(row)">
+            <mat-icon>search</mat-icon>
+          </button>
+                    <!--[style.color]="'green'"-->
+                    <button mat-icon-button (click)="newAndUpdateCategory(row)">
+            <mat-icon>edit</mat-icon>
+          </button>
+                    <!--[style.color]="'maroon'"-->
+                    <button mat-icon-button (click)="deleteCategory(row)">
+            <mat-icon>delete</mat-icon>
+          </button>
+                </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+            <!-- Row shown when there is no matching data. -->
+            <tr class="mat-row" *matNoDataRow>
+                <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
+            </tr>
+        </table>
+
+        <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+    </div>
+</div>

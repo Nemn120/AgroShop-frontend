@@ -1,0 +1,49 @@
+<h2>{{titulo}} Categoria</h2>
+<!--
+<mat-tab-group mat-align-tabs="center">
+
+    <mat-tab label="First">
+
+        <h1 mat-dialog-title></h1>
+
+        <div mat-dialog-content>
+
+            <br>
+            <mat-form-field>
+                <input matInput placeholder="Nombre" [(ngModel)]="categorySelect.name">
+            </mat-form-field>
+            <br>
+            <mat-form-field>
+                <input matInput placeholder="Descripcion" [(ngModel)]="categorySelect.description">
+            </mat-form-field>
+            <br>
+        </div>
+        <div mat-dialog-actions>
+
+            <div style="float:left;">
+                <button style="margin-left: 10px;" mat-raised-button color="primary" (click)="save()">Aceptar</button>
+                <button style="margin-left: 4px;" mat-raised-button color="accent" (click)="closeDialog()">Cancelar</button>
+            </div>
+        </div>
+
+    </mat-tab>
+
+</mat-tab-group>
+-->
+
+<br>
+<mat-form-field>
+    <input matInput placeholder="Nombre" [(ngModel)]="categorySelect.name">
+</mat-form-field>
+<br>
+
+<mat-form-field>
+    <input matInput placeholder="Descripcion" [(ngModel)]="categorySelect.description">
+</mat-form-field>
+<br>
+
+
+<div style="float:left;">
+    <button style="margin-left: 10px;" mat-raised-button color="primary" (click)="save()">Aceptar</button>
+    <button style="margin-left: 4px;" mat-raised-button color="accent" (click)="closeDialog()">Cancelar</button>
+</div>

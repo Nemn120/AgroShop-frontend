@@ -1,0 +1,19 @@
+<h2>Descripcion del producto!</h2>
+<mat-icon class="example-tab-icon" color="primary">info</mat-icon>
+
+<br>
+<mat-form-field>
+    <input matInput placeholder="Nombre" [(ngModel)]="this.data.name" readonly="readonly">
+
+</mat-form-field>
+<br>
+<mat-form-field appearance="legacy">
+    <input matInput placeholder="Descripcion" [(ngModel)]="this.data.description" readonly="readonly">
+</mat-form-field>
+<br>
+
+
+
+<div mat-dialog-actions>
+    <button mat-button (click)="closeDialog()">Cerrar</button>
+</div>
