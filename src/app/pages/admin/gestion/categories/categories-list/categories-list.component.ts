@@ -4,9 +4,11 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 
-import { RestService } from 'src/app/_service/rest.service';
 import { MatDialog } from '@angular/material/dialog';
+
+import { RestService } from 'src/app/_service/rest.service';
 import { SharedService } from 'src/app/_service/shared.service';
+
 import { CategoryProductBean } from '../../../../../_model/CategoryProductBean';
 import { CategoriesViewComponent } from '../categories-view/categories-view.component';
 import { CategoriesFormComponent } from '../categories-form/categories-form.component';
@@ -27,14 +29,13 @@ export class CategoriesListComponent implements OnInit {
 
   constructor(
     private restService: RestService,
+    private sharedService:SharedService,
     public dialog: MatDialog,
-    private sharedService:SharedService
   ) { }
 
   ngOnInit() {
    
     this.listCategories();
-
 
     this.restService.messageChange.subscribe(data => {
       console.log('messageChange: ',data);
@@ -45,7 +46,7 @@ export class CategoriesListComponent implements OnInit {
   }
 
 
-  //list listCategories
+  //list categories
   public listCategories() {
 
     let param = {
@@ -68,10 +69,12 @@ export class CategoriesListComponent implements OnInit {
 
   //new and update product
   newAndUpdateCategory(category?: CategoryProductBean) {
+
     let categorySelect = category != null ? category : new CategoryProductBean();
     this.dialog.open(CategoriesFormComponent, {
       data: categorySelect,
     });
+
   }
 
   //delete category
@@ -82,11 +85,10 @@ export class CategoriesListComponent implements OnInit {
         'id': category.id
       }
     }
-
     this.restService.requestApiRestData('categoryproduct/dcp', param).subscribe(data => {
       console.log('se elimino con exito!', data);
-      this.restService.message('Categoria eliminada con exito!', 'Delete');
       this.listCategories();
+      this.restService.message('Categoria eliminada con exito!', 'Delete');
     },error => {
       console.log("Error al eliminar categoria! ", error);
       this.restService.message('Error al eliminar categoria!', 'Error');
@@ -96,19 +98,22 @@ export class CategoriesListComponent implements OnInit {
 
   //view categoria
   viewCategory(categoria: CategoryProductBean){
+
     this.dialog.open(CategoriesViewComponent, {
       data: categoria
     });
+
   }
 
 //search categoria
   applyFilter(event: Event) {
+
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
-
     if (this.dataSource.paginator) {
       this.dataSource.paginator.firstPage();
     }
+
   }
 
 

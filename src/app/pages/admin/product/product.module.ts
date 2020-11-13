@@ -14,9 +14,11 @@ import { CategoriesViewComponent } from '../gestion/categories/categories-view/c
 const routes: Routes = [
   {
     path: '', component:WelcomeComponent},
-    //{path: 'list', component: ProductListComponent}
+
+   //{path: 'list', component: ProductListComponent}//gestion productos
+
     //temporal
-    {path: 'list', component: CategoriesListComponent}
+   {path: 'list', component: CategoriesListComponent}//gestion categorias
   
 ];
 

@@ -22,18 +22,13 @@ export class CategoriesViewComponent implements OnInit {
   labelFile: string;
 
   constructor(
-    private restService: RestService,
     public dialogRef: MatDialogRef<ProductViewComponent>,
     @Inject(MAT_DIALOG_DATA) public data: CategoryProductBean,
-
-    private sanitization: DomSanitizer,
-
   ) { }
 
   ngOnInit(): void {
-  
+    console.log('view: ',this.data);
   }
-
 
   closeDialog(): void {
     this.dialogRef.close();

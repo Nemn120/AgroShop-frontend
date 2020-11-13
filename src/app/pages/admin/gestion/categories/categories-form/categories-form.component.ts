@@ -1,7 +1,7 @@
 import { Component, OnInit ,Inject} from '@angular/core';
 
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { DomSanitizer } from '@angular/platform-browser';
+
 import { CategoryProductBean } from '../../../../../_model/CategoryProductBean';
 import { RestService } from 'src/app/_service/rest.service';
 import { SharedService } from 'src/app/_service/shared.service';
@@ -13,9 +13,8 @@ import { SharedService } from 'src/app/_service/shared.service';
 })
 export class CategoriesFormComponent implements OnInit {
 
-  titulo:string="Nuevo ";
+  titulo:string="Nueva ";
   categorySelect: CategoryProductBean;
-
 
   constructor(
     private restService: RestService,
@@ -23,11 +22,11 @@ export class CategoriesFormComponent implements OnInit {
 
     public dialogRef: MatDialogRef<CategoriesFormComponent>,
     @Inject(MAT_DIALOG_DATA) public data: CategoryProductBean,
+    
   ) { }
 
   ngOnInit(): void {
-   
-   
+
     this.categorySelect = new CategoryProductBean();
     this.categorySelect.userCreateId = this.sharedService.userSession.id;
     
