@@ -82,44 +82,6 @@ export class ProductListComponent implements OnInit {
     });
   }
 
-newProduct(){
-
-/*
-    let param = {
-      data: {
-        name: "Coliflor",
-        status: 'Desactivo',
-        userCreateId: 1,
-        category: {
-          id: 1
-        }
-      }
-    }
-
-    let currentFileUpload: File = new File([""], "blanco");
-    this.restService.requestApiRestData('product/sp', param, currentFileUpload).subscribe(result => {
-    let param={
-      data:1
-    
-      
-    }
-   
-  
-  let currentFileUpload:File = new File([""], "blanco");
-    this.restService.requestApiRestData('product/sp',param,currentFileUpload).subscribe(result=>{
-    //  this.restService.requestApiRestData('categoryproduct/gcp',{}).subscribe(result=>{  
-
-      console.log(result);
-      this.message('Producto agregado con exito!', 'Create');
-      this.listProduct();
-    },error => {
-      console.log("Error al agregar producto! ", error);
-      this.message('Error al agregar producto!', 'Error');
-    });
-*/
-  }
-
-
   //deleteProduct
   deleteProduct(product: ProductBean) {
 

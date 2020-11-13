@@ -47,6 +47,7 @@ export class ProductFormComponent implements OnInit {
     if (this.data.id > 0) {
       this.productSelect.id = this.data.id;
       this.productSelect.name = this.data.name;
+      this.productSelect.status = this.data.status;
       this.productSelect.description = this.data.description;
       this.productSelect.category = this.data.category;
 
@@ -146,37 +147,3 @@ export class ProductFormComponent implements OnInit {
   }
 
 }
-/*
-@PostMapping(path="/glpbf")
-	public GenericResponse<ProductEntity> getListProductByFarmer(@RequestBody GenericRequest<ProductEntity> request){
-		
-		GenericResponse<ProductEntity> response = new GenericResponse<ProductEntity>();
-		try {
-			response.setDatalist(productService.getListProductByFarmer(request.getData().getUserCreateId()));
-			response.setResponseMessage("productos mostrados exitosamente");
-			response.setFinalTimesTamp(LocalDateTime.now());
-			response.setResponseCode(AbstractResponse.SUCCESS);
-		}catch(Exception e) {
-			response.setResponseMessage("Error al mostrar productos");
-			response.setResponseCode(AbstractResponse.ERROR);
-		}
-		
-		return response;
-	}
-	
-	@PostMapping(path = "/gp", produces = MediaType.APPLICATION_OCTET_STREAM_VALUE)
-	public GenericResponse<byte[]> getPhoto(@RequestBody GenericRequest<ProductEntity> request) {
-		GenericResponse<byte[]> response = new GenericResponse<byte[]>();
-		try {
-			ProductEntity c = productService.getOneById(request.getId());
-			response.setData(c.getPhoto());
-			response.setResponseMessage("foto obtenida exitosamente");
-			response.setFinalTimesTamp(LocalDateTime.now());
-			response.setResponseCode(AbstractResponse.SUCCESS);
-		}catch(Exception e) {
-			response.setResponseMessage("Error al mostrar foto");
-			response.setResponseCode(AbstractResponse.ERROR);
-		}
-		
-		return response;
-	}*/
