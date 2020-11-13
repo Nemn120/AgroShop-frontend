@@ -5,6 +5,7 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { CategoryProductBean } from '../../../../../_model/CategoryProductBean';
 import { RestService } from 'src/app/_service/rest.service';
 import { SharedService } from 'src/app/_service/shared.service';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-categories-form',
@@ -16,39 +17,51 @@ export class CategoriesFormComponent implements OnInit {
   titulo:string="Nueva ";
   categorySelect: CategoryProductBean;
 
+  formulario:FormGroup;
+
   constructor(
     private restService: RestService,
     private sharedService:SharedService,
 
     public dialogRef: MatDialogRef<CategoriesFormComponent>,
     @Inject(MAT_DIALOG_DATA) public data: CategoryProductBean,
+
+    private builder:FormBuilder,
     
   ) { }
 
   ngOnInit(): void {
-
     this.categorySelect = new CategoryProductBean();
-    this.categorySelect.userCreateId = this.sharedService.userSession.id;
-    
-    console.log('categorySelect: ',this.categorySelect);
-   
-    if (this.data.id > 0) {
-      this.categorySelect.id = this.data.id;
-      this.categorySelect.name = this.data.name;
-      this.categorySelect.description = this.data.description;
+    this.crearFormulario();
+  }
 
+
+  crearFormulario(){
+    this.formulario=this.builder.group({
+      name:['',Validators.required],
+      description:[''],
+    });
+
+    if (this.data.id > 0) {
+      this.formulario.setValue({
+        name:this.data.name,
+        description:this.data.description,
+      });
       this.titulo="Actualizar ";
     }
-
-
   }
+
   save() {
-  
+    this.categorySelect=this.formulario.value as CategoryProductBean;
+    this.categorySelect.userCreateId=this.sharedService.userSession.id;
+    if(this.data.id > 0){
+      this.categorySelect.id=this.data.id;
+    }
+    console.log('guardar?: ',this.formulario.value);
     let param = {
       data: this.categorySelect,
     }
-
- 
+    
     this.restService.requestApiRestData('categoryproduct/scp', param,).subscribe(result => {
       console.log('result: ',result);
 
@@ -70,4 +83,9 @@ export class CategoriesFormComponent implements OnInit {
     this.dialogRef.close();
   }
 
+  getErrorMessage() {
+    if (this.formulario.controls['name'].hasError('required')) {
+      return 'Campo requerido';
+    }
+  }
 }

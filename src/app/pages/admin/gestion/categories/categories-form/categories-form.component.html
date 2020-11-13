@@ -1,17 +1,23 @@
 <h2>{{titulo}}Categoria</h2>
 
-<mat-form-field>
-    <mat-label>Nombre</mat-label>
-    <input matInput [(ngModel)]="categorySelect.name" placeholder="Ingresar nombre" required>
-</mat-form-field>
-<br>
-<mat-form-field>
-    <mat-label>Descripcion</mat-label>
-    <input matInput [(ngModel)]="categorySelect.description" placeholder="Ingresar descripcion">
-</mat-form-field>
-<br>
-<br>
+<div [formGroup]="formulario">
+    <div class="example-container">
+        <mat-form-field appearance="fill">
+            <mat-label>Nombre</mat-label>
+            <input matInput placeholder="Ingresar nombre" formControlName="name" required>
+            <!--<mat-error *ngIf="formulario.controls['name'].invalid">{{getErrorMessage()}}</mat-error>-->
+        </mat-form-field>
+    </div>
+    <div class="example-container">
+        <mat-form-field appearance="fill">
+            <mat-label>Descripcion</mat-label>
+            <input matInput placeholder="Ingresar descripcion" formControlName="description">
+        </mat-form-field>
+    </div>
+
+</div>
+
 <div style="text-align: center;">
-    <button mat-raised-button style="width: 50%;" color="primary" (click)="save()">Aceptar</button>
+    <button mat-raised-button style="width: 50%;" color="primary" [disabled]="!formulario.valid" (click)="save()">Aceptar</button>
     <button mat-raised-button style="width: 50%;" color="accent" (click)="closeDialog()">Cancelar</button>
 </div>
