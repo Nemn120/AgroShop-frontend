@@ -14,6 +14,8 @@ import { SharedService } from '../../../../_service/shared.service';
 })
 export class ProductFormComponent implements OnInit {
 
+  titulo:string="Nuevo ";
+
   productSelect: ProductBean;
   categorias: CategoryProductBean[];
   estados: String[]=['Activo','Desactivo'];
@@ -51,9 +53,6 @@ export class ProductFormComponent implements OnInit {
       this.productSelect.description = this.data.description;
       this.productSelect.category = this.data.category;
 
-    
-      
-    
       this.restService.getPhotoById(this.data.id).subscribe(data => {
         console.log('imagen: ',data);
         if (data.size > 0)
@@ -62,7 +61,7 @@ export class ProductFormComponent implements OnInit {
         console.log("Error al mostrar imagen! ", error);
         this.restService.message('Error al mostrar imagen!', 'Error');
       });
-  
+      this.titulo="Actualizar ";
     }
 
 

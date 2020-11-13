@@ -10,9 +10,6 @@ import { MatDialog } from '@angular/material/dialog';
 import { ProductViewComponent } from '../product-view/product-view.component';
 import { SharedService } from 'src/app/_service/shared.service';
 
-import { DriverBean } from 'src/app/_model/DriverBean';
-import { AuthService } from 'src/app/_service/auth.service';
-
 @Component({
   selector: 'app-product-list',
   templateUrl: './product-list.component.html',
@@ -49,7 +46,7 @@ export class ProductListComponent implements OnInit {
   //list product all
   //this.restService.requestApiRestData('product/gap',param)
 
-  //listProduct
+  //list products
   public listProduct() {
 
     let param = {
@@ -70,7 +67,7 @@ export class ProductListComponent implements OnInit {
   }
     
 
-  //newAndUpdateProduct
+  //new and update product
   newAndUpdateProduct(product?: ProductBean) {
     let productSelect = product != null ? product : new ProductBean();
     this.dialog.open(ProductFormComponent, {
@@ -80,7 +77,7 @@ export class ProductListComponent implements OnInit {
     });
   }
 
-  //deleteProduct
+  //delete product
   deleteProduct(product: ProductBean) {
 
     let param = {
@@ -101,6 +98,7 @@ export class ProductListComponent implements OnInit {
 
   }
 
+  //view product
   viewProduct(product: ProductBean){
     this.dialog.open(ProductViewComponent, {
      /* width: '30%',
@@ -109,7 +107,7 @@ export class ProductListComponent implements OnInit {
     });
   }
 
-//searchProduct
+//search product
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
