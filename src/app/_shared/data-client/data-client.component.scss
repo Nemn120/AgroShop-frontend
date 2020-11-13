@@ -19,3 +19,12 @@
 .close-dialog ::ng-deep .mat-button-focus-overlay {
     display: none;
 }
+
+.toolbar-search, mat-placeholder {
+    color: black;
+  }
+  
+  // Changes the underline and placeholder colour before input is selected
+  .mat-input-underline {
+      background-color: black;
+  }

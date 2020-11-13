@@ -70,54 +70,15 @@ export class CarDiaLogComponent implements OnInit {
         this.closeDialog();
         this.router.navigate(['auth/login']);
         return;
-      }
-      if(!this.orderDetailListSelect){//this.orderService.newOrder.address
-        this.sendOrderConfirm();
       }else{
         this.dialogo
         .open(DataClientComponent, {
           width:'25%',
           data: new OrderBean()
         })
-        .afterClosed()
-        .subscribe((confirmado) => {
-            if (confirmado){
-              this.sendOrderConfirm();
-            }       
-        });
-      }
+      }   
     } else {
       //alert('Seleccione algun producto');
     }
-  }
-  sendOrderConfirm():void{
-    console.log(this.orderDetailListSelect);
-    Swal.fire({
-      title: 'Esta seguro de enviar la orden?',
-      showClass: {
-        popup: 'animate__animated animate__fadeInDown'
-      },
-      hideClass: {
-        popup: 'animate__animated animate__fadeOutUp'
-      },
-      icon: 'warning',
-      showCancelButton: true,
-      allowOutsideClick:false,
-      confirmButtonColor: 'green',
-      cancelButtonColor: '#d33',
-      confirmButtonText: 'Generar orden'
-    }).then((result) => {
-      if (result.isConfirmed) {
-        Swal.fire(
-          'Se han registrado su orden',
-          'La orden ha sido enviada.',
-          'success'
-        );
-
-      }
-      this.closeDialog();
-    });
-
-
   }
 }

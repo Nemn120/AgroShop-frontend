@@ -17,8 +17,8 @@ export class OrderDetailComponent implements OnInit {
   nombre: string;
   address: string;
   phone: string;
-  costoTotal: number=0;
-  cantidadTotal:number=0;
+  costoTotal: number;
+  cantidadTotal:number;
   fechaCreacion: Date;
   fecha:string;
   constructor(

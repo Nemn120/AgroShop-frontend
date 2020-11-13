@@ -31,8 +31,11 @@
 }
 
 .car-button {
-    position: relative;
-    top: 40px;
+    position: absolute;
+    bottom: 0px;
+    width: 100%;
+    border-bottom: 20px;
+    padding-bottom: 20px;
 }
 input[type=number] {
     height: 30px;

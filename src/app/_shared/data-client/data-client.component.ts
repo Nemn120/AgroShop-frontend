@@ -20,6 +20,7 @@ export class DataClientComponent implements OnInit {
   address: FormControl;
   reference: FormControl;
   phone: FormControl;
+  maxDate: FormControl;
   title: string = "Lugar de entrega";
   buttonTitle: string = "Registrar";
   isUpdateOrder: boolean = false;
@@ -38,11 +39,12 @@ export class DataClientComponent implements OnInit {
     this.order = new OrderBean();
     this.order.address = this.form.value['address'];
     this.order.reference = this.form.value['reference'];
-    this.order.phone = this.form.value['phone']
+    this.order.phone = this.form.value['phone'];
+    //this.order.maxDate= this.form.value['maxDate'];
 
     // CUANDO ENVIA LA ORDEN
     Swal.fire({
-      title: 'Seguro de enviar sus datos?',
+      title: 'Esta seguro de enviar la orden?',
       showClass: {
         popup: 'animate__animated animate__fadeInDown'
       },
@@ -54,47 +56,27 @@ export class DataClientComponent implements OnInit {
       allowOutsideClick:false,
       confirmButtonColor: 'green',
       cancelButtonColor: '#d33',
-      confirmButtonText: 'Enviar datos'
+      confirmButtonText: 'Generar orden'
     }).then((result) => {
       if (result.isConfirmed) {
         Swal.fire(
-          'Se han registrado sus datos',
-          'Los datos se han enviado.',
+          'Se han registrado su orden',
+          'La orden ha sido enviada.',
           'success'
+          
         );
-        Swal.fire({
-          title: 'Esta seguro de enviar la orden?',
-          showClass: {
-            popup: 'animate__animated animate__fadeInDown'
-          },
-          hideClass: {
-            popup: 'animate__animated animate__fadeOutUp'
-          },
-          icon: 'warning',
-          showCancelButton: true,
-          allowOutsideClick:false,
-          confirmButtonColor: 'green',
-          cancelButtonColor: '#d33',
-          confirmButtonText: 'Generar orden'
-        }).then((result) => {
-          if (result.isConfirmed) {
-            //this.sendOrder(this.form.value.address,this.form.value.reference,this.form.value.phone);
-            Swal.fire(
-              'Se ha registrado su orden',
-              'La orden ha sido enviada.',
-              'success'
-            );
-    
-          }
-          this.cerrarDialogo();
+        this.cerrarDialogo();
+          //this.sendOrder(this.form.value.address,this.form.value.reference,this.form.value.phone);
+            
+         
           this.dialog.open(OrderDetailComponent, {
-          width:'25%',
+          width:'30%',
           data: new OrderBean()
         })
-        });
+        
 
       }
-      this.cerrarDialogo();
+      
     });
 
 
@@ -106,10 +88,12 @@ export class DataClientComponent implements OnInit {
     this.address = new FormControl(''),
       this.reference = new FormControl(''),
       this.phone = new FormControl(''),
+      this.maxDate= new FormControl(''),
       this.form = this.fb.group({
         'address': this.address,
         'reference': this.reference,
         'phone': this.phone,
+        'maxDate': this.maxDate,
       });
    
     
