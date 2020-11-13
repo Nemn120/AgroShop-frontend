@@ -51,7 +51,7 @@ export class NavbarPanelComponent implements OnInit{
     
     this.dialog.open(CarDiaLogComponent, {
       
-        width: '27%',//20%
+        width: '380px',//20%
         height: '100%',
         position: { right:'0px' }, 
        

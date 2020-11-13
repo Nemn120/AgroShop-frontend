@@ -105,7 +105,9 @@ export class CarDiaLogComponent implements OnInit {
       allowOutsideClick:false,
       confirmButtonColor: 'green',
       cancelButtonColor: '#d33',
-      confirmButtonText: 'Generar orden'
+      confirmButtonText: 'Generar orden',
+      width:'190px'
+      
     }).then((result) => {
       if (result.isConfirmed) {
         Swal.fire(
