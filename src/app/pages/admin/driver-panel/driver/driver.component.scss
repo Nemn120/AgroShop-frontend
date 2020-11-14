@@ -56,10 +56,17 @@ input::placeholder {
     padding-top: 15px;
 }
 
-mat-card {
-    background-color: #D9F3B9;
+.mat-card {
+    // background-color: #D9F3B9;
+    /* background-color: inherit;
+    border: none;
     box-sizing: border-box;
-    padding: 3%;
+    width: 50%; */
+    padding: 20px;
+    margin: 50px;
+    margin-top: 5%;
+    background-color: inherit;
+    box-shadow: none;
 }
 
 mat-select {
@@ -68,6 +75,10 @@ mat-select {
 
 .select-status {
     margin-top: 0.8rem;
+}
+
+table {
+    box-shadow: none;
 }
 
 .text {
@@ -84,5 +95,11 @@ th.mat-sort-header-sorted {
         width: 100%;
         max-width: 100%;
         overflow: auto;
+    }
+    .button-search {
+        padding-left: 0;
+    }
+    .header-search {
+        width: 100%;
     }
 }
