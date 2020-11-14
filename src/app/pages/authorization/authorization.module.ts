@@ -5,7 +5,7 @@ import { RegistryComponent } from './registry/registry.component';
 import { RouterModule, Routes } from '@angular/router';
 import { MaterialModule } from 'src/app/_material/material.module';
 import { DriverFormContainerComponent } from './registry/driver-form-container/driver-form-container.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 const routes: Routes = [
   {
@@ -19,7 +19,6 @@ const routes: Routes = [
   }
 ];
 
-
 @NgModule({
   declarations: [LoginComponent,RegistryComponent,DriverFormContainerComponent],
   imports: [
@@ -27,6 +26,9 @@ const routes: Routes = [
     MaterialModule,
     ReactiveFormsModule,
     RouterModule.forChild(routes),
+
+    ReactiveFormsModule,
+    FormsModule,
   ],
   exports:[
     LoginComponent, RegistryComponent,DriverFormContainerComponent

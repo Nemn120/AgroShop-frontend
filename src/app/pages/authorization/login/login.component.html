@@ -1,6 +1,16 @@
-<div class="layout-data2">
+<div class="toolbar">
+    <app-toolbar>
+    </app-toolbar>
+</div>
+<div style="background: #193B01;width: 100%;height: 90%;">
 
-    Ingresa
-    <button mat-button style="background-color:#37966F;float:right;color:white" (click)="login()">Ingresar</button>
-    <button mat-button style="background-color:#37966F;float:right;color:white" (click)="registry();">Registrate</button>
+    <div class="left-view">
+        <app-left-banner></app-left-banner>
+    </div>
+    <div class="central-view">
+        <app-central-view></app-central-view>
+    </div>
+    <div class="right-view">
+        <app-right-banner></app-right-banner>
+    </div>
 </div>

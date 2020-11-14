@@ -13,14 +13,10 @@ const routes: Routes = [
     path: 'company', loadChildren: () => import('./pages/admin/company/company.module').then(m => m.CompanyModule)
   },
   {
-    path: 'product', loadChildren: () => import('./pages/admin/product/product.module').then(m => m.ProductModule)
+    path: 'product', loadChildren: () => import('./pages/admin/product/product.module').then(m => m.ProductModule),
+    
   },
-  {
-    path: 'driver', loadChildren: () => import('./pages/admin/driver-panel/driver-panel.module').then(m => m.DriverPanelModule)
-  },
-  {
-    path: 'order', loadChildren: () => import('./pages/admin/order/order.module').then(m => m.OrderModule)
-  }
+  { path: 'vehicle', loadChildren: () => import('./pages/admin/driver/driver.module').then(m => m.DriverModule)}
   ]},
   {
     path: 'auth', loadChildren: () => import('./pages/authorization/authorization.module').then(m => m.AuthorizationModule)

@@ -1,0 +1,25 @@
+<div class="container">
+    <div style="width: 100%; position: relative;">
+        <mat-toolbar color="primary" class="title-component">
+            <p>Mis vehiculos</p>
+            <span class="flexExpand"></span>
+            <button mat-button class="vehicle-btn" (click)="newVehicle()">Registrar Vehiculo</button>
+        </mat-toolbar>
+    </div>
+    <div class="cards">
+        <mat-card *ngFor="let car of cars"> 
+            <mat-card-header>
+                <mat-card-title>{{car.vehicleModel}}</mat-card-title>
+                <mat-card-subtitle>Nro. Placa: {{car.plateNumber}}</mat-card-subtitle>
+            </mat-card-header>
+            <img mat-card-image [src]="car.photo" alt="carPhoto" >
+            <hr>
+            <mat-card-content>
+                Estado: {{car.statusCar}}
+            </mat-card-content>
+            <mat-card-actions>
+                <button mat-raised-button color="primary" (click)="moreDetails(car)">Más Datos</button>
+            </mat-card-actions>
+        </mat-card>
+    </div>
+</div>
