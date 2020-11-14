@@ -1,56 +1,62 @@
-<!--
-<h2>Descripcion del producto!</h2>
--->
 <mat-tab-group mat-align-tabs="center">
-    <!--<mat-tab label="First">-->
+
     <mat-tab>
         <ng-template mat-tab-label>
             <mat-icon class="example-tab-icon">info</mat-icon>
         </ng-template>
         <br>
-        <mat-form-field>
-            <input matInput placeholder="Nombre" [(ngModel)]="this.data.name" readonly="readonly">
+        <mat-form-field appearance="fill">
+            <mat-label>Nombre</mat-label>
+            <input matInput [(ngModel)]="this.data.name" readonly="readonly">
 
         </mat-form-field>
         <br>
-        <mat-form-field appearance="legacy">
-            <input matInput placeholder="Descripcion" [(ngModel)]="this.data.description" readonly="readonly">
+        <mat-form-field appearance="fill">
+            <mat-label>Descripcion</mat-label>
+            <input matInput [(ngModel)]="this.data.description" readonly="readonly">
         </mat-form-field>
         <br>
-        <mat-form-field>
-            <input matInput placeholder="Categoria" [(ngModel)]="this.data.category.name" readonly="readonly">
+        <mat-form-field appearance="fill">
+            <mat-label>Categoria</mat-label>
+            <input matInput [(ngModel)]="this.data.category.name" readonly="readonly">
         </mat-form-field>
-
-
-
-        <div mat-dialog-actions>
-            <button mat-button (click)="closeDialog()">Cerrar</button>
-        </div>
 
     </mat-tab>
+
     <mat-tab>
+
         <ng-template mat-tab-label>
-            <mat-icon class="example-tab-icon">info</mat-icon>
+            <mat-icon class="example-tab-icon">image</mat-icon>
         </ng-template>
-        <h1 mat-dialog-title></h1>
-        <div mat-dialog-content>
+        <!--
+        <br>
+        <mat-form-field appearance="fill">
+            <input matInput placeholder="Estado" [(ngModel)]="this.data.status" readonly="readonly">
+        </mat-form-field>
+        -->
+        <br>
+        <img mat-card-image [src]="imagenData" *ngIf="imagenEstado" style="display: block; width:180px ;height:180px;margin: auto;" />
+        <br>
 
-            <!--    
-        <button mat-button onclick="document.getElementById('flArchivo').click();">Seleccionar Archivo</button>
-        <input id="flArchivo" type="file" (change)="selectFile($event)" style="display: none">
-         -->
-            <mat-form-field>
-                <input matInput placeholder="Estado" [(ngModel)]="this.data.status" readonly="readonly">
-            </mat-form-field>
-            <br>
-            <img mat-card-image [src]="imagenData" *ngIf="imagenEstado" style="display: block; width:180px ;height:180px;margin: auto;" />
-            <p>{{labelFile}}</p>
-            <br>
+    </mat-tab>
 
-        </div>
-        <div mat-dialog-actions>
-            <button mat-button style="float:left;" (click)="closeDialog()">Cerrar</button>
-        </div>
+    <mat-tab>
+
+        <ng-template mat-tab-label>
+            <mat-icon class="example-tab-icon">schedule</mat-icon>
+        </ng-template>
+        <br>
+        <mat-form-field appearance="fill">
+            <mat-label>Fecha creacion</mat-label>
+            <input matInput type="datetime" [(ngModel)]="this.data.createDate" readonly="readonly">
+        </mat-form-field>
+        <br>
+        <mat-form-field appearance="fill">
+            <mat-label>Fecha actualizacion</mat-label>
+            <input matInput type="datetime-local" [(ngModel)]="this.data.updateDate" readonly="readonly">
+        </mat-form-field>
     </mat-tab>
 
 </mat-tab-group>
+
+<button mat-button style="width: 100%;" (click)="closeDialog()">Cerrar</button>

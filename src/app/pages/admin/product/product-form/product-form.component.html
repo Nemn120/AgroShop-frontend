@@ -1,18 +1,22 @@
 <h2>{{titulo}} Producto</h2>
 <mat-tab-group mat-align-tabs="center">
-    <mat-tab label="First">
-
-        <mat-form-field>
-            <!-- Los datos ingresados lo guarda en la variable -->
-            <input matInput placeholder="Nombre" [(ngModel)]="productSelect.name">
+    <mat-tab>
+        <ng-template mat-tab-label>
+            <mat-icon class="example-tab-icon">info</mat-icon>
+        </ng-template>
+        <br>
+        <mat-form-field appearance="fill">
+            <mat-label>Nombre</mat-label>
+            <input matInput [(ngModel)]="productSelect.name" placeholder="Ingresar nombre">
 
         </mat-form-field>
         <br>
-        <mat-form-field>
-            <input matInput placeholder="Descripcion" [(ngModel)]="productSelect.description" type="tel">
+        <mat-form-field appearance="fill">
+            <mat-label>Descripcion</mat-label>
+            <input matInput [(ngModel)]="productSelect.description" placeholder="Ingresar descripcion">
         </mat-form-field>
         <br>
-
+        <!--
         <mat-form-field>
             <mat-label>Estado</mat-label>
             <mat-select [(ngModel)]="productSelect.status">
@@ -22,6 +26,7 @@
             </mat-select>
         </mat-form-field>
         <br>
+        -->
         <mat-form-field appearance="fill">
             <mat-label>Categoria</mat-label>
             <mat-select [(ngModel)]="productSelect.category">
@@ -31,35 +36,25 @@
             </mat-select>
         </mat-form-field>
 
-
     </mat-tab>
-    <mat-tab label="Second">
 
-        <h1 mat-dialog-title></h1>
+    <mat-tab>
 
-        <div mat-dialog-content>
-
-            <br>
-            <div>
-                <button mat-button onclick="document.getElementById('flArchivo').click();">Seleccionar Archivo</button>
-                <input id="flArchivo" type="file" (change)="selectFile($event)" style="display: none">
-                <br>
-                <img mat-card-image [src]="imagenData" *ngIf="imagenEstado" style="display: block; width:180px ;height:180px;margin: auto;" />
-                <p>{{labelFile}}</p>
-                <br>
-            </div>
-            <br>
-        </div>
-
-        <div mat-dialog-actions>
-
-            <!--<button mat-button (click)="closeDialog()">Cerrar</button>-->
-            <div style="float:left;">
-                <button style="margin-left: 10px;" mat-raised-button color="primary" (click)="save()">Aceptar</button>
-                <button style="margin-left: 4px;" mat-raised-button color="accent" (click)="closeDialog()">Cancelar</button>
-            </div>
-        </div>
+        <ng-template mat-tab-label>
+            <mat-icon class="example-tab-icon">image</mat-icon>
+        </ng-template>
+        <br>
+        <button mat-button onclick="document.getElementById('flArchivo').click();" style="width: 100%;">Seleccionar Archivo</button>
+        <br>
+        <input id="flArchivo" type="file" (change)="selectFile($event)" style="display: none">
+        <br>
+        <img mat-card-image [src]="imagenData" *ngIf="imagenEstado" style="display: block; width:180px ;height:180px;margin: auto;" />
+        <p>{{labelFile}}</p>
+        <br>
 
     </mat-tab>
 
 </mat-tab-group>
+
+<button style="width: 50%;" mat-raised-button color="primary" (click)="save()">Aceptar</button>
+<button style="width: 50%;" mat-raised-button color="accent" (click)="closeDialog()">Cancelar</button>
