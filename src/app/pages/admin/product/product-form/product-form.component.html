@@ -49,6 +49,7 @@
         <input id="flArchivo" type="file" (change)="selectFile($event)" style="display: none">
         <br>
         <img mat-card-image [src]="imagenData" *ngIf="imagenEstado" style="display: block; width:180px ;height:180px;margin: auto;" />
+        <img mat-card-image src="/assets/images/sin-imagen.jpg" *ngIf="!imagenEstado" style="display: block; width:180px ;height:160px;margin: auto;" />
         <p>{{labelFile}}</p>
         <br>
 
