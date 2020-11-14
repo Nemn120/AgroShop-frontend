@@ -9,6 +9,6 @@ export class OrderDetailBean extends MainBean{
     quantity:number;
     total:number;
     productSales:ProductSalesBean;
-    _photo:any; 
+    _foto:any; 
     _isFoto: boolean;   
 }

@@ -44,7 +44,7 @@ export class OrderStoreCardComponent implements OnInit {
     orderDetailSelect.price=this.productSales.price;
     orderDetailSelect.total=this.productSales.quantitySelect*this.productSales.price;
     orderDetailSelect._isFoto=this.productSales.product._isFoto;
-    orderDetailSelect._photo=this.productSales.product._foto;
+    orderDetailSelect._foto=this.productSales.product._foto;
     this.orderService.addProductToCar(orderDetailSelect);
     this.sharedData.messageChange.next("Se agrego "+this.productSales.quantitySelect+" unidades al carrito");
     this.productSales.quantitySelect=null;

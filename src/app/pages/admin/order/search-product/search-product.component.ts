@@ -71,30 +71,6 @@ export class SearchProductComponent implements OnInit {
     return this.sanitization.bypassSecurityTrustResourceUrl(data);
   }
 
-  addProduct(){
-    if(this.productSales.quantitySelect>this.productSales.totalQuantity){
-      this.sharedData.messageChange.next("La cantidad ingresada supera a la cantidad disponible")
-      this.productSales.quantitySelect=null;
-    }else{
-      let orderDetailSelect= new OrderDetailBean();
-    if(this.productSales.quantitySelect == null)
-      this.productSales.quantitySelect=1;
-    orderDetailSelect.quantity=Number(this.productSales.quantitySelect);
-    orderDetailSelect.productSales=new ProductSalesBean();
-    orderDetailSelect.productSales.id=this.productSales.id;
-    orderDetailSelect.productSales.availableQuantity=this.productSales.availableQuantity;
-
-    orderDetailSelect.productSales.product=new ProductBean();
-    orderDetailSelect.productSales.product.id=this.productSales.product.id;
-    orderDetailSelect.productSales.product.name=this.productSales.product.name;
-    orderDetailSelect.price=this.productSales.price;
-    orderDetailSelect.total=this.productSales.quantitySelect*this.productSales.price;
-    this.orderService.addProductToCar(orderDetailSelect);
-    this.sharedData.messageChange.next("Se agrego "+this.productSales.quantitySelect+" unidades al carrito");
-    this.productSales.quantitySelect=null;
-
-    }
-
-  }
+  
 
 }
