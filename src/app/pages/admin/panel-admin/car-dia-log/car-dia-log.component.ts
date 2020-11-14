@@ -32,6 +32,7 @@ export class CarDiaLogComponent implements OnInit {
   selectedFiles: FileList;
   currentFileUpload: File;
   labelFile: string;
+  sendOrderCar: OrderBean;
   constructor( public dialogo: MatDialog,
     public dialog: MatDialogRef<CarDiaLogComponent>,
     public orderService:OrderService,
@@ -84,13 +85,59 @@ export class CarDiaLogComponent implements OnInit {
           width:'25%',
           data: new OrderBean()
         })
+        .afterClosed()
+        .subscribe((confirmado) => {
+            if (confirmado){
+              this.sendOrderConfirm();
+            }       
+        });
       }   
     } else {
       //alert('Seleccione algun producto');
     }
   }
 
-  
+  sendOrderConfirm(){
+    Swal.fire({
+      title: 'Esta seguro de enviar la orden?',
+      showClass: {
+        popup: 'animate__animated animate__fadeInDown'
+      },
+      hideClass: {
+        popup: 'animate__animated animate__fadeOutUp'
+      },
+      icon: 'warning',
+      showCancelButton: true,
+      allowOutsideClick:false,
+      confirmButtonColor: 'green',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Generar orden'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.sendOrderCar = new OrderBean();
+              this.sendOrderCar = this.orderService.newOrder;
+              this.sendOrderCar.orderDetailList = [];
+              this.orderDetailListSelect.forEach(x => {
+                this.sendOrderCar.orderDetailList.push(x);
+                this.orderService.totalQuantity--;
+              });
+        Swal.fire(
+          'Se ha registrado su orden',
+          'La orden ha sido enviada.',
+          'success'
+          
+        );
+        this.closeDialog();
+          this.dialogo.open(OrderDetailComponent, {
+          width:'30%',
+          data: new OrderBean()
+        })
+        
+
+      }
+      
+    });
+  }
 
  
 }
