@@ -3,13 +3,14 @@ import { CommonModule } from '@angular/common';
 import { DriverComponent } from './driver/driver.component';
 import { RouterModule, Routes } from '@angular/router';
 import { MaterialModule } from 'src/app/_material/material.module';
+import { InfoDriverComponent } from './info-driver/info-driver.component';
 
 const routes: Routes = [
-  { path: 'list', component: DriverComponent }
+  { path: '', component: DriverComponent }
 ];
 
 @NgModule({
-  declarations: [DriverComponent],
+  declarations: [DriverComponent, InfoDriverComponent],
   imports: [
     CommonModule,
     MaterialModule,
@@ -17,6 +18,7 @@ const routes: Routes = [
   ],
   exports: [
     RouterModule
-  ]
+  ],
+  entryComponents: [InfoDriverComponent]
 })
 export class DriverPanelModule { }

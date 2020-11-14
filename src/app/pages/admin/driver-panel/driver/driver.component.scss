@@ -26,6 +26,12 @@
     margin-bottom: 1rem;
 }
 
+.icon-info {
+    background-color: #D9F3B9;
+    border-radius: 50px;
+    cursor: pointer;
+}
+
 .icon-search {
     color: #BBDF9D;
 }
@@ -62,7 +68,6 @@ mat-select {
 
 .select-status {
     margin-top: 0.8rem;
-    margin-right: 2rem;
 }
 
 .text {
@@ -72,4 +77,12 @@ mat-select {
 
 th.mat-sort-header-sorted {
     color: black;
+}
+
+@media (max-width: 500px) {
+    .example-container {
+        width: 100%;
+        max-width: 100%;
+        overflow: auto;
+    }
 }

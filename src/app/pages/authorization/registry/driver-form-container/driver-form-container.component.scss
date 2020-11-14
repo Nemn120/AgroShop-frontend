@@ -1,0 +1,69 @@
+@import url('https://fonts.googleapis.com/css2?family=Itim&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
+
+*{
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+/*
+.registry-container{
+  //height: 100%;
+  //width: 500px;
+  background-color: #d5fbdb;
+}
+*/
+
+.title{
+  text-align: center;
+  font-family: 'Lobster', cursive;
+  font-size: 80px;
+
+  height: 20%;
+  margin-bottom: 20px;
+}
+
+.title-registry{
+  text-align: center;
+  font-family: 'Lobster', cursive;
+  font-size: 50px;
+
+  height: 20%;
+  margin-bottom: 10px;
+}
+
+.title-farmer{
+  text-align: center;
+  font-family: 'Itim', cursive;
+  font-size: 30px;
+
+  height: 20%;
+  margin-bottom: 30px;
+}
+
+.registry-form{
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  height: 400px;
+}
+
+.mat-form-field{
+
+  margin-bottom: 20px;
+  width: 400px;
+  height: 40px;
+}
+
+.example-button-row{
+  height: 40px;
+  margin-top:30px;
+}
+
+
+.mat-button{
+  float: right;
+  width: 120px;
+  font-size: 20px;
+}

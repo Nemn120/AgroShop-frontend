@@ -1,0 +1,20 @@
+<!-- <mat-dialog-actions align="end">
+    <button mat-button mat-dialog-close cdkFocusInitial>X</button>
+</mat-dialog-actions> -->
+<div class="container">
+    <h1 mat-dialog-title>{{data.user.name}} {{data.user.lastName}}</h1>
+    <div>
+        <img class="perfil-img" src="../../../../../assets/images/user.png">
+    </div>
+    <div mat-dialog-content>
+        <p>FECHA DE REGISTRO: {{data.createDate | date}}</p>
+        <p>DIRECCIÓN: {{data.user.address}}</p>
+        <p>{{data.user.email}}</p>
+        <p>CELULAR: {{data.user.cellPhone}}</p>
+        <p>LICENCIA: {{data.driverLicenseNumber}}</p>
+        <p>ESTADO: {{data.status}}</p>
+        <p>CALIFICACIÓN: {{data.qualification}}</p>
+        <p>EXPERIENCIA: {{data.yearsOfExperience}}</p>
+        <p>DNI: {{data.user.documentNumber}}</p>
+    </div>
+</div>

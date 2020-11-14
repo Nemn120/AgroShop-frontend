@@ -32,11 +32,11 @@ export class NavbarPanelComponent implements OnInit{
       this.cantidad=data;
     })
 
-  
+
   }
 
   ngOnInit(){
-   
+
   }
   public openMenu(): void {
     this.isMenuOpened = !this.isMenuOpened;
@@ -44,17 +44,21 @@ export class NavbarPanelComponent implements OnInit{
   }
 
   public signOut(): void {
-   this.userService.closeSession();
+   //this.userService.closeSession();
   }
 
+
+  public showProduct(nameProduct: string): void{
+  this.router.navigate(['order/search',nameProduct]);
+}
   openDialogCar(){
-    
+
     this.dialog.open(CarDiaLogComponent, {
       
         width: '27%',//20%
         height: '100%',
-        position: { right:'0px' }, 
-       
+        position: { right:'0px' },
+
       });
   }
 

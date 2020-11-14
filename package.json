@@ -51,7 +51,7 @@
         "ngx-mapbox-gl": "^4.8.1",
         "path": "^0.12.7",
         "rxjs": "~6.5.4",
-        "sweetalert2": "^10.9.0",
+        "sweetalert2": "^10.9.1",
         "tslib": "^1.10.0",
         "typescript": "~3.7.5",
         "web-animations-js": "^2.3.2",

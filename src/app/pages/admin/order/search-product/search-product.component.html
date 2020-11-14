@@ -1,0 +1,15 @@
+<div class="layout-data2">
+  RESULTADOS ENCONTRADOS
+</div>
+<div class="layout-data">
+  <div class="body-item">
+      <div class="grid-item" *ngFor="let farmer of farmerWithProductsList">
+        <div class="grid-item" *ngFor="let products of farmer._listOfProductsShowed">
+
+            <app-order-store-card [productSales]="products">
+            </app-order-store-card>
+
+        </div>
+      </div>
+  </div>
+</div>
