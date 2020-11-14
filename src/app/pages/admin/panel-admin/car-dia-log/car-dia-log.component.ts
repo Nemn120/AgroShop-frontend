@@ -11,7 +11,9 @@ import { OrderDetailComponent } from 'src/app/_shared/order-detail/order-detail.
 import { OrderService } from 'src/app/_service/order.service';
 import { OrderDetailBean } from 'src/app/_model/OrderDetailBean';
 import { SharedService } from 'src/app/_service/shared.service';
+import { RestService } from 'src/app/_service/rest.service';
 import { DialogoConfirmacionComponent } from 'src/app/_shared/dialogo-confirmacion/dialogo-confirmacion.component';
+import { ProductSalesBean } from 'src/app/_model/ProductSalesBean';
 
 
 @Component({
@@ -24,6 +26,12 @@ export class CarDiaLogComponent implements OnInit {
   
   orderDetailListSelect:OrderDetailBean[]=[];
   totalPrice:number=0;
+  productSelect: ProductSalesBean;
+  imagenData: any;
+  imagenEstado: boolean = false;
+  selectedFiles: FileList;
+  currentFileUpload: File;
+  labelFile: string;
   constructor( public dialogo: MatDialog,
     public dialog: MatDialogRef<CarDiaLogComponent>,
     public orderService:OrderService,
@@ -81,4 +89,8 @@ export class CarDiaLogComponent implements OnInit {
       //alert('Seleccione algun producto');
     }
   }
+
+  
+
+ 
 }
