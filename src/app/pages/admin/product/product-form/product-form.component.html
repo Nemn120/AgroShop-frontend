@@ -1,1 +1,61 @@
-<p>product-form works!</p>
+<h2>{{titulo}} Producto</h2>
+<mat-tab-group mat-align-tabs="center">
+    <mat-tab>
+        <ng-template mat-tab-label>
+            <mat-icon class="example-tab-icon">info</mat-icon>
+        </ng-template>
+        <br>
+        <mat-form-field>
+            <mat-label>Nombre</mat-label>
+            <input matInput [(ngModel)]="productSelect.name" placeholder="Ingresar nombre">
+
+        </mat-form-field>
+        <br>
+        <mat-form-field>
+            <mat-label>Descripcion</mat-label>
+            <input matInput [(ngModel)]="productSelect.description" placeholder="Ingresar descripcion">
+        </mat-form-field>
+        <br>
+        <!--
+        <mat-form-field>
+            <mat-label>Estado</mat-label>
+            <mat-select [(ngModel)]="productSelect.status">
+                <mat-option *ngFor="let e of estados" [value]="e">
+                    {{e}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+        <br>
+        -->
+        <mat-form-field>
+            <mat-label>Categoria</mat-label>
+            <mat-select [(ngModel)]="productSelect.category">
+                <mat-option *ngFor="let cat of categorias" [value]="cat">
+                    {{cat.name}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+
+
+    </mat-tab>
+
+    <mat-tab>
+
+        <ng-template mat-tab-label>
+            <mat-icon class="example-tab-icon">image</mat-icon>
+        </ng-template>
+        <br>
+        <button mat-button onclick="document.getElementById('flArchivo').click();" style="width: 100%;">Seleccionar Archivo</button>
+        <br>
+        <input id="flArchivo" type="file" (change)="selectFile($event)" style="display: none">
+        <img mat-card-image [src]="imagenData" *ngIf="imagenEstado" style="display: block; width:180px ;height:180px;margin: auto;" />
+        <img mat-card-image src="/assets/images/sin-imagen.jpg" *ngIf="!imagenEstado" style="display: block; width:180px ;height:160px;margin: auto;" />
+        <p>{{labelFile}}</p>
+
+
+    </mat-tab>
+
+</mat-tab-group>
+
+<button style="width: 50%;" mat-raised-button color="primary" (click)="save()">Aceptar</button>
+<button style="width: 50%;" mat-raised-button color="accent" (click)="closeDialog()">Cancelar</button>

@@ -1,35 +1,77 @@
 <div class="layout-data2">
-    Mis productos
-    <button mat-button style="background-color:#37966F;float:right;color:white" (click)="getProduct()">Agregar</button>
+    Mis Productos!
+    <button mat-button style="background-color:#37966F;float:right;color:white" (click)="newAndUpdateProduct()">Agregar</button>
 </div>
 <div class="layout-data">
-    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
-        <!-- Position Column -->
-        <ng-container matColumnDef="position">
-            <th mat-header-cell *matHeaderCellDef> No. </th>
-            <td mat-cell *matCellDef="let element"> {{element.position}} </td>
-        </ng-container>
 
-        <!-- Name Column -->
-        <ng-container matColumnDef="name">
-            <th mat-header-cell *matHeaderCellDef> Name </th>
-            <td mat-cell *matCellDef="let element"> {{element.name}} </td>
-        </ng-container>
+    <mat-form-field>
+        <mat-label>Buscar producto</mat-label>
+        <input matInput (keyup)="applyFilter($event)" placeholder="Ingresar nombre a buscar" #input>
+    </mat-form-field>
 
-        <!-- Weight Column -->
-        <ng-container matColumnDef="weight">
-            <th mat-header-cell *matHeaderCellDef> Weight </th>
-            <td mat-cell *matCellDef="let element"> {{element.weight}} </td>
-        </ng-container>
+    <div class="mat-elevation-z8">
+        <table mat-table [dataSource]="dataSource" matSort>
 
-        <!-- Symbol Column -->
-        <ng-container matColumnDef="symbol">
-            <th mat-header-cell *matHeaderCellDef> Symbol </th>
-            <td mat-cell *matCellDef="let element"> {{element.symbol}} </td>
-        </ng-container>
+            <!-- ID Column -->
+            <ng-container matColumnDef="id">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> ID </th>
+                <td mat-cell *matCellDef="let row"> {{row.id}} </td>
+            </ng-container>
 
-        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-    </table>
 
+
+            <!-- Name Column -->
+            <ng-container matColumnDef="name">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Nombre </th>
+                <td mat-cell *matCellDef="let row"> {{row.name}} </td>
+            </ng-container>
+
+            <!-- Description Column -->
+            <ng-container matColumnDef="description">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Descripcion </th>
+                <td mat-cell *matCellDef="let row"> {{row.description}} </td>
+            </ng-container>
+            <!-- 
+            <ng-container matColumnDef="status">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Estado </th>
+                <td mat-cell *matCellDef="let row">
+                    <mat-chip-list aria-label="Fish selection">
+                        <mat-chip *ngIf="row.status=='Activo'" style="background: rgb(16, 255, 36);">
+                            {{row.status}}</mat-chip>
+                        <mat-chip *ngIf="row.status=='Desactivo'" style="background: rgb(255, 0, 0);">
+                            {{row.status}}</mat-chip>
+                    </mat-chip-list>
+                </td>
+            </ng-container>
+            -->
+            <!-- Color Column -->
+            <ng-container matColumnDef="actions">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Acciones </th>
+                <td mat-cell *matCellDef="let row">
+                    <!--[style.color]="'gray'"-->
+                    <button mat-icon-button (click)="viewProduct(row)">
+            <mat-icon>search</mat-icon>
+          </button>
+                    <!--[style.color]="'green'"-->
+                    <button mat-icon-button (click)="newAndUpdateProduct(row)">
+            <mat-icon>edit</mat-icon>
+          </button>
+                    <!--[style.color]="'maroon'"-->
+                    <button mat-icon-button (click)="deleteProduct(row)">
+            <mat-icon>delete</mat-icon>
+          </button>
+                </td>
+            </ng-container>
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+            <!-- Row shown when there is no matching data. -->
+            <tr class="mat-row" *matNoDataRow>
+                <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
+            </tr>
+        </table>
+
+        <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+    </div>
 </div>

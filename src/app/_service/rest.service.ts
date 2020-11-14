@@ -1,15 +1,16 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Router } from '@angular/router';
 import { environment } from 'src/environments/environment';
-
+import { MessageBean } from './../_model/MessageBean';
+import { Subject } from 'rxjs';
 
 import { MatSnackBar } from '@angular/material/snack-bar';
-
 @Injectable({
   providedIn: 'root'
 })
 export class RestService {
+
+  messageChange = new Subject<MessageBean>();
 
   urlHost: string = environment.HOST+'/';
 
@@ -18,7 +19,6 @@ export class RestService {
     private _snackBar: MatSnackBar,
   ){ }
 
-   
    requestApiRestData(path:string, param:any,file?:File){
      let paramApi;
      if(file){
@@ -33,6 +33,12 @@ export class RestService {
      path=this.urlHost.concat(path);
     return this.http.post<any>(path,paramApi);
    }
+
+   getPhotoById(id: number) {
+    return this.http.get(`${this.urlHost}product/gp/${id}`, {
+      responseType: 'blob'
+    });
+  }
 
    //messages
   message(message: string, action: string) {
