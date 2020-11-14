@@ -17,8 +17,7 @@ export class RestService {
   constructor(
     private http: HttpClient,
     private _snackBar: MatSnackBar,
-    )
-   { }
+  ){ }
 
    requestApiRestData(path:string, param:any,file?:File){
      let paramApi;

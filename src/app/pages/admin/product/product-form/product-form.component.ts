@@ -14,6 +14,7 @@ import { SharedService } from '../../../../_service/shared.service';
 })
 export class ProductFormComponent implements OnInit {
 
+  selected = 'option2';
   titulo:string="Nuevo ";
 
   productSelect: ProductBean;
@@ -49,7 +50,7 @@ export class ProductFormComponent implements OnInit {
     if (this.data.id > 0) {
       this.productSelect.id = this.data.id;
       this.productSelect.name = this.data.name;
-      this.productSelect.status = this.data.status;
+      //this.productSelect.status = this.data.status;
       this.productSelect.description = this.data.description;
       this.productSelect.category = this.data.category;
 
@@ -67,20 +68,7 @@ export class ProductFormComponent implements OnInit {
 
   }
   save() {
-    /*
-    let param = {
-      data: {
-        id: 28,
-        name: "Sal",
-        status: 'Activo',
-        userCreateId: 1,
-        category: {
-          id: 1
-        }
-      }
-    }*/
-    
-   
+
     let param = {
       data: this.productSelect,
     }

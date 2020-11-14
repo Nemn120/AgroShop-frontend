@@ -2,6 +2,7 @@ import { Component, OnInit ,Inject} from '@angular/core';
 
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { DomSanitizer } from '@angular/platform-browser';
+import { CategoryProductBean } from 'src/app/_model/CategoryProductBean';
 import { ProductBean } from '../../../../_model/ProductBean';
 import { RestService } from '../../../../_service/rest.service';
 
@@ -30,7 +31,9 @@ export class ProductViewComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    console.log('view: ',this.data);
+    console.log('view1: ',this.data);
+    this.validarCategoriaNula();
+    console.log('view2: ',this.data);
 
     this.restService.getPhotoById(this.data.id).subscribe(data => {
       console.log('imagen: ',data);
@@ -43,6 +46,11 @@ export class ProductViewComponent implements OnInit {
 
   }
 
+  validarCategoriaNula(){
+    if(this.data.category==null){
+      this.data.category=new CategoryProductBean();
+    }
+  }
 
   closeDialog(): void {
     this.dialogRef.close();

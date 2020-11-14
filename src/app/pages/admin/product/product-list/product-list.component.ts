@@ -17,7 +17,7 @@ import { SharedService } from 'src/app/_service/shared.service';
 })
 export class ProductListComponent implements OnInit {
 
-  displayedColumns: string[] = ['id', 'name', 'status', 'actions'];
+  displayedColumns: string[] = ['id', 'name', 'description', 'actions'];
   dataSource: MatTableDataSource<ProductBean>;
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
