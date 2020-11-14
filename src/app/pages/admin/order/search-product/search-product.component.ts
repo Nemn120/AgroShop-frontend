@@ -31,6 +31,7 @@ export class SearchProductComponent implements OnInit {
     this.productSearch.product = new ProductBean();
     this._activatedRoute.params.subscribe(params=>{
       this.productSearch.product.name=params['nameProduct'];
+      this.farmerWithProductsList = [];
       const param = {
         data: this.productSearch
       }

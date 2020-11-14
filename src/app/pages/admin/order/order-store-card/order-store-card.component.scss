@@ -58,6 +58,8 @@
             display: inline-flex;
             .input-quantity {
                 // height: 40px;
+                position: relative;
+                bottom: 15px;
                 vertical-align: middle;
                 display: inline;
                 border: 1px solid #ebebed;
