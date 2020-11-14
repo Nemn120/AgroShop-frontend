@@ -42,7 +42,7 @@ export class NewVehicleComponent implements OnInit {
       data : this.vehicle
     }
     this.restService.requestApiRestData('vehicle/sv',param,this.currentFileUpload).subscribe(result => {
-      console.log(result);
+      this.restService.messageChange.next({ message: 'Producto agregado con exito!', action: "Create" });
     })
   }
 

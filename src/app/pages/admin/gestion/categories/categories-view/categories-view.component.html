@@ -1,0 +1,42 @@
+<mat-tab-group mat-align-tabs="center">
+
+    <mat-tab>
+
+        <ng-template mat-tab-label>
+            <mat-icon class="example-tab-icon">info</mat-icon>
+        </ng-template>
+        <br>
+        <mat-form-field appearance="fill">
+            <mat-label>Nombre</mat-label>
+            <input matInput [(ngModel)]="this.data.name" readonly="readonly">
+        </mat-form-field>
+        <br>
+        <mat-form-field appearance="fill">
+            <mat-label>Descripcion</mat-label>
+            <input matInput [(ngModel)]="this.data.description" readonly="readonly">
+        </mat-form-field>
+
+    </mat-tab>
+
+    <mat-tab>
+
+        <ng-template mat-tab-label>
+            <mat-icon class="example-tab-icon">schedule</mat-icon>
+        </ng-template>
+        <br>
+        <mat-form-field appearance="fill">
+            <mat-label>Fecha creacion</mat-label>
+            <input matInput type="datetime" [(ngModel)]="this.data.createDate" readonly="readonly">
+
+        </mat-form-field>
+        <br>
+        <mat-form-field appearance="fill">
+            <mat-label>Fecha actualizacion</mat-label>
+            <input matInput type="datetime-local" [(ngModel)]="this.data.updateDate" readonly="readonly">
+        </mat-form-field>
+
+    </mat-tab>
+</mat-tab-group>
+
+<br>
+<button mat-button style="width: 100%;" (click)="closeDialog()">Cerrar</button>

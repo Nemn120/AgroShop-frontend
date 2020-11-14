@@ -28,6 +28,16 @@ export class VehicleComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.listVehicle();
+    this.restService.messageChange.subscribe(data => {
+      this.listVehicle();
+      this.restService.message(data.message, data.action);
+      console.log(data);
+    });
+
+  }
+
+  listVehicle(){
     this.idUser = this.sharedService.userSession.id;
     let param = {
       data:{

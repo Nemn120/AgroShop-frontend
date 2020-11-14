@@ -1,10 +1,8 @@
 
 .title-component{
-    min-height: 50px;
-    width: 100%;
-    flex-wrap: nowrap;
-    position: fixed;
+    height: 50px;
     z-index: 2;
+    display: flex;
 }
 
 .vehicle-btn{
@@ -17,8 +15,14 @@
     flex: 1 1 auto;
 }
 
+.cards{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
 .container{
-    margin-top: 60px;
     width: 100%;
     display: flex;
     justify-content: center;
