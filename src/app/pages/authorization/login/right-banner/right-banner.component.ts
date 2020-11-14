@@ -6,6 +6,7 @@ export interface Tile {
   cols: number;
   rows: number;
   text: string;
+  src:string;
 }
 @Component({
   selector: 'app-right-banner',
@@ -16,10 +17,14 @@ export class RightBannerComponent implements OnInit {
 
   
   tiles: Tile[] = [
-    {text: 'One', cols: 3, rows: 1, color: 'lightblue'},
-    {text: 'Two', cols: 1, rows: 2, color: 'lightgreen'},
-    {text: 'Three', cols: 1, rows: 1, color: 'lightpink'},
-    {text: 'Four', cols: 2, rows: 1, color: '#DDBDF1'},
+    {text: 'One', cols: 3, rows: 1, color: '#193B01',src:'/assets/images/login/vegetables/avocado.svg'},
+    {text: 'Two', cols: 1, rows: 2, color: '#193B01',src:'/assets/images/login/vegetables/broccol.svg'},
+    {text: 'Three', cols: 1, rows: 1, color: '#193B01',src:'/assets/images/login/vegetables/Carrot.svg'},
+    {text: 'Four', cols: 2, rows: 1, color: '#193B01',src:'/assets/images/login/vegetables/lettuce.svg'},
+    {text: 'One', cols: 3, rows: 1, color: '#193B01',src:'/assets/images/login/vegetables/potato.svg'},
+    {text: 'Two', cols: 1, rows: 2, color: '#193B01',src:'/assets/images/login/vegetables/onion.svg'},
+    {text: 'Three', cols: 1, rows: 1, color: '#193B01',src:'/assets/images/login/vegetables/peas.svg'},
+    {text: 'Four', cols: 2, rows: 1, color: '#193B01',src:'/assets/images/login/vegetables/tomato.svg'},
   ];
   
   constructor() { }
