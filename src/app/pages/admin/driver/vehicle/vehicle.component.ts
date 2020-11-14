@@ -32,7 +32,6 @@ export class VehicleComponent implements OnInit {
     this.restService.messageChange.subscribe(data => {
       this.listVehicle();
       this.restService.message(data.message, data.action);
-      console.log(data);
     });
 
   }
@@ -47,7 +46,7 @@ export class VehicleComponent implements OnInit {
       }
     }
     this.restService.requestApiRestData('vehicle/gvlbd',param).subscribe(result =>{
-      console.log(param);
+      console.log("Vehiculos mostrados: ",result);
       this.convertir(result.datalist);
       this.cars = result.datalist;
     })
@@ -65,7 +64,6 @@ export class VehicleComponent implements OnInit {
 
   newVehicle(){
     let dialogConfig = new MatDialogConfig();
-    dialogConfig.autoFocus = true;
     dialogConfig.width = "60%";
     dialogConfig.minHeight = "40%";
     dialogConfig.minWidth = "370px";

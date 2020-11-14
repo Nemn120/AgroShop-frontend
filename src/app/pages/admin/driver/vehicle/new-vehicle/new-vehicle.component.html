@@ -3,71 +3,76 @@
         <mat-card-title>Ingrese su vehiculo</mat-card-title>
         <hr>
         <br>
-
-<div style="display: flex; flex-wrap: wrap; justify-content: center;">
-    <mat-form-field class="example-full-width" appearance="outline">
-        <mat-label>Numero de placa</mat-label>
-        <input matInput [(ngModel)]="this.vehicle.plateNumber" name="plateNumber" required>
-    </mat-form-field>
-    <mat-form-field class="example-full-width" appearance="outline">
-        <mat-label>Numero de serie</mat-label>
-        <input matInput [(ngModel)]="this.vehicle.serialNumber" name="serialNumber" required>
-    </mat-form-field>
-    <mat-form-field class="example-full-width" appearance="outline">
-        <mat-label>Marca del vehiculo</mat-label>
-        <input matInput [(ngModel)]="this.vehicle.vehicleBrand" name="vehicleBrand" required>
-    </mat-form-field>
-    <mat-form-field class="example-full-width" appearance="outline">
-        <mat-label>Modelo del vehiculo</mat-label>
-        <input matInput [(ngModel)]="this.vehicle.vehicleModel" name="vehicleModel" required>
-    </mat-form-field>
-    <mat-form-field class="example-full-width" appearance="outline">
-        <mat-label>Año de uso</mat-label>
-        <input matInput [(ngModel)]="this.vehicle.yearsOfUse" name="yearsOfUse" type="number" required>
-    </mat-form-field>
-    <mat-form-field class="example-full-width" appearance="outline">
-        <mat-label>Tipo de combustible</mat-label>
-        <input matInput [(ngModel)]="this.vehicle.fuelType" name="fuelType" required>
-    </mat-form-field>   
-    <mat-form-field class="example-full-width" appearance="outline">
-        <mat-label>Estado</mat-label>
-        <input matInput [(ngModel)]="this.vehicle.status" name="status" required>
-    </mat-form-field>   
-    <!-- 
-<mat-form-field class="example-full-width" appearance="outline">
-        <mat-label>Estado</mat-label>
-        <mat-select name="estado" [(ngModel)]="this.vehicle.statusCar" name="statusCar">
-            <mat-option *ngFor="let e of estados" [value]="e" >
-                {{e}}
-            </mat-option>
-        </mat-select>
-    </mat-form-field>
-    -->
-    
-
-</div>
-    <p class="subtitles" style="margin-top: 0;">Pesos</p>
-    <hr>
-<div style="display: flex; flex-wrap: wrap; justify-content: center;">
-    <mat-form-field class="example-full-width" appearance="outline" >
-        <mat-label>Peso neto</mat-label>
-        <input matInput [(ngModel)]="this.vehicle.netWeight" name="netWeight" type="number" required>
-        <span matSuffix> lb</span>
-    </mat-form-field>
-    <mat-form-field class="example-full-width" appearance="outline">
-        <mat-label>Peso bruto</mat-label>
-        <input matInput [(ngModel)]="this.vehicle.grossWeight" name="grossWeight" type="number" required>
-        <span matSuffix> lb</span>
-    </mat-form-field>
-    <button mat-raised-button color="primary" onclick="document.getElementById('flArchivo').click();" class="btn-select">Seleccionar Archivo</button>
-    <input id="flArchivo" type="file" (change)="selectFile($event)" style="display: none">
-    <br>
-    <p style="color: red; justify-content: center;">{{labelFile}}</p>
-</div>
-    <br>
-    <div class="buttons">
-        <button class="first-btn btn-form" mat-stroked-button color="basic" mat-dialog-close>Cancelar</button>
-        <button mat-raised-button class="btn-form" color="warn" (click)="newVehicle()" mat-dialog-close>Ingresar</button>
+<form>
+    <div style="display: flex; flex-wrap: wrap; justify-content: center;">
+        <mat-form-field appearance="outline">
+            <mat-label>Numero de placa</mat-label>
+            <input matInput [(ngModel)]="this.vehicle.plateNumber" name="plateNumber" required>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label>Numero de serie</mat-label>
+            <input matInput [(ngModel)]="this.vehicle.serialNumber" name="serialNumber" required>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label>Marca del vehiculo</mat-label>
+            <input matInput [(ngModel)]="this.vehicle.vehicleBrand" name="vehicleBrand" required>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label>Modelo del vehiculo</mat-label>
+            <input matInput [(ngModel)]="this.vehicle.vehicleModel" name="vehicleModel" required>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label>Año de uso</mat-label>
+            <input matInput [(ngModel)]="this.vehicle.yearsOfUse" name="yearsOfUse" type="number" required>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label>Tipo de combustible</mat-label>
+            <input matInput [(ngModel)]="this.vehicle.fuelType" name="fuelType" required>
+        </mat-form-field> 
+        <mat-form-field appearance="outline">
+            <mat-label>Estado</mat-label>
+            <input matInput [(ngModel)]="this.vehicle.statusCar" name="statusCar" required>
+        </mat-form-field> 
+        <!-- 
+    <mat-form-field appearance="outline">
+            <mat-label>Estado</mat-label>
+            <mat-select [(value)]="this.selectedStatus" [(ngModel)]="this.vehicle.statusCar" name="statusCar" >
+                <mat-option *ngFor="let e of status" [value]="e">
+                  {{e}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+        -->
+        
     </div>
+        <p class="subtitles" style="margin-top: 0;">Pesos</p>
+        <hr>
+    <div style="display: flex; flex-wrap: wrap; justify-content: center;">
+        <mat-form-field appearance="outline" >
+            <mat-label>Peso neto</mat-label>
+            <input matInput [(ngModel)]="this.vehicle.netWeight" name="netWeight" type="number" required>
+            <span matSuffix> t</span>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label>Peso bruto</mat-label>
+            <input matInput [(ngModel)]="this.vehicle.grossWeight" name="grossWeight" type="number" required>
+            <span matSuffix> t</span>
+        </mat-form-field>
+        <button mat-raised-button color="primary" onclick="document.getElementById('flArchivo').click();" class="btn-select">Seleccionar Archivo</button>
+        <input id="flArchivo" type="file" (change)="selectFile($event)" style="display: none">
+        <br>
+        <p style="color: red; justify-content: center;">{{labelFile}}</p>
+    </div>
+        <br>
+        <div class="buttons">
+            <button class="first-btn btn-form" mat-stroked-button color="basic" mat-dialog-close>Cancelar</button>
+            <button mat-raised-button type="submit" class="btn-form" color="warn" (click)="newVehicle()" mat-dialog-close>Ingresar</button>
+        </div>
     
+</form>
+
 </div>
+
+
+
+    

@@ -1,9 +1,11 @@
 <div class="container">
-    <mat-toolbar color="primary" class="title-component">
-        <p>Mis vehiculos</p>
-        <span class="flexExpand"></span>
-        <button mat-button class="vehicle-btn" (click)="newVehicle()">Registrar Vehiculo</button>
-    </mat-toolbar>
+    <div style="width: 100%; position: relative;">
+        <mat-toolbar color="primary" class="title-component">
+            <p>Mis vehiculos</p>
+            <span class="flexExpand"></span>
+            <button mat-button class="vehicle-btn" (click)="newVehicle()">Registrar Vehiculo</button>
+        </mat-toolbar>
+    </div>
     <div class="cards">
         <mat-card *ngFor="let car of cars"> 
             <mat-card-header>

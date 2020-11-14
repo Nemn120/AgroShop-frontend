@@ -17,14 +17,16 @@ export class NewVehicleComponent implements OnInit {
   imagenData: any;
   currentFileUpload: File;
   IdSession : number;
-  estados: string[] = ['Disponible','Malogrado','Ocupado'];
-
+  status: string[] = ['Disponible','Malogrado','Ocupado'];
+  selectedStatus: string = 'Disponible';
+  
   constructor(
     private restService: RestService,
     private sharedData: SharedService
   ) { }
 
   ngOnInit(): void {
+    console.log("selectedStatus: ", this.selectedStatus)
     this.vehicle = new VehicleEntity();
   }
 
@@ -42,7 +44,8 @@ export class NewVehicleComponent implements OnInit {
       data : this.vehicle
     }
     this.restService.requestApiRestData('vehicle/sv',param,this.currentFileUpload).subscribe(result => {
-      this.restService.messageChange.next({ message: 'Producto agregado con exito!', action: "Create" });
+      console.log("Creacion: ",result);
+      this.restService.messageChange.next({ message: 'Vehiculo agregado con exito!', action: "Create" });
     })
   }
 

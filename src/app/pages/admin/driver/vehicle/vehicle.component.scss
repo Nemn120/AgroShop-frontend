@@ -2,7 +2,6 @@
 .title-component{
     height: 50px;
     z-index: 2;
-    display: flex;
 }
 
 .vehicle-btn{
@@ -30,8 +29,7 @@
 }
 
 .mat-card{
-    min-width: 250px;
-    max-width: 270px;
+    width: 270px;
     height: 350px;
     display: inline-block;
     justify-content: center;
