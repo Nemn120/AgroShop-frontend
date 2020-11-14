@@ -1,44 +1,48 @@
 <div>
-  <div class="title">
-    <p>Agroshop</p>
-  </div>
   <div class="title-registry">
     <p>Registrate</p>
   </div>
   <div class="title-farmer">
-    <p>Transportista</p>
+    <p>USUARIO</p>
   </div>
 </div>
   <form class="registry-form" action="" [formGroup]="driverForm">
-    <mat-form-field appearance="fill">
-      <mat-label>Nro. de Licencia</mat-label>
-      <input matInput formControlName="driverLicencia">
-    </mat-form-field>
-    <mat-form-field appearance="fill">
+    <div *ngIf="">
+      <mat-form-field appearance="outline">
+        <mat-label>Nro. de Licencia</mat-label>
+        <input matInput formControlName="driverLicencia">
+      </mat-form-field>
+    </div>
+    <mat-form-field appearance="outline">
       <mat-label>DNI</mat-label>
-      <input matInput formControlName="driverDNI">
+      <input matInput formControlName="DNI">
     </mat-form-field>
-    <mat-form-field appearance="fill">
+    <br>
+    <mat-form-field appearance="outline" >
       <mat-label>Nombres</mat-label>
-      <input matInput formControlName="driverName">
+      <input matInput formControlName="Name">
     </mat-form-field>
-    <mat-form-field appearance="fill">
+    <br>
+    <mat-form-field appearance="outline" >
       <mat-label>Apellidos</mat-label>
-      <input matInput formControlName="driverLastName">
+      <input matInput formControlName="LastName">
     </mat-form-field>
-    <mat-form-field appearance="fill">
+    <br>
+    <mat-form-field appearance="outline" >
       <mat-label>Usuario</mat-label>
-      <input matInput formControlName="driverUserName">
+      <input matInput formControlName="UserName">
     </mat-form-field>
-    <mat-form-field appearance="fill">
+    <br>
+    <mat-form-field appearance="outline" >
       <mat-label>Contraseña</mat-label>
-      <input matInput formControlName="driverPassword">
+      <input matInput formControlName="Password">
     </mat-form-field>
-    <mat-form-field appearance="fill">
+    <br>
+    <mat-form-field appearance="outline" >
       <mat-label>Repetir contraseña</mat-label>
-      <input matInput formControlName="driverConfirmPassword">
+      <input matInput formControlName="ConfirmPassword">
     </mat-form-field>
     <div class="example-button-row">
-      <a mat-button (click)="register()" target="_blank">Registrar</a>
+      <a mat-button style="background-color: rgb(139, 66, 66);" (click)="register()" target="_blank">Registrar</a>
     </div>
   </form>

@@ -9,13 +9,10 @@
     </div>
 
     <div class="header-toolbar">
-<<<<<<< HEAD
       <input id="form-control" type="search" placeholder="Buscar producto" aria-label="Search" (keyup.enter)="showProduct(buscarProducto.value)" #buscarProducto>
-=======
         <button class="header__title-button" mat-mini-fab (click)="openDialogCar()">
             <mat-icon  matBadge="{{cantidad > 0 ? cantidad: ''}}" matBadgeColor="primary">shopping_cart</mat-icon>
         </button>
->>>>>>> origin/develop
         <app-user-profile [user]="user$ | async" (signOut)="signOut()"></app-user-profile>
     </div>
 </mat-toolbar>

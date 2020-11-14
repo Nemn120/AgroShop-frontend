@@ -122,7 +122,7 @@
   display:flex;
   align-items: center;
   justify-content: center;
-  background-color: #5EB503;//rgb(125, 231, 125);
+  background-color: #fff4e3;//rgb(125, 231, 125);
   overflow: scroll;
 }
 
@@ -138,9 +138,18 @@
 
   height: 100%;
   width: 700px;
-  background-color: #fff;
+  display: flex;
+  justify-content:center;
+  align-items: center;
+
 }
 
+
+
+
+.img-left{
+
+}
 
 .registry-container{
   height: 100%;
@@ -153,13 +162,14 @@
   display: flex;
   align-items: center;
   justify-content: center;
-
-
-
-  background: #193B01;
+  background-image: linear-gradient(to bottom, #27f278, #24d169);
+  //background: #193B01;
   height: 100%;
   width: 100%;
 }
+
+
+
 
 
 .registry-form{
@@ -168,7 +178,7 @@
   position: absolute;
 
 
-  background: #5EB503;
+  //background: #5EB503;
   border-radius: 50px;
 }
 
@@ -193,7 +203,7 @@
   font-size: 60px;
   position: relative;
   top: 20px;
-  color: #193B01;
+  //color: #193B01;
 }
 
 .profiles .profiles-button{
@@ -206,15 +216,16 @@
   top:75px;
 }
 
+@import url('https://fonts.googleapis.com/css2?family=Itim&display=swap');
 .profiles .profiles-button .farmer{
-  width: 80%;
-  height: 80px;
+  width: 70%;
+  height: 70px;
   margin-bottom: 20px;
-  border-radius: 30px;
-  font-family: 'Lobster', cursive;
+  border-radius: 10px;
+  font-family: 'Itim', cursive;
   font-size: 50px;
-  color: #fff;
-  background: #193B01;
+  color:black;
+  background: #e0ffed;
   border: none;
   outline: none;
 }
@@ -239,7 +250,30 @@
   font-family: 'Lobster', cursive;
   font-size: 50px;
   color: #fff;
-  background: #193B01;
+  //background: #193B01;
   border: none;
   outline: none;
+}
+
+
+.mat-card{
+  padding: 0px;
+}
+
+
+
+#icon {
+  display: inline-block;
+  width: 30px;
+  background-color: #3a57af;
+  padding: 8px 0px 8px 15px;
+  margin-left: 15px;
+  -webkit-border-radius: 4px 0px 0px 4px;
+  -moz-border-radius: 4px 0px 0px 4px;
+  border-radius: 4px 0px 0px 4px;
+  color: white;
+  -webkit-box-shadow: 1px 2px 5px rgba(0,0,0,.09);
+  -moz-box-shadow: 1px 2px 5px rgba(0,0,0,.09);
+  box-shadow: 1px 2px 5px rgba(0,0,0,.09);
+  border: solid 0px #cbc9c9;
 }

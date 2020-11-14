@@ -19,24 +19,26 @@ export class DriverFormContainerComponent implements OnInit {
   ngOnInit(): void {
     this.driverForm = this.formBuilder.group({
       'driverLicencia': new FormControl(''),
-      'driverDNI': new FormControl(''),
-      'driverName': new FormControl(''),
-      'driverLastName': new FormControl(''),
-      'driverUserName': new FormControl(''),
+      'DNI': new FormControl(''),
+      'Name': new FormControl(''),
+      'LastName': new FormControl(''),
+      'UserName': new FormControl(''),
       driverPassword: [''],
       driverConfirmPassword: ['']
     })
   }
 
+  // driver customer farmer
+
   public register(): void{
     let newDriver = new DriverBean();
     newDriver.user = new UserBean();
     newDriver.driverLicenseNumber = this.driverForm.value['driverLicencia'];
-    newDriver.user.documentNumber = this.driverForm.value['driverDNI'];
-    newDriver.user.nombre = this.driverForm.value['driverName'];
-    newDriver.user.lastName = this.driverForm.value['driverLastName'];
-    newDriver.user.username = this.driverForm.value['driverUserName'];
-    newDriver.user.password = this.driverForm.value['driverPassword'];
+    newDriver.user.documentNumber = this.driverForm.value['DNI'];
+    newDriver.user.nombre = this.driverForm.value['Name'];
+    newDriver.user.lastName = this.driverForm.value['LastName'];
+    newDriver.user.username = this.driverForm.value['UserName'];
+    newDriver.user.password = this.driverForm.value['Password'];
     let param = {
        userType: "DRIVER",
        userRegister:{

@@ -8,10 +8,17 @@ import { Router } from '@angular/router';
 })
 export class RegistryComponent implements OnInit {
 
+  registry: boolean;
   constructor(private router: Router) { }
 
   ngOnInit(): void {
+    this.registry = false;
   }
+
+  public registryForm(): void{
+    this.registry = true;
+  }
+
 
 
 
