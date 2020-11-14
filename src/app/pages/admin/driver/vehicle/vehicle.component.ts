@@ -29,7 +29,6 @@ export class VehicleComponent implements OnInit {
 
   ngOnInit(): void {
     this.idUser = this.sharedService.userSession.id;
-    console.log(this.idUser);
     let param = {
       data:{
         driver:{
