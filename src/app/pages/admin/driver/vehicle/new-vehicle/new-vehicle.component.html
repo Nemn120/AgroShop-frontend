@@ -31,19 +31,12 @@
         </mat-form-field> 
         <mat-form-field appearance="outline">
             <mat-label>Estado</mat-label>
-            <input matInput [(ngModel)]="this.vehicle.statusCar" name="statusCar" required>
-        </mat-form-field> 
-        <!-- 
-    <mat-form-field appearance="outline">
-            <mat-label>Estado</mat-label>
             <mat-select [(value)]="this.selectedStatus" [(ngModel)]="this.vehicle.statusCar" name="statusCar" >
                 <mat-option *ngFor="let e of status" [value]="e">
                   {{e}}
                 </mat-option>
             </mat-select>
         </mat-form-field>
-        -->
-        
     </div>
         <p class="subtitles" style="margin-top: 0;">Pesos</p>
         <hr>
