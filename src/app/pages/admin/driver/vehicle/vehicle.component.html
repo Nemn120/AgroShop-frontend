@@ -10,10 +10,10 @@
             <mat-card-title>{{car.vehicleModel}}</mat-card-title>
             <mat-card-subtitle>Nro. Placa: {{car.plateNumber}}</mat-card-subtitle>
         </mat-card-header>
-        <img mat-card-image [src]="this.imagenData" alt="carPhoto" >
+        <img mat-card-image [src]="car.photo" alt="carPhoto" >
         <hr>
         <mat-card-content>
-            <p>Estado: {{car.statusCar}}</p>
+            Estado: {{car.statusCar}}
         </mat-card-content>
         <mat-card-actions>
             <button mat-raised-button color="primary" (click)="moreDetails(car)">Más Datos</button>

@@ -27,4 +27,10 @@ export class RestService {
     return this.http.post<any>(path,paramApi);
    }
 
+   getPhoto(id: number){
+    return this.http.get(`${this.urlHost}vehicle/gp/${id}`,{
+      responseType: 'blob'
+    });
+   }
+
 }

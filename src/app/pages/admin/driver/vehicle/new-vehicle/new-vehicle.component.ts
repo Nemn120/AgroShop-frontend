@@ -17,6 +17,7 @@ export class NewVehicleComponent implements OnInit {
   imagenData: any;
   currentFileUpload: File;
   IdSession : number;
+  estados: string[] = ['Disponible','Malogrado','Ocupado'];
 
   constructor(
     private restService: RestService,
@@ -31,7 +32,6 @@ export class NewVehicleComponent implements OnInit {
     this.IdSession = this.sharedData.userSession.id;
     this.vehicle.driver = new DriverBean();
     this.vehicle.driver.id = this.IdSession;
-    console.log("idNewVehicle: ",this.vehicle.id);
     if (this.selectedFiles != null) {
       this.currentFileUpload = this.selectedFiles.item(0);
     } else {

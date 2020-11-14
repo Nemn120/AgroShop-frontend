@@ -29,6 +29,7 @@ export class VehicleComponent implements OnInit {
 
   ngOnInit(): void {
     this.idUser = this.sharedService.userSession.id;
+    console.log(this.idUser);
     let param = {
       data:{
         driver:{
@@ -37,9 +38,9 @@ export class VehicleComponent implements OnInit {
       }
     }
     this.restService.requestApiRestData('vehicle/gvlbd',param).subscribe(result =>{
+      console.log(param);
+      this.convertir(result.datalist);
       this.cars = result.datalist;
-      //this.imagenData = this.convertir(result);
-      console.log(result);
     })
   }
 
@@ -47,32 +48,44 @@ export class VehicleComponent implements OnInit {
     let vehicleSelect = vehicleDetail != null ? vehicleDetail : new VehicleEntity();
     this.dialog.open(VehicleDetailComponent, {
       data: vehicleSelect,
-      width :'60%',
+      width :'50%',
       minHeight : "40%",
-      minWidth : "370px",
-      autoFocus :  true
+      minWidth : "400px"
     });
   }
 
   newVehicle(){
     let dialogConfig = new MatDialogConfig();
     dialogConfig.autoFocus = true;
-    dialogConfig.width = "50%";
+    dialogConfig.width = "60%";
     dialogConfig.minHeight = "40%";
     dialogConfig.minWidth = "370px";
     this.dialog.open(NewVehicleComponent, dialogConfig);
   }
 
   public convertir(data: any) {
-    let reader = new FileReader();
-    reader.readAsDataURL(data);
-    reader.onloadend = () => {
-      let base64 = reader.result;      
-      this.sanar(base64);
+    for(const m of data){
+      this.restService.getPhoto(m.id).subscribe(photo =>{
+        let reader = new FileReader();
+          reader.readAsDataURL(photo);
+          reader.onloadend = () => {
+          const base64 = reader.result;
+          m.photo = this.sanar(base64);
+        }
+      })
     }
   }
 
-  public sanar(base64 : any){
-    this.imagenData= this.sanitization.bypassSecurityTrustResourceUrl(base64);
+  public sanar(data : any){
+    return this.sanitization.bypassSecurityTrustResourceUrl(data);
+  }
+
+  public setColorStatus(status : string):string{
+    switch(status){
+      case 'Disponible': return '#0B8F48';
+      case 'Malogrado' : return '#CD6804';
+      case 'Ocupado' : return '#055387';
+      default : return '#000000';
+    }
   }
 }

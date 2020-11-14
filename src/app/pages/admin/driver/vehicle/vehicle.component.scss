@@ -28,8 +28,7 @@
 .mat-card{
     min-width: 250px;
     max-width: 270px;
-    min-height: 350px;
-    max-height: 450px;
+    height: 350px;
     display: inline-block;
     justify-content: center;
     text-align: center;
@@ -52,16 +51,6 @@
     justify-content: center;
 }
 
-.mat-card-content{
-    justify-content: center;
-    text-align: center;
-}
-
-.no-cars{
-    justify-content: center;
-    align-items: center;
-}
-
-.no-cars p{
-    font-weight: 100px;
+.mat-card-image{
+    height: 180px;
 }

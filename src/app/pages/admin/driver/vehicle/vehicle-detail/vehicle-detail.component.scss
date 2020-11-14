@@ -1,3 +1,7 @@
+.img{
+    width: 100px;
+    height: 100px;
+}
 
 .vehicle-facts{
     display: flex;
@@ -45,12 +49,18 @@
     display: inline-block;
     font-size: 20px;
     font-weight: bold;
+    margin-bottom: 0;
 }
 
 .dataVehicle{
     font-size: 15px;
-    border: solid #009865 3px;
     padding: 5px;
+    width: 100%;
+}
+
+.mat-card-image{
+    height: 300px;
+    width: 300px;
 }
 
 

@@ -1,36 +1,36 @@
-<div class="vehicle-facts">
-    <div class="vehicle-img">
-            <img mat-card-image src="../../../../../assets/images/hyundai-facebook.jpg" alt="" >
+<div mat-dialog-content class="mat-dialog-content">
+    <div class="vehicle-facts">
+        <div class="vehicle-img">
+            <img mat-card-image [src]="data.photo" alt="carPhoto">   
+        </div>
+        <div class="vehicle-content">
+            <mat-card-title>{{data.vehicleModel}}</mat-card-title>
+            <mat-card-subtitle>Nro. Placa: {{data.plateNumber}}
+                <div style="float: right; position: relative; top: -15px;">
+                    <mat-chip-list aria-label="Fish selection">
+                        <mat-chip mat-icon-button [ngStyle]="{'background-color':this.setColorStatus(data.statusCar)}">
+                            <span style="color: white;">{{data.statusCar}}</span></mat-chip>
+                    </mat-chip-list> 
+                </div>
+            </mat-card-subtitle>
+            <hr size="6" style="background-color: black;">
+            <mat-card-content style="width: 100%;">
+                <p class="subtitles">Datos del vehiculo</p>
+                <div>
+                    <p class="dataVehicle">Numero de serie:<span style="float: right;">{{data.serialNumber}}</span></p>
+                    <p class="dataVehicle">Años de uso:<span style="float: right;">{{data.yearsOfUse}}</span></p>
+                    <p class="dataVehicle">Tipo de combustible:<span style="float: right;">{{data.fuelType}}</span></p>
+                </div>
+                <p class="subtitles">Pesos</p>
+                <div>
+                    <p class="dataVehicle">Peso neto:<span style="float: right;">{{data.netWeight}} lb</span></p>
+                    <p class="dataVehicle">Peso bruto:<span style="float: right;">{{data.grossWeight}} lb</span></p>
+                </div>
+            </mat-card-content>
+        </div>
     </div>
-    <div class="vehicle-content">
-        <mat-card-title style="display:flex !important">{{data.vehicleModel}}
-            <div style="display: flex; justify-content: flex-end;">
-                <mat-chip-list aria-label="Fish selection" style="justify-content: flex-end;">
-                    <mat-chip mat-icon-button [ngStyle]="{'background-color':this.setColorStatus(data.statusCar)}">
-                        <span style="color: white;">{{data.statusCar}}</span></mat-chip>
-                </mat-chip-list> 
-            </div>
-        </mat-card-title>
-        <mat-card-subtitle>Nro. Placa: {{data.plateNumber}}</mat-card-subtitle>
-        <hr size="6" style="background-color: black;">
-        <mat-card-content style="width: 100%;">
-            <p class="subtitles">Datos del vehiculo</p>
-            <div style="display: flex; justify-content: space-around;">
-                <p class="dataVehicle">Numero de serie: {{data.serialNumber}}</p>
-                <p class="dataVehicle">Años de uso: {{data.yearsOfUse}}</p>
-            </div>
-            <div style="display: flex; justify-content: center;">
-                <p class="dataVehicle" style="display:inline-block; align-items: center;">Tipo de combustible: {{data.fuelType}}</p>
-            </div>
-            <p class="subtitles">Pesos</p>
-            <div style="display: flex; justify-content: space-around;">
-                <p class="dataVehicle">Peso neto: {{data.netWeight}} lb</p>
-                <p class="dataVehicle">Peso bruto: {{data.grossWeight}} lb</p>
-            </div>
-        </mat-card-content>
+    
+    <div class="actions">
+        <button mat-raised-button color="primary" mat-dialog-close>Cerrar</button>
     </div>
-</div>
-
-<div class="actions">
-    <button mat-raised-button color="primary" mat-dialog-close>Cerrar</button>
 </div>

@@ -16,7 +16,7 @@ const routes: Routes = [
     path: 'product', loadChildren: () => import('./pages/admin/product/product.module').then(m => m.ProductModule),
     
   },
-  { path: 'driver', loadChildren: () => import('./pages/admin/driver/driver.module').then(m => m.DriverModule)}
+  { path: 'vehicle', loadChildren: () => import('./pages/admin/driver/driver.module').then(m => m.DriverModule)}
   ]},
   {
     path: 'auth', loadChildren: () => import('./pages/authorization/authorization.module').then(m => m.AuthorizationModule)
