@@ -5,18 +5,18 @@
             <mat-icon class="example-tab-icon">info</mat-icon>
         </ng-template>
         <br>
-        <mat-form-field appearance="fill">
+        <mat-form-field>
             <mat-label>Nombre</mat-label>
             <input matInput [(ngModel)]="this.data.name" readonly="readonly">
 
         </mat-form-field>
         <br>
-        <mat-form-field appearance="fill">
+        <mat-form-field>
             <mat-label>Descripcion</mat-label>
             <input matInput [(ngModel)]="this.data.description" readonly="readonly">
         </mat-form-field>
         <br>
-        <mat-form-field appearance="fill">
+        <mat-form-field>
             <mat-label>Categoria</mat-label>
             <input matInput [(ngModel)]="this.data.category.name" readonly="readonly">
         </mat-form-field>
@@ -47,12 +47,12 @@
             <mat-icon class="example-tab-icon">schedule</mat-icon>
         </ng-template>
         <br>
-        <mat-form-field appearance="fill">
+        <mat-form-field>
             <mat-label>Fecha creacion</mat-label>
             <input matInput type="datetime-local" [(ngModel)]="this.data.createDate" readonly="readonly">
         </mat-form-field>
         <br>
-        <mat-form-field appearance="fill">
+        <mat-form-field>
             <mat-label>Fecha actualizacion</mat-label>
             <input matInput type="datetime-local" [(ngModel)]="this.data.updateDate" readonly="readonly">
         </mat-form-field>

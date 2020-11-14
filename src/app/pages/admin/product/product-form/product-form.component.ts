@@ -14,6 +14,7 @@ import { SharedService } from '../../../../_service/shared.service';
 })
 export class ProductFormComponent implements OnInit {
 
+  selected = 'option2';
   titulo:string="Nuevo ";
 
   productSelect: ProductBean;
