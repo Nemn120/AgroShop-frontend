@@ -1,3 +1,4 @@
+import { CategoriesFormComponent } from './../gestion/categories/categories-form/categories-form.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ProductListComponent } from './product-list/product-list.component';
@@ -8,10 +9,16 @@ import { WelcomeComponent } from '../panel-admin/welcome/welcome.component';
 import { ProductFormComponent } from './product-form/product-form.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ProductViewComponent } from './product-view/product-view.component';
+import { CategoriesListComponent } from '../gestion/categories/categories-list/categories-list.component';
+import { CategoriesViewComponent } from '../gestion/categories/categories-view/categories-view.component';
 const routes: Routes = [
   {
     path: '', component:WelcomeComponent},
-    {path: 'list', component: ProductListComponent}
+
+   //{path: 'list', component: ProductListComponent}//gestion productos
+
+    //temporal
+   {path: 'list', component: CategoriesListComponent}//gestion categorias
   
 ];
 
@@ -20,6 +27,11 @@ const routes: Routes = [
     ProductListComponent,
     ProductFormComponent,
     ProductViewComponent,
+
+    //temporal
+    CategoriesListComponent,
+    CategoriesFormComponent,
+    CategoriesViewComponent,
   ],
   imports: [
     CommonModule,
@@ -36,6 +48,9 @@ const routes: Routes = [
   entryComponents: [
     ProductFormComponent,
     ProductViewComponent,
+    //temporal
+    CategoriesFormComponent,
+    CategoriesViewComponent,
    ],
 })
 export class ProductModule { }
