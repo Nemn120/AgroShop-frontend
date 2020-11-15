@@ -17,7 +17,7 @@ export class OrderStoreComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.restService.requestApiRestData("productsales/glps",{}).subscribe(result =>{
+    this.restService.requestApiRestData("productsales/glpsaa",{}).subscribe(result =>{
       this.activatedPhoto(result.datalist);
       this.productSalesList=result.datalist; 
     }) 

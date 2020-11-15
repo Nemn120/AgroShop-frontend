@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { VehicleComponent } from './vehicle/vehicle.component';
-import { VehicleDetailComponent } from './vehicle/vehicle-detail/vehicle-detail.component';
-import { NewVehicleComponent } from './vehicle/new-vehicle/new-vehicle.component';
 import { RouterModule, Routes } from '@angular/router';
 import { MaterialModule } from 'src/app/_material/material.module';
 import { FormsModule } from '@angular/forms';
+import { VehicleComponent } from './vehicle/vehicle.component';
+import { VehicleDetailComponent } from './vehicle/vehicle-detail/vehicle-detail.component';
+import { NewVehicleComponent } from './vehicle/new-vehicle/new-vehicle.component';
 
 
 const routes: Routes = [

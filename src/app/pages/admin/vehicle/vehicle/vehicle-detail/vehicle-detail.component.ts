@@ -16,7 +16,6 @@ export class VehicleDetailComponent implements OnInit {
 
   constructor(
     private restService: RestService,
-    private sharedService : SharedService,
     @Inject(MAT_DIALOG_DATA) public data: VehicleEntity,
     private sanitization: DomSanitizer
   ) { }
