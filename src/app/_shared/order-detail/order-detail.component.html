@@ -6,25 +6,10 @@
         </mat-toolbar>
     </p>
     <div style="display: flex;">
-        <div style=" width: 55%;">
-            <mat-form-field class="example-full-width" appearance="legacy">
-                <mat-label>Nombre</mat-label>
-                <input matInput [(ngModel)]="this.nombre" name="nombre" readonly>
-            </mat-form-field>
-        </div>
-        <div style="width: 45%;">
+        <div style="width: 55%;">
             <mat-form-field class="example-full-width" appearance="legacy">
                 <mat-label>Fecha</mat-label>
                 <input matInput [(ngModel)]="this.fecha" name="fecha" readonly>
-            </mat-form-field>
-        </div>
-    </div>
-
-    <div style="display: flex;">
-        <div style=" width: 55%;">
-            <mat-form-field class="example-full-width" appearance="legacy">
-                <mat-label>Telefono</mat-label>
-                <input matInput [(ngModel)]="this.phone" name="phone" readonly>
             </mat-form-field>
         </div>
         <div style="width: 45%;">
@@ -57,6 +42,7 @@
     <mat-accordion displayMode="flat" multi class="mat-table">
         <section matSort class="mat-elevation-z2 mat-header-row">
             <span class="mat-header-cell" mat-sort-header="id">ID</span>
+            <span class="mat-header-cell" mat-sort-header="name">ID agricultor</span>
             <span class="mat-header-cell" mat-sort-header="quantity">Cantidad</span>
             <span class="mat-header-cell" mat-sort-header="total">Total</span>
             <span class="mat-header-cell" mat-sort-header="createDate">Fecha</span>
@@ -65,6 +51,7 @@
         <mat-expansion-panel *ngFor="let item of orderList">
             <mat-expansion-panel-header class="mat-row">
                 <span class="mat-cell">{{item.id}}</span>
+                <span class="mat-cell">{{item.farmer.id}}</span>
                 <span class="mat-cell">{{item.quantity}}</span>
                 <span class="mat-cell">S/. {{item.total}}</span>
                 <span class="mat-cell">{{item.createDate | date:'dd/MM/yyyy HH:mm:ss'}}</span>
@@ -72,11 +59,15 @@
             <section matSort class="mat-elevation-z2 mat-header-row" style="background-color:#F4F4F4;">
                 <span class="mat-header-cell" mat-sort-header="name">Producto</span>
                 <span class="mat-header-cell" mat-sort-header="price">Precio</span>
+                <span class="mat-header-cell" mat-sort-header="quantity">Cantidad</span>
+                <span class="mat-header-cell" mat-sort-header="total">Costo</span>
 
             </section>
             <div *ngFor="let orderDetail of item.orderDetailList" class="mat-row" style="background-color: #FAFAF8;">
                 <span class="mat-cell">{{orderDetail.productSales.product.name}}</span>
                 <span class="mat-cell">S/. {{orderDetail.price}}</span>
+                <span class="mat-cell">{{orderDetail.quantity}}</span>
+                <span class="mat-cell">S/. {{orderDetail.total}}</span>
 
             </div>
         </mat-expansion-panel>

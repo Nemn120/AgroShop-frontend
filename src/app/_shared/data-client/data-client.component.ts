@@ -72,12 +72,14 @@ export class DataClientComponent implements OnInit {
         }
         this.restService.requestApiRestData("order/sobos",param).subscribe(result=>{
           console.log(result);
-          // llamar al snackbar  para el mensaje
+          this.snackBar.open(result.responseMessage, 'SUCESS', { duration: 5000 })
+       
           this.dialog.open(OrderDetailComponent, {
-            width:'30%',
+            width:'40%',
             data: result.datalist
           })
         })
+        
 
 
 
