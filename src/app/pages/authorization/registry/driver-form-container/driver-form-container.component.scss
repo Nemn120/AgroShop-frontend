@@ -5,7 +5,6 @@
   box-sizing: border-box;
   padding: 0;
   margin: 0;
-
 }
 
 
@@ -36,9 +35,13 @@
   text-align: center;
   font-family: 'Itim', cursive;
   font-size: 30px;
-
   height: 65px;
-
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+  margin-top: 10px;
+  color: wheat;
 }
 
 
@@ -47,8 +50,7 @@
   align-items: center;
   flex-direction: column;
   height: 570px;
-  border: solid 1px red;
-  padding-top:50px;
+  padding-top:30px;
 }
 
 .mat-form-field{
