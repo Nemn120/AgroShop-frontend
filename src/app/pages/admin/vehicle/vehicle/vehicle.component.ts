@@ -59,7 +59,7 @@ export class VehicleComponent implements OnInit {
     this.dialog.open(VehicleDetailComponent, {
       data: vehicleSelect,
       width :'50%',
-      minHeight : "40%",
+      minHeight: "50%",
       minWidth : "400px"
     });
   }
