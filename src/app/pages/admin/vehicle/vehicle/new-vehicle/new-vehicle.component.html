@@ -1,6 +1,7 @@
 <div class="vehicle-facts">
     <div class="vehicle-content"> 
-        <mat-card-title>Ingrese su vehiculo</mat-card-title>
+        <mat-card-title *ngIf="this.data.id>0">Modificar vehiculo</mat-card-title>
+        <mat-card-title *ngIf="!this.data.id">Ingrese su vehiculo</mat-card-title>
         <hr>
         <br>
 <form>
@@ -63,10 +64,14 @@
         <br>
         <div class="buttons">
             <button class="first-btn btn-form" mat-stroked-button color="basic" mat-dialog-close>Cancelar</button>
-            <button mat-raised-button type="submit" class="btn-form" color="warn" [disabled]="
-            !this.vehicle.plateNumber || !this.vehicle.serialNumber || !this.vehicle.vehicleBrand || !this.vehicle.vehicleModel || 
+            <button *ngIf="this.data.id>0" mat-raised-button type="submit" class="btn-form" color="warn" [disabled]="
+            !this.vehicle.plateNumber || !this.vehicle.serialNumber || !this.vehicle.vehicleBrand || !this.vehicle.vehicleModel || !labelFile ||
             !this.vehicle.yearsOfUse || !this.vehicle.fuelType || !this.vehicle.statusCar || !this.vehicle.netWeight || !this.vehicle.grossWeight"  
-            mat-dialog-close (click)="newVehicle()">Ingresar</button>
+            mat-dialog-close (click)="newVehicle()">{{this.button}}</button>
+            <button *ngIf="!this.data.id" mat-raised-button type="submit" class="btn-form" color="warn" [disabled]="
+            !this.vehicle.plateNumber || !this.vehicle.serialNumber || !this.vehicle.vehicleBrand || !this.vehicle.vehicleModel || !labelFile ||
+            !this.vehicle.yearsOfUse || !this.vehicle.fuelType || !this.vehicle.statusCar || !this.vehicle.netWeight || !this.vehicle.grossWeight"  
+            mat-dialog-close (click)="newVehicle()">{{this.button}}</button>
         </div>
     
 </form>

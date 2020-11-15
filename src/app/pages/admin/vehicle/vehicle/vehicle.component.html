@@ -10,7 +10,9 @@
         <mat-card *ngFor="let car of cars"> 
             <mat-card-header>
                 <mat-card-title>
-                    {{car.vehicleModel}}<button mat-icon-button color="primary" style="display: inline-block;"(click)="delete(car)"><mat-icon>delete</mat-icon></button>
+                    {{car.vehicleModel}}
+                    <button mat-icon-button color="primary" style="display: inline-block;"(click)="delete(car)"><mat-icon>delete</mat-icon></button>
+                    <button mat-icon-button color="primary" style="display: inline-block;"(click)="newVehicle(car)"><mat-icon>edit</mat-icon></button>
                 </mat-card-title>
                 <mat-card-subtitle>Nro. Placa: {{car.plateNumber}}</mat-card-subtitle>
             </mat-card-header>

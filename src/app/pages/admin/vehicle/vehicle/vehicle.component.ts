@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { VehicleDetailComponent } from './vehicle-detail/vehicle-detail.component';
-import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { MatDialog } from '@angular/material/dialog';
 import { NewVehicleComponent } from './new-vehicle/new-vehicle.component';
 import { RestService } from 'src/app/_service/rest.service';
 import { VehicleEntity } from 'src/app/_model/VehicleEntity';
@@ -63,12 +63,14 @@ export class VehicleComponent implements OnInit {
     });
   }
 
-  newVehicle(){
-    let dialogConfig = new MatDialogConfig();
-    dialogConfig.width = "60%";
-    dialogConfig.minHeight = "40%";
-    dialogConfig.minWidth = "370px";
-    this.dialog.open(NewVehicleComponent, dialogConfig);
+  newVehicle(vh ?: VehicleEntity){
+    let vhSelect = vh != null ? vh : new VehicleEntity();
+    this.dialog.open(NewVehicleComponent, {
+      width: '60%',
+      minHeight: '40%',
+      minWidth: '400px',
+      data: vhSelect
+    });
   }
 
   public convertir(data: any) {
