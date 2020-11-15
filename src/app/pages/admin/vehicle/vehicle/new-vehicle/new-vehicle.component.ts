@@ -3,6 +3,7 @@ import { VehicleEntity } from 'src/app/_model/VehicleEntity';
 import { RestService } from 'src/app/_service/rest.service';
 import { SharedService } from 'src/app/_service/shared.service';
 import { DriverBean } from 'src/app/_model/DriverBean';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-new-vehicle',
@@ -18,6 +19,7 @@ export class NewVehicleComponent implements OnInit {
   currentFileUpload: File;
   IdSession : number;
   status: string[] = ['Disponible','Malogrado','Ocupado'];
+  fuel: string[] = ['Gasolina 98','Gasolina 95','Gas natural','Diesel','Bioetanol'];
   selectedStatus: string = 'Disponible';
   
   constructor(
@@ -31,22 +33,41 @@ export class NewVehicleComponent implements OnInit {
   }
 
   newVehicle(){
-    this.IdSession = this.sharedData.userSession.id;
-    this.vehicle.driver = new DriverBean();
-    this.vehicle.driver.id = this.IdSession;
-    if (this.selectedFiles != null) {
-      this.currentFileUpload = this.selectedFiles.item(0);
-    } else {
-      this.currentFileUpload = new File([""], "blanco");
-    }
-    this.vehicle.photo = this.currentFileUpload;
-    const param = {
-      data : this.vehicle
-    }
-    this.restService.requestApiRestData('vehicle/sv',param,this.currentFileUpload).subscribe(result => {
-      console.log("Creacion: ",result);
-      this.restService.messageChange.next({ message: 'Vehiculo agregado con exito!', action: "Create" });
+    Swal.fire({
+      title: '¿Registrar vehiculo?',
+      showClass: {
+        popup: 'animate__animated animate__fadeInDown'
+      },
+      hideClass: {
+        popup: 'animate__animated animate__fadeOutUp'
+      },
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: 'green',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Registrar vehiculo'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.IdSession = this.sharedData.userSession.id;
+        this.vehicle.driver = new DriverBean();
+        this.vehicle.driver.id = this.IdSession;
+        if (this.selectedFiles != null) {
+          this.currentFileUpload = this.selectedFiles.item(0);
+        } else {
+        this.currentFileUpload = new File([""], "blanco");
+        }
+        this.vehicle.photo = this.currentFileUpload;
+        const param = {
+          data : this.vehicle
+        }
+        this.restService.requestApiRestData('vehicle/sv',param,this.currentFileUpload).subscribe(result => {
+          this.restService.messageChange.next({ message: 'Vehiculo agregado con exito!', action: "Create" });
     })
+      }
+    });
+
+
+    
   }
 
   selectFile(e: any) {

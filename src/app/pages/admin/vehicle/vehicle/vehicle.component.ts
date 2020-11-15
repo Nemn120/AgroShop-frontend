@@ -6,6 +6,7 @@ import { RestService } from 'src/app/_service/rest.service';
 import { VehicleEntity } from 'src/app/_model/VehicleEntity';
 import { SharedService } from 'src/app/_service/shared.service';
 import { DomSanitizer } from '@angular/platform-browser';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-vehicle',
@@ -94,5 +95,32 @@ export class VehicleComponent implements OnInit {
       case 'Ocupado' : return '#055387';
       default : return '#000000';
     }
+  }
+
+  delete(vh : VehicleEntity){
+    Swal.fire({
+      title: '¿Seguro de eliminar vehiculo?',
+      showClass: {
+        popup: 'animate__animated animate__fadeInDown'
+      },
+      hideClass: {
+        popup: 'animate__animated animate__fadeOutUp'
+      },
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: 'green',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Eliminar vehiculo'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        let param = {
+          data : vh
+        }
+        this.restService.requestApiRestData('vehicle/dv',param).subscribe(result =>{
+          this.restService.messageChange.next({ message: 'Vehiculo eliminado con exito!', action: "Delete" });
+        });
+      }
+    });
+    
   }
 }

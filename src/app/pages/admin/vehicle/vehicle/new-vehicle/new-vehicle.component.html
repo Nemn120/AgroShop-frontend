@@ -23,15 +23,19 @@
         </mat-form-field>
         <mat-form-field appearance="outline">
             <mat-label>Año de uso</mat-label>
-            <input matInput [(ngModel)]="this.vehicle.yearsOfUse" name="yearsOfUse" type="number" required>
+            <input matInput [(ngModel)]="this.vehicle.yearsOfUse" name="yearsOfUse" type="number" min="0" required>
         </mat-form-field>
         <mat-form-field appearance="outline">
             <mat-label>Tipo de combustible</mat-label>
-            <input matInput [(ngModel)]="this.vehicle.fuelType" name="fuelType" required>
-        </mat-form-field> 
+            <mat-select [(ngModel)]="this.vehicle.fuelType" name="fuelType" required>
+                <mat-option *ngFor="let e of fuel" [value]="e">
+                  {{e}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
         <mat-form-field appearance="outline">
             <mat-label>Estado</mat-label>
-            <mat-select [(value)]="this.selectedStatus" [(ngModel)]="this.vehicle.statusCar" name="statusCar" >
+            <mat-select [(ngModel)]="this.vehicle.statusCar" name="statusCar" required>
                 <mat-option *ngFor="let e of status" [value]="e">
                   {{e}}
                 </mat-option>
