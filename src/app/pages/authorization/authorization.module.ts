@@ -20,6 +20,9 @@ const routes: Routes = [
   },
   {
     path: 'registry', component: RegistryComponent
+  },
+  {
+    path: 'registry:id', component: RegistryComponent
   }
 ];
 

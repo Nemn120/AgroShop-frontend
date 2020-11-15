@@ -8,13 +8,21 @@ import { Router } from '@angular/router';
 })
 export class RegistryComponent implements OnInit {
 
-  @Input() title: string;
-  @Input() userType: string;
-  @Input() image: any;
+  userType:string;
 
   constructor(private router: Router) { }
 
   ngOnInit(): void {
+
+
+this.router.
+    switch(rol){
+      case 'FARMER':this.title = "Agricultor"; this.image = '/assets/images/agricultor.jpg/'; break;
+      case 'CLIENT': this.title = "Comprador"; this.image = '/assets/images/comprador.jpg/' ;break;
+      case 'DRIVER': this.title = "Transportista"; break;
+    }
+    
+    
 
   }
 
