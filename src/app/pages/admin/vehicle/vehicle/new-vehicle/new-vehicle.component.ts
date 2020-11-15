@@ -52,11 +52,6 @@ export class NewVehicleComponent implements OnInit {
       this.vehicle.grossWeight = this.data.grossWeight;
       this.vehicle.netWeight = this.data.netWeight;
       this.button = 'Modificar';
-      if (this.selectedFiles != null) {
-        this.currentFileUpload = this.selectedFiles.item(0);
-      } else {
-      this.currentFileUpload = new File([""], "blanco");
-      }
     }
     else{
       this.button = 'Ingresar';
@@ -105,6 +100,7 @@ export class NewVehicleComponent implements OnInit {
           const param = {
             data : this.vehicle
           }
+
           this.restService.requestApiRestData('vehicle/sv',param,this.currentFileUpload).subscribe(result => {
             this.restService.messageChange.next({ message: this.messageS, action: this.actionS });
       })

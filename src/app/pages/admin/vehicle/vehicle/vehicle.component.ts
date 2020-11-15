@@ -69,6 +69,7 @@ export class VehicleComponent implements OnInit {
       width: '60%',
       minHeight: '40%',
       minWidth: '400px',
+      maxHeight: '650px',
       data: vhSelect
     });
   }
