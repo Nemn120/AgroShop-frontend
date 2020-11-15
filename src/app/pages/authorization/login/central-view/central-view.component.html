@@ -1,42 +1,50 @@
-<mat-card class="general" style=" background:#5EB503;margin: 0%;">
+<div class="form-holder height-100vh mat-elevation-z4 ">
 
-    <mat-card-header class="centrar">
-        <mat-card-title class="titulo">
-            <span style=" color:#193B01;">Agro</span>Shop
-        </mat-card-title>
-        <mat-card-subtitle style="font-size:large;color:white">Iniciar Sesion</mat-card-subtitle>
-    </mat-card-header>
+    <form [formGroup]="loginForm" class="signup-form" fxLayout="column" (ngSubmit)="login()">
 
-    <mat-card-content>
-
-        <div style="width: 100%;" [formGroup]="formulario">
-            <h3 style="color: #193B01;">Usuario</h3>
-            <mat-form-field appearance="fill" style="width: 100%;color: rgb(0, 0, 0);">
-                <!--<mat-label style="font-size:medium;">Usuario</mat-label>-->
-                <input matInput style="font-size: large;" formControlName="usuario" placeholder="Ingrese su usuario">
-                <mat-icon matSuffix style="color: rgb(10, 10, 10);">person</mat-icon>
-
-            </mat-form-field>
-
-            <h3 style="color:#193B01;">Contraseña</h3>
-            <mat-form-field appearance="fill" style="width: 100%;color: rgb(0, 0, 0);">
-                <!-- <mat-label style="font-size:medium;">Contraseña</mat-label>-->
-                <input matInput [type]="hide ? 'password' : 'text'" style="font-size: large;" formControlName="contraseña" placeholder="Ingrese su contraseña">
-                <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
-              <mat-icon style="color: rgb(10, 10, 10);">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-              </button>
-            </mat-form-field>
+        <div class="form-headline text-center mb-32">
+            <h1 class="font-weight-light">Bienvenido</h1>
         </div>
 
-    </mat-card-content>
-    <mat-card-actions class="centrar">
+        <div class="mb-48" fxLayout="row wrap" fxLayoutAlign="center center">
+        </div>
 
-        <button mat-raised-button class="btn-ingresar" [disabled]="!formulario.valid" (click)="login()">Ingresar</button>
+
+        <div fxLayout="row" *ngIf="enProceso">
+            <mat-progress-bar mode="query" color="accent" fxFlex></mat-progress-bar>
+            <br />
+        </div>
+
+        <mat-form-field class="full-width" appearance="outline">
+            <mat-label>Usuario</mat-label>
+            <input matInput formControlName="username" type="text" name="username" placeholder="Usuario" [class.is-invalid]="f.username.hasError('required') && f.username.touched" />
+
+            <mat-error *ngIf="f.username.hasError('required') && f.username.touched">
+                Es requerido
+            </mat-error>
+
+        </mat-form-field>
+
+        <mat-form-field class="full-width" appearance="outline">
+            <mat-label>Contraseña</mat-label>
+            <input matInput formControlName="password" type="password" name="password" placeholder="********" [class.is-invalid]="f.password.hasError('required') && f.password.touched" />
+
+            <mat-error *ngIf="f.password.hasError('required') && f.password.touched">
+                Es requerido
+            </mat-error>
+
+        </mat-form-field>
         <br>
         <br>
-        <a routerLink="." class="btn-registrarse" (click)="registry()">Registrarse</a>
+        <mat-checkbox class="mb-24">Recordar</mat-checkbox>
 
-    </mat-card-actions>
+        <div style="text-align:center">
+            <button mat-raised-button color="primary" [disabled]="enProceso">Ingresar</button>
+        </div>
+
+        <mat-divider class="my-32"></mat-divider>
 
 
-</mat-card>
+    </form>
+
+</div>

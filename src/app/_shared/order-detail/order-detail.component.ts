@@ -27,7 +27,7 @@ export class OrderDetailComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.orderList=this.data.data;
+    this.orderList=this.data;
     this.orderList.forEach(order =>{
       this.costoTotal+=order.total
       this.cantidadTotal+=order.quantity;
