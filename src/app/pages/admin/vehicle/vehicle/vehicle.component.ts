@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { VehicleDetailComponent } from './vehicle-detail/vehicle-detail.component';
-import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { MatDialog } from '@angular/material/dialog';
 import { NewVehicleComponent } from './new-vehicle/new-vehicle.component';
 import { RestService } from 'src/app/_service/rest.service';
 import { VehicleEntity } from 'src/app/_model/VehicleEntity';
 import { SharedService } from 'src/app/_service/shared.service';
 import { DomSanitizer } from '@angular/platform-browser';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-vehicle',
@@ -62,12 +63,15 @@ export class VehicleComponent implements OnInit {
     });
   }
 
-  newVehicle(){
-    let dialogConfig = new MatDialogConfig();
-    dialogConfig.width = "60%";
-    dialogConfig.minHeight = "40%";
-    dialogConfig.minWidth = "370px";
-    this.dialog.open(NewVehicleComponent, dialogConfig);
+  newVehicle(vh ?: VehicleEntity){
+    let vhSelect = vh != null ? vh : new VehicleEntity();
+    this.dialog.open(NewVehicleComponent, {
+      width: '60%',
+      minHeight: '40%',
+      minWidth: '400px',
+      maxHeight: '650px',
+      data: vhSelect
+    });
   }
 
   public convertir(data: any) {
@@ -94,5 +98,32 @@ export class VehicleComponent implements OnInit {
       case 'Ocupado' : return '#055387';
       default : return '#000000';
     }
+  }
+
+  delete(vh : VehicleEntity){
+    Swal.fire({
+      title: '¿Seguro de eliminar vehiculo?',
+      showClass: {
+        popup: 'animate__animated animate__fadeInDown'
+      },
+      hideClass: {
+        popup: 'animate__animated animate__fadeOutUp'
+      },
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: 'green',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Eliminar vehiculo'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        let param = {
+          data : vh
+        }
+        this.restService.requestApiRestData('vehicle/dv',param).subscribe(result =>{
+          this.restService.messageChange.next({ message: 'Vehiculo eliminado con exito!', action: "Delete" });
+        });
+      }
+    });
+    
   }
 }
