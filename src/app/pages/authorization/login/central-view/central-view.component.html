@@ -1,52 +1,69 @@
-<div class="form-holder height-100vh mat-elevation-z4 ">
+<div class="form-holder height-100vh mat-elevation-z4" style="width: 100% ;">
 
-    <form [formGroup]="loginForm" class="signup-form" fxLayout="column" (ngSubmit)="login()">
+  <form [formGroup]="loginForm" class="signup-form" fxLayout="column" (ngSubmit)="login()">
 
-        <div class="form-headline text-center mb-32">
-            <h1 class="font-weight-light">Bienvenido</h1>
-        </div>
+      <div class="form-headline text-center mb-32" style="display: flex; justify-content: center;">
+          <h1 class="font-weight-light">Bienvenido CTMRE</h1>
+      </div>
 
-        <div class="mb-48" fxLayout="row wrap" fxLayoutAlign="center center">
-            <!--<img width="200px" src="assets/images/illustrations/breaking_barriers.svg" alt="" />-->
-            <!--   <img width="200px" src="assets/images/barrioseguro.png" alt="" />-->
-        </div>
+      <div class="mb-48" fxLayout="row wrap" fxLayoutAlign="center center">
+          <!--<img width="200px" src="assets/images/illustrations/breaking_barriers.svg" alt="" />-->
+          <!--   <img width="200px" src="assets/images/barrioseguro.png" alt="" />-->
+      </div>
 
 
-        <div fxLayout="row" *ngIf="enProceso">
-            <mat-progress-bar mode="query" color="accent" fxFlex></mat-progress-bar>
-            <br />
-        </div>
+      <div fxLayout="row" *ngIf="enProceso">
+          <mat-progress-bar mode="query" color="accent" fxFlex></mat-progress-bar>
+          <br />
+      </div>
 
+      <div style="display: flex; justify-content: center; align-items: center; flex-direction: column;">
         <mat-form-field class="full-width" appearance="outline">
-            <mat-label>Usuario</mat-label>
-            <input matInput formControlName="username" type="text" name="username" placeholder="Usuario" [class.is-invalid]="f.username.hasError('required') && f.username.touched" />
+          <mat-label>Usuario</mat-label>
+          <input matInput formControlName="username" type="text" name="username" placeholder="Usuario" [class.is-invalid]="f.username.hasError('required') && f.username.touched" />
 
-            <mat-error *ngIf="f.username.hasError('required') && f.username.touched">
-                Es requerido
-            </mat-error>
+          <mat-error *ngIf="f.username.hasError('required') && f.username.touched">
+              Es requerido
+          </mat-error>
 
-        </mat-form-field>
+      </mat-form-field>
 
-        <mat-form-field class="full-width" appearance="outline">
-            <mat-label>Contraseña</mat-label>
-            <input matInput formControlName="password" type="password" name="password" placeholder="********" [class.is-invalid]="f.password.hasError('required') && f.password.touched" />
+      <mat-form-field class="full-width" appearance="outline">
+          <mat-label>Contraseña</mat-label>
+          <input matInput formControlName="password" type="password" name="password" placeholder="********" [class.is-invalid]="f.password.hasError('required') && f.password.touched" />
 
-            <mat-error *ngIf="f.password.hasError('required') && f.password.touched">
-                Es requerido
-            </mat-error>
+          <mat-error *ngIf="f.password.hasError('required') && f.password.touched">
+              Es requerido
+          </mat-error>
 
-        </mat-form-field>
-        <br>
-        <br>
-        <mat-checkbox class="mb-24">Recordar</mat-checkbox>
+      </mat-form-field>
+      </div>
+      <br>
+      <br>
+      <mat-checkbox class="mb-24" style="position: relative;left: 75px;bottom: 30px;">Recordar</mat-checkbox>
 
-        <div style="text-align:center">
-            <button mat-raised-button color="primary" [disabled]="enProceso">Ingresar</button>
-        </div>
+      <div class="button-container">
+        <div style="text-align:center; margin:10px;">
+          <button mat-raised-button color="primary" style="width: 100px;" [disabled]="enProceso">Ingresar</button>
+      </div>
 
-        <mat-divider class="my-32"></mat-divider>
+
+      </div>
+
+      <mat-divider class="my-32"></mat-divider>
 
 
-    </form>
+  </form>
+
+  <div style="text-align:center">
+    <button mat-raised-button color="primary" style="width: 100px;" [disabled]="enProceso" [matMenuTriggerFor]="menu">Registrate</button>
+    <mat-menu #menu="matMenu" >
+      <button mat-menu-item (click)="registryForm('FARMER')">Agricultor</button>
+      <button mat-menu-item (click)="registryForm('CLIENT')">Cliente</button>
+      <button mat-menu-item (click)="registryForm('DRIVER')">Transportista</button>
+    </mat-menu>
+</div>
 
 </div>
+
+

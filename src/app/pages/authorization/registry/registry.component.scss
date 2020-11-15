@@ -64,8 +64,11 @@
 .registry-form{
   height: 700px;
   width: 450px;
-  position: absolute;
 
+  position: relative;
+
+    left: 25px;
+    top: 70px;
 
   //background: #5EB503;
   border-radius: 50px;

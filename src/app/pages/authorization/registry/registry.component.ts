@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
@@ -8,24 +8,16 @@ import { Router } from '@angular/router';
 })
 export class RegistryComponent implements OnInit {
 
-  registry: boolean;
-  type: string;
-  userType: string;
+  @Input() title: string;
+  @Input() userType: string;
+  @Input() image: any;
+
   constructor(private router: Router) { }
 
   ngOnInit(): void {
-    this.registry = false;
+
   }
 
-  public registryForm(rol: string): void{
-    this.registry = true;
-    switch(rol){
-      case 'FARMER':this.type = "Agricultor"; break;
-      case 'CLIENT': this.type = "Comprador"; break;
-      case 'DRIVER': this.type = "Transportista"; break;
-    }
-    this.userType = rol;
-  }
 
 
 

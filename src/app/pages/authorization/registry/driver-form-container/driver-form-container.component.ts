@@ -15,7 +15,7 @@ import {DriverBean} from '../../../../_model/DriverBean';
 export class DriverFormContainerComponent implements OnInit {
   hide = true;
   driverForm: FormGroup;
-  @Input() type: string;
+  @Input() title: string;
   @Input() userType: string;
   constructor(private formBuilder: FormBuilder, private restService: RestService, private router: Router, private authService: AuthService, private matSnackBar: MatSnackBar) { }
 
@@ -26,8 +26,8 @@ export class DriverFormContainerComponent implements OnInit {
       'Name': new FormControl('', [Validators.required]),
       'LastName': new FormControl('', [Validators.required]),
       'UserName': new FormControl('', [Validators.required]),
-      'Password': new FormControl('', [Validators.required]),
-      'ConfirmPassword': new FormControl('', [Validators.required])
+      Password: ['', [Validators.required]],
+      ConfirmPassword: ['', [Validators.required]]
     })
   }
 

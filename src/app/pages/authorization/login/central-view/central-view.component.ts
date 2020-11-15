@@ -17,6 +17,10 @@ export class CentralViewComponent implements OnInit {
   password: string;
   enProceso:boolean=false;
 
+  //PARA REGISTRO
+  title: string;
+  userType: string;
+  image: any;
   constructor(
     private authService:AuthService,
     private router:Router,
@@ -48,4 +52,16 @@ export class CentralViewComponent implements OnInit {
   get f() { return this.loginForm.controls; }
 
 
+
+
+  public registryForm(rol: string): void{
+
+    switch(rol){
+      case 'FARMER':this.title = "Agricultor"; this.image = 'assets/images/agricultor.jpg/'; break;
+      case 'CLIENT': this.title = "Comprador"; this.image = 'assets/images/comprador.jpg/' ;break;
+      case 'DRIVER': this.title = "Transportista"; break;
+    }
+    this.userType = rol;
+    this.router.navigate(['auth/registry']);
+  }
 }

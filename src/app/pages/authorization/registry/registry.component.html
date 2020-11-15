@@ -1,7 +1,7 @@
 <div class="background">
   <mat-card>
     <div class="registry-img">
-      <img src="" class="img-left">
+      <img [src]="this.image" class="img-left">
     </div>
     <div class="registry-container" style="background-color: #5EB503;">
       <app-driver-form-container [title]="this.title" [userType]="this.userType"></app-driver-form-container>
