@@ -1,0 +1,40 @@
+<mat-toolbar style="display: block; background: #fcf8f81c; color: #110f0ffd;">
+    <span>{{title}}</span>
+    <div class="elipse" style="float:right" mat-dialog-close><span>X</span></div>
+</mat-toolbar>
+
+<br>
+
+<div mat-dialog-content>
+
+    <form [formGroup]="form" (ngSubmit)="enviarOrden()" #frmUsuario="ngForm">
+
+        <mat-form-field appearance="fill" style="width: 100%;">
+            <mat-label>Direccion</mat-label>
+            <input matInput formControlName="address" [formGroup]="form" required>
+        </mat-form-field>
+
+
+        <mat-form-field appearance="fill" style="width: 100%;">
+            <mat-label>Referencia</mat-label>
+            <input matInput formControlName="reference" [formGroup]="form" required>
+
+        </mat-form-field>
+
+
+        <mat-form-field appearance="fill" style="width: 100%;">
+            <mat-label>Telefono</mat-label>
+            <input matInput formControlName="phone" [formGroup]="form" required>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill" style="width: 100%;">
+            <mat-label>Fecha maxima de entrega</mat-label>
+            <input matInput formControlName="maxDate"[matDatepicker]="picker" [formGroup]="form" required>
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
+
+        <button style="width: 100%;" mat-raised-button color="primary" type="submit" [disabled]="frmUsuario.invalid">{{buttonTitle}}</button>
+    </form>
+
+</div>

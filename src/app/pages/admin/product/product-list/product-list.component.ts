@@ -1,28 +1,14 @@
-import { Component, OnInit } from '@angular/core';
-import { DriverBean } from 'src/app/_model/DriverBean';
-import { AuthService } from 'src/app/_service/auth.service';
+import {Component,OnInit, ViewChild } from '@angular/core';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
+import { MatTableDataSource } from '@angular/material/table';
+
 import { RestService } from 'src/app/_service/rest.service';
+import { ProductBean } from '../../../../_model/ProductBean';
+import { ProductFormComponent } from '../product-form/product-form.component';
+import { MatDialog } from '@angular/material/dialog';
+import { ProductViewComponent } from '../product-view/product-view.component';
 import { SharedService } from 'src/app/_service/shared.service';
-
-export interface PeriodicElement {
-  name: string;
-  position: number;
-  weight: number;
-  symbol: string;
-}
-
-const ELEMENT_DATA: PeriodicElement[] = [
-  {position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H'},
-  {position: 2, name: 'Helium', weight: 4.0026, symbol: 'He'},
-  {position: 3, name: 'Lithium', weight: 6.941, symbol: 'Li'},
-  {position: 4, name: 'Beryllium', weight: 9.0122, symbol: 'Be'},
-  {position: 5, name: 'Boron', weight: 10.811, symbol: 'B'},
-  {position: 6, name: 'Carbon', weight: 12.0107, symbol: 'C'},
-  {position: 7, name: 'Nitrogen', weight: 14.0067, symbol: 'N'},
-  {position: 8, name: 'Oxygen', weight: 15.9994, symbol: 'O'},
-  {position: 9, name: 'Fluorine', weight: 18.9984, symbol: 'F'},
-  {position: 10, name: 'Neon', weight: 20.1797, symbol: 'Ne'},
-];
 
 @Component({
   selector: 'app-product-list',
@@ -30,33 +16,106 @@ const ELEMENT_DATA: PeriodicElement[] = [
   styleUrls: ['./product-list.component.scss']
 })
 export class ProductListComponent implements OnInit {
-  displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
-  dataSource = ELEMENT_DATA;
+
+  displayedColumns: string[] = ['id', 'name', 'description', 'actions'];
+  dataSource: MatTableDataSource<ProductBean>;
+
+  @ViewChild(MatPaginator) paginator: MatPaginator;
+  @ViewChild(MatSort) sort: MatSort;
+
   constructor(
-    private restService:RestService,
-    private authService:AuthService,
-    private sharedData:SharedService
-  ) { }
+    private restService: RestService,
+    public dialog: MatDialog,
+    private sharedService:SharedService
+ 
+  ) {}
 
-  ngOnInit(): void {
-    console.log("LIST");
-  }
-
-  getProduct(){
-
-    let param={
-      data:1
-    
-      
-    }
+  ngOnInit() {
    
-  
-  let currentFileUpload:File = new File([""], "blanco");
-    this.restService.requestApiRestData('product/sp',param,currentFileUpload).subscribe(result=>{
-    //  this.restService.requestApiRestData('categoryproduct/gcp',{}).subscribe(result=>{  
+    this.listProduct();
 
-      console.log(result);
-    })
+
+    this.restService.messageChange.subscribe(data => {
+      console.log('messageChange: ',data);
+      this.listProduct();
+      this.restService.message(data.message, data.action);
+    });
+
   }
+
+  //list product all
+  //this.restService.requestApiRestData('product/gap',param)
+
+  //list products
+  public listProduct() {
+
+    let param = {
+      data: {
+        userCreateId:this.sharedService.userSession.id
+      }
+    }
+    this.restService.requestApiRestData('product/glpbf', param)
+      .subscribe(data => {
+        console.log('mis productos! ', data);
+        this.dataSource = new MatTableDataSource(data.datalist);
+        this.dataSource.paginator = this.paginator;
+        this.dataSource.sort = this.sort;
+      }, error => {
+        console.log("Error al listar productos!", error);
+        this.restService.message('Error al listar productos!', 'Error');
+      });
+  }
+    
+
+  //new and update product
+  newAndUpdateProduct(product?: ProductBean) {
+    let productSelect = product != null ? product : new ProductBean();
+    this.dialog.open(ProductFormComponent, {
+      /*width: '30%',
+      height: '50%',*/
+      data: productSelect
+    });
+  }
+
+  //delete product
+  deleteProduct(product: ProductBean) {
+
+    let param = {
+      data: {
+        'id': product.id
+      }
+    }
+
+    this.restService.requestApiRestData('product/dp', param).subscribe(data => {
+      console.log('se elimino con exito!', data);
+      this.restService.message('Producto eliminado con exito!', 'Delete');
+      this.listProduct();
+
+    },error => {
+      console.log("Error al eliminar producto! ", error);
+      this.restService.message('Error al eliminar producto!', 'Error');
+    });
+
+  }
+
+  //view product
+  viewProduct(product: ProductBean){
+    this.dialog.open(ProductViewComponent, {
+     /* width: '30%',
+      height: '50%',*/
+      data: product
+    });
+  }
+
+//search product
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+
+    if (this.dataSource.paginator) {
+      this.dataSource.paginator.firstPage();
+    }
+  }
+
 
 }

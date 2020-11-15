@@ -12,16 +12,16 @@ export class OrderStoreComponent implements OnInit {
   productSalesList:ProductSalesBean[]=[];
   constructor(
     private restService:RestService,
-    private sanitization: DomSanitizer
+    private sanitization: DomSanitizer  
+
   ) { }
 
   ngOnInit(): void {
     this.restService.requestApiRestData("productsales/glps",{}).subscribe(result =>{
       this.activatedPhoto(result.datalist);
-      this.productSalesList=result.datalist;
-    })
+      this.productSalesList=result.datalist; 
+    }) 
   }
-
   activatedPhoto(data:any){
     for(const m of data){
       this.restService.getPhotoById(m.product.id).subscribe(photo=>{
@@ -40,5 +40,4 @@ export class OrderStoreComponent implements OnInit {
  public setterPhoto(data:any){
     return this.sanitization.bypassSecurityTrustResourceUrl(data);
   }
-
 }

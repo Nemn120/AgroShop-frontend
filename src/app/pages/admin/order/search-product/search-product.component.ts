@@ -72,5 +72,6 @@ export class SearchProductComponent implements OnInit {
     return this.sanitization.bypassSecurityTrustResourceUrl(data);
   }
 
+  
 
 }

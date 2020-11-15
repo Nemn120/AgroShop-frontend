@@ -7,8 +7,8 @@ import { MaterialModule } from 'src/app/_material/material.module';
 import { PanelAdminModule } from '../panel-admin/panel-admin.module';
 import { RouterModule, Routes } from '@angular/router';
 import { OrderStoreCardComponent } from './order-store-card/order-store-card.component';
-import { SearchProductComponent } from './search-product/search-product.component';
 import { FormsModule } from '@angular/forms';
+import { SearchProductComponent } from './search-product/search-product.component';
 
 const routes: Routes = [
   {
