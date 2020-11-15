@@ -5,36 +5,44 @@
 
         </mat-toolbar>
     </p>
-    <mat-form-field class="example-full-width">
-        <mat-label>Nombre</mat-label>
-        <input matInput [(ngModel)]="this.nombre" name="nombre" readonly>
-    </mat-form-field>
-    <mat-form-field class="example-full-width">
-        <mat-label>Fecha</mat-label>
-        <input matInput [(ngModel)]="this.fecha" name="fecha" readonly>
-    </mat-form-field>
-    <mat-form-field class="example-full-width">
-        <mat-label>Telefono</mat-label>
-        <input matInput [(ngModel)]="this.phone" name="phone" readonly>
-    </mat-form-field>
-    <mat-form-field class="example-full-width" style="width: 25%;">
-        <mat-label>Cantidad de Productos</mat-label>
-        <input matInput [(ngModel)]="this.cantidadTotal" name="cantidad" readonly>
-    </mat-form-field>
-    <mat-form-field class="example-full-width" style="width: 50%;">
-        <mat-label>Direccion</mat-label>
-        <input matInput [(ngModel)]="this.address" name="address" readonly>
-    </mat-form-field>
-    <mat-form-field class="example-full-width" style="width: 25%;">
-        <mat-label>Total del Pedido</mat-label>
-        <input matInput [(ngModel)]="this.costoTotal" name="totalO" readonly>
-    </mat-form-field>
+    <div style="display: flex;">
+        <div style="width: 55%;">
+            <mat-form-field class="example-full-width" appearance="legacy">
+                <mat-label>Fecha</mat-label>
+                <input matInput [(ngModel)]="this.fecha" name="fecha" readonly>
+            </mat-form-field>
+        </div>
+        <div style="width: 45%;">
+            <mat-form-field class="example-full-width" appearance="legacy">
+                <mat-label>Numero de Productos</mat-label>
+                <input matInput [(ngModel)]="this.cantidadTotal" name="cantidad" readonly>
+            </mat-form-field>
+        </div>
+    </div>
+
+
+    <div style="display: flex;">
+        <div style=" width: 55%;">
+            <mat-form-field class="example-full-width" appearance="legacy">
+                <mat-label>Direccion</mat-label>
+                <input matInput [(ngModel)]="this.address" name="address" readonly>
+            </mat-form-field>
+        </div>
+        <div style="width: 45%;">
+            <mat-form-field class="example-full-width" appearance="legacy">
+                <mat-label>Costo Total</mat-label>
+                <input matInput [(ngModel)]="this.costoTotal" name="total" readonly>
+            </mat-form-field>
+        </div>
+    </div>
+
 
     <br>
 
     <mat-accordion displayMode="flat" multi class="mat-table">
         <section matSort class="mat-elevation-z2 mat-header-row">
             <span class="mat-header-cell" mat-sort-header="id">ID</span>
+            <span class="mat-header-cell" mat-sort-header="name">ID agricultor</span>
             <span class="mat-header-cell" mat-sort-header="quantity">Cantidad</span>
             <span class="mat-header-cell" mat-sort-header="total">Total</span>
             <span class="mat-header-cell" mat-sort-header="createDate">Fecha</span>
@@ -43,6 +51,7 @@
         <mat-expansion-panel *ngFor="let item of orderList">
             <mat-expansion-panel-header class="mat-row">
                 <span class="mat-cell">{{item.id}}</span>
+                <span class="mat-cell">{{item.farmer.id}}</span>
                 <span class="mat-cell">{{item.quantity}}</span>
                 <span class="mat-cell">S/. {{item.total}}</span>
                 <span class="mat-cell">{{item.createDate | date:'dd/MM/yyyy HH:mm:ss'}}</span>
@@ -50,11 +59,15 @@
             <section matSort class="mat-elevation-z2 mat-header-row" style="background-color:#F4F4F4;">
                 <span class="mat-header-cell" mat-sort-header="name">Producto</span>
                 <span class="mat-header-cell" mat-sort-header="price">Precio</span>
+                <span class="mat-header-cell" mat-sort-header="quantity">Cantidad</span>
+                <span class="mat-header-cell" mat-sort-header="total">Costo</span>
 
             </section>
-            <div *ngFor="let orderDetail of item.orderDetail" class="mat-row" style="background-color: #FAFAF8;">
-                <span class="mat-cell">{{orderDetail.product.name}}</span>
+            <div *ngFor="let orderDetail of item.orderDetailList" class="mat-row" style="background-color: #FAFAF8;">
+                <span class="mat-cell">{{orderDetail.productSales.product.name}}</span>
                 <span class="mat-cell">S/. {{orderDetail.price}}</span>
+                <span class="mat-cell">{{orderDetail.quantity}}</span>
+                <span class="mat-cell">S/. {{orderDetail.total}}</span>
 
             </div>
         </mat-expansion-panel>

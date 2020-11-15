@@ -1,0 +1,279 @@
+/*
+
+
+*{
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+
+}
+
+
+.registry-container{
+  falta comentar
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  top:150px;
+  falta comentar
+  background: #193B01;
+  height: 100%;
+  width: 100%;
+}
+
+
+.registry-form{
+  height: 700px;
+  width: 450px;
+  position: absolute;
+  top:50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  background: #5EB503;
+  border-radius: 50px;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
+.title{
+  text-align: center;
+  font-family: 'Lobster', cursive;
+  font-size: 80px;
+  font-weight: bold;
+  height: 20%;
+
+}
+
+.profiles{
+  height: 80%;
+
+}
+
+.profiles p{
+  text-align: center;
+  font-family: 'Lobster', cursive;
+  font-size: 60px;
+  position: relative;
+  top: 20px;
+  color: #193B01;
+}
+
+.profiles .profiles-button{
+
+  display: flex;
+
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  top:75px;
+}
+
+.profiles .profiles-button .farmer{
+  width: 80%;
+  height: 80px;
+  margin-bottom: 20px;
+  border-radius: 30px;
+  font-family: 'Lobster', cursive;
+  font-size: 50px;
+  color: #fff;
+  background: #193B01;
+  border: none;
+  outline: none;
+}
+
+.profiles .profiles-button .driver{
+  width: 80%;
+  height: 80px;
+  margin-bottom: 20px;
+  border-radius: 30px;
+  font-family: 'Lobster', cursive;
+  font-size: 50px;
+  color: #fff;
+  background: #193B01;
+  border: none;
+  outline: none;
+}
+
+.profiles .profiles-button .customer{
+  width: 80%;
+  height: 80px;
+  border-radius: 30px;
+  font-family: 'Lobster', cursive;
+  font-size: 50px;
+  color: #fff;
+  background: #193B01;
+  border: none;
+  outline: none;
+}
+
+
+*/
+
+
+*{
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+.background{
+  height: 100vh;
+  width: 100vw;
+  display:flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #fff4e3;//rgb(125, 231, 125);
+  overflow: scroll;
+}
+
+.mat-card{
+  box-shadow: 1px 1px 10px 2px #888888;
+  height: 800px;
+  width: 1200px;
+  display: flex;
+
+}
+
+.registry-img{
+
+  height: 100%;
+  width: 700px;
+  display: flex;
+  justify-content:center;
+  align-items: center;
+
+}
+
+
+
+
+.img-left{
+
+}
+
+.registry-container{
+  height: 100%;
+  width: 500px;
+  background-color: #fff;
+}
+
+.registry-container2{
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-image: linear-gradient(to bottom, #27f278, #24d169);
+  //background: #193B01;
+  height: 100%;
+  width: 100%;
+}
+
+
+
+
+
+.registry-form{
+  height: 700px;
+  width: 450px;
+  position: absolute;
+
+
+  //background: #5EB503;
+  border-radius: 50px;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
+.title{
+  text-align: center;
+  font-family: 'Lobster', cursive;
+  font-size: 80px;
+  font-weight: bold;
+  height: 20%;
+
+}
+
+.profiles{
+  height: 80%;
+
+}
+
+.profiles p{
+  text-align: center;
+  font-family: 'Lobster', cursive;
+  font-size: 60px;
+  position: relative;
+  top: 20px;
+  //color: #193B01;
+}
+
+.profiles .profiles-button{
+
+  display: flex;
+
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  top:75px;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Itim&display=swap');
+.profiles .profiles-button .farmer{
+  width: 70%;
+  height: 70px;
+  margin-bottom: 20px;
+  border-radius: 10px;
+  font-family: 'Itim', cursive;
+  font-size: 50px;
+  color:black;
+  background: #e0ffed;
+  border: none;
+  outline: none;
+}
+
+.profiles .profiles-button .driver{
+  width: 80%;
+  height: 80px;
+  margin-bottom: 20px;
+  border-radius: 30px;
+  font-family: 'Lobster', cursive;
+  font-size: 50px;
+  color: #fff;
+  background: #193B01;
+  border: none;
+  outline: none;
+}
+
+.profiles .profiles-button .customer{
+  width: 80%;
+  height: 80px;
+  border-radius: 30px;
+  font-family: 'Lobster', cursive;
+  font-size: 50px;
+  color: #fff;
+  //background: #193B01;
+  border: none;
+  outline: none;
+}
+
+
+.mat-card{
+  padding: 0px;
+}
+
+
+
+#icon {
+  display: inline-block;
+  width: 30px;
+  background-color: #3a57af;
+  padding: 8px 0px 8px 15px;
+  margin-left: 15px;
+  -webkit-border-radius: 4px 0px 0px 4px;
+  -moz-border-radius: 4px 0px 0px 4px;
+  border-radius: 4px 0px 0px 4px;
+  color: white;
+  -webkit-box-shadow: 1px 2px 5px rgba(0,0,0,.09);
+  -moz-box-shadow: 1px 2px 5px rgba(0,0,0,.09);
+  box-shadow: 1px 2px 5px rgba(0,0,0,.09);
+  border: solid 0px #cbc9c9;
+}

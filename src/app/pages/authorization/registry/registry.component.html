@@ -1,1 +1,101 @@
-<p>registry works!</p>
+<div class="background" *ngIf="!registry">
+  <mat-card>
+    <div class="registry-img">
+      <img class="img-left" src="../../../../assets/images/FondoAgroShop.png">
+    </div>
+    <div class="registry-container">
+      <div class="registry-container2">
+        <div class="registry-form">
+          <div class="title">
+            <p>Agroshop</p>
+          </div>
+          <div class="profiles">
+            <p>Perfiles</p>
+            <div class="profiles-button">
+              <button mat-button class="farmer" (click)="registryForm()">Agricultor</button>
+              <button mat-button class="farmer" >Comprador</button>
+              <button mat-button class="farmer" (click)="registryForm()">Transportista</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </mat-card>
+</div>
+
+
+
+
+  <div class="background" *ngIf="registry">
+    <mat-card>
+      <div class="registry-img">
+        <img src="" class="img-left">
+      </div>
+      <div class="registry-container" style="background-image: linear-gradient(to bottom, #27f278, #24d169);">
+        <app-driver-form-container ></app-driver-form-container>
+      </div>
+    </mat-card>
+  </div>
+
+
+<!--
+
+<div *ngIf="selectionButton">
+            <form class="registry-form" action="" [formGroup]="driverForm">
+              <div *ngIf="field === 'DRIVER' ">
+                <mat-form-field appearance="fill">
+                  <mat-label>Nro. de Licencia</mat-label>
+                  <input matInput formControlName="driverLicencia">
+                </mat-form-field>
+              </div>
+              <mat-form-field appearance="fill">
+                <mat-label>DNI</mat-label>
+                <input matInput formControlName="DNI">
+              </mat-form-field>
+              <mat-form-field appearance="fill">
+                <mat-label>Nombres</mat-label>
+                <input matInput formControlName="Name">
+              </mat-form-field>
+              <mat-form-field appearance="fill">
+                <mat-label>Apellidos</mat-label>
+                <input matInput formControlName="LastName">
+              </mat-form-field>
+              <mat-form-field appearance="fill">
+                <mat-label>Usuario</mat-label>
+                <input matInput formControlName="UserName">
+              </mat-form-field>
+              <mat-form-field appearance="fill">
+                <mat-label>Contraseña</mat-label>
+                <input matInput formControlName="Password">
+              </mat-form-field>
+              <mat-form-field appearance="fill">
+                <mat-label>Repetir contraseña</mat-label>
+                <input matInput formControlName="ConfirmPassword">
+              </mat-form-field>
+              <div class="example-button-row">
+                <a mat-button (click)="register()" target="_blank">Registrar</a>
+              </div>
+            </form>
+          </div>
+
+<mat-card>
+    <div class="registry-img">
+      <img class="img-left" src="../../../../assets/images/FondoAgroShop.png">
+    </div>
+    <div class="registry-container">
+      <div class="registry-container2">
+        <div class="registry-form">
+          <div class="title">
+            <p>Agroshop</p>
+          </div>
+          <div class="profiles">
+            <p>Perfiles</p>
+            <app-driver-form-container></app-driver-form-container>
+          </div>
+        </div>
+      </div>
+    </div>
+  </mat-card>
+
+      <app-driver-form-container></app-driver-form-container>
+-->

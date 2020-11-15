@@ -1,0 +1,50 @@
+<div class="form-holder height-100vh mat-elevation-z4 ">
+
+    <form [formGroup]="loginForm" class="signup-form" fxLayout="column" (ngSubmit)="login()">
+
+        <div class="form-headline text-center mb-32">
+            <h1 class="font-weight-light">Bienvenido</h1>
+        </div>
+
+        <div class="mb-48" fxLayout="row wrap" fxLayoutAlign="center center">
+        </div>
+
+
+        <div fxLayout="row" *ngIf="enProceso">
+            <mat-progress-bar mode="query" color="accent" fxFlex></mat-progress-bar>
+            <br />
+        </div>
+
+        <mat-form-field class="full-width" appearance="outline">
+            <mat-label>Usuario</mat-label>
+            <input matInput formControlName="username" type="text" name="username" placeholder="Usuario" [class.is-invalid]="f.username.hasError('required') && f.username.touched" />
+
+            <mat-error *ngIf="f.username.hasError('required') && f.username.touched">
+                Es requerido
+            </mat-error>
+
+        </mat-form-field>
+
+        <mat-form-field class="full-width" appearance="outline">
+            <mat-label>Contraseña</mat-label>
+            <input matInput formControlName="password" type="password" name="password" placeholder="********" [class.is-invalid]="f.password.hasError('required') && f.password.touched" />
+
+            <mat-error *ngIf="f.password.hasError('required') && f.password.touched">
+                Es requerido
+            </mat-error>
+
+        </mat-form-field>
+        <br>
+        <br>
+        <mat-checkbox class="mb-24">Recordar</mat-checkbox>
+
+        <div style="text-align:center">
+            <button mat-raised-button color="primary" [disabled]="enProceso">Ingresar</button>
+        </div>
+
+        <mat-divider class="my-32"></mat-divider>
+
+
+    </form>
+
+</div>

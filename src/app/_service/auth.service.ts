@@ -52,18 +52,26 @@ export class AuthService {
             this.sharedService.orderMenuOptionList(result.datalist);
           console.log(result);
           setTimeout(()=>{
-            this.router.navigate(['']);
+            
+            if(this.sharedService.userSession.user.profile.name=="DRIVER")
+              this.router.navigate(['vehicle/list']);
+            if(this.sharedService.userSession.user.profile.name=="CLIENT")
+              this.router.navigate(['order/store']);
+            if(this.sharedService.userSession.user.profile.name=="FARMER")
+              this.router.navigate(['product/list']);
+
+            this.restService.message('Bienvenido al sistema ',username);
           },1000);
           
           },error=>{
-            console.error(error);
+            console.error('error1',error);
           })
         },error=>{
-          console.error(error);
+          console.error('error2',error);
         })
       }
     }, error =>{
-      console.error(error);
+      console.error('error3',error);
     })  
 
   }

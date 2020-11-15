@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-registry',
@@ -7,9 +8,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RegistryComponent implements OnInit {
 
-  constructor() { }
+  registry: boolean;
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
+    this.registry = false;
   }
+
+  public registryForm(): void{
+    this.registry = true;
+  }
+
+
+
 
 }

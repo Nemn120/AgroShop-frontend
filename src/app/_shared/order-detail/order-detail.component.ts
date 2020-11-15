@@ -27,12 +27,13 @@ export class OrderDetailComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.orderList=this.data.data;
+    this.orderList=this.data;
     this.orderList.forEach(order =>{
-      this.costoTotal+=order.total
+      this.costoTotal+=order.total;
       this.cantidadTotal+=order.quantity;
       
     })
+
     this.phone=this.orderList[0].phone;
     this.address=this.orderList[0].address;
     //this.nombre=this.orderList[0].userOrder.nombre;

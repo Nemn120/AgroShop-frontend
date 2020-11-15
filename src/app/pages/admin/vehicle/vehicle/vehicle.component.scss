@@ -1,0 +1,59 @@
+
+.title-component{
+    height: 50px;
+    z-index: 2;
+}
+
+.vehicle-btn{
+    background-color: white !important;
+    color: #009865 !important;
+    font-weight: bold !important;
+}
+
+.flexExpand {
+    flex: 1 1 auto;
+}
+
+.cards{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.container{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.mat-card{
+    width: 270px;
+    height: 370px;
+    display: inline-block;
+    justify-content: center;
+    text-align: center;
+    border-radius: 10px;
+}
+
+.mat-card-actions{
+    text-align: center;
+}
+
+.mat-card-title{
+    text-align: center;
+    width: 300px;
+}
+
+.mat-card-subtitle{
+    text-align: center;
+}
+
+.mat-card-header{
+    justify-content: center;
+}
+
+.mat-card-image{
+    height: 180px;
+}
