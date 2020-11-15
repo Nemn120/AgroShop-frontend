@@ -1,4 +1,4 @@
-<div style="height: auto;">
+<div >
   <div class="title">
     <p>AgroShop</p>
   </div>
@@ -16,6 +16,7 @@
         <input matInput formControlName="driverLicencia" required>
       </mat-form-field>
     </div>
+    <br>
     <div style="background-color: 	rgb(90, 173, 3); border-bottom: solid 1px black; border-radius: 10px 10px 0px 0px;">
       <mat-form-field appearance="fill">
         <mat-label>DNI</mat-label>
@@ -23,18 +24,20 @@
       </mat-form-field>
     </div>
     <br>
-    <div style="background-color:	rgb(90, 173, 3);border-bottom: solid 1px black; border-radius: 10px 10px 0px 0px;" >
-      <mat-form-field appearance="fill" >
-        <mat-label>Nombres</mat-label>
-        <input matInput formControlName="Name" required>
-      </mat-form-field>
-    </div>
-    <br>
-    <div style="background-color: 	rgb(90, 173, 3);border-bottom: solid 1px black; border-radius: 10px 10px 0px 0px; ">
-      <mat-form-field appearance="fill" >
-        <mat-label>Apellidos</mat-label>
-        <input matInput formControlName="LastName" required>
-      </mat-form-field>
+    <div class="names">
+      <div style="background-color:	rgb(90, 173, 3);border-bottom: solid 1px black; border-radius: 10px 10px 0px 0px; width: 196px; margin-right: 2px;" >
+        <mat-form-field appearance="fill" style="width: 196px;">
+          <mat-label>Nombres</mat-label>
+          <input matInput formControlName="Name" required>
+        </mat-form-field>
+      </div>
+
+      <div style="background-color: 	rgb(90, 173, 3);border-bottom: solid 1px black; border-radius: 10px 10px 0px 0px; width: 196px; margin-left: 2px;">
+        <mat-form-field appearance="fill" style="width: 196px;">
+          <mat-label>Apellidos</mat-label>
+          <input matInput formControlName="LastName" required>
+        </mat-form-field>
+      </div>
     </div>
     <br>
     <div style="background-color:rgb(90, 173, 3); border-bottom: solid 1px black; border-radius: 10px 10px 0px 0px;">
@@ -44,23 +47,24 @@
       </mat-form-field>
     </div>
     <br>
-    <div style="background-color:rgb(90, 173, 3); border-bottom: solid 1px black; border-radius: 10px 10px 0px 0px;">
-      <mat-form-field appearance="fill" [color]="primary">
-        <mat-label>Contraseña</mat-label>
-        <input matInput [type]="hide ? 'password' : 'text'" formControlName="Password">
-        <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide" required>
-        <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-        </button>
-      </mat-form-field>
-    </div>
-    <br>
-    <div style="background-color: 	rgb(90, 173, 3);border-bottom: solid 1px black; border-radius: 10px 10px 0px 0px; ">
-      <mat-form-field appearance="fill" >
-        <mat-label>Repetir contraseña</mat-label>
-        <input matInput [type]="hide ? 'password' : 'text'" formControlName="ConfirmPassword" required>
-      </mat-form-field>
+    <div class="names">
+      <div style="background-color:rgb(90, 173, 3); border-bottom: solid 1px black; border-radius: 10px 10px 0px 0px;  width: 196px; margin-right: 2px;">
+        <mat-form-field appearance="fill" [color]="primary" style="width: 196px;">
+          <mat-label>Contraseña</mat-label>
+          <input matInput [type]="hide ? 'password' : 'text'" formControlName="Password">
+          <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide" required>
+          <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+          </button>
+        </mat-form-field>
+      </div>
+      <div style="background-color: 	rgb(90, 173, 3);border-bottom: solid 1px black; border-radius: 10px 10px 0px 0px;  width: 196px; margin-left: 2px;">
+        <mat-form-field appearance="fill" style="width: 196px;">
+          <mat-label>Repetir contraseña</mat-label>
+          <input matInput [type]="hide ? 'password' : 'text'" formControlName="ConfirmPassword" required>
+        </mat-form-field>
+      </div>
     </div>
     <div class="example-button-row">
-      <a mat-button style="background-color: rgb(139, 66, 66);" (click)="register()" target="_blank">Registrar</a>
+      <button mat-button class="registry-button" (click)="register()" target="_blank">Registrar</button>
     </div>
   </form>
