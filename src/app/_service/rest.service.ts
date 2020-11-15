@@ -41,4 +41,18 @@ export class RestService {
      });
    }
 
+   message(message: string, action: string) {
+
+    this._snackBar.open(message, action, {
+      duration: 2000,
+    });
+
+  }
+
+  getPhoto(id: number){
+    return this.http.get(`${this.urlHost}vehicle/gp/${id}`,{
+      responseType: 'blob'
+    });
+   }
+
 }

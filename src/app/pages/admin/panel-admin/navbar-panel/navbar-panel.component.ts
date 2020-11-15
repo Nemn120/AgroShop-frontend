@@ -44,7 +44,7 @@ export class NavbarPanelComponent implements OnInit{
   }
 
   public signOut(): void {
-   //this.userService.closeSession();
+   this.userService.closeSession();
   }
 
 
@@ -55,7 +55,7 @@ export class NavbarPanelComponent implements OnInit{
 
     this.dialog.open(CarDiaLogComponent, {
       
-        width: '27%',//20%
+        width: '20%',
         height: '100%',
         position: { right:'0px' },
 

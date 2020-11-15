@@ -12,13 +12,13 @@ import { ProductViewComponent } from './product-view/product-view.component';
 import { CategoriesListComponent } from '../gestion/categories/categories-list/categories-list.component';
 import { CategoriesViewComponent } from '../gestion/categories/categories-view/categories-view.component';
 const routes: Routes = [
-  {
-    path: '', component:WelcomeComponent},
+  
+    
 
-   //{path: 'list', component: ProductListComponent}//gestion productos
+   {path: 'list', component: ProductListComponent},//gestion productos
 
     //temporal
-   {path: 'list', component: CategoriesListComponent}//gestion categorias
+   {path: 'category', component: CategoriesListComponent}//gestion categorias
   
 ];
 
