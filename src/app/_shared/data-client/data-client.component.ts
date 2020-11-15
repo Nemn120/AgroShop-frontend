@@ -78,6 +78,8 @@ export class DataClientComponent implements OnInit {
             width:'40%',
             data: result.datalist
           })
+        },error=>{
+          
         })
         
 
