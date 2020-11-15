@@ -32,6 +32,7 @@ export class CarDiaLogComponent implements OnInit {
   selectedFiles: FileList;
   currentFileUpload: File;
   labelFile: string;
+  sendOrderCar: OrderBean;
   constructor( public dialogo: MatDialog,
     public dialog: MatDialogRef<CarDiaLogComponent>,
     public orderService:OrderService,

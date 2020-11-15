@@ -25,7 +25,7 @@ export class DataClientComponent implements OnInit {
   phone: FormControl;
   maxDate: FormControl;
   title: string = "Lugar de entrega";
-  buttonTitle: string = "Registrar";
+  buttonTitle: string = "Enviar Orden";
   isUpdateOrder: boolean = false;
   constructor(
     public dialog: MatDialog, public dialogo: MatDialogRef<DataClientComponent>,
@@ -72,19 +72,21 @@ export class DataClientComponent implements OnInit {
         }
         this.restService.requestApiRestData("order/sobos",param).subscribe(result=>{
           console.log(result);
-          // llamar al snackbar  para el mensaje
+          this.snackBar.open(result.responseMessage, 'SUCESS', { duration: 5000 })
+       
           this.dialog.open(OrderDetailComponent, {
-            width:'30%',
+            width:'40%',
             data: result.datalist
           })
         })
+        
 
 
 
         Swal.fire(
-          'Se han registrado su orden',
+          'Se ha registrado su orden',
           'La orden ha sido enviada.',
-          'success'
+          'success' 
           
         );
         this.cerrarDialogo();
