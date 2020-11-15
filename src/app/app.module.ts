@@ -48,11 +48,7 @@ export function tokenGetter() {
     PanelAdminModule,
     AuthorizationModule,
     MatSnackBarModule,
-<<<<<<< HEAD
-   JwtModule.forRoot({
-=======
     JwtModule.forRoot({
->>>>>>> origin/develop
       config: {
         tokenGetter,
         whitelistedDomains: ['localhost:8080'],
