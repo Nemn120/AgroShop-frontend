@@ -1,47 +1,65 @@
-<div>
+<div style="height: auto;">
+  <div class="title">
+    <p>AgroShop</p>
+  </div>
   <div class="title-registry">
     <p>Registrate</p>
   </div>
   <div class="title-farmer">
-    <p>USUARIO</p>
+    <p>{{type}}</p>
   </div>
 </div>
   <form class="registry-form" action="" [formGroup]="driverForm">
-    <div *ngIf="">
+    <div *ngIf="" style="background-color: #ABD902; border-bottom: solid 2px black; border-radius: 10px 10px 0px 0px;">
       <mat-form-field appearance="fill">
         <mat-label>Nro. de Licencia</mat-label>
-        <input matInput formControlName="driverLicencia">
+        <input matInput formControlName="driverLicencia" required>
       </mat-form-field>
     </div>
-    <mat-form-field appearance="fill">
-      <mat-label>DNI</mat-label>
-      <input matInput formControlName="DNI">
-    </mat-form-field>
+    <div style="background-color: #ABD902; border-bottom: solid 2px black; border-radius: 10px 10px 0px 0px;">
+      <mat-form-field appearance="fill">
+        <mat-label>DNI</mat-label>
+        <input matInput formControlName="DNI" required>
+      </mat-form-field>
+    </div>
     <br>
-    <mat-form-field appearance="fill" >
-      <mat-label>Nombres</mat-label>
-      <input matInput formControlName="Name">
-    </mat-form-field>
+    <div style="background-color:#ABD902;border-bottom: solid 2px black; border-radius: 10px 10px 0px 0px;" >
+      <mat-form-field appearance="fill" >
+        <mat-label>Nombres</mat-label>
+        <input matInput formControlName="Name" required>
+      </mat-form-field>
+    </div>
     <br>
-    <mat-form-field appearance="fill" >
-      <mat-label>Apellidos</mat-label>
-      <input matInput formControlName="LastName">
-    </mat-form-field>
+    <div style="background-color: #ABD902;border-bottom: solid 2px black; border-radius: 10px 10px 0px 0px; ">
+      <mat-form-field appearance="fill" >
+        <mat-label>Apellidos</mat-label>
+        <input matInput formControlName="LastName" required>
+      </mat-form-field>
+    </div>
     <br>
-    <mat-form-field appearance="fill" >
-      <mat-label>Usuario</mat-label>
-      <input matInput formControlName="UserName">
-    </mat-form-field>
+    <div style="background-color: #ABD902; border-bottom: solid 2px black; border-radius: 10px 10px 0px 0px;">
+      <mat-form-field appearance="fill" [color]="primary" >
+        <mat-label>Usuario</mat-label>
+        <input matInput formControlName="UserName" required>
+      </mat-form-field>
+    </div>
     <br>
-    <mat-form-field appearance="fill" >
-      <mat-label>Contraseña</mat-label>
-      <input matInput formControlName="Password">
-    </mat-form-field>
+    <div style="background-color:#ABD902; border-bottom: solid 2px black; border-radius: 10px 10px 0px 0px;">
+      <mat-form-field appearance="fill" [color]="primary">
+        <mat-label>Contraseña</mat-label>
+        <input matInput [type]="hide ? 'password' : 'text'" formControlName="Password">
+        <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide" required>
+        <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </button>
+      </mat-form-field>
+    </div>
     <br>
-    <mat-form-field appearance="fill" >
-      <mat-label>Repetir contraseña</mat-label>
-      <input matInput formControlName="ConfirmPassword">
-    </mat-form-field>
+    <div style="background-color: #ABD902;border-bottom: solid 2px black; border-radius: 10px 10px 0px 0px; ">
+      <mat-form-field appearance="fill" >
+        <mat-label>Repetir contraseña</mat-label>
+        <input matInput [type]="hide ? 'password' : 'text'" formControlName="ConfirmPassword" required>
+      </mat-form-field>
+    </div>
     <div class="example-button-row">
       <a mat-button style="background-color: rgb(139, 66, 66);" (click)="register()" target="_blank">Registrar</a>
     </div>
