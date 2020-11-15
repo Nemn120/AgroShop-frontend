@@ -11,6 +11,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ProductViewComponent } from './product-view/product-view.component';
 import { CategoriesListComponent } from '../gestion/categories/categories-list/categories-list.component';
 import { CategoriesViewComponent } from '../gestion/categories/categories-view/categories-view.component';
+import { ProductsSalesListComponent } from '../gestion/products-sales/products-sales-list/products-sales-list.component';
+import { ProductsSalesFormComponent } from '../gestion/products-sales/products-sales-form/products-sales-form.component';
+import { ProductsSalesViewComponent } from '../gestion/products-sales/products-sales-view/products-sales-view.component';
 const routes: Routes = [
   
     
@@ -18,7 +21,11 @@ const routes: Routes = [
    {path: 'list', component: ProductListComponent},//gestion productos
 
     //temporal
-   {path: 'category', component: CategoriesListComponent}//gestion categorias
+   {path: 'category', component: CategoriesListComponent},//gestion categorias
+   //{path: 'list', component: CategoriesListComponent},//gestion categorias
+  
+   //temporal
+   {path: 'sales', component: ProductsSalesListComponent}//gestion productos venta
   
 ];
 
@@ -32,6 +39,11 @@ const routes: Routes = [
     CategoriesListComponent,
     CategoriesFormComponent,
     CategoriesViewComponent,
+
+    //temporal
+    ProductsSalesListComponent,
+    ProductsSalesFormComponent,
+    ProductsSalesViewComponent,
   ],
   imports: [
     CommonModule,
@@ -51,6 +63,9 @@ const routes: Routes = [
     //temporal
     CategoriesFormComponent,
     CategoriesViewComponent,
+    //temporal
+    ProductsSalesFormComponent,
+    ProductsSalesViewComponent,
    ],
 })
 export class ProductModule { }

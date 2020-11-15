@@ -1,0 +1,73 @@
+<h2>{{titulo}} Producto Venta</h2>
+<mat-tab-group mat-align-tabs="center">
+
+    <mat-tab>
+        <ng-template mat-tab-label>
+            <mat-icon class="example-tab-icon">info</mat-icon>
+        </ng-template>
+        <br>
+        <mat-form-field>
+            <mat-label>Producto</mat-label>
+            <mat-select [(ngModel)]="this.productSalesSelect.product">
+                <mat-option *ngFor="let p of productos" [value]="p">
+                    {{p.name}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+        <br>
+        <mat-form-field>
+            <mat-label>Unidad de Medida</mat-label>
+            <input matInput [(ngModel)]="this.productSalesSelect.measureUnite" placeholder="Ingresar unidad de medida">
+        </mat-form-field>
+        <br>
+        <mat-form-field>
+            <mat-label>Peso x Unidad</mat-label>
+            <input matInput [(ngModel)]="this.productSalesSelect.weight" placeholder="Ingresar peso x unidad">
+        </mat-form-field>
+
+    </mat-tab>
+
+    <mat-tab>
+
+        <ng-template mat-tab-label>
+            <mat-icon class="example-tab-icon">attach_money</mat-icon>
+        </ng-template>
+        <br>
+        <mat-form-field>
+            <mat-label>Precio</mat-label>
+            <input matInput type="number" [(ngModel)]="this.productSalesSelect.price" value="0" min="0">
+        </mat-form-field>
+        <br>
+        <mat-form-field>
+            <mat-label>Cantidad Total</mat-label>
+            <input matInput type="number" [(ngModel)]="this.productSalesSelect.totalQuantity" min="0">
+        </mat-form-field>
+        <br>
+        <!--
+        <mat-form-field>
+            <mat-label>Cantidad Disponible</mat-label>
+            <input matInput [(ngModel)]="this.data.availableQuantity">
+        </mat-form-field>
+        <br>
+        
+        <mat-form-field>
+            <mat-label>Disponibiliad</mat-label>
+            <input matInput [(ngModel)]="this.data.statusSales">
+        </mat-form-field>
+        <br>
+        -->
+        <mat-form-field>
+            <mat-label>Estado</mat-label>
+            <mat-select [(ngModel)]="this.productSalesSelect.status">
+                <mat-option *ngFor="let e of estados" [value]="e">
+                    {{e}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+
+    </mat-tab>
+
+</mat-tab-group>
+
+<button style="width: 50%;" mat-raised-button color="primary" (click)="save()">Aceptar</button>
+<button style="width: 50%;" mat-raised-button color="accent" (click)="closeDialog()">Cancelar</button>
