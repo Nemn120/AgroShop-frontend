@@ -13,5 +13,5 @@ export class VehicleEntity extends MainBean{
     netWeight : number;
     grossWeight : number;
     photo : any;
-    driver : DriverBean
+    driver : DriverBean;
 }

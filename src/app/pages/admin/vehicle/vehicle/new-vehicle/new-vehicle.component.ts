@@ -12,6 +12,7 @@ import Swal from 'sweetalert2';
 })
 export class NewVehicleComponent implements OnInit {
 
+
   vehicle : VehicleEntity;
   labelFile: string;
   selectedFiles: FileList;
@@ -24,7 +25,7 @@ export class NewVehicleComponent implements OnInit {
   
   constructor(
     private restService: RestService,
-    private sharedData: SharedService
+    private sharedData: SharedService,
   ) { }
 
   ngOnInit(): void {
@@ -65,9 +66,6 @@ export class NewVehicleComponent implements OnInit {
     })
       }
     });
-
-
-    
   }
 
   selectFile(e: any) {

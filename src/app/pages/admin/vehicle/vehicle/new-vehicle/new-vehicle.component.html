@@ -63,7 +63,10 @@
         <br>
         <div class="buttons">
             <button class="first-btn btn-form" mat-stroked-button color="basic" mat-dialog-close>Cancelar</button>
-            <button mat-raised-button type="submit" class="btn-form" color="warn" (click)="newVehicle()" mat-dialog-close>Ingresar</button>
+            <button mat-raised-button type="submit" class="btn-form" color="warn" [disabled]="
+            !this.vehicle.plateNumber || !this.vehicle.serialNumber || !this.vehicle.vehicleBrand || !this.vehicle.vehicleModel || 
+            !this.vehicle.yearsOfUse || !this.vehicle.fuelType || !this.vehicle.statusCar || !this.vehicle.netWeight || !this.vehicle.grossWeight"  
+            mat-dialog-close (click)="newVehicle()">Ingresar</button>
         </div>
     
 </form>
