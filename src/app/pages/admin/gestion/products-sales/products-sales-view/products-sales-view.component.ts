@@ -20,19 +20,11 @@ export class ProductsSalesViewComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-
-    console.log('view1: ',this.data);
-   // this.validarCategoriaNula();
-    //console.log('view2: ',this.data);
-
+    
+    console.log('view: ',this.data);
+ 
   }
-/*
-  validarCategoriaNula(){
-    if(this.data.category==null){
-      this.data.category=new CategoryProductBean();
-    }
-  }
-*/
+
   closeDialog(): void {
     this.dialogRef.close();
   }

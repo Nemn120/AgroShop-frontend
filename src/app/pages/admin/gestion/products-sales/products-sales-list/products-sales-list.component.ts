@@ -31,7 +31,7 @@ export class ProductsSalesListComponent implements OnInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
-  isName:boolean=false;
+  //isName:boolean=false;
 
   constructor(
     private sharedService:SharedService,
