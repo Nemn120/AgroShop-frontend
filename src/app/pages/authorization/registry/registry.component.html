@@ -1,35 +1,10 @@
-<div class="background" *ngIf="!registry">
-  <mat-card>
-    <div class="registry-img">
-      <img class="img-left" src="../../../../assets/images/FondoAgroShop.png">
-    </div>
-    <div class="registry-container">
-      <div class="registry-container2">
-        <div class="registry-form">
-          <div class="title">
-            <p>Agroshop</p>
-          </div>
-          <div class="profiles">
-            <p>Perfiles</p>
-            <div class="profiles-button">
-              <button mat-button class="farmer" (click)="registryForm('FARMER')">Agricultor</button>
-              <button mat-button class="farmer" (click)="registryForm('CLIENT')">Comprador</button>
-              <button mat-button class="farmer" (click)="registryForm('DRIVER')">Transportista</button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </mat-card>
-</div>
-
-<div class="background" *ngIf="registry">
+<div class="background">
   <mat-card>
     <div class="registry-img">
       <img src="" class="img-left">
     </div>
     <div class="registry-container" style="background-color: #5EB503;">
-      <app-driver-form-container [type]="this.type" [userType]="this.userType"></app-driver-form-container>
+      <app-driver-form-container [title]="this.title" [userType]="this.userType"></app-driver-form-container>
     </div>
   </mat-card>
 </div>
