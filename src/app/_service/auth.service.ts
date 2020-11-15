@@ -52,8 +52,15 @@ export class AuthService {
             this.sharedService.orderMenuOptionList(result.datalist);
           console.log(result);
           setTimeout(()=>{
-            this.router.navigate(['']);
-            this.restService.message('Inicio de sesion con exito!',username);
+            
+            if(this.sharedService.userSession.user.profile.name=="DRIVER")
+              this.router.navigate(['vehicle/list']);
+            if(this.sharedService.userSession.user.profile.name=="CLIENT")
+              this.router.navigate(['order/store']);
+            if(this.sharedService.userSession.user.profile.name=="FARMER")
+              this.router.navigate(['product/list']);
+
+            this.restService.message('Bienvenido al sistema ',username);
           },1000);
           
           },error=>{
