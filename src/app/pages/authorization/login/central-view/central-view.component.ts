@@ -41,10 +41,11 @@ export class CentralViewComponent implements OnInit {
     if (this.loginForm.invalid) {
       return;
     }
-
+    this.enProceso=true;
     this.username = this.loginForm.value['username'];
     this.password = this.loginForm.value['password'];
     this.authService.login(this.username,this.password);
+    this.enProceso=false;
   }
   registry(){
     this.router.navigate(['auth/registry']);

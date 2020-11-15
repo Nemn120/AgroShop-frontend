@@ -16,7 +16,6 @@ export class VehicleDetailComponent implements OnInit {
 
   constructor(
     private restService: RestService,
-    private sharedService : SharedService,
     @Inject(MAT_DIALOG_DATA) public data: VehicleEntity,
     private sanitization: DomSanitizer
   ) { }
@@ -35,7 +34,6 @@ export class VehicleDetailComponent implements OnInit {
   }
 
   public convertir(data: any) {
-    console.log(data);
     this.restService.getPhoto(data.id).subscribe(photo =>{
       let reader = new FileReader();
         reader.readAsDataURL(photo);
