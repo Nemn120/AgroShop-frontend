@@ -17,8 +17,8 @@ export class OrderDetailComponent implements OnInit {
   nombre: string;
   address: string;
   phone: string;
-  costoTotal: number;
-  cantidadTotal:number;
+  costoTotal: number=0;
+  cantidadTotal:number=0;
   fechaCreacion: Date;
   fecha:string;
   constructor(
@@ -29,10 +29,11 @@ export class OrderDetailComponent implements OnInit {
   ngOnInit(): void {
     this.orderList=this.data;
     this.orderList.forEach(order =>{
-      this.costoTotal+=order.total
+      this.costoTotal+=order.total;
       this.cantidadTotal+=order.quantity;
       
     })
+
     this.phone=this.orderList[0].phone;
     this.address=this.orderList[0].address;
     //this.nombre=this.orderList[0].userOrder.nombre;

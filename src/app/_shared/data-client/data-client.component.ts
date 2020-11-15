@@ -25,7 +25,7 @@ export class DataClientComponent implements OnInit {
   phone: FormControl;
   maxDate: FormControl;
   title: string = "Lugar de entrega";
-  buttonTitle: string = "Registrar";
+  buttonTitle: string = "Enviar Orden";
   isUpdateOrder: boolean = false;
   constructor(
     public dialog: MatDialog, public dialogo: MatDialogRef<DataClientComponent>,
@@ -84,9 +84,9 @@ export class DataClientComponent implements OnInit {
 
 
         Swal.fire(
-          'Se han registrado su orden',
+          'Se ha registrado su orden',
           'La orden ha sido enviada.',
-          'success'
+          'success' 
           
         );
         this.cerrarDialogo();
