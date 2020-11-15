@@ -55,13 +55,6 @@ export class CentralViewComponent implements OnInit {
 
 
   public registryForm(rol: string): void{
-
-    switch(rol){
-      case 'FARMER':this.title = "Agricultor"; this.image = 'assets/images/agricultor.jpg/'; break;
-      case 'CLIENT': this.title = "Comprador"; this.image = 'assets/images/comprador.jpg/' ;break;
-      case 'DRIVER': this.title = "Transportista"; break;
-    }
-    this.userType = rol;
-    this.router.navigate(['auth/registry']);
+    this.router.navigate(['auth/registry',rol]);
   }
 }
