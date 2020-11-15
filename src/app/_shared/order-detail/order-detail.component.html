@@ -6,26 +6,27 @@
         </mat-toolbar>
     </p>
     <div style="display: flex;">
-        <div style="width: 55%;">
+        <div style=" width: 55%;">
+            <mat-form-field class="example-full-width" appearance="legacy">
+                <mat-label>Direccion</mat-label>
+                <input matInput [(ngModel)]="this.address" name="address" readonly>
+            </mat-form-field>
+        </div>
+        <div style="width: 45%;">
             <mat-form-field class="example-full-width" appearance="legacy">
                 <mat-label>Fecha</mat-label>
                 <input matInput [(ngModel)]="this.fecha" name="fecha" readonly>
             </mat-form-field>
         </div>
-        <div style="width: 45%;">
-            <mat-form-field class="example-full-width" appearance="legacy">
-                <mat-label>Numero de Productos</mat-label>
-                <input matInput [(ngModel)]="this.cantidadTotal" name="cantidad" readonly>
-            </mat-form-field>
-        </div>
+
     </div>
 
 
     <div style="display: flex;">
-        <div style=" width: 55%;">
+        <div style="width: 55%;">
             <mat-form-field class="example-full-width" appearance="legacy">
-                <mat-label>Direccion</mat-label>
-                <input matInput [(ngModel)]="this.address" name="address" readonly>
+                <mat-label>Numero de Productos</mat-label>
+                <input matInput [(ngModel)]="this.cantidadTotal" name="cantidad" readonly>
             </mat-form-field>
         </div>
         <div style="width: 45%;">
