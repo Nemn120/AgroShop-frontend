@@ -15,7 +15,7 @@
                 <mat-card-subtitle>Nro. Placa: {{car.plateNumber}}</mat-card-subtitle>
             </mat-card-header>
             <img mat-card-image *ngIf="car.photo" [src]="car.photo" alt="carPhoto" >
-            <img mat-card-image *ngIf="car.photo" src="assets/images/no-image.png" alt="carPhoto">
+            <img mat-card-image *ngIf="!car.photo" src="assets/images/no-image.png" alt="carPhoto">
             <hr>
             <mat-card-content>
                 Estado: {{car.statusCar}}
