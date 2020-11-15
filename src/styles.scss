@@ -41,6 +41,8 @@ button.mat-menu-item:hover:not([disabled]),
     font-size: 16px;
 }
 
+
+/*
 mat-select.mat-select {
     width: auto;
     display: inline;
@@ -59,6 +61,7 @@ mat-select.mat-select {
         margin-right: 0;
     }
 }
+*/
 
 .mat-option {
     font-size: 16px;
@@ -74,9 +77,12 @@ mat-select.mat-select {
     }
 }
 
+
+/*
 .mat-form-field-underline {
     display: none;
 }
+*/
 
 html,
 body {
@@ -338,4 +344,3 @@ div.apexcharts-xaxistooltip-bottom:after {
 table {
     width: 100%;
 }
-

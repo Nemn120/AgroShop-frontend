@@ -5,7 +5,11 @@ import { RegistryComponent } from './registry/registry.component';
 import { RouterModule, Routes } from '@angular/router';
 import { MaterialModule } from 'src/app/_material/material.module';
 import { DriverFormContainerComponent } from './registry/driver-form-container/driver-form-container.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { LeftBannerComponent } from './login/left-banner/left-banner.component';
+import { CentralViewComponent } from './login/central-view/central-view.component';
+import { RightBannerComponent } from './login/right-banner/right-banner.component';
+import { ToolbarComponent } from '../public-view/toolbar/toolbar.component';
 
 const routes: Routes = [
   {
@@ -19,14 +23,14 @@ const routes: Routes = [
   }
 ];
 
-
 @NgModule({
-  declarations: [LoginComponent,RegistryComponent,DriverFormContainerComponent],
+  declarations: [LoginComponent,RegistryComponent,DriverFormContainerComponent,LeftBannerComponent,CentralViewComponent,RightBannerComponent,ToolbarComponent],
   imports: [
     CommonModule,
     MaterialModule,
     ReactiveFormsModule,
     RouterModule.forChild(routes),
+    FormsModule,
   ],
   exports:[
     LoginComponent, RegistryComponent,DriverFormContainerComponent

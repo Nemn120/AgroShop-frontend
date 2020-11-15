@@ -74,70 +74,13 @@ export class CarDiaLogComponent implements OnInit {
   sendOrder() {
     
     if (this.orderDetailListSelect.length > 0) {
-      if (!this.sharedService.userSession){
-        this.snackBar.open('Inicie sesión para enviar la orden', 'INFO', { duration: 5000 });
-        this.closeDialog();
-        this.router.navigate(['auth/login']);
-        return;
-      }else{
+      let orderSend=new OrderBean();
+      orderSend.orderDetailList=this.orderDetailListSelect;
         this.dialogo
         .open(DataClientComponent, {
           width:'25%',
-          data: new OrderBean()
-        })
-        .afterClosed()
-        .subscribe((confirmado) => {
-            if (confirmado){
-              this.sendOrderConfirm();
-            }       
-        });
-      }   
-    } else {
-      //alert('Seleccione algun producto');
+          data:orderSend
+        })  
     }
   }
-
-  sendOrderConfirm(){
-    Swal.fire({
-      title: 'Esta seguro de enviar la orden?',
-      showClass: {
-        popup: 'animate__animated animate__fadeInDown'
-      },
-      hideClass: {
-        popup: 'animate__animated animate__fadeOutUp'
-      },
-      icon: 'warning',
-      showCancelButton: true,
-      allowOutsideClick:false,
-      confirmButtonColor: 'green',
-      cancelButtonColor: '#d33',
-      confirmButtonText: 'Generar orden'
-    }).then((result) => {
-      if (result.isConfirmed) {
-        this.sendOrderCar = new OrderBean();
-              this.sendOrderCar = this.orderService.newOrder;
-              this.sendOrderCar.orderDetailList = [];
-              this.orderDetailListSelect.forEach(x => {
-                this.sendOrderCar.orderDetailList.push(x);
-                this.orderService.totalQuantity--;
-              });
-        Swal.fire(
-          'Se ha registrado su orden',
-          'La orden ha sido enviada.',
-          'success'
-          
-        );
-        this.closeDialog();
-          this.dialogo.open(OrderDetailComponent, {
-          width:'30%',
-          data: new OrderBean()
-        })
-        
-
-      }
-      
-    });
-  }
-
- 
 }

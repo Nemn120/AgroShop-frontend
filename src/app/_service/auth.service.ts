@@ -53,17 +53,18 @@ export class AuthService {
           console.log(result);
           setTimeout(()=>{
             this.router.navigate(['']);
+            this.restService.message('Inicio de sesion con exito!',username);
           },1000);
           
           },error=>{
-            console.error(error);
+            console.error('error1',error);
           })
         },error=>{
-          console.error(error);
+          console.error('error2',error);
         })
       }
     }, error =>{
-      console.error(error);
+      console.error('error3',error);
     })  
 
   }
