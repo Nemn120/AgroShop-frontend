@@ -7,6 +7,9 @@ import Swal from 'sweetalert2';
 import { OrderDetailBean } from 'src/app/_model/OrderDetailBean';
 import { OrderDetailComponent } from '../order-detail/order-detail.component';
 import { OrderService } from 'src/app/_service/order.service';
+import { ClientBean } from 'src/app/_model/ClientBean';
+import { SharedService } from 'src/app/_service/shared.service';
+import { RestService } from 'src/app/_service/rest.service';
 
 @Component({
   selector: 'app-data-client',
@@ -30,16 +33,21 @@ export class DataClientComponent implements OnInit {
     private fb: FormBuilder,
     private snackBar: MatSnackBar,
     private dialogMap: MatDialog,
-    public orderService: OrderService
+    public orderService: OrderService,
+    private sharedData:SharedService,
+    private restService:RestService
   
   ) { }
 
   enviarOrden() {
 
-    this.order = new OrderBean();
+    this.order = this.data;
     this.order.address = this.form.value['address'];
     this.order.reference = this.form.value['reference'];
     this.order.phone = this.form.value['phone'];
+    this.order.client = new ClientBean();
+    this.order.client=this.sharedData.userSession;
+    
     //this.order.maxDate= this.form.value['maxDate'];
 
     // CUANDO ENVIA LA ORDEN
@@ -59,6 +67,20 @@ export class DataClientComponent implements OnInit {
       confirmButtonText: 'Generar orden'
     }).then((result) => {
       if (result.isConfirmed) {
+        let param={
+          data:this.order
+        }
+        this.restService.requestApiRestData("order/sobos",param).subscribe(result=>{
+          console.log(result);
+          // llamar al snackbar  para el mensaje
+          this.dialog.open(OrderDetailComponent, {
+            width:'30%',
+            data: result.datalist
+          })
+        })
+
+
+
         Swal.fire(
           'Se han registrado su orden',
           'La orden ha sido enviada.',
@@ -66,13 +88,7 @@ export class DataClientComponent implements OnInit {
           
         );
         this.cerrarDialogo();
-          //this.sendOrder(this.form.value.address,this.form.value.reference,this.form.value.phone);
-            
-         
-          this.dialog.open(OrderDetailComponent, {
-          width:'30%',
-          data: new OrderBean()
-        })
+      
         
 
       }
@@ -105,15 +121,7 @@ export class DataClientComponent implements OnInit {
     this.dialogo.close(false);
   }
   confirmado(): void {
-
     this.dialogo.close(true);
   }
-  sendOrder(address:string,reference:string,phone:string) {
-    let orderSelect= new OrderBean();
-    orderSelect.address=this.form.value.address;
-    orderSelect.reference=this.form.value.reference;
-    orderSelect.phone=this.form.value.phone;
 
-    this.orderService.sendNewOrder(orderSelect.address,orderSelect.reference,orderSelect.phone);
-  }
 }

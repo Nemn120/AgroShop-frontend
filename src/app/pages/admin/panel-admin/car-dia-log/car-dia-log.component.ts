@@ -73,24 +73,13 @@ export class CarDiaLogComponent implements OnInit {
   sendOrder() {
     
     if (this.orderDetailListSelect.length > 0) {
-      if (!this.sharedService.userSession){
-        this.snackBar.open('Inicie sesión para enviar la orden', 'INFO', { duration: 5000 });
-        this.closeDialog();
-        this.router.navigate(['auth/login']);
-        return;
-      }else{
+      let orderSend=new OrderBean();
+      orderSend.orderDetailList=this.orderDetailListSelect;
         this.dialogo
         .open(DataClientComponent, {
           width:'25%',
-          data: new OrderBean()
-        })
-      }   
-    } else {
-      //alert('Seleccione algun producto');
+          data:orderSend
+        })  
     }
   }
-
-  
-
- 
 }
