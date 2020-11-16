@@ -1,11 +1,12 @@
 .button-search {
     outline: none;
     border: none;
-    background-color: #F4FCE5;
+    background-color: white;
     cursor: pointer;
     float: right;
     padding-left: 65px;
     padding-top: 5px;
+    border-radius: 45px;
 }
 
 .header {
@@ -14,7 +15,7 @@
 }
 
 .header-search {
-    background: #F4FCE5;
+    background: white;
     border: 1px solid #B1E540;
     box-sizing: border-box;
     box-shadow: 2px 3px 4px #B3DB93;
@@ -23,6 +24,12 @@
     display: flex;
     float: right;
     margin-bottom: 1rem;
+}
+
+.icon-info {
+    background-color: #D9F3B9;
+    border-radius: 50px;
+    cursor: pointer;
 }
 
 .icon-search {
@@ -39,8 +46,8 @@ input::placeholder {
 }
 
 .input-search {
-    background: #F4FCE5;
-    //background-color: red;
+    background: white;
+    margin: auto;
     border: 0;
     box-sizing: border-box;
     border-radius: 45px;
@@ -50,21 +57,38 @@ input::placeholder {
 }
 
 mat-card {
-    background-color: #D9F3B9;
+    background-color: inherit;
     box-sizing: border-box;
     padding: 3%;
+    top: 5%;
+    box-shadow: none !important;
 }
 
 mat-select {
     border: none;
 }
 
+table {
+    box-shadow: none;
+}
+
 .select-status {
     margin-top: 0.8rem;
-    margin-right: 2rem;
 }
 
 .text {
     color: #75a936;
     font-weight: bold;
+}
+
+th.mat-sort-header-sorted {
+    color: black;
+}
+
+@media (max-width: 500px) {
+    .example-container {
+        width: 100%;
+        max-width: 100%;
+        overflow: auto;
+    }
 }
