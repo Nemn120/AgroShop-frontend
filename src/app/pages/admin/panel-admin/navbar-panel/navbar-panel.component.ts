@@ -21,18 +21,13 @@ export class NavbarPanelComponent implements OnInit{
   @Output() isShowSidebar = new EventEmitter<boolean>();
   cantidad: number;
 
-  public user$: Observable<User>
-  public emails$: Observable<any[]>
-
   constructor(
-    private router: Router,  private userService: AuthService,public dialog: MatDialog,private orderService:OrderService
+    private router: Router,  private userService: AuthService,public dialog: MatDialog,private orderService:OrderService,
+   
   ) {
-    this.user$ = this.userService.getUser();
     this.orderService.totalQuantitySubject.subscribe(data=>{
       this.cantidad=data;
     })
-
-
   }
 
   ngOnInit(){
@@ -55,7 +50,7 @@ export class NavbarPanelComponent implements OnInit{
 
     this.dialog.open(CarDiaLogComponent, {
       
-        width: '26%',
+        width: '20%',
         height: '100%',
         position: { right:'0px' },
 

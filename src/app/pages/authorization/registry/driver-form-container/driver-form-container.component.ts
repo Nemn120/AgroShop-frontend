@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import { Component, Input, OnInit } from '@angular/core';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { UserBean } from 'src/app/_model/UserBean';
@@ -13,22 +13,27 @@ import {DriverBean} from '../../../../_model/DriverBean';
   styleUrls: ['./driver-form-container.component.scss']
 })
 export class DriverFormContainerComponent implements OnInit {
+  hide = true;
   driverForm: FormGroup;
+  @Input() title: string;
+  @Input() userType: string;
   constructor(private formBuilder: FormBuilder, private restService: RestService, private router: Router, private authService: AuthService, private matSnackBar: MatSnackBar) { }
 
   ngOnInit(): void {
+    console.log(this.userType);
+    console.log(this.title);
     this.driverForm = this.formBuilder.group({
-      'driverLicencia': new FormControl(''),
-      'DNI': new FormControl(''),
-      'Name': new FormControl(''),
-      'LastName': new FormControl(''),
-      'UserName': new FormControl(''),
-      driverPassword: [''],
-      driverConfirmPassword: ['']
+      'driverLicencia': new FormControl('', [Validators.required]),
+      'DNI': new FormControl('', [Validators.required]),
+      'Name': new FormControl('', [Validators.required]),
+      'LastName': new FormControl('', [Validators.required]),
+      'UserName': new FormControl('', [Validators.required]),
+      Password: ['', [Validators.required]],
+      ConfirmPassword: ['', [Validators.required]]
     })
   }
 
-  // driver customer farmer
+
 
   public register(): void{
     let newDriver = new DriverBean();
@@ -40,7 +45,7 @@ export class DriverFormContainerComponent implements OnInit {
     newDriver.user.username = this.driverForm.value['UserName'];
     newDriver.user.password = this.driverForm.value['Password'];
     let param = {
-       userType: "DRIVER",
+       userType: this.userType,
        userRegister:{
          user:{
            username:newDriver.user.username,
@@ -50,7 +55,7 @@ export class DriverFormContainerComponent implements OnInit {
     }
 
     this.restService.requestApiRestData('user/rubt',param).subscribe(result => {
-      this.matSnackBar.open(result.responseMessage, 'SUCCESS', {
+      this.matSnackBar.open(result.responseMessage, '', {
         duration: 2000
       });
       setTimeout(() => {

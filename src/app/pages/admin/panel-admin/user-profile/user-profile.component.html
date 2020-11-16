@@ -3,9 +3,10 @@
   </button>
 <mat-menu #userMenu="matMenu" xPosition="before">
     <div class="user-menu-title">
-        <h4 class="user-menu-title__name">{{user.name}} {{user.lastName}}</h4>
-        <a class="user-menu-title__link">{{user.email}}</a>
+        <h4 class="user-menu-title__name">{{user.username}}</h4>
+        <a class="user-menu-title__link">{{user.profile.description}}</a>
     </div>
+    <!--
     <button mat-menu-item class="user-menu__item-title">
       <mat-icon class="user-menu-icon">person</mat-icon>Mis datos
     </button>
@@ -15,6 +16,7 @@
     <button mat-menu-item class="user-menu__item-title">
       <mat-icon class="user-menu-icon">email</mat-icon>Mensajes
     </button>
+    -->
     <div class="sign-button-wrapper">
         <button class="sign-button" mat-flat-button (click)="signOutEmit()">Cerrar sesión</button>
     </div>

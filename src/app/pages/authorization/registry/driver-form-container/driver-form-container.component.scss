@@ -7,21 +7,19 @@
   margin: 0;
 }
 
-/*
-.registry-container{
-  //height: 100%;
-  //width: 500px;
-  background-color: #d5fbdb;
-}
-*/
+
 
 .title{
   text-align: center;
   font-family: 'Lobster', cursive;
   font-size: 80px;
+  color: #193B01;
+  height: 100px;
 
-  height: 20%;
-  margin-bottom: 20px;
+}
+
+.title p{
+  height: 100%;
 }
 
 .title-registry{
@@ -29,24 +27,30 @@
   font-family: 'Lobster', cursive;
   font-size: 50px;
 
-  height: 20%;
-  margin-bottom: 10px;
+  height: 65px;
+
 }
 
 .title-farmer{
   text-align: center;
   font-family: 'Itim', cursive;
   font-size: 30px;
-
-  height: 20%;
-  margin-bottom: 30px;
+  height: 65px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+  margin-top: 10px;
+  color: wheat;
 }
+
 
 .registry-form{
   display: flex;
   align-items: center;
   flex-direction: column;
-  height: 400px;
+  height: 570px;
+  padding-top:30px;
 }
 
 .mat-form-field{
@@ -57,8 +61,9 @@
 }
 
 .example-button-row{
-  height: 40px;
+  height: 50px;
   margin-top:30px;
+  width: 200px;
 }
 
 
@@ -66,4 +71,18 @@
   float: right;
   width: 120px;
   font-size: 20px;
+}
+
+
+.names{
+  display: flex;
+  justify-content: center;
+}
+
+.registry-button{
+  text-align: center;
+  font-family: 'Itim', cursive;
+  font-size: 30px;
+  color:#fff;
+  background-color: rgb(6, 110, 54); border-radius: 20px; width: 100%; height: 100%;
 }
