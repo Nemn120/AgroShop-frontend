@@ -121,7 +121,6 @@ export class VehicleComponent implements OnInit {
           data : vh
         }
         this.restService.requestApiRestData('vehicle/dv',param).subscribe(result =>{
-          console.log(result);
           this.restService.messageChange.next({ message: result.responseMessage, action: "Delete" });
         });
       }

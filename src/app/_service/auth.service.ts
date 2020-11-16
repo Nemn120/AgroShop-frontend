@@ -25,7 +25,6 @@ export class AuthService {
 
   public getJWTByCredentials(username:string,password:string){
     const body = `grant_type=password&username=${encodeURIComponent(username)}&password=${encodeURIComponent(password)}`;
-    console.log(this.url);
     return this.http.post(this.url, body, {
      
       headers: new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8').set('Authorization', 'Basic ' + btoa(environment.TOKEN_AUTH_USERNAME + ':' + environment.TOKEN_AUTH_PASSWORD))
@@ -50,7 +49,6 @@ export class AuthService {
           }
           this.restService.requestApiRestData("menu/glmbi",param).subscribe(result =>{
             this.sharedService.orderMenuOptionList(result.datalist);
-          console.log(result);
           setTimeout(()=>{
             
             if(this.sharedService.userSession.user.profile.name=="DRIVER")

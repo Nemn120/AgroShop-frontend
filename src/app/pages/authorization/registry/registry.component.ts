@@ -19,7 +19,6 @@ export class RegistryComponent implements OnInit {
   ngOnInit(): void {
     this.activatedRouter.params.subscribe(param=>{
       this.rol = param['rol'];
-      console.log(this.rol);
     })
     switch(this.rol){
       case 'FARMER':this.title = "Agricultor"; this.image = '/assets/images/agricultor.jpg/'; break;

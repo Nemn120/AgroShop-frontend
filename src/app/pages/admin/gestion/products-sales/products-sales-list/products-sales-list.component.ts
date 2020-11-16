@@ -1,21 +1,12 @@
 import { ProductsSalesViewComponent } from './../products-sales-view/products-sales-view.component';
 import { Component, OnInit,ViewChild } from '@angular/core';
-
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
-
 import { MatDialog } from '@angular/material/dialog';
-
-
 import { SharedService } from 'src/app/_service/shared.service';
 import { RestService } from 'src/app/_service/rest.service';
-
-import { ProductBean } from '../../../../../_model/ProductBean';
 import { ProductSalesBean } from '../../../../../_model/ProductSalesBean';
-
-import { ProductFormComponent } from '../../../product/product-form/product-form.component';
-import { ProductViewComponent } from '../../../product/product-view/product-view.component';
 import { ProductsSalesFormComponent } from '../products-sales-form/products-sales-form.component';
 
 @Component({
@@ -25,7 +16,7 @@ import { ProductsSalesFormComponent } from '../products-sales-form/products-sale
 })
 export class ProductsSalesListComponent implements OnInit {
 
-  displayedColumns: string[] = ['id', 'product','price','totalQuantity','availableQuantity', 'statusSales', 'status','actions'];
+  displayedColumns: string[] = ['id', 'product','price','unit','totalQuantity','availableQuantity', 'statusSales', 'status','actions'];
   dataSource: MatTableDataSource<ProductSalesBean>;
 
   @ViewChild(MatPaginator) paginator: MatPaginator;

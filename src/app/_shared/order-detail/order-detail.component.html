@@ -46,7 +46,6 @@
             <span class="mat-header-cell" mat-sort-header="name">ID agricultor</span>
             <span class="mat-header-cell" mat-sort-header="quantity">Cantidad</span>
             <span class="mat-header-cell" mat-sort-header="total">Total</span>
-            <span class="mat-header-cell" mat-sort-header="createDate">Fecha</span>
         </section>
 
         <mat-expansion-panel *ngFor="let item of orderList">
@@ -55,7 +54,6 @@
                 <span class="mat-cell">{{item.farmer.id}}</span>
                 <span class="mat-cell">{{item.quantity}}</span>
                 <span class="mat-cell">S/. {{item.total}}</span>
-                <span class="mat-cell">{{item.createDate | date:'dd/MM/yyyy HH:mm:ss'}}</span>
             </mat-expansion-panel-header>
             <section matSort class="mat-elevation-z2 mat-header-row" style="background-color:#F4F4F4;">
                 <span class="mat-header-cell" mat-sort-header="name">Producto</span>
@@ -67,7 +65,7 @@
             <div *ngFor="let orderDetail of item.orderDetailList" class="mat-row" style="background-color: #FAFAF8;">
                 <span class="mat-cell">{{orderDetail.productSales.product.name}}</span>
                 <span class="mat-cell">S/. {{orderDetail.price}}</span>
-                <span class="mat-cell">{{orderDetail.quantity}}</span>
+                <span class="mat-cell">{{orderDetail.quantity}} {{orderDetail.productSales.measureUnite || 'kg'}}</span>
                 <span class="mat-cell">S/. {{orderDetail.total}}</span>
 
             </div>

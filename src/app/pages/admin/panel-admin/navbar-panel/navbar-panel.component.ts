@@ -23,6 +23,7 @@ export class NavbarPanelComponent implements OnInit{
 
   constructor(
     private router: Router,  private userService: AuthService,public dialog: MatDialog,private orderService:OrderService,
+    public sharedService:SharedService
    
   ) {
     this.orderService.totalQuantitySubject.subscribe(data=>{

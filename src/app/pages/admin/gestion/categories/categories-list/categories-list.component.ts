@@ -36,9 +36,7 @@ export class CategoriesListComponent implements OnInit {
   ngOnInit() {
    
     this.listCategories();
-
     this.restService.messageChange.subscribe(data => {
-      console.log('messageChange: ',data);
       this.listCategories();
       this.restService.message(data.message, data.action);
     });
@@ -56,12 +54,10 @@ export class CategoriesListComponent implements OnInit {
     }
     this.restService.requestApiRestData('categoryproduct/gcp', param)
       .subscribe(data => {
-        console.log('mis categories! ', data);
         this.dataSource = new MatTableDataSource(data.datalist);
         this.dataSource.paginator = this.paginator;
         this.dataSource.sort = this.sort;
       }, error => {
-        console.log("Error al listar categorias!", error);
         this.restService.message('Error al listar Categorias!', 'Error');
       });
   }
@@ -86,11 +82,9 @@ export class CategoriesListComponent implements OnInit {
       }
     }
     this.restService.requestApiRestData('categoryproduct/dcp', param).subscribe(data => {
-      console.log('se elimino con exito!', data);
       this.listCategories();
       this.restService.message('Categoria eliminada con exito!', 'Delete');
     },error => {
-      console.log("Error al eliminar categoria! ", error);
       this.restService.message('Error al eliminar categoria!', 'Error');
     });
 

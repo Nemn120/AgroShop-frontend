@@ -54,7 +54,6 @@ export class NewVehicleComponent implements OnInit {
     else{
       this.button = 'Ingresar';
     }
-    console.log(this.data);
   }
 
   newVehicle(){

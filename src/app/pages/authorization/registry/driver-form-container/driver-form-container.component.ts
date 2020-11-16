@@ -20,8 +20,6 @@ export class DriverFormContainerComponent implements OnInit {
   constructor(private formBuilder: FormBuilder, private restService: RestService, private router: Router, private authService: AuthService, private matSnackBar: MatSnackBar) { }
 
   ngOnInit(): void {
-    console.log(this.userType);
-    console.log(this.title);
     this.driverForm = this.formBuilder.group({
       'driverLicencia': new FormControl('', [Validators.required]),
       'DNI': new FormControl('', [Validators.required]),
