@@ -15,16 +15,17 @@ import {DriverBean} from '../../../../_model/DriverBean';
 export class DriverFormContainerComponent implements OnInit {
   hide = true;
   driverForm: FormGroup;
+
   @Input() title: string;
   @Input() userType: string;
   constructor(private formBuilder: FormBuilder, private restService: RestService, private router: Router, private authService: AuthService, private matSnackBar: MatSnackBar) { }
 
   ngOnInit(): void {
     this.driverForm = this.formBuilder.group({
-      'driverLicencia': new FormControl('', [Validators.required]),
-      'DNI': new FormControl('', [Validators.required]),
-      'Name': new FormControl('', [Validators.required]),
-      'LastName': new FormControl('', [Validators.required]),
+      'driverLicencia': new FormControl(''),
+      'DNI': new FormControl('', [Validators.required, Validators.pattern('^[0-9]{8}$')]),
+      'Name': new FormControl('', [Validators.required, Validators.pattern('^[a-zA-Z][a-z]*$')]),
+      'LastName': new FormControl('', [Validators.required, Validators.pattern('^[a-zA-Z][a-z]*$')]),
       'UserName': new FormControl('', [Validators.required]),
       Password: ['', [Validators.required]],
       ConfirmPassword: ['', [Validators.required]]
@@ -61,5 +62,7 @@ export class DriverFormContainerComponent implements OnInit {
       }, 1500);
     });
   }
+
+  get f() { return this.driverForm.controls; }
 
 }
