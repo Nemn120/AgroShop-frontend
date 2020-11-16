@@ -6,7 +6,8 @@ import { MaterialModule } from 'src/app/_material/material.module';
 import { InfoDriverComponent } from './info-driver/info-driver.component';
 
 const routes: Routes = [
-  { path: '', component: DriverComponent }
+  { path: '', component: DriverComponent },
+  { path: 'list', component: DriverComponent }
 ];
 
 @NgModule({
