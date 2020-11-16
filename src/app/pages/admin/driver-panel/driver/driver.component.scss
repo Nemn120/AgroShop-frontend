@@ -1,7 +1,7 @@
 .button-search {
     outline: none;
     border: none;
-    background-color: #F4FCE5;
+    background-color: white;
     cursor: pointer;
     float: right;
     padding-left: 65px;
@@ -15,7 +15,7 @@
 }
 
 .header-search {
-    background: #F4FCE5;
+    background: white;
     border: 1px solid #B1E540;
     box-sizing: border-box;
     box-shadow: 2px 3px 4px #B3DB93;
@@ -46,7 +46,7 @@ input::placeholder {
 }
 
 .input-search {
-    background: #F4FCE5;
+    background: white;
     margin: auto;
     border: 0;
     box-sizing: border-box;
@@ -56,29 +56,24 @@ input::placeholder {
     padding-top: 15px;
 }
 
-.mat-card {
-    // background-color: #D9F3B9;
-    /* background-color: inherit;
-    border: none;
-    box-sizing: border-box;
-    width: 50%; */
-    padding: 20px;
-    margin: 50px;
-    margin-top: 5%;
+mat-card {
     background-color: inherit;
-    box-shadow: none;
+    box-sizing: border-box;
+    padding: 3%;
+    top: 5%;
+    box-shadow: none !important;
 }
 
 mat-select {
     border: none;
 }
 
-.select-status {
-    margin-top: 0.8rem;
-}
-
 table {
     box-shadow: none;
+}
+
+.select-status {
+    margin-top: 0.8rem;
 }
 
 .text {
@@ -95,11 +90,5 @@ th.mat-sort-header-sorted {
         width: 100%;
         max-width: 100%;
         overflow: auto;
-    }
-    .button-search {
-        padding-left: 0;
-    }
-    .header-search {
-        width: 100%;
     }
 }
