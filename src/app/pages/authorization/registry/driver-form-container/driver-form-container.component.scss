@@ -24,24 +24,24 @@
 
 .title-registry{
   text-align: center;
-  font-family: 'Lobster', cursive;
-  font-size: 50px;
-
+  font-weight: bolder;
+  font-size: 40px;
   height: 65px;
-
+  margin-top: 50px;
 }
 
 .title-farmer{
   text-align: center;
   font-family: 'Itim', cursive;
-  font-size: 30px;
+  font-size: 50px;
   height: 65px;
   display: flex;
   justify-content: center;
   align-items: center;
+  font-weight: bolder;
   margin-bottom: 20px;
   margin-top: 10px;
-  color: wheat;
+  color: black;
 }
 
 
@@ -49,7 +49,7 @@
   display: flex;
   align-items: center;
   flex-direction: column;
-  height: 570px;
+  height: 500px;
   padding-top:30px;
 }
 
@@ -82,7 +82,7 @@
 .registry-button{
   text-align: center;
   font-family: 'Itim', cursive;
-  font-size: 30px;
+  font-size: 20px;
   color:#fff;
-  background-color: rgb(6, 110, 54); border-radius: 20px; width: 100%; height: 100%;
+  background-color: rgb(6, 110, 54); border-radius: 20px; width: 100%; height: 80%;
 }

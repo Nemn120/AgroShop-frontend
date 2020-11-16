@@ -11,12 +11,12 @@
   display:flex;
   align-items: center;
   justify-content: center;
-  background-color: #193B01;//rgb(125, 231, 125);
+  //background-color: #193B01;//rgb(125, 231, 125);
   overflow: scroll;
 }
 
 .mat-card{
-  box-shadow: 1px 1px 10px 2px #888888;
+  box-shadow: 1px 1px 10px 2px #000;
   height: 800px;
   width: 1200px;
   display: flex;
@@ -26,7 +26,7 @@
 .registry-img{
 
   height: 100%;
-  width: 700px;
+  width: 800px;
   display: flex;
   justify-content:center;
   align-items: center;
@@ -43,7 +43,7 @@
 
 .registry-container{
   height: 100%;
-  width: 500px;
+  width: 400px;
   background-color: #fff;
 }
 
@@ -52,7 +52,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #5EB503;
+  background-color: #fff;
   //background: #193B01;
   height: 100%;
   width: 100%;
@@ -72,7 +72,7 @@
     top: 70px;
 
   //background: #5EB503;
-  border-radius: 50px;
+
 }
 
 @import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
@@ -153,3 +153,11 @@
   padding: 0px;
 }
 
+.registry-button{
+  text-align: center;
+  font-family: 'Itim', cursive;
+  font-size: 20px;
+  color:#fff;
+  background-color: rgb(6, 110, 54); border-radius: 20px; width: 100%; height: 80%;
+  width: 180px;
+}

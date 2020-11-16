@@ -1,9 +1,15 @@
 <div class="background">
+  <div style=" position: absolute;
+  left: 1700px;
+  top: 1px;
+  margin-top: 20px;">
+    <button mat-button class="registry-button" (click)="regresar()" target="_blank">Volver</button>
+  </div>
   <mat-card>
     <div class="registry-img">
       <img [src]="this.image" class="img-left">
     </div>
-    <div class="registry-container" style="background-color: #5EB503;">
+    <div class="registry-container" style="background-color: #fff;">
       <app-driver-form-container [title]="this.title" [userType]="this.userType"></app-driver-form-container>
     </div>
   </mat-card>

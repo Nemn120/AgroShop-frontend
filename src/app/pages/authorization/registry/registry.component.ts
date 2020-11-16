@@ -29,6 +29,10 @@ export class RegistryComponent implements OnInit {
     this.userType = this.rol;
   }
 
+  public regresar(): void{
+    this.router.navigate(['auth/login']);
+  }
+
 
 
 
