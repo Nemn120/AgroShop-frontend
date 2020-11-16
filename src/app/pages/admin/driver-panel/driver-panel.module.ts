@@ -19,6 +19,6 @@ const routes: Routes = [
   exports: [
     RouterModule
   ],
-  entryComponents: [InfoDriverComponent]
+  entryComponents: [ InfoDriverComponent ]
 })
 export class DriverPanelModule { }
