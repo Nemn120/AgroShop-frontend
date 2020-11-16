@@ -48,9 +48,7 @@ export class NavbarPanelComponent implements OnInit{
   this.router.navigate(['order/search',nameProduct]);
 }
   openDialogCar(){
-
     this.dialog.open(CarDiaLogComponent, {
-      
         width: '20%',
         height: '100%',
         position: { right:'0px' },
