@@ -25,7 +25,7 @@ export class NavbarPanelComponent implements OnInit{
   public emails$: Observable<any[]>
 
   constructor(
-    private router: Router,  private userService: AuthService,public dialog: MatDialog,private orderService:OrderService
+    private router: Router,  private userService: AuthService,public dialog: MatDialog,private orderService:OrderService, private sharedService: SharedService
   ) {
     this.user$ = this.userService.getUser();
     this.orderService.totalQuantitySubject.subscribe(data=>{
@@ -54,7 +54,7 @@ export class NavbarPanelComponent implements OnInit{
   openDialogCar(){
 
     this.dialog.open(CarDiaLogComponent, {
-      
+
         width: '26%',
         height: '100%',
         position: { right:'0px' },
