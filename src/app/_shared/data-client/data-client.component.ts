@@ -83,7 +83,8 @@ export class DataClientComponent implements OnInit {
           })
          
         },error=>{
-          this.snackBar.open(error.responseMessage, 'ERROR', { duration: 5000 })
+          //this.snackBar.open(error.responseMessage, 'SUCESS', { duration: 5000 })
+          this.restService.message('Error al enviar la orden!', 'Error');  
           Swal.fire(
             'No se ha podido registrar su orden',
             'La orden no ha sido enviada.',

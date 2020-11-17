@@ -37,12 +37,12 @@ export class NavbarPanelComponent implements OnInit{
 
   ngOnInit(){
     
-    setInterval ( () => {
+    /*setInterval ( () => {
       this.cantidad = this.getCantidad();
       this.totalCarrito.emit(this.cantidad);
     }, 1000);
 
-    this.user = this.sharedService.userSession;
+    this.user = this.sharedService.userSession;*/
 
   }
   public openMenu(): void {
@@ -67,8 +67,8 @@ export class NavbarPanelComponent implements OnInit{
       });
   }
 
-  getCantidad():number{
-    return this.orderService.totalQuantity;
-   }
+  /*getCantidad():number{
+    return this.orderService.totalQuantity1;
+   }*/
 
 }
