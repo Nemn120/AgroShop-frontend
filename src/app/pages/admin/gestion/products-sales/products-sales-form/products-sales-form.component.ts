@@ -62,7 +62,7 @@ export class ProductsSalesFormComponent implements OnInit {
       this.productSalesSelect.totalQuantity = 0;
     }
     
-    //FALTA VALIDAR PRODUCTO VACIO URGENTE Y CAMBAIRLO POR UN BUSCADOR
+    //PRODUCTO UN BUSCADOR
     //temporal validacion de producto nulo
     if (!this.productSalesSelect.product) {
       this.productSalesSelect.product = new ProductBean();

@@ -7,7 +7,7 @@
         <br>
         <mat-form-field>
             <mat-label>Nombre</mat-label>
-            <input matInput [(ngModel)]="productSelect.name" placeholder="Ingresar nombre">
+            <input matInput [(ngModel)]="productSelect.name" placeholder="Ingresar nombre" required>
 
         </mat-form-field>
         <br>
@@ -57,5 +57,5 @@
 
 </mat-tab-group>
 
-<button style="width: 50%;" mat-raised-button color="primary" (click)="save()">Aceptar</button>
+<button style="width: 50%;" mat-raised-button color="primary" (click)="save()" [disabled]="!productSelect.name">Aceptar</button>
 <button style="width: 50%;" mat-raised-button color="accent" (click)="closeDialog()">Cancelar</button>

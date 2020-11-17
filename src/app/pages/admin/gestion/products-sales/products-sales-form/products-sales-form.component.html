@@ -8,7 +8,7 @@
         <br>
         <mat-form-field>
             <mat-label>Producto</mat-label>
-            <mat-select [(ngModel)]="this.productSalesSelect.product">
+            <mat-select [(ngModel)]="this.productSalesSelect.product" required>
                 <mat-option *ngFor="let p of productos" [value]="p">
                     {{p.name}}
                 </mat-option>
@@ -69,5 +69,5 @@
 
 </mat-tab-group>
 
-<button style="width: 50%;" mat-raised-button color="primary" (click)="save()">Aceptar</button>
+<button style="width: 50%;" mat-raised-button color="primary" (click)="save()" [disabled]="!productSalesSelect.product">Aceptar</button>
 <button style="width: 50%;" mat-raised-button color="accent" (click)="closeDialog()">Cancelar</button>

@@ -102,5 +102,6 @@ export class AuthService {
       this.sharedService.userSession=undefined;
       this.isLogged=false;
       this.router.navigate(['/auth']);
+      this.restService.message('Hasta pronto!','CLOSE');
   }
 }
