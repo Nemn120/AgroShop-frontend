@@ -49,13 +49,14 @@
         <br>
         <mat-form-field>
             <mat-label>Fecha creacion</mat-label>
-            <input matInput type="datetime-local" [(ngModel)]="this.data.createDate" readonly="readonly">
+            <input matInput type="datetime" [ngModel]='this.data.createDate | date:"yyyy-MM-dd HH:mm:ss" ' readonly="readonly">
         </mat-form-field>
         <br>
         <mat-form-field>
             <mat-label>Fecha actualizacion</mat-label>
-            <input matInput type="datetime-local" [(ngModel)]="this.data.updateDate" readonly="readonly">
+            <input matInput type='datetime' [ngModel]='this.data.updateDate | date:"yyyy-MM-dd HH:mm:ss" ' readonly="readonly">
         </mat-form-field>
+
     </mat-tab>
 
 </mat-tab-group>
