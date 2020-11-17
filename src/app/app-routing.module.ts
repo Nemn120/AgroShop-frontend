@@ -18,13 +18,16 @@ const routes: Routes = [
   },
   { path: 'vehicle', loadChildren: () => import('./pages/admin/vehicle/vehicle.module').then(m => m.VehicleModule)
   },
-  { path: 'order', loadChildren: () => import('./pages/admin/order/order.module').then(m => m.OrderModule)}
+  { path: 'order', loadChildren: () => import('./pages/admin/order/order.module').then(m => m.OrderModule)
+  },
+  { path: 'driver', loadChildren: () => import('./pages/admin/driver-panel/driver-panel.module').then(m => m.DriverPanelModule)
+  }
   ]},
   {
     path: 'auth', loadChildren: () => import('./pages/authorization/authorization.module').then(m => m.AuthorizationModule)
   },
 
-  { path: '**', pathMatch: 'full', redirectTo: '/order/store' },
+  { path: '**', pathMatch: 'full', redirectTo: '/driver/list' },
 ];
 
 @NgModule({

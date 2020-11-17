@@ -42,7 +42,6 @@ export class DriverComponent implements OnInit {
         this.dataSource.sort = this.sort;
         this.dataSource.paginator = this.paginator;
         this.drivers = result.datalist;
-        console.log(result.datalist);
       }
       );
   }

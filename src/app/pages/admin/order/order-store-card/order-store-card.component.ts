@@ -38,6 +38,7 @@ export class OrderStoreCardComponent implements OnInit {
     orderDetailSelect.productSales.id=this.productSales.id;
     orderDetailSelect.productSales.availableQuantity=this.productSales.availableQuantity;
     orderDetailSelect.productSales.farmerNumber=this.productSales.farmerNumber;
+    orderDetailSelect.productSales.measureUnite=this.productSales.measureUnite;
     orderDetailSelect.productSales.product=new ProductBean();
     orderDetailSelect.productSales.product.id=this.productSales.product.id;
     orderDetailSelect.productSales.product.name=this.productSales.product.name;

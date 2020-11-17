@@ -46,7 +46,6 @@ export class ProductFormComponent implements OnInit {
 
     this.productSelect = new ProductBean();
     this.productSelect.userCreateId = this.sharedService.userSession.id;
-    console.log('this.productSelect: ',this.productSelect);
     if (this.data.id > 0) {
       this.productSelect.id = this.data.id;
       this.productSelect.name = this.data.name;
@@ -55,11 +54,9 @@ export class ProductFormComponent implements OnInit {
       this.productSelect.category = this.data.category;
 
       this.restService.getPhotoById(this.data.id).subscribe(data => {
-        console.log('imagen: ',data);
         if (data.size > 0)
           this.imagenData = this.convertir(data);
       }, error => {
-        console.log("Error al mostrar imagen! ", error);
         this.restService.message('Error al mostrar imagen!', 'Error');
       });
       this.titulo="Actualizar ";
@@ -79,8 +76,6 @@ export class ProductFormComponent implements OnInit {
       this.currentFileUpload = new File([""], "blanco");
     }
     this.restService.requestApiRestData('product/sp', param, this.currentFileUpload).subscribe(result => {
-      console.log('result: ',result);
-
       if (this.productSelect.id) {
         this.restService.messageChange.next({ message: 'Producto actualizado con exito!', action: "Update" });
       }
@@ -89,7 +84,6 @@ export class ProductFormComponent implements OnInit {
       }
 
     }, error => {
-      console.log("Error al agregar producto! ", error);
       this.restService.message('Error al agregar producto!', 'Error');
     });
     this.closeDialog();

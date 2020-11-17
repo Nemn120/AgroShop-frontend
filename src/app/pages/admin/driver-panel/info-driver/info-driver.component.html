@@ -3,18 +3,18 @@
 </mat-dialog-actions> -->
 <div class="container">
     <h1 mat-dialog-title>{{data.user.name}} {{data.user.lastName}}</h1>
-    <div>
+    <div class="img-container">
         <img class="perfil-img" src="../../../../../assets/images/user.png">
     </div>
     <div mat-dialog-content>
-        <p>FECHA DE REGISTRO: {{data.createDate | date}}</p>
-        <p>DIRECCIÓN: {{data.user.address}}</p>
-        <p>{{data.user.email}}</p>
-        <p>CELULAR: {{data.user.cellPhone}}</p>
-        <p>LICENCIA: {{data.driverLicenseNumber}}</p>
-        <p>ESTADO: {{data.status}}</p>
-        <p>CALIFICACIÓN: {{data.qualification}}</p>
-        <p>EXPERIENCIA: {{data.yearsOfExperience}}</p>
+        <p>Fecha de registro: {{data.createDate | date}}</p>
+        <p>Dirección: {{data.user.address}}</p>
+        <p>Email: {{data.user.email}}</p>
+        <p>Celular: {{data.user.cellPhone}}</p>
+        <p>Licencia: {{data.driverLicenseNumber}}</p>
+        <p>Estado: {{data.status}}</p>
+        <p>Calificación: {{data.qualification}}</p>
+        <p>Eexperiencia: {{data.yearsOfExperience}}</p>
         <p>DNI: {{data.user.documentNumber}}</p>
     </div>
 </div>

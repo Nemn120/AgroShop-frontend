@@ -24,7 +24,6 @@ export class SharedService {
       })
 
     });
-    console.log(menuOptionAsc);
     this.setMenuOption(menuOptionAsc);
   }
     setMenuOption(menuOption:any[]){
@@ -48,7 +47,5 @@ export class SharedService {
        
         
       })
-
-      console.log(this.appitems)
   }
 }

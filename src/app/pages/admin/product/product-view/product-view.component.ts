@@ -31,16 +31,11 @@ export class ProductViewComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    console.log('view1: ',this.data);
     this.validarCategoriaNula();
-    console.log('view2: ',this.data);
-
     this.restService.getPhotoById(this.data.id).subscribe(data => {
-      console.log('imagen: ',data);
       if (data.size > 0)
         this.imagenData = this.convertir(data);
     }, error => {
-      console.log("Error al mostrar imagen! ", error);
       this.restService.message('Error al mostrar imagen!', 'Error');
     });
 

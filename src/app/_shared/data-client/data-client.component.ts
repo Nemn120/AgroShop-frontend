@@ -47,10 +47,6 @@ export class DataClientComponent implements OnInit {
     this.order.phone = this.form.value['phone'];
     this.order.client = new ClientBean();
     this.order.client=this.sharedData.userSession;
-    
-    //this.order.maxDate= this.form.value['maxDate'];
-
-    // CUANDO ENVIA LA ORDEN
     Swal.fire({
       title: 'Esta seguro de enviar la orden?',
       showClass: {
@@ -71,18 +67,17 @@ export class DataClientComponent implements OnInit {
           data:this.order
         }
         this.restService.requestApiRestData("order/sobos",param).subscribe(result=>{
-          console.log(result);
           this.snackBar.open(result.responseMessage, 'SUCESS', { duration: 5000 })
-       
+          this.orderService.removeItemsCar(this.order.orderDetailList);
+          this.orderService.getCountItemsCar();
           this.dialog.open(OrderDetailComponent, {
-            width:'40%',
+            width:'33%',
             data: result.datalist
           })
+         
+        },error=>{
+          
         })
-        
-
-
-
         Swal.fire(
           'Se ha registrado su orden',
           'La orden ha sido enviada.',
@@ -90,9 +85,6 @@ export class DataClientComponent implements OnInit {
           
         );
         this.cerrarDialogo();
-      
-        
-
       }
       
     });

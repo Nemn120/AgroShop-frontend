@@ -11,6 +11,7 @@ import { ProductSalesBean } from '../_model/ProductSalesBean';
 export class OrderService {
   newOrder:OrderBean;
   orderDetailList:OrderDetailBean[]=[];
+  orderDetailListSelect:OrderDetailBean[]=[];
   totalQuantity:number=0;
   totalQuantitySubject= new Subject<number>();
   constructor(
@@ -29,20 +30,26 @@ export class OrderService {
       
       this.orderDetailList.push(orderDetail);
     }
-    console.log(this.totalQuantity);
-
   }
   getCountItemsCar(){
-    return this.totalQuantity;
+    let totalquantity:number=0;
+    this.orderDetailList.forEach(data =>{
+      totalquantity+=data.quantity;
+    })
+    this.totalQuantitySubject.next(this.totalQuantity);
   }
 
+  removeItemsCar(orderDetailSelect: OrderDetailBean[]){
+    orderDetailSelect.forEach(x =>{
+      this.orderDetailList= this.orderDetailList.filter(data => data.productSales.id != x.productSales.id)
+    })
+  }
 
   sendNewOrder(address:string,reference:string,phone:string){
     this.newOrder.address=address;
     this.newOrder.reference=reference;
     this.newOrder.phone=phone;
     this.newOrder.orderDetailList=this.orderDetailList;
-    console.log(this.newOrder);
     this.newOrder = new OrderBean();
     this.orderDetailList=[];
   }
