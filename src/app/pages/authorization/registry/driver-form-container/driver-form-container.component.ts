@@ -1,11 +1,12 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { UserBean } from 'src/app/_model/UserBean';
 import { AuthService } from 'src/app/_service/auth.service';
 import { RestService } from 'src/app/_service/rest.service';
 import {DriverBean} from '../../../../_model/DriverBean';
+
 
 @Component({
   selector: 'app-driver-form-container',
@@ -15,21 +16,34 @@ import {DriverBean} from '../../../../_model/DriverBean';
 export class DriverFormContainerComponent implements OnInit {
   hide = true;
   driverForm: FormGroup;
+
   @Input() title: string;
   @Input() userType: string;
   constructor(private formBuilder: FormBuilder, private restService: RestService, private router: Router, private authService: AuthService, private matSnackBar: MatSnackBar) { }
 
   ngOnInit(): void {
     this.driverForm = this.formBuilder.group({
-      'driverLicencia': new FormControl('', [Validators.required]),
-      'DNI': new FormControl('', [Validators.required]),
-      'Name': new FormControl('', [Validators.required]),
-      'LastName': new FormControl('', [Validators.required]),
+      'driverLicencia': new FormControl(''),
+      'DNI': new FormControl('', [Validators.required, Validators.pattern('^[0-9]{8}$')]),
+      'Name': new FormControl('', [Validators.required, Validators.pattern('^[a-zA-Z][a-z]*$')]),
+      'LastName': new FormControl('', [Validators.required, Validators.pattern('^[a-zA-Z][a-z]*$')]),
       'UserName': new FormControl('', [Validators.required]),
       Password: ['', [Validators.required]],
       ConfirmPassword: ['', [Validators.required]]
+    },{
+      validator: this.MatchPassword
     })
   }
+
+  public MatchPassword(AC: AbstractControl){
+    let password = AC.get('Password').value;
+    let confirmPassword = AC.get('ConfirmPassword').value;
+    if (password != confirmPassword) {
+        AC.get('ConfirmPassword').setErrors({ MatchPassword: true })
+    } else {
+        return null
+    }
+}
 
 
 
@@ -61,5 +75,7 @@ export class DriverFormContainerComponent implements OnInit {
       }, 1500);
     });
   }
+
+  get f() { return this.driverForm.controls; }
 
 }

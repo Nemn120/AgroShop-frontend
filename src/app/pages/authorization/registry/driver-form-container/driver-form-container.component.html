@@ -1,68 +1,97 @@
-<div >
-
+<div>
   <div class="title-registry">
-    <p>Registrate en SICA</p>
+    <p>Registrate en Agroshop</p>
   </div>
   <div class="title-farmer">
     <p>{{title}}</p>
   </div>
 </div>
-  <form class="registry-form" action="" [formGroup]="driverForm">
-    <div *ngIf="this.userType == 'DRIVER'" style=" border-radius: 10px 10px 0px 0px; width: 80%;">
+<form class="registry-form" action="" [formGroup]="driverForm">
+  <div *ngIf="this.userType == 'DRIVER'" style=" border-radius: 10px 10px 0px 0px; width: 80%;">
+    <mat-form-field appearance="outline" style="width: 100%;">
+      <mat-label>Nro. de Licencia</mat-label>
+      <input matInput  formControlName="driverLicencia" required >
+      <mat-error *ngIf="f.driverLicencia.hasError('required') && f.driverLicencia.touched">
+        Es requerido
+      </mat-error>
+    </mat-form-field>
+  </div>
+  <br>
+  <div style=" border-radius: 10px 10px 0px 0px;  width: 80%;">
+    <mat-form-field appearance="outline" style="width: 100%;">
+      <mat-label>DNI</mat-label>
+      <input matInput pattern='^[0-9]{8}$' formControlName="DNI" required >
+      <mat-error *ngIf="f.DNI.hasError('required') && f.DNI.touched">
+        Es requerido
+      </mat-error>
+      <mat-error *ngIf="f.DNI.hasError('pattern')">El campo debe tener 8 dígitos</mat-error>
+      <mat-error *ngIf="pattern == '^[a-zA-Z][a-z]*$'">El campo no puede contener letras</mat-error>
+    </mat-form-field>
+  </div>
+  <br>
+  <div class="names" style="width: 80%;">
+    <div style=" border-radius: 10px 10px 0px 0px; width: 50%; margin-right: 2px;">
       <mat-form-field appearance="outline" style="width: 100%;">
-        <mat-label>Nro. de Licencia</mat-label>
-        <input matInput formControlName="driverLicencia" required>
+        <mat-label>Nombres</mat-label>
+        <input pattern='^[a-zA-Z][a-z]*$' matInput formControlName="Name" required >
+        <mat-error *ngIf="f.Name.hasError('required') && f.Name.touched">
+          Es requerido
+        </mat-error>
+        <mat-error *ngIf="f.Name.hasError('pattern')">
+          El campo solo puede contener letras
+        </mat-error>
       </mat-form-field>
     </div>
-    <br>
-    <div style=" border-radius: 10px 10px 0px 0px;  width: 80%;">
+    <div style=" border-radius: 10px 10px 0px 0px; width: 50%; margin-left: 2px;">
       <mat-form-field appearance="outline" style="width: 100%;">
-        <mat-label>DNI</mat-label>
-        <input matInput formControlName="DNI" required>
+        <mat-label>Apellidos</mat-label>
+        <input pattern='^[a-zA-Z][a-z]*$' matInput formControlName="LastName" required>
+        <mat-error *ngIf="f.LastName.hasError('required') && f.LastName.touched">
+          Es requerido
+        </mat-error>
+        <mat-error *ngIf="f.LastName.hasError('pattern')">
+          El campo solo puede contener letras
+        </mat-error>
       </mat-form-field>
     </div>
-    <br>
-    <div class="names" style="width: 80%;">
-      <div style=" border-radius: 10px 10px 0px 0px; width: 50%; margin-right: 2px;" >
-        <mat-form-field appearance="outline" style="width: 100%;">
-          <mat-label>Nombres</mat-label>
-          <input matInput formControlName="Name" required>
-        </mat-form-field>
-      </div>
-      <div style=" border-radius: 10px 10px 0px 0px; width: 50%; margin-left: 2px;">
-        <mat-form-field appearance="outline" style="width: 100%;">
-          <mat-label>Apellidos</mat-label>
-          <input matInput formControlName="LastName" required>
-        </mat-form-field>
-      </div>
-    </div>
-    <br>
-    <div style=" border-radius: 10px 10px 0px 0px;  width: 80%;">
-      <mat-form-field appearance="outline" [color]="primary" style="width: 100%;" >
-        <mat-label>Usuario</mat-label>
-        <input matInput formControlName="UserName" required>
-      </mat-form-field>
-    </div>
-    <br>
-    <div class="names" style="width: 80%;">
-      <div style="  border-radius: 10px 10px 0px 0px;  width: 50%; margin-right: 2px;">
-        <mat-form-field appearance="outline" [color]="primary" style="width: 100%;">
-          <mat-label>Contraseña</mat-label>
-          <input matInput [type]="hide ? 'password' : 'text'" formControlName="Password">
-          <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide" required>
+  </div>
+  <br>
+  <div style=" border-radius: 10px 10px 0px 0px;  width: 80%;">
+    <mat-form-field appearance="outline" [color]="primary" style="width: 100%;">
+      <mat-label>Usuario</mat-label>
+      <input matInput formControlName="UserName" required >
+      <mat-error *ngIf="f.UserName.hasError('required') && f.UserName.touched">
+        Es requerido
+      </mat-error>
+    </mat-form-field>
+  </div>
+  <br>
+  <div class="names" style="width: 80%;">
+    <div style="  border-radius: 10px 10px 0px 0px;  width: 50%; margin-right: 2px;">
+      <mat-form-field appearance="outline" [color]="primary" style="width: 100%;">
+        <mat-label>Contraseña</mat-label>
+        <input matInput [type]="hide ? 'password' : 'text'" formControlName="Password" required>
+        <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+          [attr.aria-pressed]="hide" required>
           <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-          </button>
-        </mat-form-field>
-      </div>
-      <div style=" border-radius: 10px 10px 0px 0px;  width: 50%; margin-left: 2px;">
-        <mat-form-field appearance="outline" style="width: 100%;">
-          <mat-label>Repetir contraseña</mat-label>
-          <input matInput [type]="hide ? 'password' : 'text'" formControlName="ConfirmPassword" required>
-        </mat-form-field>
-      </div>
+        </button>
+        <mat-error *ngIf="f.Password.hasError('required') && f.Password.touched">
+          Es requerido
+        </mat-error>
+      </mat-form-field>
     </div>
-    <div class="example-button-row">
-      <button mat-button class="registry-button" (click)="register()" target="_blank">Registrate</button>
+    <div style=" border-radius: 10px 10px 0px 0px;  width: 50%; margin-left: 2px;">
+      <mat-form-field appearance="outline" style="width: 100%;">
+        <mat-label>Repetir contraseña</mat-label>
+        <input matInput [type]="hide ? 'password' : 'text'" formControlName="ConfirmPassword" required >
+        <mat-error *ngIf="f.ConfirmPassword.hasError('required') && f.ConfirmPassword.touched">
+          Es requerido
+        </mat-error>
+        <mat-error *ngIf="f.Password != f.ConfirmPassword">Las contraseñas deben coincidir</mat-error>
+      </mat-form-field>
     </div>
-  </form>
-
+  </div>
+  <div class="example-button-row">
+    <button mat-button class="registry-button" (click)="register()" target="_blank" [disabled]="driverForm.invalid">Aceptar</button>
+  </div>
+</form>
