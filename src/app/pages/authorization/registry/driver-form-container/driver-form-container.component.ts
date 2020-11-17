@@ -1,11 +1,12 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { UserBean } from 'src/app/_model/UserBean';
 import { AuthService } from 'src/app/_service/auth.service';
 import { RestService } from 'src/app/_service/rest.service';
 import {DriverBean} from '../../../../_model/DriverBean';
+
 
 @Component({
   selector: 'app-driver-form-container',
@@ -29,8 +30,20 @@ export class DriverFormContainerComponent implements OnInit {
       'UserName': new FormControl('', [Validators.required]),
       Password: ['', [Validators.required]],
       ConfirmPassword: ['', [Validators.required]]
+    },{
+      validator: this.MatchPassword
     })
   }
+
+  public MatchPassword(AC: AbstractControl){
+    let password = AC.get('Password').value;
+    let confirmPassword = AC.get('ConfirmPassword').value;
+    if (password != confirmPassword) {
+        AC.get('ConfirmPassword').setErrors({ MatchPassword: true })
+    } else {
+        return null
+    }
+}
 
 
 

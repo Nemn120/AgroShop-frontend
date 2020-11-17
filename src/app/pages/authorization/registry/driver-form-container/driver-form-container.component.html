@@ -25,6 +25,7 @@
         Es requerido
       </mat-error>
       <mat-error *ngIf="f.DNI.hasError('pattern')">El campo debe tener 8 dígitos</mat-error>
+      <mat-error *ngIf="pattern == '^[a-zA-Z][a-z]*$'">El campo no puede contener letras</mat-error>
     </mat-form-field>
   </div>
   <br>
@@ -86,6 +87,7 @@
         <mat-error *ngIf="f.ConfirmPassword.hasError('required') && f.ConfirmPassword.touched">
           Es requerido
         </mat-error>
+        <mat-error *ngIf="f.Password != f.ConfirmPassword">Las contraseñas deben coincidir</mat-error>
       </mat-form-field>
     </div>
   </div>
