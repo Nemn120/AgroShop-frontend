@@ -70,20 +70,28 @@ export class DataClientComponent implements OnInit {
           this.snackBar.open(result.responseMessage, 'SUCESS', { duration: 5000 })
           this.orderService.removeItemsCar(this.order.orderDetailList);
           this.orderService.getCountItemsCar();
+         
+          Swal.fire(
+            'Se ha registrado su orden',
+            'La orden ha sido enviada.',
+            'success' 
+            
+          );
           this.dialog.open(OrderDetailComponent, {
             width:'33%',
             data: result.datalist
           })
          
         },error=>{
-          
+          this.snackBar.open(error.responseMessage, 'ERROR', { duration: 5000 })
+          Swal.fire(
+            'No se ha podido registrar su orden',
+            'La orden no ha sido enviada.',
+            'error' 
+            
+          );
         })
-        Swal.fire(
-          'Se ha registrado su orden',
-          'La orden ha sido enviada.',
-          'success' 
-          
-        );
+       
         this.cerrarDialogo();
       }
       

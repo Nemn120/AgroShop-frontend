@@ -9,6 +9,7 @@ import {MatDialog} from '@angular/material/dialog';
 import { MatPaginatorIntl } from '@angular/material/paginator';
 import { SharedService } from 'src/app/_service/shared.service';
 import { OrderService } from 'src/app/_service/order.service';
+import { UserBean } from 'src/app/_model/UserBean';
 
 @Component({
   selector: 'app-navbar-panel',
@@ -19,7 +20,9 @@ export class NavbarPanelComponent implements OnInit{
 
   @Input() isMenuOpened: boolean;
   @Output() isShowSidebar = new EventEmitter<boolean>();
+  user: UserBean;
   cantidad: number;
+  @Output() totalCarrito = new EventEmitter();
 
   constructor(
     private router: Router,  private userService: AuthService,public dialog: MatDialog,private orderService:OrderService,
@@ -28,10 +31,18 @@ export class NavbarPanelComponent implements OnInit{
   ) {
     this.orderService.totalQuantitySubject.subscribe(data=>{
       this.cantidad=data;
+      
     })
   }
 
   ngOnInit(){
+    
+    setInterval ( () => {
+      this.cantidad = this.getCantidad();
+      this.totalCarrito.emit(this.cantidad);
+    }, 1000);
+
+    this.user = this.sharedService.userSession;
 
   }
   public openMenu(): void {
@@ -55,5 +66,9 @@ export class NavbarPanelComponent implements OnInit{
 
       });
   }
+
+  getCantidad():number{
+    return this.orderService.totalQuantity;
+   }
 
 }
