@@ -5,6 +5,7 @@ import { SharedService } from 'src/app/_service/shared.service';
 import { DriverBean } from 'src/app/_model/DriverBean';
 import Swal from 'sweetalert2';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-new-vehicle',
@@ -27,12 +28,15 @@ export class NewVehicleComponent implements OnInit {
   titleS: string;
   confirmButtonTextS: string;
   actionS: string;
-  button: string;
+  button: string = 'Ingresar';
+  imagenEstado : boolean = false;
+  _isPhoto : boolean = false;
 
   constructor(
     private restService: RestService,
     private sharedData: SharedService,
-    @Inject(MAT_DIALOG_DATA) public data: VehicleEntity
+    @Inject(MAT_DIALOG_DATA) public data: VehicleEntity,
+    private sanitization: DomSanitizer,
   ) { }
 
   ngOnInit(): void {
@@ -49,10 +53,16 @@ export class NewVehicleComponent implements OnInit {
       this.vehicle.statusCar = this.data.statusCar;
       this.vehicle.grossWeight = this.data.grossWeight;
       this.vehicle.netWeight = this.data.netWeight;
+      this.vehicle.photo = this.data.photo;
+      this.restService.getPhoto(this.data.id).subscribe(data => {
+        if (data.size > 0)
+          this.imagenData = this.convertir(data);
+          this.imagenEstado = true;
+      }, error => {
+        this.restService.message('Error al mostrar imagen!', 'Error');
+      });
+      this._isPhoto = true;
       this.button = 'Modificar';
-    }
-    else{
-      this.button = 'Ingresar';
     }
   }
 
@@ -61,11 +71,13 @@ export class NewVehicleComponent implements OnInit {
       this.titleS = '¿Modificar vehiculo?';
       this.confirmButtonTextS = 'Modificar vehiculo';
       this.actionS = 'Modify';
+      
     }
     else{
       this.titleS = '¿Registrar vehiculo?';
       this.confirmButtonTextS = 'Registrar vehiculo';
       this.actionS = 'Create';
+      
     }
 
       Swal.fire({
@@ -88,6 +100,7 @@ export class NewVehicleComponent implements OnInit {
           this.vehicle.driver.id = this.IdSession;
           if (this.selectedFiles != null) {
             this.currentFileUpload = this.selectedFiles.item(0);
+            this._isPhoto = true;
           } else {
           this.currentFileUpload = new File([""], "blanco");
           }
@@ -101,13 +114,26 @@ export class NewVehicleComponent implements OnInit {
       })
         }
       });
+
+      
     }
-    
-  
 
   selectFile(e: any) {
     this.labelFile = e.target.files[0].name;
     this.selectedFiles = e.target.files;
+  }
+
+  public convertir(data: any) {
+    let reader = new FileReader();
+    reader.readAsDataURL(data);
+    reader.onloadend = () => {
+      let base64 = reader.result;
+      this.sanar(base64);
+    }
+  }
+
+  public sanar(base64: any) {
+    this.imagenData = this.sanitization.bypassSecurityTrustResourceUrl(base64);
   }
 
 }
