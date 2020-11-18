@@ -25,7 +25,6 @@ export class AuthService {
 
   public getJWTByCredentials(username:string,password:string){
     const body = `grant_type=password&username=${encodeURIComponent(username)}&password=${encodeURIComponent(password)}`;
-    console.log(this.url);
     return this.http.post(this.url, body, {
      
       headers: new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8').set('Authorization', 'Basic ' + btoa(environment.TOKEN_AUTH_USERNAME + ':' + environment.TOKEN_AUTH_PASSWORD))
@@ -38,35 +37,49 @@ export class AuthService {
         const helper = new JwtHelperService();
         sessionStorage.setItem(environment.TOKEN_NAME, data.access_token);
         const decodedToken = helper.decodeToken(data.access_token)
-        let param={
-          username:username,
-          userType:decodedToken.authorities[0]
-        }
+        if(decodedToken.authorities[0] != 'ADMIN'){
+          let param={
+            username:username,
+            userType:decodedToken.authorities[0]
+          }
         this.restService.requestApiRestData("user/gubu",param).subscribe(result =>{
           this.sharedService.userSession=result.data;
           this.isLogged=true;
           let param={
             id: result.data.user.profile.idProfile
           }
-          this.restService.requestApiRestData("menu/glmbi",param).subscribe(result =>{
-            this.sharedService.orderMenuOptionList(result.datalist);
-          console.log(result);
-          setTimeout(()=>{
-            this.router.navigate(['']);
-            this.restService.message('Inicio de sesion con exito!',username);
-          },1000);
-          
-          },error=>{
-            console.error('error1',error);
-          })
+          this.menuOptionByProfile(param,decodedToken.authorities[0]);
+          this.restService.message('Bienvenido al sistema ',username);      
         },error=>{
           console.error('error2',error);
         })
+      }else{
+        let param={
+          id: 1
+        }
+        this.menuOptionByProfile(param,decodedToken.authorities[0]);
       }
-    }, error =>{
-      console.error('error3',error);
-    })  
+    }
+  });
+  }
 
+  public menuOptionByProfile(param,userTpe:string){
+    this.restService.requestApiRestData("menu/glmbi",param).subscribe(result =>{
+      this.sharedService.orderMenuOptionList(result.datalist);
+    setTimeout(()=>{
+      if(userTpe=="DRIVER")
+        this.router.navigate(['vehicle/list']);
+      if(userTpe=="CLIENT")
+        this.router.navigate(['order/store']);
+      if(userTpe=="FARMER")
+        this.router.navigate(['product/list']);
+        if(userTpe=="ADMIN")
+        this.router.navigate(['driver/list']);  
+      },1000);
+    
+    },error=>{
+      console.error('error1',error);
+    })
   }
 
   public getUser(): Observable<User> {

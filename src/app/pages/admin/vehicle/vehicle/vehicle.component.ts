@@ -20,6 +20,7 @@ export class VehicleComponent implements OnInit {
   cars : any[];
   imagenData : any;
   imagenEstado: boolean = false;
+  carsLength : number;
 
   constructor(
     public dialog: MatDialog,
@@ -47,9 +48,9 @@ export class VehicleComponent implements OnInit {
       }
     }
     this.restService.requestApiRestData('vehicle/gvlbd',param).subscribe(result =>{
-      console.log("Vehiculos mostrados: ",result);
       this.convertir(result.datalist);
-      this.cars = result.datalist;
+      this.cars = result.datalist; 
+      this.carsLength = this.cars.length;
     })
   }
 
@@ -58,7 +59,7 @@ export class VehicleComponent implements OnInit {
     this.dialog.open(VehicleDetailComponent, {
       data: vehicleSelect,
       width :'50%',
-      minHeight : "40%",
+      minHeight: "50%",
       minWidth : "400px"
     });
   }
@@ -120,7 +121,7 @@ export class VehicleComponent implements OnInit {
           data : vh
         }
         this.restService.requestApiRestData('vehicle/dv',param).subscribe(result =>{
-          this.restService.messageChange.next({ message: 'Vehiculo eliminado con exito!', action: "Delete" });
+          this.restService.messageChange.next({ message: result.responseMessage, action: "Delete" });
         });
       }
     });

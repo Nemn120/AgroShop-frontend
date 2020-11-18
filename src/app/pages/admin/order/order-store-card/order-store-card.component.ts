@@ -38,6 +38,7 @@ export class OrderStoreCardComponent implements OnInit {
     orderDetailSelect.productSales.id=this.productSales.id;
     orderDetailSelect.productSales.availableQuantity=this.productSales.availableQuantity;
     orderDetailSelect.productSales.farmerNumber=this.productSales.farmerNumber;
+    orderDetailSelect.productSales.measureUnite=this.productSales.measureUnite;
     orderDetailSelect.productSales.product=new ProductBean();
     orderDetailSelect.productSales.product.id=this.productSales.product.id;
     orderDetailSelect.productSales.product.name=this.productSales.product.name;
@@ -48,6 +49,7 @@ export class OrderStoreCardComponent implements OnInit {
     this.orderService.addProductToCar(orderDetailSelect);
     this.sharedData.messageChange.next("Se agrego "+this.productSales.quantitySelect+" unidades al carrito");
     this.productSales.quantitySelect=null;
+    
     
     }
     

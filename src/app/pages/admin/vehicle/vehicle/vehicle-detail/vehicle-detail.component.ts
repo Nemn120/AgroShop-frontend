@@ -34,7 +34,6 @@ export class VehicleDetailComponent implements OnInit {
   }
 
   public convertir(data: any) {
-    console.log(data);
     this.restService.getPhoto(data.id).subscribe(photo =>{
       let reader = new FileReader();
         reader.readAsDataURL(photo);

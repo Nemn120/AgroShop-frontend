@@ -35,7 +35,6 @@ export function tokenGetter() {
 @NgModule({
   declarations: [
     AppComponent,
-
   ],
   imports: [
     BrowserModule,
@@ -48,13 +47,13 @@ export function tokenGetter() {
     PanelAdminModule,
     AuthorizationModule,
     MatSnackBarModule,
-    JwtModule.forRoot({
+    /*JwtModule.forRoot({
       config: {
         tokenGetter,
         whitelistedDomains: ['localhost:8080'],
         blacklistedRoutes: ['http://localhost:8080/oauth/token']
       }
-    }),
+    }),*/
     MatFabMenuModule,
    FormsModule,
 

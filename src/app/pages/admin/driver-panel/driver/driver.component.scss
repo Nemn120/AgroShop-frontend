@@ -1,7 +1,7 @@
 .button-search {
     outline: none;
     border: none;
-    background-color: #F4FCE5;
+    background-color: white;
     cursor: pointer;
     float: right;
     padding-left: 65px;
@@ -15,7 +15,7 @@
 }
 
 .header-search {
-    background: #F4FCE5;
+    background: white;
     border: 1px solid #B1E540;
     box-sizing: border-box;
     box-shadow: 2px 3px 4px #B3DB93;
@@ -46,7 +46,7 @@ input::placeholder {
 }
 
 .input-search {
-    background: #F4FCE5;
+    background: white;
     margin: auto;
     border: 0;
     box-sizing: border-box;
@@ -57,13 +57,19 @@ input::placeholder {
 }
 
 mat-card {
-    background-color: #D9F3B9;
+    background-color: inherit;
     box-sizing: border-box;
     padding: 3%;
+    top: 5%;
+    box-shadow: none !important;
 }
 
 mat-select {
     border: none;
+}
+
+table {
+    box-shadow: none;
 }
 
 .select-status {

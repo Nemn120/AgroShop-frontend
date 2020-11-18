@@ -26,7 +26,6 @@ export class NewVehicleComponent implements OnInit {
   selectedStatus: string = 'Disponible';
   titleS: string;
   confirmButtonTextS: string;
-  messageS: string;
   actionS: string;
   button: string;
 
@@ -37,7 +36,6 @@ export class NewVehicleComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    console.log("selectedStatus: ", this.selectedStatus)
     this.vehicle = new VehicleEntity();
     this.vehicleSelect = new VehicleEntity();
     if(this.data.id>0){
@@ -56,20 +54,17 @@ export class NewVehicleComponent implements OnInit {
     else{
       this.button = 'Ingresar';
     }
-    console.log(this.data);
   }
 
   newVehicle(){
     if(this.data.id>0){
       this.titleS = '¿Modificar vehiculo?';
       this.confirmButtonTextS = 'Modificar vehiculo';
-      this.messageS = 'Vehiculo modificado con exito!';
       this.actionS = 'Modify';
     }
     else{
       this.titleS = '¿Registrar vehiculo?';
       this.confirmButtonTextS = 'Registrar vehiculo';
-      this.messageS = 'Vehiculo agregado con exito!';
       this.actionS = 'Create';
     }
 
@@ -102,7 +97,7 @@ export class NewVehicleComponent implements OnInit {
           }
 
           this.restService.requestApiRestData('vehicle/sv',param,this.currentFileUpload).subscribe(result => {
-            this.restService.messageChange.next({ message: this.messageS, action: this.actionS });
+            this.restService.messageChange.next({ message: result.responseMessage, action: this.actionS });
       })
         }
       });

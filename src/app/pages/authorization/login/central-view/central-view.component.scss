@@ -1,22 +1,24 @@
+
+
     .centrar {
         text-align: center;
         justify-content: center;
     }
-    
+
     .general {
         border-radius: 50px;
         padding: 10%;
         font-family: 'Times New Roman', Times, serif;
         font-weight: bold
     }
-    
+
     .titulo {
         font-family: 'Times New Roman', Times, serif;
         font-weight: bold;
         font-size: xx-large;
         color: black;
     }
-    
+
     .btn-ingresar {
         font-family: 'Times New Roman', Times, serif;
         font-weight: bold;
@@ -27,7 +29,7 @@
         background: #cbccca;
         color: #ececea;
     }
-    
+
     .btn-registrarse {
         font-family: 'Times New Roman', Times, serif;
         width: 50%;
@@ -36,16 +38,16 @@
         color: #ececea;
     }
     /* Code witch overwrites input background-color */
-    
+
     input {
         box-shadow: 0 0 0px 1000px #d5d6d5 inset;
         /*font-weight: bold;*/
     }
-    
+
     .signup-form {
-        padding: 20px 20px 70px 20px;
+        padding: 20px 20px 20px 20px;
     }
-    
+
     .form-holder {
         background: white;
         padding: 16px;
@@ -59,12 +61,24 @@
             width: 100%;
         }
     }
-    
+
     .signup-form {
-        padding: 50px 20px 0px 50px;
+        padding: 20px 20px 20px 20px;
         align-items: center;
     }
-    
+
     .login {
         background-color: rgb(255, 255, 255);
     }
+
+    .button-container{
+      height: 100px;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+    }
+
+
+

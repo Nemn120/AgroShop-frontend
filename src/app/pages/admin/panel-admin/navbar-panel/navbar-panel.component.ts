@@ -9,6 +9,7 @@ import {MatDialog} from '@angular/material/dialog';
 import { MatPaginatorIntl } from '@angular/material/paginator';
 import { SharedService } from 'src/app/_service/shared.service';
 import { OrderService } from 'src/app/_service/order.service';
+import { UserBean } from 'src/app/_model/UserBean';
 
 @Component({
   selector: 'app-navbar-panel',
@@ -19,23 +20,20 @@ export class NavbarPanelComponent implements OnInit{
 
   @Input() isMenuOpened: boolean;
   @Output() isShowSidebar = new EventEmitter<boolean>();
+  user: UserBean;
   cantidad: number;
-
-  public user$: Observable<User>
-  public emails$: Observable<any[]>
+  @Output() totalCarrito = new EventEmitter();
 
   constructor(
-    private router: Router,  private userService: AuthService,public dialog: MatDialog,private orderService:OrderService
-  ) {
-    this.user$ = this.userService.getUser();
-    this.orderService.totalQuantitySubject.subscribe(data=>{
-      this.cantidad=data;
-    })
-
-
+    private router: Router,  private userService: AuthService,public dialog: MatDialog,private orderService:OrderService,
+    public sharedService:SharedService) {
   }
 
   ngOnInit(){
+    this.orderService.totalQuantitySubject.subscribe(data=>{
+      this.cantidad=data;
+
+    })
 
   }
   public openMenu(): void {
@@ -52,10 +50,8 @@ export class NavbarPanelComponent implements OnInit{
   this.router.navigate(['order/search',nameProduct]);
 }
   openDialogCar(){
-
     this.dialog.open(CarDiaLogComponent, {
-      
-        width: '26%',
+        width: '20%',
         height: '100%',
         position: { right:'0px' },
 

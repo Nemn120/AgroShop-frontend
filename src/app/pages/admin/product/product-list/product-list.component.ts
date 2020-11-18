@@ -56,12 +56,10 @@ export class ProductListComponent implements OnInit {
     }
     this.restService.requestApiRestData('product/glpbf', param)
       .subscribe(data => {
-        console.log('mis productos! ', data);
         this.dataSource = new MatTableDataSource(data.datalist);
         this.dataSource.paginator = this.paginator;
         this.dataSource.sort = this.sort;
       }, error => {
-        console.log("Error al listar productos!", error);
         this.restService.message('Error al listar productos!', 'Error');
       });
   }
