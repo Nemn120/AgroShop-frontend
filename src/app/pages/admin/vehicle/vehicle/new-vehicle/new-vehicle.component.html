@@ -24,7 +24,7 @@
         </mat-form-field>
         <mat-form-field appearance="outline">
             <mat-label>Año de uso</mat-label>
-            <input matInput [(ngModel)]="this.vehicle.yearsOfUse" name="yearsOfUse" type="number" min="0" required>
+            <input matInput [(ngModel)]="this.vehicle.yearsOfUse" name="yearsOfUse" type="number" value="0" min="0" required>
         </mat-form-field>
         <mat-form-field appearance="outline">
             <mat-label>Tipo de combustible</mat-label>
@@ -58,18 +58,16 @@
         </mat-form-field>
         <button mat-raised-button color="primary" onclick="document.getElementById('flArchivo').click();" class="btn-select">Seleccionar Archivo</button>
         <input id="flArchivo" type="file" (change)="selectFile($event)" style="display: none">
-        <br>
-        <p style="color: red; justify-content: center;">{{labelFile}}</p>
+        <div style="width: 100%;">
+            <img mat-card-image [src]="imagenData" *ngIf="imagenEstado" style="display: block; width:180px ;height:180px;margin: auto;" />
+        </div>
+        <p style="color: red; justify-content: center; margin-bottom: 0;">{{labelFile}}</p>
     </div>
         <br>
         <div class="buttons">
             <button class="first-btn btn-form" mat-stroked-button color="basic" mat-dialog-close>Cancelar</button>
-            <button *ngIf="this.data.id>0" mat-raised-button type="submit" class="btn-form" color="warn" [disabled]="
-            !this.vehicle.plateNumber || !this.vehicle.serialNumber || !this.vehicle.vehicleBrand || !this.vehicle.vehicleModel || !labelFile ||
-            !this.vehicle.yearsOfUse || !this.vehicle.fuelType || !this.vehicle.statusCar || !this.vehicle.netWeight || !this.vehicle.grossWeight"  
-            mat-dialog-close (click)="newVehicle()">{{this.button}}</button>
-            <button *ngIf="!this.data.id" mat-raised-button type="submit" class="btn-form" color="warn" [disabled]="
-            !this.vehicle.plateNumber || !this.vehicle.serialNumber || !this.vehicle.vehicleBrand || !this.vehicle.vehicleModel || !labelFile ||
+            <button mat-raised-button type="submit" class="btn-form" color="warn" [disabled]="
+            !this.vehicle.plateNumber || !this.vehicle.serialNumber || !this.vehicle.vehicleBrand || !this.vehicle.vehicleModel || this._isPhoto == false || this.vehicle.yearsOfUse<=0 ||
             !this.vehicle.yearsOfUse || !this.vehicle.fuelType || !this.vehicle.statusCar || !this.vehicle.netWeight || !this.vehicle.grossWeight"  
             mat-dialog-close (click)="newVehicle()">{{this.button}}</button>
         </div>
