@@ -16,7 +16,7 @@ import {DriverBean} from '../../../../_model/DriverBean';
 export class DriverFormContainerComponent implements OnInit {
   hide = true;
   driverForm: FormGroup;
-
+  pattern:any;
   @Input() title: string;
   @Input() userType: string;
   constructor(private formBuilder: FormBuilder, private restService: RestService, private router: Router, private authService: AuthService, private matSnackBar: MatSnackBar) { }
