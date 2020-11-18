@@ -1,4 +1,4 @@
-import { HttpClient,HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable, of } from 'rxjs';
@@ -14,72 +14,75 @@ import { RestService } from './rest.service';
 })
 export class AuthService {
 
-  url: string = `${environment.HOST}/oauth/token`;
-  isLogged:boolean=false;
+  url = `${environment.HOST}/oauth/token`;
+  isLogged= false;
   constructor(
-    private http: HttpClient, 
+    private http: HttpClient,
     private router: Router,
-    private restService:RestService,
-    private sharedService:SharedService)
-    {}    
+    private restService: RestService,
+    private sharedService: SharedService) {}
 
-  public getJWTByCredentials(username:string,password:string){
+  public getJWTByCredentials(username: string, password: string) {
     const body = `grant_type=password&username=${encodeURIComponent(username)}&password=${encodeURIComponent(password)}`;
     return this.http.post(this.url, body, {
-     
+
       headers: new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8').set('Authorization', 'Basic ' + btoa(environment.TOKEN_AUTH_USERNAME + ':' + environment.TOKEN_AUTH_PASSWORD))
     });
   }
 
-  public login(username : string, password:string){
-    this.getJWTByCredentials(username,password).subscribe((data:any) =>{
-      if(data){
+  public login(username: string, password: string) {
+    this.getJWTByCredentials(username, password).subscribe((data: any) => {
+      if (data) {
         const helper = new JwtHelperService();
         sessionStorage.setItem(environment.TOKEN_NAME, data.access_token);
-        const decodedToken = helper.decodeToken(data.access_token)
-        if(decodedToken.authorities[0] != 'ADMIN'){
-          let param={
-            username:username,
-            userType:decodedToken.authorities[0]
-          }
-        this.restService.requestApiRestData("user/gubu",param).subscribe(result =>{
-          this.sharedService.userSession=result.data;
-          this.isLogged=true;
-          let param={
+        const decodedToken = helper.decodeToken(data.access_token);
+        if (decodedToken.authorities[0] != 'ADMIN') {
+          const param = {
+            username,
+            userType: decodedToken.authorities[0]
+          };
+          this.restService.requestApiRestData('user/gubu', param).subscribe(result => {
+          this.sharedService.userSession = result.data;
+          this.isLogged = true;
+          const param = {
             id: result.data.user.profile.idProfile
-          }
-          this.menuOptionByProfile(param,decodedToken.authorities[0]);
-          this.restService.message('Bienvenido al sistema ',username);      
-        },error=>{
-          console.error('error2',error);
-        })
-      }else{
-        let param={
+          };
+          this.menuOptionByProfile(param, decodedToken.authorities[0]);
+          this.restService.message('Bienvenido al sistema ', username);
+        }, error => {
+          console.error('error2', error);
+        });
+      } else {
+        const param = {
           id: 1
-        }
-        this.menuOptionByProfile(param,decodedToken.authorities[0]);
+        };
+        this.menuOptionByProfile(param, decodedToken.authorities[0]);
       }
     }
   });
   }
 
-  public menuOptionByProfile(param,userTpe:string){
-    this.restService.requestApiRestData("menu/glmbi",param).subscribe(result =>{
+  public menuOptionByProfile(param, userTpe: string) {
+    this.restService.requestApiRestData('menu/glmbi', param).subscribe(result => {
       this.sharedService.orderMenuOptionList(result.datalist);
-    setTimeout(()=>{
-      if(userTpe=="DRIVER")
+      setTimeout(() => {
+      if (userTpe =='DRIVER') {
         this.router.navigate(['vehicle/list']);
-      if(userTpe=="CLIENT")
+      }
+      if (userTpe =='CLIENT') {
         this.router.navigate(['order/store']);
-      if(userTpe=="FARMER")
+      }
+      if (userTpe =='FARMER') {
         this.router.navigate(['product/list']);
-        if(userTpe=="ADMIN")
-        this.router.navigate(['driver/list']);  
-      },1000);
-    
-    },error=>{
-      console.error('error1',error);
-    })
+      }
+        if (userTpe =='ADMIN') {
+        this.router.navigate(['driver/list']);
+        }
+      }, 1000);
+
+    }, error => {
+      console.error('error1', error);
+    });
   }
 
   public getUser(): Observable<User> {
@@ -97,11 +100,11 @@ export class AuthService {
     return this.sharedService.userSession != null;
   }
 
-  public closeSession() {   
+  public closeSession() {
       sessionStorage.clear();
-      this.sharedService.userSession=undefined;
-      this.isLogged=false;
+      this.sharedService.userSession = undefined;
+      this.isLogged = false;
       this.router.navigate(['/auth']);
-      this.restService.message('Hasta pronto!','CLOSE');
+      this.restService.message('Hasta pronto!', 'CLOSE');
   }
 }
