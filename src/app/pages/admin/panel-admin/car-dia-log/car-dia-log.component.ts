@@ -23,7 +23,7 @@ import { ProductSalesBean } from 'src/app/_model/ProductSalesBean';
 })
 export class CarDiaLogComponent implements OnInit {
 
-  
+
   orderDetailListSelect:OrderDetailBean[]=[];
   totalPrice:number=0;
   productSelect: ProductSalesBean;
@@ -42,7 +42,7 @@ export class CarDiaLogComponent implements OnInit {
 
   ngOnInit(): void {
   }
-  
+
 
   closeDialog() {
     this.dialog.close();
@@ -58,24 +58,24 @@ export class CarDiaLogComponent implements OnInit {
           let index=this.orderService.orderDetailList.findIndex(data=>data.productSales.id==x.productSales.id);
           this.orderService.orderDetailList[index].quantity=x.productSales.availableQuantity
         }
-          
+
         this.totalPrice+=x.price*x.quantity;
-        
+
       })
     }
   }
   deleteItemsSelect(){
-    
+
     this.orderDetailListSelect.forEach(x=>{
       this.orderService.orderDetailList=this.orderService.orderDetailList.filter(data=>data.productSales.id != x.productSales.id);
       this.orderService.totalQuantitySubject.next(this.orderService.totalQuantity-x.quantity);
-      this.orderService.totalQuantity=this.orderService.totalQuantity-x.quantity;
+      this.orderService.totalQuantity = this.orderService.totalQuantity-x.quantity;
     })
     console.log(this.orderService.orderDetailList);
-    
+
   }
   sendOrder() {
-    
+
     if (this.orderDetailListSelect.length > 0) {
       let orderSend=new OrderBean();
       orderSend.orderDetailList=this.orderDetailListSelect;
@@ -83,7 +83,7 @@ export class CarDiaLogComponent implements OnInit {
         .open(DataClientComponent, {
           width:'25%',
           data:orderSend
-        })  
+        })
     }
   }
 }

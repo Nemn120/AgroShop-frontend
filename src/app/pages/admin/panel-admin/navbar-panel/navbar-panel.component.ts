@@ -26,23 +26,14 @@ export class NavbarPanelComponent implements OnInit{
 
   constructor(
     private router: Router,  private userService: AuthService,public dialog: MatDialog,private orderService:OrderService,
-    public sharedService:SharedService
-   
-  ) {
-    this.orderService.totalQuantitySubject.subscribe(data=>{
-      this.cantidad=data;
-      
-    })
+    public sharedService:SharedService) {
   }
 
   ngOnInit(){
-    
-    /*setInterval ( () => {
-      this.cantidad = this.getCantidad();
-      this.totalCarrito.emit(this.cantidad);
-    }, 1000);
+    this.orderService.totalQuantitySubject.subscribe(data=>{
+      this.cantidad=data;
 
-    this.user = this.sharedService.userSession;*/
+    })
 
   }
   public openMenu(): void {
@@ -66,9 +57,5 @@ export class NavbarPanelComponent implements OnInit{
 
       });
   }
-
-  /*getCantidad():number{
-    return this.orderService.totalQuantity1;
-   }*/
 
 }
