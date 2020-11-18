@@ -50,6 +50,7 @@ export class OrderStoreCardComponent implements OnInit {
     this.sharedData.messageChange.next("Se agrego "+this.productSales.quantitySelect+" unidades al carrito");
     this.productSales.quantitySelect=null;
     
+    
     }
     
   }
