@@ -113,12 +113,12 @@ export class DataClientComponent implements OnInit {
     this.address = new FormControl(''),
       this.reference = new FormControl(''),
       this.phone = new FormControl(''),
-      this.maxDate= new FormControl(''),
+     
       this.form = this.fb.group({
         'address': this.address,
         'reference': this.reference,
         'phone': this.phone,
-        'maxDate': this.maxDate,
+       
       });
 
 

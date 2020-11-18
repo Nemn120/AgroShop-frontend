@@ -15,6 +15,7 @@ export class OrderStoreCardComponent implements OnInit {
 
   @Input() productSales: ProductSalesBean;
   quantity:number;
+  imagenEstado: boolean = false;
   constructor(
   private sharedData:SharedService,
   private orderService:OrderService
