@@ -69,6 +69,11 @@ export class DataClientComponent implements OnInit {
         this.restService.requestApiRestData("order/sobos",param).subscribe(result=>{
           this.snackBar.open(result.responseMessage, 'SUCESS', { duration: 5000 })
           this.orderService.removeItemsCar(this.order.orderDetailList);
+          let sumaquantity;
+
+          
+          this.orderService.totalQuantitySubject.next(this.orderService.totalQuantity-result.quantity);
+          this.orderService.totalQuantity=this.orderService.totalQuantity-result.quantity;
           this.orderService.getCountItemsCar();
          
           Swal.fire(

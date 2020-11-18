@@ -68,6 +68,8 @@ export class CarDiaLogComponent implements OnInit {
     
     this.orderDetailListSelect.forEach(x=>{
       this.orderService.orderDetailList=this.orderService.orderDetailList.filter(data=>data.productSales.id != x.productSales.id);
+      this.orderService.totalQuantitySubject.next(this.orderService.totalQuantity-x.quantity);
+      this.orderService.totalQuantity=this.orderService.totalQuantity-x.quantity;
     })
     console.log(this.orderService.orderDetailList);
     
