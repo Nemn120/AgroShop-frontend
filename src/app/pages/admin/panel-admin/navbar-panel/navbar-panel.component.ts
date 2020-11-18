@@ -26,17 +26,14 @@ export class NavbarPanelComponent implements OnInit{
 
   constructor(
     private router: Router,  private userService: AuthService,public dialog: MatDialog,private orderService:OrderService,
-    public sharedService:SharedService
-   
-  ) {
-    this.orderService.totalQuantitySubject.subscribe(data=>{
-      this.cantidad=data;
-      
-    })
+    public sharedService:SharedService) {
   }
 
   ngOnInit(){
-    
+    this.orderService.totalQuantitySubject.subscribe(data=>{
+      this.cantidad=data;
+
+    })
     /*setInterval ( () => {
       this.cantidad = this.getCantidad();
       this.totalCarrito.emit(this.cantidad);

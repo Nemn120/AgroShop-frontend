@@ -36,7 +36,7 @@ export class DataClientComponent implements OnInit {
     public orderService: OrderService,
     private sharedData:SharedService,
     private restService:RestService
-  
+
   ) { }
 
   enviarOrden() {
@@ -69,33 +69,39 @@ export class DataClientComponent implements OnInit {
         this.restService.requestApiRestData("order/sobos",param).subscribe(result=>{
           this.snackBar.open(result.responseMessage, 'SUCESS', { duration: 5000 })
           this.orderService.removeItemsCar(this.order.orderDetailList);
-          this.orderService.getCountItemsCar();
-         
+          let sumaquantity = 0;
+          result.datalist.forEach(element => {
+            sumaquantity = sumaquantity + element.quantity;
+          });
+          this.orderService.totalQuantitySubject.next(this.orderService.totalQuantity-sumaquantity);
+          this.orderService.totalQuantity = this.orderService.totalQuantity - sumaquantity;
+          //this.orderService.getCountItemsCar();
+
           Swal.fire(
             'Se ha registrado su orden',
             'La orden ha sido enviada.',
-            'success' 
-            
+            'success'
+
           );
           this.dialog.open(OrderDetailComponent, {
             width:'33%',
             data: result.datalist
           })
-         
+
         },error=>{
           //this.snackBar.open(error.responseMessage, 'SUCESS', { duration: 5000 })
-          this.restService.message('Error al enviar la orden!', 'Error');  
+          this.restService.message('Error al enviar la orden!', 'Error');
           Swal.fire(
             'No se ha podido registrar su orden',
             'La orden no ha sido enviada.',
-            'error' 
-            
+            'error'
+
           );
         })
-       
+
         this.cerrarDialogo();
       }
-      
+
     });
 
 
@@ -114,8 +120,8 @@ export class DataClientComponent implements OnInit {
         'phone': this.phone,
         'maxDate': this.maxDate,
       });
-   
-    
+
+
   }
   public hasError = (controlName: string, errorName: string) => {
     return this.form.controls[controlName].hasError(errorName);
