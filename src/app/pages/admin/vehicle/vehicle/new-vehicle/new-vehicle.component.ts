@@ -64,6 +64,7 @@ export class NewVehicleComponent implements OnInit {
       this._isPhoto = true;
       this.button = 'Modificar';
     }
+    
   }
 
   newVehicle(){
@@ -100,7 +101,6 @@ export class NewVehicleComponent implements OnInit {
           this.vehicle.driver.id = this.IdSession;
           if (this.selectedFiles != null) {
             this.currentFileUpload = this.selectedFiles.item(0);
-            this._isPhoto = true;
           } else {
           this.currentFileUpload = new File([""], "blanco");
           }
