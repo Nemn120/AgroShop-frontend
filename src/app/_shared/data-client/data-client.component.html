@@ -24,7 +24,7 @@
 
         <mat-form-field appearance="fill" style="width: 100%;">
             <mat-label>Telefono</mat-label>
-            <input matInput formControlName="phone" [formGroup]="form" required>
+            <input matInput formControlName="phone" [formGroup]="form" type="text" onkeypress="return event.charCode >= 48 && event.charCode <=57"  maxlength="9" required>
         </mat-form-field>
         <button style="width: 100%;" mat-raised-button color="primary" type="submit" [disabled]="frmUsuario.invalid">{{buttonTitle}}</button>
     </form>
