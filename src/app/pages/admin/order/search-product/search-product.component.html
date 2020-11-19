@@ -2,8 +2,9 @@
   RESULTADOS ENCONTRADOS
 </div>
 
-<div class="grid-item" *ngFor="let farmer of farmerWithProductsList">
-  <div class="grid-item" *ngFor="let products of farmer._listOfProductsShowed">
+<div  *ngFor="let f of farmerWithProductsList">
+  <div>{{f._farmer}}</div>
+  <div class="grid-item" *ngFor="let products of f._listOfProductsShowed">
       <app-order-store-card [productSales]="products"></app-order-store-card>
   </div>
 </div>

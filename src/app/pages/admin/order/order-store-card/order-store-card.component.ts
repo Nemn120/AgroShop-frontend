@@ -18,7 +18,7 @@ export class OrderStoreCardComponent implements OnInit {
   constructor(
   private sharedData:SharedService,
   private orderService:OrderService
-    
+
   ) { }
 
   ngOnInit(): void {
@@ -26,7 +26,7 @@ export class OrderStoreCardComponent implements OnInit {
   }
 
   addProduct(){
-    if(this.productSales.quantitySelect>this.productSales.totalQuantity){
+    if(this.productSales.quantitySelect>this.productSales.availableQuantity){
       this.sharedData.messageChange.next("La cantidad ingresada supera a la cantidad disponible")
       this.productSales.quantitySelect=null;
     }else{
@@ -49,10 +49,10 @@ export class OrderStoreCardComponent implements OnInit {
     this.orderService.addProductToCar(orderDetailSelect);
     this.sharedData.messageChange.next("Se agrego "+this.productSales.quantitySelect+" unidades al carrito");
     this.productSales.quantitySelect=null;
-    
-    
+
+
     }
-    
+
   }
 
 }

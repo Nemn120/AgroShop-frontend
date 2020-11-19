@@ -15,7 +15,7 @@ import { OrderService } from 'src/app/_service/order.service';
 })
 export class SearchProductComponent implements OnInit {
 
-  @Input() productSales: ProductSalesBean;
+
   quantity:number;
   productSearch: ProductSalesBean;
   farmerList: any;
@@ -35,6 +35,7 @@ export class SearchProductComponent implements OnInit {
       const param = {
         data: this.productSearch
       }
+
       this.restService.requestApiRestData('productsales/glsps',param).subscribe(result=>{
           for(let [farmer,products] of Object.entries(result.dataMap)){
             this.activatedPhoto(products);
@@ -42,11 +43,20 @@ export class SearchProductComponent implements OnInit {
           for(let [farmer, products] of Object.entries(result.dataMap)){
             let dto = new FarmerAndProductsDTO();
             dto._listOfProductsShowed = [];
+            const dat ={
+              id: farmer
+            }
             for(let [key,value] of Object.entries(products)){
               dto._listOfProductsShowed.push(value);
             }
-            this.farmerWithProductsList.push(dto);
+            this.restService.requestApiRestData('farmer/gfbi',dat).subscribe(result2=>{
+              console.log(result2.data.user.username);
+              dto._farmer = result2.data.user.username;
+              console.log(dto._farmer);
+              this.farmerWithProductsList.push(dto);
+            })
           }
+
       })
     })
 
@@ -72,6 +82,6 @@ export class SearchProductComponent implements OnInit {
     return this.sanitization.bypassSecurityTrustResourceUrl(data);
   }
 
-  
+
 
 }
