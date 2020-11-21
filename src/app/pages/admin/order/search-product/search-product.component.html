@@ -3,10 +3,15 @@
 </div>
 
 <div  *ngFor="let f of farmerWithProductsList">
-  <div>{{f._farmer}}</div>
-  <div class="grid-item" *ngFor="let products of f._listOfProductsShowed">
+  <div class="data-farmer">{{f._farmer}}</div>
+  <div class="card">
+    <div class="grid-item" *ngFor="let products of f._listOfProductsShowed">
+
       <app-order-store-card [productSales]="products"></app-order-store-card>
+
+</div>
   </div>
+
 </div>
 
 
