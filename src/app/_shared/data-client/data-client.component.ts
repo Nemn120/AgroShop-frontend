@@ -75,7 +75,7 @@ export class DataClientComponent implements OnInit {
           });
           this.orderService.totalQuantitySubject.next(this.orderService.totalQuantity-sumaquantity);
           this.orderService.totalQuantity = this.orderService.totalQuantity - sumaquantity;
-          //this.orderService.getCountItemsCar();
+          this.orderService.getCountItemsCar();
 
           Swal.fire(
             'Se ha registrado su orden',
@@ -113,12 +113,12 @@ export class DataClientComponent implements OnInit {
     this.address = new FormControl(''),
       this.reference = new FormControl(''),
       this.phone = new FormControl(''),
-     
+
       this.form = this.fb.group({
         'address': this.address,
         'reference': this.reference,
         'phone': this.phone,
-       
+
       });
 
 

@@ -1,6 +1,6 @@
-<div style="height:100vh;width: 100vw; display: flex;justify-content: center;align-items: center;">
-    <div style="height: 800px;width: 1200px; display: flex; box-shadow: 2px 4px 10px 8px grey;">
-        <div style="height: 100%; width: 800px;">
+<div id="background">
+    <div id = "login-panel">
+        <div  id="login-image">
             <div class="texto-flotante">
                 <span id="txtportal" class="texto-portal"><b style="font-size: 30px;">Sistema de integracion entre cliente y
             agricultor</b></span>
@@ -8,11 +8,12 @@
             </div>
             <img src="../../../../assets/images/login/background2.jpg" style="height: 100%; width: 100%;">
         </div>
-        <div style="height: 100%; width: 400px;">
-            <form [formGroup]="loginForm" class="signup-form" fxLayout="column" (ngSubmit)="login()" style="margin-top: 100px;">
+        <div id="login-form">
+            <div style = "height: 60%; width: 100%; ">
+              <form [formGroup]="loginForm" class="signup-form" fxLayout="column" (ngSubmit)="login()">
 
                 <div class="form-headline text-center mb-32" style="display: flex; justify-content: center;">
-                    <h1 class="font-weight-light">Bienvenido a Agroshop</h1>
+                    <h1 class="font-weight-light" style="font-size: 30px; text-align: center;">Bienvenido a Agroshop</h1>
                 </div>
 
                 <div class="mb-48" fxLayout="row wrap" fxLayoutAlign="center center">
@@ -47,11 +48,11 @@
                 </div>
                 <br>
                 <br>
-                <mat-checkbox class="mb-24" style="position: relative;display: block;margin:0px 35px; bottom: 30px;">Recordar</mat-checkbox>
+                <mat-checkbox class="mb-24" style="position: relative;display: block; bottom: 30px;">Recordar</mat-checkbox>
 
                 <div class="button-container">
                     <div style="text-align:center; margin:10px;">
-                        <button mat-raised-button color="primary" style="width: 60%; text-align: center;
+                        <button mat-raised-button color="primary" style="width: 50%; text-align: center;
               font-family: 'Itim', cursive; font-size: 20px;
               color:#fff;
               background-color: rgb(6, 110, 54); border-radius: 20px; height: 100%; margin-bottom: 10px;" [disabled]="enProceso">Ingresa</button>
@@ -83,6 +84,7 @@
                 </mat-menu>
 
 
+            </div>
             </div>
         </div>
     </div>
