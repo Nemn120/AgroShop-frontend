@@ -70,7 +70,7 @@ export function tokenGetter() {
   ],
   bootstrap: [AppComponent],
   exports: [
-    FlexLayoutModule,
+    FlexLayoutModule, 
 
 
   ],
