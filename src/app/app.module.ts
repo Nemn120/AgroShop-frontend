@@ -53,7 +53,7 @@ export function tokenGetter() {
         whitelistedDomains: ['localhost:8080'],
         blacklistedRoutes: ['http://localhost:8080/oauth/token']
       }
-    }),*/
+    }),*/  
     MatFabMenuModule,
    FormsModule,
 
