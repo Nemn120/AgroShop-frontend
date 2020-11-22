@@ -7,6 +7,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { OrderBean } from 'src/app/_model/OrderBean';
 import { RestService } from 'src/app/_service/rest.service';
 import { SharedService } from 'src/app/_service/shared.service';
+import { OrderDetailsComponent } from '../order-details/order-details.component';
 
 @Component({
   selector: 'app-order-pending',
@@ -14,7 +15,7 @@ import { SharedService } from 'src/app/_service/shared.service';
   styleUrls: ['./order-pending.component.scss']
 })
 export class OrderPendingComponent implements OnInit {
-  displayedColumns: string[] = ['id', 'attentDate','userName','total','address','phone','status','actions','message'];
+  displayedColumns: string[] = ['id', 'attentDate','userName','total','status','actions','message'];
   dataSource: MatTableDataSource<OrderBean>;
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatPaginator) paginator: MatPaginator;
@@ -39,6 +40,12 @@ export class OrderPendingComponent implements OnInit {
         console.log(result.datalist);
       }
       );
+  }
+  public openDetails(order: any) {
+    this.dialog.open(OrderDetailsComponent, {
+      width: '750px',
+      data: order
+    });
   }
 
 }

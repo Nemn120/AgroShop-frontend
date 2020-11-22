@@ -25,15 +25,6 @@
                 <td mat-cell *matCellDef="let row"> S/.{{row.total}} </td>
             </ng-container>
 
-            <ng-container matColumnDef="address" style="width: 12%;">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header>Direccion</th>
-                <td mat-cell *matCellDef="let row"> {{row.address}} </td>
-            </ng-container>
-
-            <ng-container matColumnDef="phone" style="width: 12%;">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header> Telefono </th>
-                <td mat-cell *matCellDef="let row"> {{row.phone}} </td>
-            </ng-container>
 
             <ng-container matColumnDef="status" style="width: 12%;">
                 <th mat-header-cell *matHeaderCellDef mat-sort-header> Estado </th>
@@ -60,7 +51,7 @@
                 <th mat-header-cell *matHeaderCellDef mat-sort-header> Publicar Oferta </th>
                 <td mat-cell *matCellDef="let row">
 
-                    <button mat-icon-button (click)="openOfert(row)">
+                    <button mat-icon-button >
                         <mat-icon>message</mat-icon>
                     </button>
 

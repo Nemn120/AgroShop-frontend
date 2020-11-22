@@ -10,6 +10,7 @@ import { OrderStoreCardComponent } from './order-store-card/order-store-card.com
 import { FormsModule } from '@angular/forms';
 import { SearchProductComponent } from './search-product/search-product.component';
 import { OrderPendingComponent } from './order-pending/order-pending.component';
+import { OrderDetailsComponent } from './order-details/order-details.component';
 
 const routes: Routes = [
   {
@@ -21,13 +22,16 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  declarations: [OrderListComponent, OrderNewComponent, OrderStoreComponent, OrderStoreCardComponent, SearchProductComponent, OrderPendingComponent],
+  declarations: [OrderListComponent, OrderNewComponent, OrderStoreComponent, OrderStoreCardComponent, SearchProductComponent, OrderPendingComponent, OrderDetailsComponent],
   imports: [
     CommonModule,
     MaterialModule,
     PanelAdminModule,
     FormsModule,
     RouterModule.forChild(routes),
-  ]
+  ],
+  entryComponents:[
+    OrderDetailsComponent
+  ],
 })
 export class OrderModule { }
