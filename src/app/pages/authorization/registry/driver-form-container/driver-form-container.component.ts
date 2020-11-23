@@ -16,57 +16,58 @@ import {DriverBean} from '../../../../_model/DriverBean';
 export class DriverFormContainerComponent implements OnInit {
   hide = true;
   driverForm: FormGroup;
-  pattern:any;
+  pattern: any;
   @Input() title: string;
   @Input() userType: string;
   constructor(private formBuilder: FormBuilder, private restService: RestService, private router: Router, private authService: AuthService, private matSnackBar: MatSnackBar) { }
 
   ngOnInit(): void {
     this.driverForm = this.formBuilder.group({
-      'driverLicencia': new FormControl(''),
-      'DNI': new FormControl('', [Validators.required, Validators.pattern('^[0-9]{8}$')]),
-      'Name': new FormControl('', [Validators.required, Validators.pattern('^[a-zA-Z][a-z]*$')]),
-      'LastName': new FormControl('', [Validators.required, Validators.pattern('^[a-zA-Z][a-z]*$')]),
-      'UserName': new FormControl('', [Validators.required]),
+      driverLicencia: new FormControl(''),
+      DNI: new FormControl('', [Validators.required, Validators.pattern('^[0-9]{8}$')]),
+      Name: new FormControl('', [Validators.required, Validators.pattern('^[a-zA-Z][a-z]*$')]),
+      LastName: new FormControl('', [Validators.required, Validators.pattern('^[a-zA-Z][a-z]*$')]),
+      UserName: new FormControl('', [Validators.required]),
       Password: ['', [Validators.required]],
       ConfirmPassword: ['', [Validators.required]]
-    },{
+    }, {
       validator: this.MatchPassword
-    })
+    });
   }
 
-  public MatchPassword(AC: AbstractControl){
-    let password = AC.get('Password').value;
-    let confirmPassword = AC.get('ConfirmPassword').value;
+  public MatchPassword(AC: AbstractControl) {
+    const password = AC.get('Password').value;
+    const confirmPassword = AC.get('ConfirmPassword').value;
     if (password != confirmPassword) {
-        AC.get('ConfirmPassword').setErrors({ MatchPassword: true })
+        AC.get('ConfirmPassword').setErrors({ MatchPassword: true });
     } else {
-        return null
+        return null;
     }
 }
 
 
 
-  public register(): void{
-    let newDriver = new DriverBean();
+  public register(): void {
+    const newDriver = new DriverBean();
     newDriver.user = new UserBean();
-    newDriver.driverLicenseNumber = this.driverForm.value['driverLicencia'];
-    newDriver.user.documentNumber = this.driverForm.value['DNI'];
-    newDriver.user.nombre = this.driverForm.value['Name'];
-    newDriver.user.lastName = this.driverForm.value['LastName'];
-    newDriver.user.username = this.driverForm.value['UserName'];
-    newDriver.user.password = this.driverForm.value['Password'];
-    let param = {
+    newDriver.driverLicenseNumber = this.driverForm.value.driverLicencia;
+    newDriver.user.documentNumber = this.driverForm.value.DNI;
+    newDriver.user.nombre = this.driverForm.value.Name;
+    newDriver.user.lastName = this.driverForm.value.LastName;
+    newDriver.user.username = this.driverForm.value.UserName;
+    newDriver.user.password = this.driverForm.value.Password;
+    const param = {
        userType: this.userType,
-       userRegister:{
-         user:{
-           username:newDriver.user.username,
-           password:newDriver.user.password
-         }
+       userRegister: {
+         user: {
+           username: newDriver.user.username,
+           password: newDriver.user.password
+         },
+         status: 'Pendiente'
        }
-    }
+    };
 
-    this.restService.requestApiRestData('user/rubt',param).subscribe(result => {
+    this.restService.requestApiRestData('user/rubt', param).subscribe(result => {
       this.matSnackBar.open(result.responseMessage, '', {
         duration: 2000
       });

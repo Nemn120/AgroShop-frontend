@@ -2,7 +2,18 @@
     box-sizing: border-box;
     padding: 0;
     margin: 0;
+
 }
+
+
+
+#registry-button-container{
+  position: absolute;top: 1px;margin-top: 20px; width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  padding-right: 50px;
+}
+
 
 .background {
     height: 100vh;
@@ -138,5 +149,38 @@
   font-family: 'Itim', cursive;
   font-size: 20px;
   color:#fff;
-  background-color: rgb(6, 110, 54); border-radius: 20px; width: 100%; height: 80%;
+  background-color: rgb(6, 110, 54); border-radius: 20px; width: 150px; height: 80%;
+}
+
+
+@media screen and (max-width:1260px){
+  .background{
+    width: 100%;
+  }
+  .mat-card{
+    width: 95%;
+  }
+  .registry-img{
+    width: 58.3%;
+  }
+  .registry-container{
+    width: 41.7%;
+  }
+}
+
+@media screen and (max-width:800px){
+  .background{
+    width: 100%;
+    height: 1000px;
+  }
+  .registry-img{
+    display: none;
+  }
+  .registry-container{
+    width: 100%;
+    height: 800;
+  }
+  .mat-card{
+    width: 400px;
+  }
 }

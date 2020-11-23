@@ -26,6 +26,10 @@ export class CarDiaLogComponent implements OnInit {
 
   orderDetailListSelect:OrderDetailBean[]=[];
   totalPrice:number=0;
+  
+  suma:number=0;
+  s:number=0;
+  sumaQuantity:number=0;
   productSelect: ProductSalesBean;
   imagenData: any;
   imagenEstado: boolean = false;
@@ -41,6 +45,7 @@ export class CarDiaLogComponent implements OnInit {
     private router: Router) { }
 
   ngOnInit(): void {
+    
   }
 
 
@@ -51,6 +56,7 @@ export class CarDiaLogComponent implements OnInit {
   selectOrderProduct(event:any){
     this.orderDetailListSelect=event;
     this.totalPrice=0;
+    this.suma=0;
     if(this.orderDetailListSelect.length>0){
       this.orderDetailListSelect.forEach(x =>{
         if(x.quantity>x.productSales.availableQuantity){
@@ -58,15 +64,23 @@ export class CarDiaLogComponent implements OnInit {
           let index=this.orderService.orderDetailList.findIndex(data=>data.productSales.id==x.productSales.id);
           this.orderService.orderDetailList[index].quantity=x.productSales.availableQuantity
         }
-
+        
+        
         this.totalPrice+=x.price*x.quantity;
-
+        this.orderService.orderDetailList.forEach(element=>{
+          
+          this.suma=this.suma+element.quantity;
+        })
+        this.orderService.totalQuantitySubject.next(this.suma);
+        
+        
       })
     }
   }
   deleteItemsSelect(){
 
     this.orderDetailListSelect.forEach(x=>{
+
       this.orderService.orderDetailList=this.orderService.orderDetailList.filter(data=>data.productSales.id != x.productSales.id);
       this.orderService.totalQuantitySubject.next(this.orderService.totalQuantity-x.quantity);
       this.orderService.totalQuantity = this.orderService.totalQuantity-x.quantity;
