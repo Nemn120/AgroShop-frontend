@@ -10,18 +10,18 @@
     <div *ngIf="this.userType == 'DRIVER'" style=" border-radius: 10px 10px 0px 0px; width: 80%;">
         <mat-form-field appearance="outline" style="width: 100%;">
             <mat-label>Nro. de Licencia</mat-label>
-            <input matInput maxlength="10" pattern='^[0-9]{10}$' formControlName="driverLicencia" required>
+            <input matInput maxlength="10" onkeypress="return event.charCode >= 48 && event.charCode <=57" pattern='^[0-9]{10}$' formControlName="driverLicencia" required>
             <mat-error *ngIf="f.driverLicencia.hasError('required') && f.driverLicencia.touched">
                 Es requerido
             </mat-error>
-            <mat-error *ngIf="f.driverLicencia.hasError('pattern')">El campo debe tener 10 dígitos</mat-error>
+            <mat-error *ngIf="maxlength!=10">El campo debe tener 10 dígitos</mat-error>
         </mat-form-field>
     </div>
     <br>
     <div style=" border-radius: 10px 10px 0px 0px;  width: 80%;">
         <mat-form-field appearance="outline" style="width: 100%;">
             <mat-label>DNI</mat-label>
-            <input matInput maxlength="8" pattern='^[0-9]{8}$' formControlName="DNI" required>
+            <input matInput maxlength="8" onkeypress="return event.charCode >= 48 && event.charCode <=57" pattern='^[0-9]{8}$' formControlName="DNI" required>
             <mat-error *ngIf="f.DNI.hasError('required') && f.DNI.touched">
                 Es requerido
             </mat-error>
@@ -34,7 +34,7 @@
         <div style=" border-radius: 10px 10px 0px 0px; width: 50%; margin-right: 2px;">
             <mat-form-field appearance="outline" style="width: 100%;">
                 <mat-label>Nombres</mat-label>
-                <input matInput formControlName="Name" required>
+                <input matInput type="text"  onkeypress="return !(event.charCode >= 48 && event.charCode <=57)"  formControlName="Name"  required>
                 <mat-error *ngIf="f.Name.hasError('required') && f.Name.touched">
                     Es requerido
                 </mat-error>
@@ -44,7 +44,7 @@
         <div style=" border-radius: 10px 10px 0px 0px; width: 50%; margin-left: 2px;">
             <mat-form-field appearance="outline" style="width: 100%;">
                 <mat-label>Apellidos</mat-label>
-                <input  matInput formControlName="LastName" required>
+                <input  matInput type="text" onkeypress="return !(event.charCode >= 48 && event.charCode <=57)"  formControlName="LastName"  required>
                 <mat-error *ngIf="f.LastName.hasError('required') && f.LastName.touched">
                     Es requerido
                 </mat-error>
