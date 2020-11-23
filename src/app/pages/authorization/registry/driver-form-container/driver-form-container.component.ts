@@ -93,9 +93,11 @@ export class DriverFormContainerComponent implements OnInit {
       this.matSnackBar.open(result.responseMessage, '', {
         duration: 2000
       });
-      setTimeout(() => {
-        this.router.navigate(['auth/login']);
-      }, 1500);
+      if(result.responseMessage == 'Registro completado con éxito'){
+        setTimeout(() => {
+          this.router.navigate(['auth/login']);
+        }, 1500);
+      }
     });
   }
 
