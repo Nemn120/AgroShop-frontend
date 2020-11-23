@@ -38,7 +38,7 @@ export class AuthService {
         const decodedToken = helper.decodeToken(data.access_token);
         if (decodedToken.authorities[0] != 'ADMIN') {
           const param = {
-            username,
+            username:username,
             userType: decodedToken.authorities[0]
           };
           this.restService.requestApiRestData('user/gubu', param).subscribe(result => {
@@ -54,9 +54,18 @@ export class AuthService {
         });
       } else {
         const param = {
-          id: 1
+          data:{
+            username:username
+          }
         };
-        this.menuOptionByProfile(param, decodedToken.authorities[0]);
+        this.restService.requestApiRestData('user/gubus', param).subscribe(result => {
+          this.sharedService.userSession={};
+          this.sharedService.userSession.user=result.data;
+          this.sharedService.appitems=[];
+          this.router.navigate(['driver/list']);
+        },error=>{
+          console.error('error2', error);
+        });
       }
     }
   });
@@ -104,6 +113,7 @@ export class AuthService {
       sessionStorage.clear();
       this.sharedService.userSession = undefined;
       this.isLogged = false;
+      this.sharedService.appitems=[];
       this.router.navigate(['/auth']);
       this.restService.message('Hasta pronto!', 'CLOSE');
   }
