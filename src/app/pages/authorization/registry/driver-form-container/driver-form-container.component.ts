@@ -23,10 +23,10 @@ export class DriverFormContainerComponent implements OnInit {
 
   ngOnInit(): void {
     this.driverForm = this.formBuilder.group({
-      driverLicencia: new FormControl(''),
+      driverLicencia: new FormControl('',Validators.pattern('^[0-9]{10}$')),
       DNI: new FormControl('', [Validators.required, Validators.pattern('^[0-9]{8}$')]),
-      Name: new FormControl('', [Validators.required, Validators.pattern('^[a-zA-Z][a-z]*$')]),
-      LastName: new FormControl('', [Validators.required, Validators.pattern('^[a-zA-Z][a-z]*$')]),
+      Name: new FormControl('', [Validators.required] ),
+      LastName: new FormControl('', [Validators.required]),
       UserName: new FormControl('', [Validators.required]),
       Password: ['', [Validators.required]],
       ConfirmPassword: ['', [Validators.required]]
@@ -56,16 +56,38 @@ export class DriverFormContainerComponent implements OnInit {
     newDriver.user.lastName = this.driverForm.value.LastName;
     newDriver.user.username = this.driverForm.value.UserName;
     newDriver.user.password = this.driverForm.value.Password;
-    const param = {
-       userType: this.userType,
-       userRegister: {
-         user: {
-           username: newDriver.user.username,
-           password: newDriver.user.password
-         },
-         status: 'Pendiente'
-       }
-    };
+    let param = new Object();
+    if(this.userType == 'DRIVER'){
+      param = {
+        userType: this.userType,
+        userRegister: {
+          driverLicenseNumber: newDriver.driverLicenseNumber,
+          user: {
+            username: newDriver.user.username,
+            password: newDriver.user.password,
+            name: newDriver.user.nombre,
+            lastName: newDriver.user.lastName,
+            documentNumber: newDriver.user.documentNumber
+          },
+          status: 'Pendiente'
+        }
+     };
+    }else{
+      param = {
+        userType: this.userType,
+        userRegister: {
+
+          user: {
+            username: newDriver.user.username,
+            password: newDriver.user.password,
+            name: newDriver.user.nombre,
+            lastName: newDriver.user.lastName,
+            documentNumber: newDriver.user.documentNumber
+          },
+
+        }
+     };
+    }
 
     this.restService.requestApiRestData('user/rubt', param).subscribe(result => {
       this.matSnackBar.open(result.responseMessage, '', {
