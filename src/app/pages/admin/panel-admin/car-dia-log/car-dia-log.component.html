@@ -15,7 +15,7 @@
                     <p mat-line>S/. {{item.price}}</p>
                 </div>
                 <div style="width: 35%;">
-                    <input style="width: 100%; height: 100%;outline: none;border:none" matInput type="number" [(ngModel)]="item.quantity" onkeypress="return event.charCode >= 48 && event.charCode <=57" min="1" max={{item.productSales.availableQuantity}}>
+                    <input style="width: 100%; height: 100%;outline: none;border:none" matInput  [(ngModel)]="item.quantity" onkeypress="return event.charCode >= 48 && event.charCode <=57" min="1" max={{item.productSales.availableQuantity}}>
                 </div>
             </div>
 

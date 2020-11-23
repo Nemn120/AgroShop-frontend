@@ -3,7 +3,15 @@
 </div>
 
 <div  *ngFor="let f of farmerWithProductsList">
-  <div class="data-farmer">{{f._farmer}}</div>
+  <div class="data-farmer">
+    <div *ngIf="f._farmer._isFoto">
+      <img src="f._farmer._foto">
+    </div>
+    <div *ngIf="!f._farmer._isFoto">
+      <img class="circulo" src="/assets/images/login/user.png/">
+    </div>
+    <div>{{f._farmer.data.user.username}}</div>
+  </div>
   <div class="card">
     <div class="grid-item" *ngFor="let products of f._listOfProductsShowed">
 
