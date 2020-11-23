@@ -8,7 +8,6 @@ import { Subject } from 'rxjs';
 export class SharedService {
   userSession: any;
   appitems: MultilevelNodes[]=[]
-  appitems1:any[]=[]
   messageChange= new Subject<string>();
 
   constructor() { }
