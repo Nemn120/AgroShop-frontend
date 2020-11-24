@@ -43,7 +43,7 @@ export class OrderPendingComponent implements OnInit {
   }
   public openDetails(order: any) {
     this.dialog.open(OrderDetailsComponent, {
-      width: '750px',
+      width: '400px', height: 'auto',
       data: order
     });
   }

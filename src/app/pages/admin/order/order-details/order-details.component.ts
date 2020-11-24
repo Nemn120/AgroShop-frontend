@@ -12,8 +12,7 @@ import { MatTableDataSource } from '@angular/material/table';
   styleUrls: ['./order-details.component.scss']
 })
 export class OrderDetailsComponent implements OnInit {
-  
-  
+ 
 
   constructor(
     private dialogRef: MatDialogRef<OrderDetailsComponent>,
@@ -22,7 +21,7 @@ export class OrderDetailsComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    
+
   }
 
 }

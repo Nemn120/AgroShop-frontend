@@ -1,49 +1,12 @@
-<div class="layout-data2">
-    Detalles del pedido
-</div>
-<div class="layout-data">
-<div style="display: flex;">
-    <div style=" width: 60%;">
-        <mat-chip-list aria-label="Fish selection">
-            <mat-chip >Direccion</mat-chip>
-        </mat-chip-list>
-        <br>
-        <p>{{data.address}}</p>
-       
+<div class="container">
+    <h1 mat-dialog-title>Detalles del pedido</h1>
+    <div class="img-container">
+        <img class="perfil-img" src="../../../../../assets/images/pedido.png">
     </div>
-    <div style="width: 40%;">
-       
-        <mat-chip-list aria-label="Fish selection">
-            <mat-chip >Cantidad de productos</mat-chip>
-        </mat-chip-list>
-        <br>
-        <p>{{data.quantity}} productos</p>
-       
+    <div mat-dialog-content>
+        <span >Dirección:</span><p> {{data.address}}</p>
+        <span>Telefono:</span><p> {{data.phone}}</p>
+        <span>Referencia:</span><p> {{data.reference}}</p>
+        <span>Cantidad de productos:</span><p>{{data.quantity}}</p>
     </div>
-
-</div>
-<br>
-<br>
-<div style="display: flex;">
-    <div style=" width: 60%;">
-        
-        <mat-chip-list aria-label="Fish selection">
-            <mat-chip >Telefono</mat-chip>
-        </mat-chip-list>
-        <br>
-        <p>{{data.phone}}</p>
-       
-    </div>
-    <div style="width: 40%;">
-       
-        <mat-chip-list aria-label="Fish selection">
-            <mat-chip >Referencia</mat-chip>
-        </mat-chip-list>
-        <br>
-        <p>{{data.reference}}</p>
-       
-    </div>
-
-</div>
-
 </div>
