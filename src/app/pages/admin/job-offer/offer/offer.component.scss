@@ -1,0 +1,37 @@
+.offer__cards{
+    width: 1200px;
+    display: inline-block;
+    justify-content: center;
+    text-align: center;
+    margin: 0;
+}
+
+.container{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.offer__title{
+    font-size: 25px;
+    font-weight: bold;
+    border-bottom: 5px solid;
+    text-align: center;
+}
+
+.flex{
+    display: flex;
+}
+
+.offer__search{
+    width: 1200px;
+    display: inline-block;
+    justify-content: center;
+    text-align: center;
+    margin: 0;
+}
+
+.mat-card-image{
+    height: 300px;
+}

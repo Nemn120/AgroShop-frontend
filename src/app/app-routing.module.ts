@@ -18,6 +18,8 @@ const routes: Routes = [
   },
   { path: 'vehicle', loadChildren: () => import('./pages/admin/vehicle/vehicle.module').then(m => m.VehicleModule)
   },
+  { path: 'job', loadChildren: () => import('./pages/admin/job-offer/job-offer.module').then(m => m.JobOfferModule)
+  },
   { path: 'order', loadChildren: () => import('./pages/admin/order/order.module').then(m => m.OrderModule)
   },
   { path: 'driver', loadChildren: () => import('./pages/admin/driver-panel/driver-panel.module').then(m => m.DriverPanelModule)

@@ -1,0 +1,25 @@
+<p class="offer__title">Listado de Ofertas</p>
+<div class="container"> 
+    <div class="flex">
+        <mat-card class="offer__search">
+            <mat-form-field class="example-form-field" appearance="outline" color="primary">
+                <mat-label>Fecha Inicio</mat-label>
+                <input matInput [matDatepicker]="picker1">
+                <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+                <mat-datepicker #picker1></mat-datepicker>
+            </mat-form-field>
+
+            <mat-form-field class="example-form-field" appearance="outline">
+                <mat-label>Fecha Final</mat-label>
+                <input matInput [matDatepicker]="picker2">
+                <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+                <mat-datepicker #picker2></mat-datepicker>
+            </mat-form-field>
+        </mat-card>
+    </div>    
+    <div class="offer__cards">
+        <mat-card *ngFor="let car of [0,1,2]"> 
+            <img mat-card-image src="assets/images/no-image.png" alt="jobOffer" >
+        </mat-card>
+    </div>
+</div>
