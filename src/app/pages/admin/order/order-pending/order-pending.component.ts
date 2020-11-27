@@ -8,6 +8,7 @@ import { OrderBean } from 'src/app/_model/OrderBean';
 import { RestService } from 'src/app/_service/rest.service';
 import { SharedService } from 'src/app/_service/shared.service';
 import { OrderDetailsComponent } from '../order-details/order-details.component';
+import { SendJobOfferComponent } from '../send-job-offer/send-job-offer.component';
 
 @Component({
   selector: 'app-order-pending',
@@ -45,6 +46,14 @@ export class OrderPendingComponent implements OnInit {
     this.dialog.open(OrderDetailsComponent, {
       width: '400px', height: 'auto',
       data: order
+    });
+  }
+
+  public sendOffer(order: OrderBean){
+    let ord = order != null ? order : new OrderBean();
+    this.dialog.open(SendJobOfferComponent, {
+      width: '750px',
+      data: ord,
     });
   }
 

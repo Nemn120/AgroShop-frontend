@@ -11,6 +11,7 @@ import { FormsModule } from '@angular/forms';
 import { SearchProductComponent } from './search-product/search-product.component';
 import { OrderPendingComponent } from './order-pending/order-pending.component';
 import { OrderDetailsComponent } from './order-details/order-details.component';
+import { SendJobOfferComponent } from './send-job-offer/send-job-offer.component';
 
 const routes: Routes = [
   {
@@ -22,7 +23,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  declarations: [OrderListComponent, OrderNewComponent, OrderStoreComponent, OrderStoreCardComponent, SearchProductComponent, OrderPendingComponent, OrderDetailsComponent],
+  declarations: [OrderListComponent, OrderNewComponent, OrderStoreComponent, OrderStoreCardComponent, SearchProductComponent, OrderPendingComponent, OrderDetailsComponent, SendJobOfferComponent],
   imports: [
     CommonModule,
     MaterialModule,
@@ -31,7 +32,7 @@ const routes: Routes = [
     RouterModule.forChild(routes),
   ],
   entryComponents:[
-    OrderDetailsComponent
+    OrderDetailsComponent,SendJobOfferComponent
   ],
 })
 export class OrderModule { }
