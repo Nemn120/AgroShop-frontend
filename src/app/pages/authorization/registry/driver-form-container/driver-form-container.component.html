@@ -14,7 +14,6 @@
             <mat-error *ngIf="f.driverLicencia.hasError('required') && f.driverLicencia.touched">
                 Es requerido
             </mat-error>
-            <mat-error *ngIf="maxlength!=10">El campo debe tener 10 dígitos</mat-error>
         </mat-form-field>
     </div>
     <br>
@@ -34,7 +33,7 @@
         <div style=" border-radius: 10px 10px 0px 0px; width: 50%; margin-right: 2px;">
             <mat-form-field appearance="outline" style="width: 100%;">
                 <mat-label>Nombres</mat-label>
-                <input matInput type="text"  onkeypress="return !(event.charCode >= 48 && event.charCode <=57)"  formControlName="Name"  required>
+                <input matInput type="text" onkeypress="return !(event.charCode >= 48 && event.charCode <=57)" formControlName="Name" required>
                 <mat-error *ngIf="f.Name.hasError('required') && f.Name.touched">
                     Es requerido
                 </mat-error>
@@ -44,7 +43,7 @@
         <div style=" border-radius: 10px 10px 0px 0px; width: 50%; margin-left: 2px;">
             <mat-form-field appearance="outline" style="width: 100%;">
                 <mat-label>Apellidos</mat-label>
-                <input  matInput type="text" onkeypress="return !(event.charCode >= 48 && event.charCode <=57)"  formControlName="LastName"  required>
+                <input matInput type="text" onkeypress="return !(event.charCode >= 48 && event.charCode <=57)" formControlName="LastName" required>
                 <mat-error *ngIf="f.LastName.hasError('required') && f.LastName.touched">
                     Es requerido
                 </mat-error>
