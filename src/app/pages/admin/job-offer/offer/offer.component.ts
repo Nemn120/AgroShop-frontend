@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { MatPaginator } from '@angular/material/paginator';
 import { OfferDetailComponent } from '../offer-detail/offer-detail.component';
 
 @Component({
@@ -8,6 +9,7 @@ import { OfferDetailComponent } from '../offer-detail/offer-detail.component';
   styleUrls: ['./offer.component.scss']
 })
 export class OfferComponent implements OnInit {
+  @ViewChild(MatPaginator) paginator: MatPaginator;
 
   constructor(
     public dialog: MatDialog
@@ -16,8 +18,9 @@ export class OfferComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  moreDetails(){
+  moreDetails(job){
     this.dialog.open(OfferDetailComponent, {
+      data: job,
       width :'50%',
       minHeight: "50%",
       minWidth : "400px"

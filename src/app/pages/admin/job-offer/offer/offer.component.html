@@ -1,23 +1,54 @@
 <p class="offer__title">Listado de Ofertas</p>
-
 <div class="cards">
     <mat-card class="card__search">
+        <mat-form-field class="example-form-field" appearance="outline" >
+            <mat-label>Departamento inicio</mat-label>
+            <input matInput name="departmentIni">
+        </mat-form-field>
+        <mat-form-field class="example-form-field" appearance="outline" >
+            <mat-label>Departamento fin</mat-label>
+            <input matInput name="departmentIni">
+        </mat-form-field>
+        <mat-form-field class="example-form-field" appearance="outline">
+            <mat-label>Fecha Final</mat-label>
+            <input matInput [matDatepicker]="picker1">
+            <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+            <mat-datepicker #picker1></mat-datepicker>
+        </mat-form-field>
+        <mat-form-field class="example-form-field" appearance="outline" type="number">
+            <mat-label>Peso inicio</mat-label>
+            <input matInput name="departmentIni">
+        </mat-form-field>
+        <mat-form-field class="example-form-field" appearance="outline" type="number">
+            <mat-label>Peso fin</mat-label>
+            <input matInput name="departmentIni">
+        </mat-form-field>
+        <mat-form-field class="example-form-field" appearance="outline" type="number">
+            <mat-label>Precio inicio</mat-label>
+            <input matInput name="departmentIni">
+        </mat-form-field>
+        <mat-form-field class="example-form-field" appearance="outline" type="number">
+            <mat-label>Precio fin</mat-label>
+            <input matInput name="departmentIni">
+        </mat-form-field>
         <button mat-raised-button color="primary">Buscar</button>
     </mat-card>
-    <mat-card *ngFor="let var of [0,1,2]" class="card__total">
+</div>
+<div class="cards">
+    <mat-paginator [length]="100" [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 100]" style="width: 80%;"></mat-paginator>
+    <mat-card *ngFor="let job of [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16]" class="card__total">
         <div class="card__title">Se buscan felipes (Esclavos)</div>
         <div class="card__content">
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum amet, facere officia est maxime dolore libero sint perspiciatis suscipit consequatur! Fuga voluptatum fugiat saepe impedit? Veritatis voluptatum voluptas deserunt ut.</p>
             <p class="card__requer">Requisitos mínimos:</p>
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt aliquam placeat aliquid quam voluptates illum vitae expedita. Dolor ad repellendus ab, corporis qui saepe quisquam, fugit ipsa odit numquam placeat.</p>
             <div style="float: left">
-                <button mat-raised-button color="primary" (click)="moreDetails()">VER OFERTA</button>
+                <button mat-raised-button color="primary" (click)="moreDetails(job)">VER OFERTA</button>
             </div>
             <div style="float: right" class="card__opc">
                 <span class="material-icons" style="font-size: 14px">calendar_today</span>Postula hasta el 666 de marzo del 2666
             </div>    
-
         </div>
-        
     </mat-card>
+    <mat-paginator [length]="100" [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 100]" style="width: 80%;"></mat-paginator>
 </div>
