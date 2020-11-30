@@ -7,29 +7,31 @@
         </mat-form-field>
         <mat-form-field class="example-form-field" appearance="outline" >
             <mat-label>Departamento fin</mat-label>
-            <input matInput name="departmentIni">
+            <input matInput name="departmentFin">
         </mat-form-field>
-        <mat-form-field class="example-form-field" appearance="outline">
-            <mat-label>Fecha Final</mat-label>
-            <input matInput [matDatepicker]="picker1">
-            <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
-            <mat-datepicker #picker1></mat-datepicker>
+        <mat-form-field class="example-form-field" appearance="outline" >
+            <mat-label>Nombre</mat-label>
+            <input matInput name="name">
+        </mat-form-field>
+        <mat-form-field class="example-form-field" appearance="outline" >
+            <mat-label>Apellido</mat-label>
+            <input matInput name="lastName">
         </mat-form-field>
         <mat-form-field class="example-form-field" appearance="outline" type="number">
             <mat-label>Peso inicio</mat-label>
-            <input matInput name="departmentIni">
+            <input matInput name="weightIni">
         </mat-form-field>
         <mat-form-field class="example-form-field" appearance="outline" type="number">
             <mat-label>Peso fin</mat-label>
-            <input matInput name="departmentIni">
+            <input matInput name="weightFin">
         </mat-form-field>
         <mat-form-field class="example-form-field" appearance="outline" type="number">
             <mat-label>Precio inicio</mat-label>
-            <input matInput name="departmentIni">
+            <input matInput name="priceIni">
         </mat-form-field>
         <mat-form-field class="example-form-field" appearance="outline" type="number">
             <mat-label>Precio fin</mat-label>
-            <input matInput name="departmentIni">
+            <input matInput name="priceFin">
         </mat-form-field>
         <button mat-raised-button color="primary">Buscar</button>
     </mat-card>
@@ -45,9 +47,9 @@
                 <button mat-raised-button color="primary" (click)="moreDetails(job)">VER OFERTA</button>
             </div>
             <div style="float: right" class="card__opc">
-                <span class="material-icons" style="font-size: 14px">calendar_today</span>Postula hasta el {{job.date}}
+                <span class="material-icons" style="font-size: 14px">calendar_today</span> Postula hasta el {{job.date}}
             </div>    
         </div>
     </mat-card>
-    <mat-paginator [length]="100" [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 100]" style="width: 80%;"></mat-paginator>
+    <mat-paginator [length]="100" [pageSize]="5" [pageSizeOptions]="[5, 10, 25, 100]" style="width: 82%;"></mat-paginator>
 </div>
