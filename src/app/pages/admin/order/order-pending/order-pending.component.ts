@@ -1,6 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatSort } from '@angular/material/sort';
 import { MatPaginator } from '@angular/material/paginator';
@@ -9,6 +8,7 @@ import { RestService } from 'src/app/_service/rest.service';
 import { SharedService } from 'src/app/_service/shared.service';
 import { OrderDetailsComponent } from '../order-details/order-details.component';
 import { SendJobOfferComponent } from '../send-job-offer/send-job-offer.component';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-order-pending',
@@ -16,10 +16,11 @@ import { SendJobOfferComponent } from '../send-job-offer/send-job-offer.componen
   styleUrls: ['./order-pending.component.scss']
 })
 export class OrderPendingComponent implements OnInit {
-  displayedColumns: string[] = ['id', 'attentDate','userName','total','status','actions','message'];
+  displayedColumns: string[] = ['id', 'attentDate','address','phone','total','status','actions','message'];
   dataSource: MatTableDataSource<OrderBean>;
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatPaginator) paginator: MatPaginator;
+  orderBean: OrderBean;
   constructor(
     private restService: RestService,
     public dialog: MatDialog,
@@ -42,13 +43,22 @@ export class OrderPendingComponent implements OnInit {
       }
       );
   }
-  public openDetails(order: any) {
+  public openDetails(order: OrderBean) {
+    let ord = order != null ? order : new OrderBean();
     this.dialog.open(OrderDetailsComponent, {
-      width: '400px', height: 'auto',
-      data: order
+      width: '750px',
+      data: ord,
     });
   }
 
+  public open(order: OrderBean) {
+    Swal.fire({
+      title: 'Este pedido solo tiene un producto',
+      allowOutsideClick:false
+  });
+  
+  }
+  
   public sendOffer(order: OrderBean){
     let ord = order != null ? order : new OrderBean();
     this.dialog.open(SendJobOfferComponent, {

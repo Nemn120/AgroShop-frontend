@@ -1,12 +1,40 @@
-<div class="container">
-    <h1 mat-dialog-title>Detalles del pedido</h1>
-    <div class="img-container">
-        <img class="perfil-img" src="../../../../../assets/images/pedido.png">
-    </div>
-    <div mat-dialog-content>
-        <span >Dirección:</span><p> {{data.address}}</p>
-        <span>Telefono:</span><p> {{data.phone}}</p>
-        <span>Referencia:</span><p> {{data.reference}}</p>
-        <span>Cantidad de productos:</span><p>{{data.quantity}}</p>
+
+<div class="layout-data2">
+    Detalles del pedido
+</div>
+<div class="layout-data">
+    <div class="mat-elevation-z8">
+        <table mat-table [dataSource]="dataSource" matSort>
+
+            <ng-container matColumnDef="name" style="width: 10%;">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Producto </th>
+                <td mat-cell *matCellDef="let row"> {{row.productSales.product.name}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="price" style="width: 13%;">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Precio </th>
+                <td mat-cell *matCellDef="let row"> {{row.price}} </td>
+            </ng-container>
+
+
+            <ng-container matColumnDef="quantity" style="width: 13%;">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Cantidad total</th>
+                <td mat-cell *matCellDef="let row"> {{row.quantity}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="total" style="width: 13%;">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Total</th>
+                <td mat-cell *matCellDef="let row"> {{row.total}} </td>
+            </ng-container>
+
+
+            
+
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+        </table>
+
+        
     </div>
 </div>
