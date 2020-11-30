@@ -1,18 +1,3 @@
-.offer__cards{
-    width: 1200px;
-    display: inline-block;
-    justify-content: center;
-    text-align: center;
-    margin: 0;
-}
-
-.container{
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-}
-
 .offer__title{
     font-size: 25px;
     font-weight: bold;
@@ -20,18 +5,30 @@
     text-align: center;
 }
 
-.flex{
+.card__total{
+    width: 80%;
+    min-height: 40%;
+}
+
+.cards{
+    width: 100%;
     display: flex;
-}
-
-.offer__search{
-    width: 1200px;
-    display: inline-block;
     justify-content: center;
-    text-align: center;
-    margin: 0;
+    flex-wrap: wrap;
 }
 
-.mat-card-image{
-    height: 300px;
+.card__title{
+    color: #009865;
+    font-weight: bold;
+    font-size: 18px;
+    display: block;
+    width: 100%;
+}
+
+.card__requer{
+    font-weight: bold;
+}
+
+.card__search{
+    width: 80%;
 }

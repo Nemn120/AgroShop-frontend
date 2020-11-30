@@ -4,6 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { OfferComponent } from './offer/offer.component';
 import { MaterialModule } from 'src/app/_material/material.module';
 import { FormsModule } from '@angular/forms';
+import { OfferDetailComponent } from './offer-detail/offer-detail.component';
 
 const routes: Routes = [
   {
@@ -16,12 +17,13 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  declarations: [OfferComponent],
+  declarations: [OfferComponent, OfferDetailComponent],
   imports: [
     CommonModule,
     RouterModule.forChild(routes),
     MaterialModule,
     FormsModule
-  ]
+  ],
+  entryComponents: [OfferDetailComponent]
 })
 export class JobOfferModule { }

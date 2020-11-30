@@ -1,25 +1,23 @@
 <p class="offer__title">Listado de Ofertas</p>
-<div class="container"> 
-    <div class="flex">
-        <mat-card class="offer__search">
-            <mat-form-field class="example-form-field" appearance="outline" color="primary">
-                <mat-label>Fecha Inicio</mat-label>
-                <input matInput [matDatepicker]="picker1">
-                <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
-                <mat-datepicker #picker1></mat-datepicker>
-            </mat-form-field>
 
-            <mat-form-field class="example-form-field" appearance="outline">
-                <mat-label>Fecha Final</mat-label>
-                <input matInput [matDatepicker]="picker2">
-                <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
-                <mat-datepicker #picker2></mat-datepicker>
-            </mat-form-field>
-        </mat-card>
-    </div>    
-    <div class="offer__cards">
-        <mat-card *ngFor="let car of [0,1,2]"> 
-            <img mat-card-image src="assets/images/no-image.png" alt="jobOffer" >
-        </mat-card>
-    </div>
+<div class="cards">
+    <mat-card class="card__search">
+        <button mat-raised-button color="primary">Buscar</button>
+    </mat-card>
+    <mat-card *ngFor="let var of [0,1,2]" class="card__total">
+        <div class="card__title">Se buscan felipes (Esclavos)</div>
+        <div class="card__content">
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum amet, facere officia est maxime dolore libero sint perspiciatis suscipit consequatur! Fuga voluptatum fugiat saepe impedit? Veritatis voluptatum voluptas deserunt ut.</p>
+            <p class="card__requer">Requisitos mínimos:</p>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt aliquam placeat aliquid quam voluptates illum vitae expedita. Dolor ad repellendus ab, corporis qui saepe quisquam, fugit ipsa odit numquam placeat.</p>
+            <div style="float: left">
+                <button mat-raised-button color="primary" (click)="moreDetails()">VER OFERTA</button>
+            </div>
+            <div style="float: right" class="card__opc">
+                <span class="material-icons" style="font-size: 14px">calendar_today</span>Postula hasta el 666 de marzo del 2666
+            </div>    
+
+        </div>
+        
+    </mat-card>
 </div>
