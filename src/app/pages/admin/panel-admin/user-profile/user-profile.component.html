@@ -18,6 +18,10 @@
     </button>
     -->
     <div class="sign-button-wrapper">
+        <button class="sign-button" mat-flat-button [routerLink]="['/driver/profile']">Perfil</button>
+    </div>
+
+    <div class="sign-button-wrapper">
         <button class="sign-button" mat-flat-button (click)="signOutEmit()">Cerrar sesión</button>
     </div>
 </mat-menu>
