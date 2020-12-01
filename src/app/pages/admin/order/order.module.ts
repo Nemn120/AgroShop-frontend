@@ -7,7 +7,7 @@ import { MaterialModule } from 'src/app/_material/material.module';
 import { PanelAdminModule } from '../panel-admin/panel-admin.module';
 import { RouterModule, Routes } from '@angular/router';
 import { OrderStoreCardComponent } from './order-store-card/order-store-card.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SearchProductComponent } from './search-product/search-product.component';
 import { OrderPendingComponent } from './order-pending/order-pending.component';
 import { OrderDetailsComponent } from './order-details/order-details.component';
@@ -29,6 +29,7 @@ const routes: Routes = [
     MaterialModule,
     PanelAdminModule,
     FormsModule,
+    ReactiveFormsModule,
     RouterModule.forChild(routes),
   ],
   entryComponents:[
