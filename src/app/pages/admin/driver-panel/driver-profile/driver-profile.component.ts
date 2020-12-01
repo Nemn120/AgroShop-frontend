@@ -1,5 +1,5 @@
-import { Component, OnInit ,Inject} from '@angular/core';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-driver-profile',
@@ -9,14 +9,12 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 export class DriverProfileComponent implements OnInit {
 
   constructor(
-    public dialogRef: MatDialogRef<DriverProfileComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: any
+   private active:ActivatedRoute
+
   ) { }
 
   ngOnInit(): void {
+    console.log('perfil: ',JSON.parse(this.active.snapshot.params.driver));
   }
 
-  onNoClick(): void {
-    this.dialogRef.close();
-  }
 }

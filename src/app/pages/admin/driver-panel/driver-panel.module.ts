@@ -8,7 +8,8 @@ import { DriverProfileComponent } from './driver-profile/driver-profile.componen
 
 const routes: Routes = [
   { path: '', component: DriverComponent },
-  { path: 'list', component: DriverComponent }
+  { path: 'list', component: DriverComponent },
+  { path: 'profile', component: DriverProfileComponent }
 ];
 
 @NgModule({
