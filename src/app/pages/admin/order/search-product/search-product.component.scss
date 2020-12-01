@@ -142,8 +142,8 @@ li {
   margin-left: 50px;
   padding: 20px 0px 20px 10px;
   margin-right: 50px;
-  border-bottom: solid 4px rgb(55, 150, 111);
-  border-top: solid 4px rgb(55, 150, 111);
+  border: solid 4px rgb(55, 150, 111);
+  border: solid 4px rgb(55, 150, 111);
   border-radius: 20px;
   margin-top: 30px;
   height: 30px;
@@ -153,10 +153,22 @@ li {
   color: #332927;
   font-size: 20px;
   font-weight: bold;
+  background-color: #fff;
 }
 
 .card{
   display: flex;
   position: relative;
   top: 15px;
+}
+
+.circulo{
+  height: 40px;
+  padding: 5px 0px;
+  border-radius: 50%;
+  border: solid 2px rgb(55, 150, 111);
+  position:relative;
+  background-color: white;
+  top:5px;
+  margin-right:10px ;
 }

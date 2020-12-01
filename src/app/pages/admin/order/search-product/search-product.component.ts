@@ -51,7 +51,7 @@ export class SearchProductComponent implements OnInit {
             }
             this.restService.requestApiRestData('farmer/gfbi',dat).subscribe(result2=>{
               console.log(result2.data.user.username);
-              dto._farmer = result2.data.user.username;
+              dto._farmer = result2;
               console.log(dto._farmer);
               this.farmerWithProductsList.push(dto);
             })
