@@ -18,7 +18,7 @@ export class LoginComponent implements OnInit {
 
   username: string;
   password: string;
-  enProceso= false;
+  enProceso = false;
 
   // PARA REGISTRO
   title: string;
@@ -68,7 +68,7 @@ export class LoginComponent implements OnInit {
 
     this.restService.requestApiRestData('driver/gmfd', param)
       .subscribe( result => {
-        if (result) {
+        if (result.data) {
          // alert(result.data);
           Swal.fire({
             title: 'Important',
