@@ -5,15 +5,17 @@ import { RouterModule, Routes } from '@angular/router';
 import { MaterialModule } from 'src/app/_material/material.module';
 import { InfoDriverComponent } from './info-driver/info-driver.component';
 import { DriverProfileComponent } from './driver-profile/driver-profile.component';
+import { DriveJobProfileComponent } from './drive-job-profile/drive-job-profile.component';
 
 const routes: Routes = [
   { path: '', component: DriverComponent },
   { path: 'list', component: DriverComponent },
-  { path: 'profile', component: DriverProfileComponent }
+  //{ path: 'profile', component: DriverProfileComponent },
+  { path: 'profileJob', component: DriveJobProfileComponent }
 ];
 
 @NgModule({
-  declarations: [DriverComponent, InfoDriverComponent, DriverProfileComponent],
+  declarations: [DriverComponent, InfoDriverComponent, DriverProfileComponent, DriveJobProfileComponent],
   imports: [
     CommonModule,
     MaterialModule,
@@ -22,6 +24,9 @@ const routes: Routes = [
   exports: [
     RouterModule
   ],
-  entryComponents: [ InfoDriverComponent ]
+  entryComponents: [ 
+    InfoDriverComponent,
+    DriveJobProfileComponent,
+  ],
 })
 export class DriverPanelModule { }

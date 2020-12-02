@@ -15,6 +15,7 @@ import { DialogoConfirmacionComponent } from 'src/app/_shared/dialogo-confirmaci
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { OrderDetailComponent } from 'src/app/_shared/order-detail/order-detail.component';
 import { DataClientComponent } from 'src/app/_shared/data-client/data-client.component';
+import { DriverPanelModule } from '../driver-panel/driver-panel.module';
 const routes: Routes = [
   {
     path: '', component: WelcomeComponent,
@@ -33,9 +34,9 @@ const routes: Routes = [
     SharedModule,
     ReactiveFormsModule,
     NgMaterialMultilevelMenuModule,
-    FormsModule
+    FormsModule,
 
-
+    DriverPanelModule,
 
   ],
   exports:[
@@ -43,7 +44,7 @@ const routes: Routes = [
     WelcomeComponent
   ],
   entryComponents:[
-    CarDiaLogComponent,DialogoConfirmacionComponent,OrderDetailComponent,DataClientComponent
+    CarDiaLogComponent,DialogoConfirmacionComponent,OrderDetailComponent,DataClientComponent,
   ],
 })
 export class PanelAdminModule { }
