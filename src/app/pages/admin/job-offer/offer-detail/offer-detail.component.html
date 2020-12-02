@@ -1,25 +1,30 @@
-<div class="card__title">Se buscan felipes (Esclavos)</div>
+<div class="card__title">{{this.data.title}}</div>
 
 <div class="card__content">
-    <p>DESCRIPCION sit amet consectetur adipisicing elit. Harum amet, facere officia est maxime dolore libero sint perspiciatis suscipit consequatur! Fuga voluptatum fugiat saepe impedit? Veritatis voluptatum voluptas deserunt ut.</p>
+    <p>{{this.data.description}}</p>
     <p class="card__requer">Requisitos mínimos:</p>
-    <p>REQUISITOS sit amet consectetur adipisicing elit. Deserunt aliquam placeat aliquid quam voluptates illum vitae expedita. Dolor ad repellendus ab, corporis qui saepe quisquam, fugit ipsa odit numquam placeat.</p>
+    <p>{{this.data.requirements}}</p>
+    <hr>
     <div>
-        <span class="card__init">Solicitante: Felipe Felipin Felipillo</span>
-        <span>Telefono: 666999666</span>
+        <span class="card__init">Solicitante: {{this.data.order.farmer.user.name}}</span>
+        <span>Telefono: {{this.data.order.phone}}</span>
     </div>
     <div>
-        <span class="card__init">Costo: 666</span>
-        <span>Peso total: 80 lb</span>
+        <span class="card__init">Direccion: {{this.data.order.address}}</span>
+        <span>Costo: $/.{{this.data.shippingCost}}</span>
     </div>
     <div>
-        <span class="card__init">Departamento Inicio: Lima</span>
-        <span>Departamento Fin: Cusco</span>
+        <span class="card__init">Fecha Final: {{this.data.finalDate}}</span>
+        <span>Peso total: {{this.data.totalWeight}}</span>
+    </div>
+    <div>
+        <span class="card__init">Departamento Inicio: {{this.data.departmentOrigin}}</span>
+        <span>Departamento Fin: {{this.data.order.reference }}</span>
     </div>
     <br>
     <div style="float: right">
         <button mat-raised-button mat-dialog-close style="margin-right: 5px;" color="basic">Cancelar</button>
-        <button mat-raised-button color="primary">POSTULAR</button>
+        <button mat-raised-button color="primary" (click)="offerPostulate()">POSTULAR</button>
     </div>
 
 </div>

@@ -1,55 +1,60 @@
 <p class="offer__title">Listado de Ofertas</p>
 <div class="cards">
     <mat-card class="card__search">
-        <mat-form-field class="example-form-field" appearance="outline" >
-            <mat-label>Departamento inicio</mat-label>
-            <input matInput name="departmentIni">
-        </mat-form-field>
-        <mat-form-field class="example-form-field" appearance="outline" >
-            <mat-label>Departamento fin</mat-label>
-            <input matInput name="departmentFin">
-        </mat-form-field>
-        <mat-form-field class="example-form-field" appearance="outline" >
-            <mat-label>Nombre</mat-label>
-            <input matInput name="name">
-        </mat-form-field>
-        <mat-form-field class="example-form-field" appearance="outline" >
-            <mat-label>Apellido</mat-label>
-            <input matInput name="lastName">
-        </mat-form-field>
-        <mat-form-field class="example-form-field" appearance="outline" type="number">
-            <mat-label>Peso inicio</mat-label>
-            <input matInput name="weightIni">
-        </mat-form-field>
-        <mat-form-field class="example-form-field" appearance="outline" type="number">
-            <mat-label>Peso fin</mat-label>
-            <input matInput name="weightFin">
-        </mat-form-field>
-        <mat-form-field class="example-form-field" appearance="outline" type="number">
-            <mat-label>Precio inicio</mat-label>
-            <input matInput name="priceIni">
-        </mat-form-field>
-        <mat-form-field class="example-form-field" appearance="outline" type="number">
-            <mat-label>Precio fin</mat-label>
-            <input matInput name="priceFin">
-        </mat-form-field>
-        <button mat-raised-button color="primary">Buscar</button>
+        <form>
+            <mat-form-field appearance="fill" class="example-form-field" appearance="outline" name="departmentIni">
+                <mat-label>Departamento Inicio</mat-label>
+                <mat-select name="chefId" [(ngModel)]="this.searchJobOffer.departmentIni">
+                    <mat-option *ngFor="let d of this.departments" [value]="d">
+                        {{d}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+            <mat-form-field appearance="fill" class="example-form-field" appearance="outline" name="departmentFin">
+                <mat-label>Departamento Final</mat-label>
+                <mat-select name="chefId" [(ngModel)]="this.searchJobOffer.departmentFin">
+                    <mat-option *ngFor="let d of this.departments" [value]="d">
+                        {{d}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+            <mat-form-field appearance="outline" class="example-form-field">
+                <mat-label>Peso Inicio</mat-label>
+                <input matInput [(ngModel)]="this.searchJobOffer.weightIni" name="weightIni" type="number" value="0" min="0">
+            </mat-form-field>
+            <mat-form-field *ngIf="this.searchJobOffer.weightIni != undefined" appearance="outline" class="example-form-field">
+                <mat-label>Peso Final</mat-label>
+                <input matInput [(ngModel)]="this.searchJobOffer.weightFin" name="weightFin" type="number" value="0" min="0">
+            </mat-form-field>
+            <mat-form-field appearance="outline" class="example-form-field">
+                <mat-label>Precio Inicio</mat-label>
+                <input matInput [(ngModel)]="this.searchJobOffer.priceIni" name="priceIni" type="number" value="0" min="0">
+            </mat-form-field>
+            <mat-form-field *ngIf="this.searchJobOffer.priceIni != undefined" appearance="outline" class="example-form-field">
+                <mat-label>Precio Final</mat-label>
+                <input matInput [(ngModel)]="this.searchJobOffer.priceFin" name="priceFin" type="number" value="0" min="0">
+            </mat-form-field>
+            <button mat-raised-button type="submit" color="primary" (keyup.enter)="listOffer()" (click)="listOffer()" 
+            [disabled]="(this.searchJobOffer.weightIni != undefined && this.searchJobOffer.weightFin == undefined)
+            || (this.searchJobOffer.priceIni != undefined && this.searchJobOffer.priceFin == undefined)">Buscar</button>
+        </form>
     </mat-card>
 </div>
+
 <div class="cards">
     <mat-card *ngFor="let job of obs | async" class="card__total">
         <div class="card__title">{{job.title}}</div>
         <div class="card__content">
             <p>{{job.description}}</p>
             <p class="card__requer">Requisitos mínimos:</p>
-            <p>{{job.requeriments}}</p>
+            <p>{{job.requirements}}</p>
             <div style="float: left">
                 <button mat-raised-button color="primary" (click)="moreDetails(job)">VER OFERTA</button>
             </div>
             <div style="float: right" class="card__opc">
-                <span class="material-icons" style="font-size: 14px">calendar_today</span> Postula hasta el {{job.date}}
+                <span class="material-icons" style="font-size: 14px">calendar_today</span> Postula hasta el {{job.finalDate}}
             </div>    
         </div>
     </mat-card>
-    <mat-paginator [length]="100" [pageSize]="5" [pageSizeOptions]="[5, 10, 25, 100]" style="width: 82%;"></mat-paginator>
+    <mat-paginator [length]="100" [pageSize]="5" [pageSizeOptions]="[5, 10, 25, 100]" style="width: 83%;"></mat-paginator>
 </div>
