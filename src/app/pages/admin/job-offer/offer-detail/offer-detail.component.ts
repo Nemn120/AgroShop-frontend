@@ -13,6 +13,7 @@ export class OfferDetailComponent implements OnInit {
 
   idUser : number = 0;
   detail: string;
+  isNew: boolean = true;
 
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: any,
@@ -41,9 +42,8 @@ export class OfferDetailComponent implements OnInit {
       cancelButtonColor: '#d33',
       confirmButtonText: 'Postular'
     }).then((result) => {
-      if (result.isConfirmed) {
-        let OfferId = this.data.id;
-        this.idUser = this.sharedService.userSession.id;
+      let OfferId = this.data.id;
+      this.idUser = this.sharedService.userSession.id;
         let param = {
           data: {
             jobOffer : {
@@ -57,10 +57,8 @@ export class OfferDetailComponent implements OnInit {
         }
         this.restService.requestApiRestData('postulation/afaj',param).subscribe(result =>{
           this.restService.messageChange.next({ message: result.responseMessage, action: "Postulación" });
-          console.log(result);
         })
-        this.dialog.closeAll();
-      }
+      this.dialog.closeAll();
     });
   }
 

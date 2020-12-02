@@ -29,6 +29,23 @@ export class OfferComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    if(this.searchJobOffer.departmentIni == 'Todos')
+      this.searchJobOffer.departmentIni = undefined;
+
+    if(this.searchJobOffer.departmentFin == 'Todos')
+      this.searchJobOffer.departmentFin = undefined;
+
+    if(this.searchJobOffer.weightIni == '' || this.searchJobOffer.weightIni == null)
+      this.searchJobOffer.weightIni = undefined;
+
+    if(this.searchJobOffer.weightFin == '' || this.searchJobOffer.weightFin == null)
+      this.searchJobOffer.weightFin = undefined;
+
+    if(this.searchJobOffer.priceIni == '' || this.searchJobOffer.priceIni == null)
+      this.searchJobOffer.priceIni = undefined;
+
+    if(this.searchJobOffer.priceFin == '' || this.searchJobOffer.priceFin == null)
+      this.searchJobOffer.priceFin = undefined;
     this.listOffer();
   }
 
@@ -48,36 +65,22 @@ export class OfferComponent implements OnInit {
   }
 
   listOffer(){
-    
-    if(this.searchJobOffer.departmentIni == 'Todos')
-      this.searchJobOffer.departmentIni = undefined;
-
-    if(this.searchJobOffer.departmentFin == 'Todos')
-      this.searchJobOffer.departmentFin = undefined;
-
-    if(this.searchJobOffer.weightIni == '' || this.searchJobOffer.weightIni == null)
-      this.searchJobOffer.weightIni = undefined;
-
-    if(this.searchJobOffer.weightFin == '' || this.searchJobOffer.weightFin == null)
-      this.searchJobOffer.weightFin = undefined;
-
-    if(this.searchJobOffer.priceIni == '' || this.searchJobOffer.priceIni == null)
-      this.searchJobOffer.priceIni = undefined;
-
-    if(this.searchJobOffer.priceFin == '' || this.searchJobOffer.priceFin == null)
-      this.searchJobOffer.priceFin = undefined;
-
-    let param = {
-      data: this.searchJobOffer
+    if(this.searchJobOffer.weightIni>this.searchJobOffer.weightFin || this.searchJobOffer.priceIni>this.searchJobOffer.priceFin){
+      this.restService.messageChange.next({ message: 'Rango equivocado', action: "Fail" });
     }
-    this.restService.requestApiRestData('joboffer/gljobf',param).subscribe(result =>{
-      this.dataSource = new MatTableDataSource(result.datalist);
-      this.changeDetectorRef.detectChanges();
-      this.dataSource.paginator = this.paginator;
-      this.obs = this.dataSource.connect();
-      if(result.responseMessage == 'No se encontraron ofertas laborales que coincidan con la busqueda'){
-        this.restService.messageChange.next({ message: result.responseMessage, action: "Ofertas" });
+    else{
+      let param = {
+        data: this.searchJobOffer
       }
-    })
+      this.restService.requestApiRestData('joboffer/gljobf',param).subscribe(result =>{
+        this.dataSource = new MatTableDataSource(result.datalist);
+        this.changeDetectorRef.detectChanges();
+        this.dataSource.paginator = this.paginator;
+        this.obs = this.dataSource.connect();
+        if(result.responseMessage == 'No se encontraron ofertas laborales que coincidan con la busqueda'){
+          this.restService.messageChange.next({ message: result.responseMessage, action: "Ofertas" });
+        }
+      })
+    }
   }
 }
