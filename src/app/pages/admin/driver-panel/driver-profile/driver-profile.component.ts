@@ -29,7 +29,7 @@ export class DriverProfileComponent implements OnInit {
 
     let param = {
 
-      "id":1
+      'id':this.sharedService.userSession.id,
       /*data: {
         farmerNumber:this.sharedService.userSession.id,
        
@@ -37,7 +37,7 @@ export class DriverProfileComponent implements OnInit {
     }
     this.restService.requestApiRestData('jobprofile/gdbi', param)
       .subscribe(data => {
-        console.log('mi profile! ', data);
+        console.log('mi profile laboral! ', data);
       }, error => {
         console.log("Error al ver perfil!", error);
         this.restService.message('Error al ver perfil!', 'Error');
