@@ -1,5 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { RestService } from 'src/app/_service/rest.service';
+import { SharedService } from 'src/app/_service/shared.service';
 import Swal from 'sweetalert2';
 
 @Component({
@@ -9,13 +11,19 @@ import Swal from 'sweetalert2';
 })
 export class OfferDetailComponent implements OnInit {
 
+  idUser : number = 0;
+  detail: string;
+
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: any,
-    private dialog : MatDialog
+    private dialog : MatDialog,
+    private sharedService : SharedService,
+    private restService: RestService
   ) { }
 
   ngOnInit(): void {
     console.log(this.data);
+    //this.getOfferPostulationStatus();
   }
 
   offerPostulate(){
@@ -34,9 +42,35 @@ export class OfferDetailComponent implements OnInit {
       confirmButtonText: 'Postular'
     }).then((result) => {
       if (result.isConfirmed) {
+        let OfferId = this.data.id;
+        this.idUser = this.sharedService.userSession.id;
+        let param = {
+          data: {
+            jobOffer : {
+              id: OfferId
+            },
+            driver: {
+              id: this.idUser
+            },
+            detail: this.detail
+          }
+        }
+        this.restService.requestApiRestData('postulation/afaj',param).subscribe(result =>{
+          this.restService.messageChange.next({ message: result.responseMessage, action: "Postulación" });
+          console.log(result);
+        })
         this.dialog.closeAll();
       }
     });
+  }
+
+  getOfferPostulationStatus(){
+    let param = {
+      data: 'Aceptado'
+    }
+    this.restService.requestApiRestData('fpbs',param).subscribe(result =>{
+      console.log("Aceptado",result);
+    })
   }
 
 }
