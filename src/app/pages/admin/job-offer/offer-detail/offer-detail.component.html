@@ -4,22 +4,21 @@
     <p>{{this.data.description}}</p>
     <p class="card__requer">Requisitos mínimos:</p>
     <p>{{this.data.requirements}}</p>
-    <hr>
     <div>
-        <span class="card__init">Solicitante: {{this.data.order.farmer.user.name}}</span>
-        <span>Telefono: {{this.data.order.phone}}</span>
+        <span class="card__init">Solicitante: <span>{{this.data.order.farmer.user.name}}</span></span>
+        <span>Telefono: <span>{{this.data.order.phone}}</span></span>
     </div>
     <div>
-        <span class="card__init">Direccion: {{this.data.order.address}}</span>
-        <span>Costo: $/.{{this.data.shippingCost}}</span>
+        <span class="card__init">Direccion: <span>{{this.data.order.address}}</span></span>
+        <span>Costo: <span>$/.{{this.data.shippingCost}}</span></span>
     </div>
     <div>
-        <span class="card__init">Fecha Final: {{this.data.finalDate}}</span>
-        <span>Peso total: {{this.data.totalWeight}}</span>
+        <span class="card__init">Fecha Final: <span>{{this.data.finalDate}}</span></span>
+        <span>Peso total: <span>{{this.data.totalWeight}}</span></span>
     </div>
     <div>
-        <span class="card__init">Departamento Inicio: {{this.data.departmentOrigin}}</span>
-        <span>Departamento Fin: {{this.data.order.reference }}</span>
+        <span class="card__init">Departamento Inicio: <span>{{this.data.departmentOrigin}}</span></span>
+        <span>Departamento Fin: <span>{{this.data.order.reference }}</span></span>
     </div>
     <br>
     <p class="card__requer">Propuesta de trabajo:</p>

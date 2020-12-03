@@ -2,9 +2,9 @@ export class JobOfferByFields{
     status: string;
     departmentIni: string;
     departmentFin: string;
-    weightIni: string;
-    weightFin: string;
-    priceIni: string;
-    priceFin: string;
+    weightIni: number;
+    weightFin: number;
+    priceIni: number;
+    priceFin: number;
     idFarmer: number;
 }

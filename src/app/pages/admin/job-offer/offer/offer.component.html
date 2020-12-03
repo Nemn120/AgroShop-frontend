@@ -2,6 +2,11 @@
 <div class="cards">
     <mat-card class="card__search">
         <form>
+            <mat-form-field appearance="outline" class="example-form-field">
+                <mat-label>Id Agricultor</mat-label>
+                <input matInput [(ngModel)]="this.searchJobOffer.idFarmer" name="weightIni" type="number" min="0">
+                <mat-hint *ngIf="this.name!=undefined">{{this.name}} {{this.lastName}}</mat-hint>
+            </mat-form-field>
             <mat-form-field appearance="fill" class="example-form-field" appearance="outline" name="departmentIni">
                 <mat-label>Departamento Inicio</mat-label>
                 <mat-select name="chefId" [(ngModel)]="this.searchJobOffer.departmentIni">
@@ -20,19 +25,19 @@
             </mat-form-field>
             <mat-form-field appearance="outline" class="example-form-field">
                 <mat-label>Peso Inicio</mat-label>
-                <input matInput [(ngModel)]="this.searchJobOffer.weightIni" name="weightIni" type="number" value="0" min="0">
+                <input matInput [(ngModel)]="this.searchJobOffer.weightIni" name="weightIni" type="number" min="0">
             </mat-form-field>
             <mat-form-field *ngIf="this.searchJobOffer.weightIni != undefined" appearance="outline" class="example-form-field">
                 <mat-label>Peso Final</mat-label>
-                <input matInput [(ngModel)]="this.searchJobOffer.weightFin" name="weightFin" type="number" value="0" min="0">
+                <input matInput [(ngModel)]="this.searchJobOffer.weightFin" name="weightFin" type="number" min="0">
             </mat-form-field>
             <mat-form-field appearance="outline" class="example-form-field">
                 <mat-label>Precio Inicio</mat-label>
-                <input matInput [(ngModel)]="this.searchJobOffer.priceIni" name="priceIni" type="number" value="0" min="0">
+                <input matInput [(ngModel)]="this.searchJobOffer.priceIni" name="priceIni" type="number" min="0">
             </mat-form-field>
             <mat-form-field *ngIf="this.searchJobOffer.priceIni != undefined" appearance="outline" class="example-form-field">
                 <mat-label>Precio Final</mat-label>
-                <input matInput [(ngModel)]="this.searchJobOffer.priceFin" name="priceFin" type="number" value="0" min="0">
+                <input matInput [(ngModel)]="this.searchJobOffer.priceFin" name="priceFin" type="number" min="0">
             </mat-form-field>
             <button mat-raised-button type="submit" color="primary" (keyup.enter)="listOffer()" (click)="listOffer()" 
             [disabled]="(this.searchJobOffer.weightIni != undefined && this.searchJobOffer.weightFin == undefined)

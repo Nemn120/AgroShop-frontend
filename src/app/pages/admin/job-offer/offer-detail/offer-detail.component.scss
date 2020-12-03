@@ -17,4 +17,12 @@
 
 .example-full-width {
     width: 100%;
-  }
+}
+
+span{
+    font-weight: bold;
+}
+
+span > span{
+    font-weight: normal;
+}

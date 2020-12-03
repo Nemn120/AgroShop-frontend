@@ -21,6 +21,8 @@ export class OfferComponent implements OnInit {
   departments : string[] = ['Todos','Amazonas', 'Ancash', 'Apurimac', 'Arequipa', 'Ayacucho', 'Cajamarca', 'Cusco', 'Huancavelica', 'Huanuco'
   , 'Ica', 'Junin', 'La Libertad', 'Lambayeque', 'Lima', 'Loreto', 'Madre de Dios', 'Moquegua', 'Pasco', 'Piura', 'Puno', 'San Martin'
   , 'Tacna', 'Tumbes', 'Ucayali'];
+  name: string;
+  lastName: string;
 
   constructor(
     public dialog: MatDialog,
@@ -29,23 +31,6 @@ export class OfferComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    if(this.searchJobOffer.departmentIni == 'Todos')
-      this.searchJobOffer.departmentIni = undefined;
-
-    if(this.searchJobOffer.departmentFin == 'Todos')
-      this.searchJobOffer.departmentFin = undefined;
-
-    if(this.searchJobOffer.weightIni == '' || this.searchJobOffer.weightIni == null)
-      this.searchJobOffer.weightIni = undefined;
-
-    if(this.searchJobOffer.weightFin == '' || this.searchJobOffer.weightFin == null)
-      this.searchJobOffer.weightFin = undefined;
-
-    if(this.searchJobOffer.priceIni == '' || this.searchJobOffer.priceIni == null)
-      this.searchJobOffer.priceIni = undefined;
-
-    if(this.searchJobOffer.priceFin == '' || this.searchJobOffer.priceFin == null)
-      this.searchJobOffer.priceFin = undefined;
     this.listOffer();
   }
 
@@ -65,6 +50,20 @@ export class OfferComponent implements OnInit {
   }
 
   listOffer(){
+    this.name = undefined;
+    this.lastName = undefined;
+    if(this.searchJobOffer.departmentIni == 'Todos')
+      this.searchJobOffer.departmentIni = undefined;
+
+    if(this.searchJobOffer.departmentFin == 'Todos')
+      this.searchJobOffer.departmentFin = undefined;
+
+    if(this.searchJobOffer.weightIni == null)
+      this.searchJobOffer.weightFin = undefined;
+
+    if(this.searchJobOffer.priceIni == null)
+      this.searchJobOffer.priceFin = undefined;
+
     if(this.searchJobOffer.weightIni>this.searchJobOffer.weightFin || this.searchJobOffer.priceIni>this.searchJobOffer.priceFin){
       this.restService.messageChange.next({ message: 'Rango equivocado', action: "Fail" });
     }
@@ -81,6 +80,17 @@ export class OfferComponent implements OnInit {
           this.restService.messageChange.next({ message: result.responseMessage, action: "Ofertas" });
         }
       })
+      if(this.searchJobOffer.idFarmer != null){
+        let param2 = {
+          id: this.searchJobOffer.idFarmer
+        }
+        this.restService.requestApiRestData('farmer/gfbi',param2).subscribe(result =>{
+          if(result.responseMessage != 'No se encontró al agricultor'){
+            this.name = result.data.user.name;
+            this.lastName = result.data.user.lastName;
+          }
+        })
+      }
     }
   }
 }
