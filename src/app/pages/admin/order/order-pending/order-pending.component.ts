@@ -42,13 +42,6 @@ export class OrderPendingComponent implements OnInit {
     });
   }
 
-  public open(order: OrderBean) {
-    Swal.fire({
-      title: 'Este pedido solo tiene un producto',
-      allowOutsideClick:false
-  });
-  
-  }
   
   public sendOffer(order: OrderBean){
     let ord = order != null ? order : new OrderBean();

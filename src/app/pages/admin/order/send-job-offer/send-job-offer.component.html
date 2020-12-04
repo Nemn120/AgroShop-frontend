@@ -1,6 +1,5 @@
-<mat-toolbar style="display: block; background: #fcf8f81c; color: #110f0ffd;">
+<mat-toolbar class="title-component">
     <span>Oferta Laboral</span>
-    <div class="elipse" style="float:right" mat-dialog-close><span>X</span></div>
 </mat-toolbar>
 
 <br>
@@ -9,33 +8,33 @@
 
     <form [formGroup]="form" (ngSubmit)="publicarOferta()" #frmUsuario="ngForm">
 
-        <mat-form-field appearance="fill" style="width: 100%;">
+        <mat-form-field appearance="outline" style="width: 100%;">
             <mat-label>Titulo</mat-label>
             <input matInput formControlName="title" [formGroup]="form" [(ngModel)]="jobOffer.title" required>
         </mat-form-field>
 
 
-        <mat-form-field appearance="fill" style="width: 100%;">
+        <mat-form-field appearance="outline" style="width: 100%;">
             <mat-label>Descripcion</mat-label>
             <textarea class="area" matInput rows="2" formControlName="description" [formGroup]="form" [(ngModel)]="jobOffer.description" required></textarea>
         </mat-form-field>
 
 
-        <mat-form-field appearance="fill" style="width: 100%;">
+        <mat-form-field appearance="outline" style="width: 100%;">
             <mat-label>Requerimientos</mat-label>
             <textarea class="area" matInput rows="2" formControlName="requirements" [formGroup]="form" [(ngModel)]="jobOffer.requirements" required></textarea>
         </mat-form-field>
 
         <div style="display: flex;">
             <div style=" width: 33%;">
-                <mat-form-field appearance="fill" style="width: 95%;">
+                <mat-form-field appearance="outline" style="width: 95%;">
                     <mat-label>Costo de envio (soles) </mat-label>
                     <input matInput type="number" formControlName="shippingCost" [formGroup]="form" [(ngModel)]="jobOffer.shippingCost" onkeypress="return event.charCode >= 48 && event.charCode <=57" min="1" required>      
                 </mat-form-field>
             
             </div>
             <div style="width: 33%;">
-                <mat-form-field appearance="fill" style="width: 95%;">
+                <mat-form-field appearance="outline" style="width: 95%;">
                     <mat-label>Departamento de origen</mat-label>
                     <mat-select formControlName="departmentOrigin" [formGroup]="form" [(ngModel)]="jobOffer.departmentOrigin" required>      
                         <mat-option *ngFor="let d of dept" [value]="d">
@@ -45,7 +44,7 @@
                 </mat-form-field>
             </div>
             <div style="width: 34%;">
-                <mat-form-field appearance="fill" style="width: 100%;">
+                <mat-form-field appearance="outline" style="width: 100%;">
                     <mat-label>Dia final a postular</mat-label>
                     <input matInput [matDatepicker]="picker" [min]="minDate" formControlName="finalDate" [formGroup]="form" [(ngModel)]="jobOffer.finalDate" required>
                     <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>

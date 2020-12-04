@@ -1,5 +1,5 @@
 <div class="layout-data2">
-    Mis Pedidos
+    Mis Pedidos Pendientes
 </div>
 <div class="layout-data">
     <div class="mat-elevation-z8">
@@ -46,10 +46,7 @@
                 <th mat-header-cell *matHeaderCellDef mat-sort-header> Detalles </th>
                 <td mat-cell *matCellDef="let row">
 
-                    <button *ngIf="row.quantity>1" mat-icon-button (click)="openDetails(row)">
-                        <mat-icon>info</mat-icon>
-                    </button>
-                    <button *ngIf="row.quantity==1" mat-icon-button (click)="open(row)">
+                    <button  mat-icon-button (click)="openDetails(row)">
                         <mat-icon>info</mat-icon>
                     </button>
 
