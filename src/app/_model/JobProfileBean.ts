@@ -5,15 +5,15 @@ export class  JobProfileBean extends MainBean{
     
     id: number;
     
-    yearsOfExperience:number;
-    typeOfLicense:string;
-	typeOfAvailability:string; // tipo de disponibilidad
+    yearsOfExperience:number=0;
+    typeOfLicense:string='';
+	typeOfAvailability:string=''; // tipo de disponibilidad
 	IsHastools:boolean; //Tiene herramientas?
-	academicDegree:string; //grado academico
-	personalDescription:string;
-	minSalaryAccept:number;
-	currentSituation:string;
-	descriptionPerfil:string;
+	academicDegree:string=''; //grado academico
+	//personalDescription:string='';
+	minSalaryAccept:number=0;
+	currentSituation:string='';
+	descriptionPerfil:string='';
 
     Driver: DriverBean;
 }
