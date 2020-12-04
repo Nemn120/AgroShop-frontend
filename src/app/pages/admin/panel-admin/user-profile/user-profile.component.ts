@@ -28,7 +28,7 @@ export class UserProfileComponent implements OnInit {
 
   openProfileJob() {
     this.dialog.open(DriveJobProfileComponent, {
-      width: '400px',
+      //width: '400px',
       /*height: '50%',*/
     });
     //[routerLink]="['/driver/profileJob']"
