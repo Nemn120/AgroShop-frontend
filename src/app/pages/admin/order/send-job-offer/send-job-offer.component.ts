@@ -24,6 +24,9 @@ export class SendJobOfferComponent implements OnInit {
    finalDate:Date;
    action: string = 'SUCCESS';
    minDate: Date;
+   dept: string[] = ['Amazonas','Ancash','Apurimac','Arequipa',' Ayacucho',
+  'Cajamarca','Callao','Cuzco','Huancavelica','Huanuco','Ica','Junin','La Libertad', 'Lambayeque',
+  'Lima','Loreto','Madre de Dios','Moquegua','Pasco','Piura','Puno','San Martin','Tacna','Tumbes','Ucayali'];
   constructor(
     public dialog: MatDialog, public dialogo: MatDialogRef<SendJobOfferComponent>,
     @Inject(MAT_DIALOG_DATA) public data: OrderBean,

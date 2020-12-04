@@ -37,7 +37,11 @@
             <div style="width: 33%;">
                 <mat-form-field appearance="fill" style="width: 95%;">
                     <mat-label>Departamento de origen</mat-label>
-                    <input matInput formControlName="departmentOrigin" [formGroup]="form" [(ngModel)]="jobOffer.departmentOrigin" required>      
+                    <mat-select formControlName="departmentOrigin" [formGroup]="form" [(ngModel)]="jobOffer.departmentOrigin" required>      
+                        <mat-option *ngFor="let d of dept" [value]="d">
+                            {{d}}
+                          </mat-option>
+                    </mat-select>
                 </mat-form-field>
             </div>
             <div style="width: 34%;">

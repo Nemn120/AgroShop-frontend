@@ -37,7 +37,7 @@ export class OrderPendingComponent implements OnInit {
   public openDetails(order: OrderBean) {
     let ord = order != null ? order : new OrderBean();
     this.dialog.open(OrderDetailsComponent, {
-      width: '750px',
+      width: '500px',
       data: ord,
     });
   }
