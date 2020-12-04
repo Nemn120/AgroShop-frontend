@@ -4,6 +4,11 @@
     padding-top: 2rem;
 }
 
+button:hover {
+    background-color: rgb(35, 112, 35);
+    color: white;
+}
+
 .layout-data {
     padding-top: 4rem;
 }
@@ -16,7 +21,10 @@ table {
     width: 100%;
 }
 
-button:hover {
-    background-color: rgb(183, 255, 183);
-    color: white;
+.title {
+    font-size: 25px;
+    font-weight: 700;
+    border-bottom: 5px solid;
+    text-align: center;
+    padding-bottom: 3px;
 }

@@ -9,6 +9,7 @@ import Swal from 'sweetalert2';
 import { PostulationBean } from '../../../../_model/PostulationBean';
 import { RestService } from '../../../../_service/rest.service';
 import { PostulationDetailComponent } from '../postulation-detail/postulation-detail.component';
+import { PostulationReplyComponent } from '../postulation-reply/postulation-reply.component';
 
 @Component({
   selector: 'app-postulation-list',
@@ -32,8 +33,7 @@ export class PostulationListComponent implements OnInit {
     private sharedService: SharedService,
     private dialog: MatDialog
     ) {
-      this.driver.id = 1;
-      // this.sharedService.userSession;
+       this.driver.id = this.sharedService.userSession.id;
     }
 
     ngOnInit(): void {
@@ -55,8 +55,8 @@ export class PostulationListComponent implements OnInit {
           this.dataSource = new MatTableDataSource(data.datalist);
           this.dataSource.paginator = this.paginator;
           this.dataSource.sort = this.sort;
-        },
-        () => this.restService.message('Success', 'Info')
+          this.restService.message(data.responseMessage, 'Info');
+        }
       );
   }
 
@@ -75,29 +75,34 @@ export class PostulationListComponent implements OnInit {
     });
   }
 
- /*  public reformulatePostulation(postulation: PostulationBean, reply: string) {
+  public reformulatePostulation(postulation: PostulationBean) {
 
-    postulation.reply = reply;
-    let message;
-    const param = {
+    const dialogRef = this.dialog.open(PostulationReplyComponent, {
+      width: 'auto', height: 'auto',
       data: postulation
-    };
+    });
 
-    this.restService.requestApiRestData('postulation/afaj', param)
-    .subscribe(
-      data => {
-        this.dataSource = new MatTableDataSource(data.datalist);
-        this.dataSource.paginator = this.paginator;
-        this.dataSource.sort = this.sort;
-        message = data.message;
-      },
-      () => this.restService.message(message, 'Info')
-    );
+    dialogRef.afterClosed().subscribe( result => {
 
-  } */
+      if (result) {
+        const param = {
+          data: result
+        };
+        this.restService.requestApiRestData('postulation/afaj', param)
+        .subscribe(
+          data => {
+            this.dataSource = new MatTableDataSource(data.datalist);
+            this.dataSource.paginator = this.paginator;
+            this.dataSource.sort = this.sort;
+            this.restService.message(data.responseMessage, 'Info');
+          }
+        );
+      }
+    });
+
+  }
 
   public deletePostulation(id: number) {
-    let message: string;
     const param = {
       data: id
     };
@@ -115,14 +120,15 @@ export class PostulationListComponent implements OnInit {
           .subscribe(
             data => {
               this.getPostulationByStatusAndId();
-              message = data.message;
-            },
-            () => this.restService.message('Eliminado', 'Info')
+              this.restService.message(data.responseMessage, 'Info');
+            }
           );
       }
     });
 
 
   }
+
+
 
 }
