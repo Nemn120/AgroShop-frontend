@@ -48,7 +48,7 @@ export class LoginComponent implements OnInit {
     this.enProceso = true;
     this.username = this.loginForm.value.username;
     this.password = this.loginForm.value.password;
-    this.isDriverAccepted(this.username);
+    //this.isDriverAccepted(this.username);
     this.authService.login(this.username, this.password);
     this.enProceso = false;
   }
