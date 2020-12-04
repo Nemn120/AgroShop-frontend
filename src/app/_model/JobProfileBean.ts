@@ -1,6 +1,7 @@
 import { DriverBean } from './DriverBean';
+import { MainBean } from './MainBean';
 
-export class  JobProfileBean{
+export class  JobProfileBean extends MainBean{
     
     id: number;
     

@@ -6,6 +6,7 @@ import { MaterialModule } from 'src/app/_material/material.module';
 import { InfoDriverComponent } from './info-driver/info-driver.component';
 import { DriverProfileComponent } from './driver-profile/driver-profile.component';
 import { DriveJobProfileComponent } from './drive-job-profile/drive-job-profile.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 const routes: Routes = [
   { path: '', component: DriverComponent },
@@ -19,7 +20,10 @@ const routes: Routes = [
   imports: [
     CommonModule,
     MaterialModule,
-    RouterModule.forChild(routes)
+    RouterModule.forChild(routes),
+
+    ReactiveFormsModule,
+    FormsModule,
   ],
   exports: [
     RouterModule
