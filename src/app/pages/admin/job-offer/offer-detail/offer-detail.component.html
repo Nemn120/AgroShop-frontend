@@ -1,0 +1,34 @@
+<div class="card__title">{{this.data.title}}</div>
+
+<div class="card__content">
+    <p>{{this.data.description}}</p>
+    <p class="card__requer">Requisitos mínimos:</p>
+    <p>{{this.data.requirements}}</p>
+    <div>
+        <span class="card__init">Solicitante: <span>{{this.data.order.farmer.user.name}}</span></span>
+        <span>Telefono: <span>{{this.data.order.phone}}</span></span>
+    </div>
+    <div>
+        <span class="card__init">Direccion: <span>{{this.data.order.address}}</span></span>
+        <span>Costo: <span>$/.{{this.data.shippingCost}}</span></span>
+    </div>
+    <div>
+        <span class="card__init">Fecha Final: <span>{{this.data.finalDate}}</span></span>
+        <span>Peso total: <span>{{this.data.totalWeight}}</span></span>
+    </div>
+    <div>
+        <span class="card__init">Departamento Inicio: <span>{{this.data.departmentOrigin}}</span></span>
+        <span>Departamento Fin: <span>{{this.data.order.reference }}</span></span>
+    </div>
+    <br>
+    <p class="card__requer">Propuesta de trabajo:</p>
+    <mat-form-field class="example-full-width" appearance="outline">
+        <textarea matInput [(ngModel)]="this.detail" placeholder="Escribir aqui..."></textarea>
+    </mat-form-field>
+    <br>
+    <div style="float: right">
+        <button mat-raised-button mat-dialog-close style="margin-right: 5px;" color="basic">Cancelar</button>
+        <button mat-raised-button color="primary" (click)="offerPostulate()">POSTULAR</button>
+    </div>
+
+</div>
