@@ -44,23 +44,23 @@ export function tokenGetter() {
     EcoFabSpeedDialModule,
     MaterialModule,
     FlexLayoutModule,
-    PanelAdminModule,
+    PanelAdminModule, 
     AuthorizationModule,
     MatSnackBarModule,
-    /*JwtModule.forRoot({
+    /*JwtModule.forRoot({ 
       config: {
         tokenGetter,
         whitelistedDomains: ['localhost:8080'],
         blacklistedRoutes: ['http://localhost:8080/oauth/token']
-      }
-    }),*/
-    MatFabMenuModule,
-   FormsModule,
+      } 
+    }),*/         
+    MatFabMenuModule,  
+   FormsModule,  
 
 
   ],
   providers: [
-
+ 
 
     {provide: HTTP_INTERCEPTORS,
       useClass: ServerErrorsInterceptor,
@@ -70,7 +70,7 @@ export function tokenGetter() {
   ],
   bootstrap: [AppComponent],
   exports: [
-    FlexLayoutModule,
+    FlexLayoutModule, 
 
 
   ],

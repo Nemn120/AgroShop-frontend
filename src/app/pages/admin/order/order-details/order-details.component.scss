@@ -1,0 +1,51 @@
+table {
+    width: 100%;
+}
+
+.mat-form-field {
+    width: 100%;
+}
+
+.container {
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    justify-items: center;
+    text-align: center;
+    background: rgba(99, 233, 170, 0.795);
+    // linear-gradient(100deg, antiquewhite, aquamarine);
+}
+
+h1 {
+    margin: 2%;
+    width: 100%;
+    color: #000705de;
+
+}
+
+img {
+    border-style: outset;
+    border-color: darkgrey;
+}
+
+.perfil-img {
+    background-color: #b6ce99;
+    width: 100px;
+    height: 100px;
+    border-radius: 64px;
+}
+
+h1,
+p {
+    color: #000705de;
+    font-family: arial;
+    font-weight: 80;
+    font-size: x-large;
+}
+
+h1,
+span {
+    color: #000705de;
+    font-weight: bold;
+    font-size: 20px;
+}
