@@ -18,7 +18,6 @@ import { RegistryComponent } from './pages/authorization/registry/registry.compo
 
 import { DriverFormContainerComponent } from './pages/authorization/registry/driver-form-container/driver-form-container.component';
 
-
 import { ServerErrorsInterceptor } from './_service/server-errors.interceptor';
 import { AuthorizationModule } from './pages/authorization/authorization.module';
 import { LoginComponent } from './pages/authorization/login/login.component';
@@ -34,7 +33,7 @@ export function tokenGetter() {
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
     BrowserModule,

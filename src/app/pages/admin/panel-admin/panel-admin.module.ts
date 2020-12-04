@@ -16,6 +16,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { OrderDetailComponent } from 'src/app/_shared/order-detail/order-detail.component';
 import { DataClientComponent } from 'src/app/_shared/data-client/data-client.component';
 import { DriverPanelModule } from '../driver-panel/driver-panel.module';
+import { MapModule } from '../map/map.module';
+import { FamerMapComponent } from '.././map/famer-map/famer-map.component';
+
 const routes: Routes = [
   {
     path: '', component: WelcomeComponent,
@@ -37,6 +40,7 @@ const routes: Routes = [
     FormsModule,
 
     DriverPanelModule,
+    MapModule,
 
   ],
   exports:[
@@ -44,7 +48,11 @@ const routes: Routes = [
     WelcomeComponent
   ],
   entryComponents:[
-    CarDiaLogComponent,DialogoConfirmacionComponent,OrderDetailComponent,DataClientComponent,
+    CarDiaLogComponent,
+    DialogoConfirmacionComponent,
+    OrderDetailComponent,
+    DataClientComponent,
+    FamerMapComponent,
   ],
 })
 export class PanelAdminModule { }

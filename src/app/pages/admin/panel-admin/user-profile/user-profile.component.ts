@@ -3,6 +3,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { User } from 'src/app/_model/user';
 import { SharedService } from 'src/app/_service/shared.service';
 import { DriveJobProfileComponent } from '../../driver-panel/drive-job-profile/drive-job-profile.component';
+import { FamerMapComponent } from '../.././map/famer-map/famer-map.component';
 
 @Component({
   selector: 'app-user-profile',
@@ -30,7 +31,7 @@ export class UserProfileComponent implements OnInit {
     if(this.user.typeUser=='DRIVER'){
       this.dialog.open(DriveJobProfileComponent, {});
     }
-    //this.dialog.open(DriveJobProfileComponent, {});
+    this.dialog.open(FamerMapComponent);
     
     //[routerLink]="['/driver/profileJob']"
     //this.router.navigate(['driver/profile',{driver:JSON.stringify(driver)}]);
