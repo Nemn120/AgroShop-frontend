@@ -1,0 +1,19 @@
+<div class="container">
+    <h1 mat-dialog-title>Datos de mi postulación</h1>
+    <div class="img-container">
+        <img class="perfil-img" src="../../../../../assets/images/user.png">
+    </div>
+    <div mat-dialog-content>
+        <p>Fecha de postulación: {{data.postulationDate | date}}</p>
+        <p>Estado: {{data.statusPostulation}}</p>
+        <p *ngIf="data.detail">Detalles: {{data.detail}}</p>
+        <p *ngIf="data.reply">Nueva Propuesta: {{data.reply}}</p>
+
+        <h1 mat-dialog-title>Datos de la oferta</h1>
+
+        <p>Estado: {{data.jobOffer.statusOffer}}</p>
+        <p>Finaliza: {{data.jobOffer.finalDate | date}}</p>
+        <p>Descripción: {{data.jobOffer.description}}</p>
+        <p>Requerimientos: {{data.jobOffer.requirements}}</p>
+    </div>
+</div>

@@ -14,9 +14,11 @@ const routes: Routes = [
   },
   {
     path: 'product', loadChildren: () => import('./pages/admin/product/product.module').then(m => m.ProductModule),
-    
+
   },
   { path: 'vehicle', loadChildren: () => import('./pages/admin/vehicle/vehicle.module').then(m => m.VehicleModule)
+  },
+  { path: 'postulation', loadChildren: () => import('./pages/admin/postulation/postulation.module').then(m => m.PostulationModule)
   },
   { path: 'order', loadChildren: () => import('./pages/admin/order/order.module').then(m => m.OrderModule)
   },

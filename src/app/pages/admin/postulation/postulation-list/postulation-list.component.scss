@@ -1,0 +1,22 @@
+.button-status {
+    display: flex;
+    flex-direction: row-reverse;
+    padding-top: 2rem;
+}
+
+.layout-data {
+    padding-top: 4rem;
+}
+
+.mat-form-field {
+    width: 100%;
+}
+
+table {
+    width: 100%;
+}
+
+button:hover {
+    background-color: rgb(183, 255, 183);
+    color: white;
+}

@@ -23,7 +23,7 @@ export class DriverFormContainerComponent implements OnInit {
 
   ngOnInit(): void {
     this.driverForm = this.formBuilder.group({
-      driverLicencia: new FormControl('',Validators.pattern('^[0-9]{10}$')),
+      driverLicencia: new FormControl('', Validators.pattern('^[0-9]{10}$')),
       DNI: new FormControl('', [Validators.required, Validators.pattern('^[0-9]{8}$')]),
       Name: new FormControl('', [Validators.required] ),
       LastName: new FormControl('', [Validators.required]),
@@ -57,7 +57,7 @@ export class DriverFormContainerComponent implements OnInit {
     newDriver.user.username = this.driverForm.value.UserName;
     newDriver.user.password = this.driverForm.value.Password;
     let param = new Object();
-    if(this.userType == 'DRIVER'){
+    if (this.userType == 'DRIVER') {
       param = {
         userType: this.userType,
         userRegister: {
@@ -72,7 +72,7 @@ export class DriverFormContainerComponent implements OnInit {
           status: 'Pendiente'
         }
      };
-    }else{
+    } else {
       param = {
         userType: this.userType,
         userRegister: {
@@ -93,7 +93,7 @@ export class DriverFormContainerComponent implements OnInit {
       this.matSnackBar.open(result.responseMessage, '', {
         duration: 2000
       });
-      if(result.responseMessage == 'Registro completado con éxito'){
+      if (result.responseMessage == 'Registro completado con éxito') {
         setTimeout(() => {
           this.router.navigate(['auth/login']);
         }, 1500);
