@@ -18,7 +18,11 @@
     </button>
     -->
     <div class="sign-button-wrapper" *ngIf="this.user.typeUser=='DRIVER'">
-        <button class="sign-button" mat-flat-button (click)="openProfileJob()">Perfil Laboral</button>
+        <button class="sign-button" mat-flat-button (click)="open()">Perfil Laboral</button>
+    </div>
+
+    <div class="sign-button-wrapper" *ngIf="this.user.typeUser=='FARMER'">
+        <button class="sign-button" mat-flat-button (click)="open()">Mi ubicacion</button>
     </div>
 
     <div class="sign-button-wrapper">

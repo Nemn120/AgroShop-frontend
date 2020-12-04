@@ -26,11 +26,12 @@ export class UserProfileComponent implements OnInit {
   }
 
 
-  openProfileJob() {
-    this.dialog.open(DriveJobProfileComponent, {
-      //width: '400px',
-      /*height: '50%',*/
-    });
+  open() {
+    if(this.user.typeUser=='DRIVER'){
+      this.dialog.open(DriveJobProfileComponent, {});
+    }
+    //this.dialog.open(DriveJobProfileComponent, {});
+    
     //[routerLink]="['/driver/profileJob']"
     //this.router.navigate(['driver/profile',{driver:JSON.stringify(driver)}]);
   }
