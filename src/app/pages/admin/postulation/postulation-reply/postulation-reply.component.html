@@ -1,0 +1,11 @@
+<h1 mat-dialog-title>Escribe tu reformulación</h1>
+<div mat-dialog-content>
+    <mat-form-field appearance="outline">
+        <mat-label>Reply</mat-label>
+        <textarea matInput [(ngModel)]="data.reply"></textarea>
+    </mat-form-field>
+</div>
+<div mat-dialog-actions class="button-dialogs">
+    <button mat-raised-button (click)="onNoClick()">Cancelar</button>
+    <button mat-raised-button class="btn-green" [mat-dialog-close]="data" cdkFocusInitial>Enviar</button>
+</div>
