@@ -1,0 +1,28 @@
+.card__title{
+    color: #009865;
+    font-weight: bold;
+    font-size: 18px;
+    display: block;
+    width: 100%;
+}
+
+.card__requer{
+    font-weight: bold;
+}
+
+.card__init{
+    width: 50%;
+    display: inline-block;
+}
+
+.example-full-width {
+    width: 100%;
+}
+
+span{
+    font-weight: bold;
+}
+
+span > span{
+    font-weight: normal;
+}
