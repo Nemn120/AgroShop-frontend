@@ -28,20 +28,11 @@ export class OrderPendingComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    let param = {
-      id: this.sharedService.userSession.id,
-      data: {
-        status:"Pendiente"
-      }
-    };
-    this.restService.requestApiRestData('order/gobsf', param)
-      .subscribe( result => {
-        this.dataSource = new MatTableDataSource(result.datalist);
-        this.dataSource.sort = this.sort;
-        this.dataSource.paginator = this.paginator;
-        console.log(result.datalist);
-      }
-      );
+    this.listData();
+    this.restService.messageChange.subscribe(data => {
+      this.listData();
+      this.restService.message(data.message, data.action);
+    });
   }
   public openDetails(order: OrderBean) {
     let ord = order != null ? order : new OrderBean();
@@ -66,5 +57,21 @@ export class OrderPendingComponent implements OnInit {
       data: ord,
     });
   }
+listData(){
+  let param = {
+    id: this.sharedService.userSession.id,
+    data: {
+      status:"Pendiente"
+    }
+  };
+  this.restService.requestApiRestData('order/gobsf', param)
+    .subscribe( result => {
+      this.dataSource = new MatTableDataSource(result.datalist);
+      this.dataSource.sort = this.sort;
+      this.dataSource.paginator = this.paginator;
+      console.log(result.datalist);
 
+    }
+    );
+}
 }

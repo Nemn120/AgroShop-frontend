@@ -15,7 +15,6 @@ import { RestService } from 'src/app/_service/rest.service';
 })
 export class SendJobOfferComponent implements OnInit {
    jobOffer: JobOfferBean;
-   order: OrderBean;
    form: FormGroup;
    title: FormControl;
    description: FormControl;
@@ -23,22 +22,26 @@ export class SendJobOfferComponent implements OnInit {
    departmentOrigin: FormControl;
    shippingCost:FormControl;
    finalDate:Date;
-
+   action: string = 'SUCCESS';
+   minDate: Date;
   constructor(
     public dialog: MatDialog, public dialogo: MatDialogRef<SendJobOfferComponent>,
     @Inject(MAT_DIALOG_DATA) public data: OrderBean,
     private fb: FormBuilder,
     private snackBar: MatSnackBar,
-    private dialogMap: MatDialog,
     private sharedData:SharedService,
     private restService:RestService
-  ) { }
+  ) { 
+    const currentyear = new Date().getFullYear();
+    const currentmonth = new Date().getMonth();
+    const currentday = new Date().getDay();
+        this.minDate = new Date(currentyear,currentmonth,currentday );
+  }
 
   ngOnInit(): void {
-    this.jobOffer = new JobOfferBean();
-
-   
-    this.title = new FormControl(''),
+    
+      this.jobOffer = new JobOfferBean();
+      this.title = new FormControl(''),
       this.description = new FormControl(''),
       this.requirements = new FormControl(''),
       this.departmentOrigin = new FormControl(''),
@@ -59,8 +62,50 @@ export class SendJobOfferComponent implements OnInit {
 
   publicarOferta(){
     this.jobOffer= new JobOfferBean();
-    //this.jobOffer.order.id=this.data.id; 
-    //this.jobOffer.userCreateId=this.data.client.user.id; 
+    this.jobOffer.order = this.data;
+    this.jobOffer.title = this.form.value['title'];
+    this.jobOffer.description = this.form.value['description'];
+    this.jobOffer.requirements = this.form.value['requirements'];
+    this.jobOffer.shippingCost=this.form.value['shippingCost'];
+    this.jobOffer.departmentOrigin=this.form.value['departmentOrigin'];
+    this.jobOffer.finalDate=this.form.value['finalDate'];
+    Swal.fire({
+      title: 'Esta seguro de publicar la oferta laboral?',
+      showClass: {
+        popup: 'animate__animated animate__fadeInDown'
+      },
+      hideClass: {
+        popup: 'animate__animated animate__fadeOutUp'
+      },
+      icon: 'warning',
+      showCancelButton: true,
+      allowOutsideClick:false,
+      confirmButtonColor: 'green',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Publicar oferta'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        let param={
+          data:this.jobOffer
+        }
+        this.restService.requestApiRestData('joboffer/po',param).subscribe(result=>{
+           this.restService.messageChange.next({ message: result.responseMessage, action:this.action });       
+          //this.snackBar.open(result.responseMessage, 'SUCESS', { duration: 5000 })
+
+        },error=>{
+          //this.snackBar.open(error.responseMessage, 'SUCESS', { duration: 5000 })
+          this.restService.messageChange.next({ message: error.responseMessage, action: "ERROR" });
+        })
+        setTimeout (x=>{
+          this.dialog.closeAll();
+        },2000);
+      }
+
+    });
+
   }
 
+  closeDialog(): void {
+    this.dialogo.close();
+  }
 }
