@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
+import { UserBean } from 'src/app/_model/UserBean';
 import { AuthService } from 'src/app/_service/auth.service';
 import { RestService } from 'src/app/_service/rest.service';
 import Swal from 'sweetalert2';
@@ -48,8 +49,10 @@ export class LoginComponent implements OnInit {
     this.enProceso = true;
     this.username = this.loginForm.value.username;
     this.password = this.loginForm.value.password;
-    //this.isDriverAccepted(this.username);
+
+    this.isDriverAccepted(this.username);
     this.authService.login(this.username, this.password);
+
     this.enProceso = false;
   }
   registry() {
@@ -62,26 +65,35 @@ export class LoginComponent implements OnInit {
   }
 
    public isDriverAccepted(username: string) {
+
+    const user: UserBean = new UserBean();
+    user.username = username;
+
+    const u = {
+      data: user
+    };
+
     const param = {
       data: username
     };
 
-    this.restService.requestApiRestData('driver/gmfd', param)
-      .subscribe( result => {
-        if (result.data) {
-         // alert(result.data);
-          Swal.fire({
-            title: 'Important',
-            text: result.data,
-            icon: 'warning',
-            confirmButtonColor: '#3085d6',
-            confirmButtonText: 'Ok'
-          });
+    this.restService.requestApiRestData('user/gubus', u)
+      .subscribe( typeUser => {
+        if (typeUser === 'DRIVER') {
+          this.restService.requestApiRestData('driver/gmfd', param)
+          .subscribe( result => {
+              Swal.fire({
+                title: 'Important',
+                text: result.data,
+                icon: 'warning',
+                confirmButtonColor: '#3085d6',
+                confirmButtonText: 'Ok'
+              });
+            }
+          );
         }
-      }
-    );
+      });
   }
-
 }
 
 

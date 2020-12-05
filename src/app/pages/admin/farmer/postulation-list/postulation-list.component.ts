@@ -4,12 +4,14 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { DriverBean } from 'src/app/_model/DriverBean';
+import { FarmerBean } from 'src/app/_model/FarmerBean';
+import { JobOfferBean } from 'src/app/_model/JobOfferBean';
+import { OrderBean } from 'src/app/_model/OrderBean';
+import { PostulationBean } from 'src/app/_model/PostulationBean';
+import { RestService } from 'src/app/_service/rest.service';
 import { SharedService } from 'src/app/_service/shared.service';
 import Swal from 'sweetalert2';
-import { PostulationBean } from '../../../../_model/PostulationBean';
-import { RestService } from '../../../../_service/rest.service';
-import { PostulationDetailComponent } from '../postulation-detail/postulation-detail.component';
-import { PostulationReplyComponent } from '../postulation-reply/postulation-reply.component';
+import { PostulationDetailComponent } from '../../farmer/postulation-detail/postulation-detail.component';
 
 @Component({
   selector: 'app-postulation-list',
@@ -18,14 +20,16 @@ import { PostulationReplyComponent } from '../postulation-reply/postulation-repl
 })
 export class PostulationListComponent implements OnInit {
 
-  displayedColumns: string[] = ['id', 'statusPostulation', 'title', 'statusOffer', 'postulationDate', 'actions'];
+  displayedColumns: string[] = ['id', 'statusPostulation', 'title', 'statusOffer', 'name', 'actions'];
   dataSource: MatTableDataSource<PostulationBean>;
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
 
   postulation: PostulationBean = new PostulationBean();
-  driver: DriverBean = new DriverBean();
+  jobOffer: JobOfferBean = new JobOfferBean();
+  order: OrderBean = new OrderBean();
+  farmer: FarmerBean = new FarmerBean();
   statusList: any[] = ['Pendiente', 'Aceptada', 'Rechazada'];
 
   constructor(
@@ -33,8 +37,8 @@ export class PostulationListComponent implements OnInit {
     private sharedService: SharedService,
     private dialog: MatDialog
     ) {
-       // this.driver.id = this.sharedService.userSession.id;
-       this.driver.id = 1;
+       // this.farmer.id = this.sharedService.userSession.id;
+       this.farmer.id = 1;
     }
 
     ngOnInit(): void {
@@ -44,13 +48,15 @@ export class PostulationListComponent implements OnInit {
     public getPostulationByStatusAndId(status: string = 'Pendiente'): any {
 
       this.postulation.statusPostulation = status;
-      this.postulation.driver = this.driver;
+      this.order.farmer = this.farmer;
+      this.jobOffer.order = this.order;
+      this.postulation.jobOffer = this.jobOffer;
 
       const param = {
         data: this.postulation
       };
-
-      this.restService.requestApiRestData('postulation/fpbsaid', param)
+      console.log(param);
+      this.restService.requestApiRestData('postulation/fpbsafid', param)
       .subscribe(
         data => {
           this.dataSource = new MatTableDataSource(data.datalist);
@@ -76,33 +82,6 @@ export class PostulationListComponent implements OnInit {
     });
   }
 
-  public reformulatePostulation(postulation: PostulationBean) {
-
-    const dialogRef = this.dialog.open(PostulationReplyComponent, {
-      width: 'auto', height: 'auto',
-      data: postulation
-    });
-
-    dialogRef.afterClosed().subscribe( result => {
-
-      if (result) {
-        const param = {
-          data: result
-        };
-        this.restService.requestApiRestData('postulation/afaj', param)
-        .subscribe(
-          data => {
-            this.dataSource = new MatTableDataSource(data.datalist);
-            this.dataSource.paginator = this.paginator;
-            this.dataSource.sort = this.sort;
-            this.restService.message(data.responseMessage, 'Info');
-          }
-        );
-      }
-    });
-
-  }
-
   public deletePostulation(id: number) {
     const param = {
       data: id
@@ -126,10 +105,31 @@ export class PostulationListComponent implements OnInit {
           );
       }
     });
-
-
   }
 
+  aceptarPostulation(id: number) {
+    const param = {
+      data: id
+    };
 
+    Swal.fire({
+      title: 'Aceptar la postulación?',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: 'green',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Confirmar'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.restService.requestApiRestData('postulation/apf', param)
+          .subscribe(
+            data => {
+              this.getPostulationByStatusAndId();
+              this.restService.message(data.responseMessage, 'Info');
+            }
+          );
+      }
+    });
+  }
 
 }
