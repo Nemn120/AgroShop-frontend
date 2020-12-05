@@ -46,7 +46,7 @@ export function tokenGetter() {
     FlexLayoutModule,
     PanelAdminModule, 
     AuthorizationModule,
-    MatSnackBarModule,
+    MatSnackBarModule, 
     /*JwtModule.forRoot({  
       config: {
         tokenGetter,

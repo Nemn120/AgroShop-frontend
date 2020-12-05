@@ -16,13 +16,13 @@
 
         <mat-form-field appearance="outline" style="width: 100%;">
             <mat-label>Descripcion</mat-label>
-            <textarea class="area" matInput rows="2" formControlName="description" [formGroup]="form" [(ngModel)]="jobOffer.description" required></textarea>
+            <input matInput formControlName="description" [formGroup]="form" [(ngModel)]="jobOffer.description" required>
         </mat-form-field>
 
 
         <mat-form-field appearance="outline" style="width: 100%;">
             <mat-label>Requerimientos</mat-label>
-            <textarea class="area" matInput rows="2" formControlName="requirements" [formGroup]="form" [(ngModel)]="jobOffer.requirements" required></textarea>
+            <input matInput formControlName="requirements" [formGroup]="form" [(ngModel)]="jobOffer.requirements" required>
         </mat-form-field>
 
         <div style="display: flex;">
