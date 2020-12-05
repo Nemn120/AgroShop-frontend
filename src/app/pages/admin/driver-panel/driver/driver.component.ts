@@ -6,6 +6,7 @@ import Swal from 'sweetalert2';
 import { MatTableDataSource } from '@angular/material/table';
 import { InfoDriverComponent } from '../info-driver/info-driver.component';
 import { MatDialog } from '@angular/material/dialog';
+//import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-driver',
@@ -26,7 +27,8 @@ export class DriverComponent implements OnInit {
 
   constructor(
     private restService: RestService,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    //private router: Router,
   ) { this.getListDriverByStatus('Aceptado'); }
 
   ngOnInit(): void {
@@ -103,5 +105,10 @@ export class DriverComponent implements OnInit {
       data: driver
     });
   }
+/*
+  openInfoDriverModal(driver: any): void {
 
+    this.router.navigate(['driver/profile',{driver:JSON.stringify(driver)}]);
+  }
+*/
 }

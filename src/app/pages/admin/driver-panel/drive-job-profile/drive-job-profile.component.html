@@ -1,0 +1,80 @@
+<h2>Perfil Laboral
+    <mat-icon style="margin-left: 55%;" class="material-icons" *ngIf="!this.edit">work</mat-icon>
+    <mat-icon style="margin-left: 55%;" *ngIf="this.edit">work_outline</mat-icon>
+</h2>
+<br>
+<mat-form-field appearance="fill" style="width: 100%;">
+    <mat-label>Descripción</mat-label>
+    <input matInput [(ngModel)]="this.jobProfileBean.descriptionPerfil" placeholder="Ingresar su descripcion" [readonly]="!this.edit">
+    <!--<textarea matInput [(ngModel)]="this.jobProfileBean.descriptionPerfil" placeholder="Ingresar su descripcion" [readonly]="!this.edit"></textarea>-->
+</mat-form-field>
+
+<br>
+<mat-form-field appearance="fill" style="width: 49%;">
+    <mat-label>Grado academico</mat-label>
+    <input matInput [(ngModel)]="this.jobProfileBean.academicDegree" placeholder="Ingresar su grado academico" [readonly]="!this.edit">
+</mat-form-field>
+
+<mat-form-field appearance="fill" style="margin-left: 2%;width: 49%;">
+    <mat-label>Situacion Actual</mat-label>
+    <input matInput [(ngModel)]="this.jobProfileBean.currentSituation" placeholder="Ingresar su situacion actual" [readonly]="!this.edit">
+</mat-form-field>
+<br>
+<mat-form-field appearance="fill" style="width: 49%;">
+    <mat-label>Salario minimo</mat-label>
+    <input matInput type="number" [(ngModel)]="this.jobProfileBean.minSalaryAccept" placeholder="Ingresar su salario minimo" [readonly]="!this.edit">
+</mat-form-field>
+
+<mat-form-field appearance="fill" style="margin-left: 2%;width: 49%;">
+    <mat-label>Tipo de disponibilidad</mat-label>
+    <input matInput [(ngModel)]="this.jobProfileBean.typeOfAvailability" placeholder="Ingresar su tipo de disponibilidad" [readonly]="!this.edit">
+</mat-form-field>
+<br>
+<mat-form-field appearance="fill" style="width: 49%;">
+    <mat-label>Tipo de Licencia</mat-label>
+    <input matInput [(ngModel)]="this.jobProfileBean.typeOfLicense" placeholder="Ingresar su tipo de licencia" [readonly]="!this.edit">
+</mat-form-field>
+
+<mat-form-field appearance="fill" style="margin-left: 2%;width: 49%;">
+    <mat-label>Años de Experiencia</mat-label>
+    <input matInput type="number" [(ngModel)]="this.jobProfileBean.yearsOfExperience" placeholder="Ingresar sus años de experiencia" [readonly]="!this.edit">
+</mat-form-field>
+<br>
+<br>
+<button style="width: 33.3%;" mat-raised-button color="primary" [disabled]="this.edit" (click)="editProfile()">Editar</button>
+<button style="width: 33.4%;" mat-raised-button color="primary" [disabled]="!this.edit" (click)="guardarProfile()">Guardar</button>
+<button style="width: 33.3%;" mat-raised-button color="accent" (click)="close()">Cancelar</button>
+<!--
+        <br>
+        <mat-form-field>
+            <mat-label>Producto</mat-label>
+            <mat-select [(ngModel)]="this.productSalesSelect.product" required>
+                <mat-option *ngFor="let p of productos" [value]="p">
+                    {{p.name}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+        -->
+<!--
+        <br>
+        <mat-form-field>
+            <mat-label>Precio</mat-label>
+            <input matInput type="number" [(ngModel)]="this.productSalesSelect.price" value="0" min="0">
+        </mat-form-field>
+        <br>
+        <mat-form-field>
+            <mat-label>Cantidad Total</mat-label>
+            <input matInput type="number" [(ngModel)]="this.productSalesSelect.totalQuantity" min="0">
+        </mat-form-field>
+      
+        <br>
+
+        <mat-form-field>
+            <mat-label>Estado</mat-label>
+            <mat-select [(ngModel)]="this.productSalesSelect.status">
+                <mat-option *ngFor="let e of estados" [value]="e">
+                    {{e}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+-->
