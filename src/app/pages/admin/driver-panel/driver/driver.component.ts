@@ -53,12 +53,6 @@ export class DriverComponent implements OnInit {
 
     Swal.fire({
       title: 'Seguro de cambiar el estado?',
-      showClass: {
-        popup: 'animate__animated animate__fadeInDown'
-      },
-      hideClass: {
-        popup: 'animate__animated animate__fadeOutUp'
-      },
       icon: 'warning',
       showCancelButton: true,
       confirmButtonColor: 'green',

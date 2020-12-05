@@ -1,0 +1,28 @@
+<div class="container">
+    <h1 mat-dialog-title>Datos de las postulaciones</h1>
+    <div class="img-container">
+        <img class="perfil-img" src="../../../../../assets/images/FondoAgroShop.png">
+    </div>
+    <div mat-dialog-content>
+        <p>Fecha de postulación: {{data.postulationDate | date}}</p>
+        <p>Estado: {{data.statusPostulation}}</p>
+        <p *ngIf="data.detail">Detalles: {{data.detail}}</p>
+        <p *ngIf="data.reply">Nueva Propuesta: {{data.reply}}</p>
+
+        <h1 mat-dialog-title>Datos de la oferta</h1>
+
+        <p>Estado: {{data.jobOffer.statusOffer}}</p>
+        <p>Nombre: {{data.jobOffer.title}}</p>
+        <p>Costo: {{data.jobOffer.shippingCost | currency: 'S/.'}}</p>
+        <p>Finaliza: {{data.jobOffer.finalDate | date}}</p>
+        <p>Descripción: {{data.jobOffer.description}}</p>
+        <p>Requerimientos: {{data.jobOffer.requirements}}</p>
+
+        <h1 mat-dialog-title>Datos del conductor</h1>
+
+        <p>Conductor: {{data.driver.user.nombre}} {{data.driver.user.lastName}}</p>
+        <p>N° licencia: {{data.driver.driverLicenseNumber}}</p>
+        <p>Años de experiencia: {{data.driver.yearsOfExperience}}</p>
+        <p>Perfil: {{data.driver.user.profile.description}}</p>
+    </div>
+</div>
