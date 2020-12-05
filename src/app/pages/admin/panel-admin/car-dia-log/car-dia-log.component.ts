@@ -95,7 +95,8 @@ export class CarDiaLogComponent implements OnInit {
       orderSend.orderDetailList=this.orderDetailListSelect;
         this.dialogo
         .open(DataClientComponent, {
-          width:'25%',
+          width:'35%',
+          disableClose: true,
           data:orderSend
         })
     }

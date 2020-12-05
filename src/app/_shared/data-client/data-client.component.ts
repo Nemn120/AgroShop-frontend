@@ -9,6 +9,7 @@ import { OrderService } from 'src/app/_service/order.service';
 import { ClientBean } from 'src/app/_model/ClientBean';
 import { SharedService } from 'src/app/_service/shared.service';
 import { RestService } from 'src/app/_service/rest.service';
+import { UbigeoBean } from 'src/app/_model/UbigeoBean';
 
 @Component({
   selector: 'app-data-client',
@@ -22,7 +23,13 @@ export class DataClientComponent implements OnInit {
   address: FormControl;
   reference: FormControl;
   phone: FormControl;
-  maxDate: FormControl;
+  destinationProvince: FormControl;
+  destinationRegion: FormControl;
+  destinationDistrict: FormControl;
+  districtList:UbigeoBean[]=[];
+  provinceList:UbigeoBean[]=[];
+  regionList:UbigeoBean[]=[];
+  regionCode:string;
   title: string = "Lugar de entrega";
   buttonTitle: string = "Enviar Orden";
   isUpdateOrder: boolean = false;
@@ -44,6 +51,9 @@ export class DataClientComponent implements OnInit {
     this.order.address = this.form.value['address'];
     this.order.reference = this.form.value['reference'];
     this.order.phone = this.form.value['phone'];
+    this.order.destinationRegion=this.form.value['destinationRegion'];
+    this.order.destinationProvince=this.form.value['destinationProvince'];
+    this.order.destinationDistrict=this.form.value['destinationDistrict'];
     this.order.client = new ClientBean();
     this.order.client=this.sharedData.userSession;
     Swal.fire({
@@ -108,15 +118,21 @@ export class DataClientComponent implements OnInit {
 
 
   ngOnInit(): void {
-
+    this.listarRegiones();
     this.address = new FormControl(''),
-      this.reference = new FormControl(''),
-      this.phone = new FormControl(''),
+    this.reference = new FormControl(''),
+    this.phone = new FormControl(''),
+    this.destinationRegion= new FormControl(''),
+    this.destinationProvince=new FormControl(''),
+    this.destinationDistrict=new FormControl(''),
 
       this.form = this.fb.group({
         'address': this.address,
         'reference': this.reference,
         'phone': this.phone,
+        'destinationRegion':this.destinationRegion,
+        'destinationProvince':this.destinationProvince,
+        'destinationDistrict':this.destinationDistrict,
 
       });
 
@@ -131,5 +147,48 @@ export class DataClientComponent implements OnInit {
   confirmado(): void {
     this.dialogo.close(true);
   }
+
+  public listarRegiones() :Promise<any>{
+    return new Promise((resolve,reject)=>{
+      this.restService.requestApiRestData("ubigeo/grl", {}).subscribe((result: any) => {
+        result.datalist.forEach(ubigeo=>{
+          this.regionList.push(ubigeo)  
+        })
+        resolve("success")
+      }, error => {
+        console.error(error);
+      });
+    });
+  }
+
+  public listarProvinciasSegunIdRegion(event: any) {
+    let params = {
+      data: {
+        codigoDepartamento: event.value
+      }
+    }
+    this.restService.requestApiRestData("ubigeo/gpbr", params).subscribe((result: any) => {
+      this.regionCode = event.value
+      this.provinceList = result.datalist;
+      this.districtList = [];
+    }, error => {
+      console.error(error);
+    });
+  }
+
+  public listarDistritosSegunIdProvincia(event: any) {
+    let params = {
+      data: {
+        codigoProvincia: event.value,
+        codigoDepartamento: this.regionCode
+      }
+    }
+    this.restService.requestApiRestData("ubigeo/gdbpr", params).subscribe((result: any) => {
+      this.districtList = result.datalist;
+    }, error => {
+      console.error(error);
+    });
+  }
+
 
 }
