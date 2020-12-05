@@ -17,6 +17,10 @@
       <mat-icon class="user-menu-icon">email</mat-icon>Mensajes
     </button>
     -->
+    <div class="sign-button-wrapper" *ngIf="this.user.typeUser=='DRIVER'">
+        <button class="sign-button" mat-flat-button (click)="openProfileJob()">Perfil Laboral</button>
+    </div>
+
     <div class="sign-button-wrapper">
         <button class="sign-button" mat-flat-button (click)="signOutEmit()">Cerrar sesión</button>
     </div>
