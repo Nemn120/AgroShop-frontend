@@ -1,15 +1,15 @@
+import { MainBean } from './MainBean';
 import { OrderBean } from './OrderBean';
 
-export class JobOfferBean {
+export class JobOfferBean extends MainBean {
 
-  id: number;
-  startDate: Date;
-  finalDate: Date;
-  statusOffer: string;
-  description: string;
-  title: string;
-  shippingCost: number;
-  requirements: string;
-  order: OrderBean;
-
+     finalDate: Date;
+     statusOffer: string;
+     description: string;
+     title: string;
+     shippingCost: number;
+     requirements: string;
+     totalWeight: number;
+     departmentOrigin: string;
+     order: OrderBean;
 }

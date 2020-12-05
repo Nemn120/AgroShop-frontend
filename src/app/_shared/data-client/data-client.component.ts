@@ -4,7 +4,6 @@ import { OrderBean } from '../../_model/OrderBean';
 import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import Swal from 'sweetalert2';
-import { OrderDetailBean } from 'src/app/_model/OrderDetailBean';
 import { OrderDetailComponent } from '../order-detail/order-detail.component';
 import { OrderService } from 'src/app/_service/order.service';
 import { ClientBean } from 'src/app/_model/ClientBean';
