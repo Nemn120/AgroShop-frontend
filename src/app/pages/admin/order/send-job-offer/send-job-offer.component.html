@@ -7,12 +7,31 @@
 <div mat-dialog-content>
 
     <form [formGroup]="form" (ngSubmit)="publicarOferta()" #frmUsuario="ngForm">
+        <div style="display: flex;">
+            <div style=" width: 33%;">
+                        <mat-form-field appearance="outline" style="width: 95%;">
+                                <mat-label>Titulo</mat-label>
+                                <input matInput formControlName="title" [formGroup]="form" [(ngModel)]="jobOffer.title" required>
+                        </mat-form-field>
+            </div>
 
-        <mat-form-field appearance="outline" style="width: 100%;">
-            <mat-label>Titulo</mat-label>
-            <input matInput formControlName="title" [formGroup]="form" [(ngModel)]="jobOffer.title" required>
-        </mat-form-field>
+            <div style=" width: 33%;">
+                <mat-form-field appearance="outline" style="width: 95%;">
+                    <mat-label>Costo de envio (soles) </mat-label>
+                    <input matInput type="number" formControlName="shippingCost" [formGroup]="form" [(ngModel)]="jobOffer.shippingCost" onkeypress="return event.charCode >= 48 && event.charCode <=57" min="1" required>      
+                </mat-form-field>
+            
+            </div>
 
+            <div style="width: 34%;">
+                <mat-form-field appearance="outline" style="width: 100%;">
+                    <mat-label>Dia final a postular</mat-label>
+                    <input matInput [matDatepicker]="picker" [min]="minDate" formControlName="finalDate" [formGroup]="form" [(ngModel)]="jobOffer.finalDate" required>
+                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker ></mat-datepicker>
+                </mat-form-field>
+            </div>
+        </div> 
 
         <mat-form-field appearance="outline" style="width: 100%;">
             <mat-label>Descripcion</mat-label>
@@ -26,31 +45,40 @@
         </mat-form-field>
 
         <div style="display: flex;">
-            <div style=" width: 33%;">
-                <mat-form-field appearance="outline" style="width: 95%;">
-                    <mat-label>Costo de envio (soles) </mat-label>
-                    <input matInput type="number" formControlName="shippingCost" [formGroup]="form" [(ngModel)]="jobOffer.shippingCost" onkeypress="return event.charCode >= 48 && event.charCode <=57" min="1" required>      
-                </mat-form-field>
             
-            </div>
             <div style="width: 33%;">
                 <mat-form-field appearance="outline" style="width: 95%;">
-                    <mat-label>Departamento de origen</mat-label>
-                    <mat-select formControlName="departmentOrigin" [formGroup]="form" [(ngModel)]="jobOffer.departmentOrigin" required>      
-                        <mat-option *ngFor="let d of dept" [value]="d">
-                            {{d}}
-                          </mat-option>
+                    <mat-label>Departamento origen</mat-label>
+                    <mat-select formControlName="originRegion" [formGroup]="form" [(ngModel)]="jobOffer.originRegion" (selectionChange)="listarProvinciasSegunIdRegion($event)" required>
+                            <mat-option *ngFor="let region of this.regionList" [value]="region.codigoDepartamento">
+                                {{region.nombreUbigeo}}
+                            </mat-option>
                     </mat-select>
                 </mat-form-field>
             </div>
-            <div style="width: 34%;">
-                <mat-form-field appearance="outline" style="width: 100%;">
-                    <mat-label>Dia final a postular</mat-label>
-                    <input matInput [matDatepicker]="picker" [min]="minDate" formControlName="finalDate" [formGroup]="form" [(ngModel)]="jobOffer.finalDate" required>
-                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-                    <mat-datepicker #picker ></mat-datepicker>
+
+            <div style="width: 33%;">
+                <mat-form-field appearance="outline" style="width: 95%;">
+                    <mat-label>Provincia</mat-label>
+                    <mat-select formControlName="originProvince" [formGroup]="form" [(ngModel)]="jobOffer.originProvince" (selectionChange)="listarDistritosSegunIdProvincia($event)" required>
+                            <mat-option *ngFor="let province of this.provinceList" [value]="province.codigoProvincia">
+                                {{province.nombreUbigeo}}
+                            </mat-option>
+                    </mat-select>
                 </mat-form-field>
             </div>
+
+            <div style="width: 33%;">
+                <mat-form-field appearance="outline" style="width: 95%;">
+                    <mat-label>Distrito</mat-label>
+                    <mat-select formControlName="originDistrict" [formGroup]="form" [(ngModel)]="jobOffer.originDistrict" required>
+                            <mat-option *ngFor="let district of this.districtList" [value]="district.codigoDistrito">
+                                {{district.nombreUbigeo}}
+                            </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            
         </div>
 
        

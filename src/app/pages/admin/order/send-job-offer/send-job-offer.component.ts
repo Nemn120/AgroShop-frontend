@@ -7,6 +7,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import Swal from 'sweetalert2';
 import { SharedService } from 'src/app/_service/shared.service';
 import { RestService } from 'src/app/_service/rest.service';
+import { UbigeoBean } from 'src/app/_model/UbigeoBean';
 
 @Component({
   selector: 'app-send-job-offer',
@@ -19,14 +20,17 @@ export class SendJobOfferComponent implements OnInit {
    title: FormControl;
    description: FormControl;
    requirements: FormControl;
-   departmentOrigin: FormControl;
+   originProvince: FormControl;
+   originRegion: FormControl;
+   originDistrict: FormControl;
    shippingCost:FormControl;
    finalDate:Date;
    action: string = 'SUCCESS';
    minDate: Date;
-   dept: string[] = ['Amazonas','Ancash','Apurimac','Arequipa',' Ayacucho',
-  'Cajamarca','Callao','Cuzco','Huancavelica','Huanuco','Ica','Junin','La Libertad', 'Lambayeque',
-  'Lima','Loreto','Madre de Dios','Moquegua','Pasco','Piura','Puno','San Martin','Tacna','Tumbes','Ucayali'];
+   districtList:UbigeoBean[]=[];
+   provinceList:UbigeoBean[]=[];
+   regionList:UbigeoBean[]=[];
+   regionCode:string;
   constructor(
     public dialog: MatDialog, public dialogo: MatDialogRef<SendJobOfferComponent>,
     @Inject(MAT_DIALOG_DATA) public data: OrderBean,
@@ -42,12 +46,14 @@ export class SendJobOfferComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    
+      this.listarRegiones();
       this.jobOffer = new JobOfferBean();
       this.title = new FormControl(''),
       this.description = new FormControl(''),
       this.requirements = new FormControl(''),
-      this.departmentOrigin = new FormControl(''),
+      this.originRegion = new FormControl(''),
+      this.originProvince = new FormControl(''),
+      this.originDistrict = new FormControl(''),
       this.shippingCost = new FormControl(''),
       this.finalDate = new Date(),
 
@@ -55,7 +61,9 @@ export class SendJobOfferComponent implements OnInit {
         'title': this.title,
         'description': this.description,
         'requirements': this.requirements,
-        'departmentOrigin': this.departmentOrigin,
+        'originRegion': this.originRegion,
+        'originProvince': this.originProvince,
+        'originDistrict': this.originDistrict,
         'shippingCost': this.shippingCost,
         'finalDate': this.finalDate,
 
@@ -70,7 +78,9 @@ export class SendJobOfferComponent implements OnInit {
     this.jobOffer.description = this.form.value['description'];
     this.jobOffer.requirements = this.form.value['requirements'];
     this.jobOffer.shippingCost=this.form.value['shippingCost'];
-    this.jobOffer.departmentOrigin=this.form.value['departmentOrigin'];
+    this.jobOffer.originRegion=this.form.value['originRegion'];
+    this.jobOffer.originProvince=this.form.value['originProvince'];
+    this.jobOffer.originDistrict=this.form.value['originDistrict'];
     this.jobOffer.finalDate=this.form.value['finalDate'];
     Swal.fire({
       title: 'Esta seguro de publicar la oferta laboral?',
@@ -110,5 +120,47 @@ export class SendJobOfferComponent implements OnInit {
 
   closeDialog(): void {
     this.dialogo.close();
+  }
+
+  public listarRegiones() :Promise<any>{
+    return new Promise((resolve,reject)=>{
+      this.restService.requestApiRestData("ubigeo/grl", {}).subscribe((result: any) => {
+        result.datalist.forEach(ubigeo=>{
+          this.regionList.push(ubigeo)  
+        })
+        resolve("success")
+      }, error => {
+        console.error(error);
+      });
+    });
+  }
+
+  public listarProvinciasSegunIdRegion(event: any) {
+    let params = {
+      data: {
+        codigoDepartamento: event.value
+      }
+    }
+    this.restService.requestApiRestData("ubigeo/gpbr", params).subscribe((result: any) => {
+      this.regionCode = event.value
+      this.provinceList = result.datalist;
+      this.districtList = [];
+    }, error => {
+      console.error(error);
+    });
+  }
+
+  public listarDistritosSegunIdProvincia(event: any) {
+    let params = {
+      data: {
+        codigoProvincia: event.value,
+        codigoDepartamento: this.regionCode
+      }
+    }
+    this.restService.requestApiRestData("ubigeo/gdbpr", params).subscribe((result: any) => {
+      this.districtList = result.datalist;
+    }, error => {
+      console.error(error);
+    });
   }
 }

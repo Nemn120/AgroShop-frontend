@@ -44,7 +44,30 @@ export class DataClientComponent implements OnInit {
     private restService:RestService
 
   ) { }
+  
+  ngOnInit(): void {
+    this.listarRegiones();
+    this.order=new OrderBean();
+    this.address = new FormControl(''),
+    this.reference = new FormControl(''),
+    this.phone = new FormControl(''),
+    this.destinationRegion= new FormControl(''),
+    this.destinationProvince=new FormControl(''),
+    this.destinationDistrict=new FormControl(''),
 
+      this.form = this.fb.group({
+        'address': this.address,
+        'reference': this.reference,
+        'phone': this.phone,
+        'destinationRegion':this.destinationRegion,
+        'destinationProvince':this.destinationProvince,
+        'destinationDistrict':this.destinationDistrict,
+
+      });
+
+
+  }
+  
   enviarOrden() {
 
     this.order = this.data;
@@ -116,29 +139,6 @@ export class DataClientComponent implements OnInit {
 
   }
 
-
-  ngOnInit(): void {
-    this.listarRegiones();
-    this.order=new OrderBean();
-    this.address = new FormControl(''),
-    this.reference = new FormControl(''),
-    this.phone = new FormControl(''),
-    this.destinationRegion= new FormControl(''),
-    this.destinationProvince=new FormControl(''),
-    this.destinationDistrict=new FormControl(''),
-
-      this.form = this.fb.group({
-        'address': this.address,
-        'reference': this.reference,
-        'phone': this.phone,
-        'destinationRegion':this.destinationRegion,
-        'destinationProvince':this.destinationProvince,
-        'destinationDistrict':this.destinationDistrict,
-
-      });
-
-
-  }
   public hasError = (controlName: string, errorName: string) => {
     return this.form.controls[controlName].hasError(errorName);
   }
