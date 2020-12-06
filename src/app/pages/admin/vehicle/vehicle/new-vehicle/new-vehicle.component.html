@@ -5,7 +5,7 @@
         <hr>
         <br>
 <form>
-    <div style="display: flex; flex-wrap: wrap; justify-content: center;">
+    <div style="display: flex; flex-wrap: wrap; justify-content: space-around;">
         <mat-form-field appearance="outline">
             <mat-label>Numero de placa</mat-label>
             <input matInput [(ngModel)]="this.vehicle.plateNumber" name="plateNumber" required>
@@ -42,23 +42,23 @@
                 </mat-option>
             </mat-select>
         </mat-form-field>
-    </div>
-        <p class="subtitles" style="margin-top: 0;">Pesos</p>
-        <hr>
-    <div style="display: flex; flex-wrap: wrap; justify-content: center;">
-        <mat-form-field appearance="outline" >
-            <mat-label>Peso neto</mat-label>
-            <input matInput [(ngModel)]="this.vehicle.netWeight" name="netWeight" type="number" required>
-            <span matSuffix> t</span>
-        </mat-form-field>
-        <mat-form-field appearance="outline">
-            <mat-label>Peso bruto</mat-label>
-            <input matInput [(ngModel)]="this.vehicle.grossWeight" name="grossWeight" type="number" required>
-            <span matSuffix> t</span>
-        </mat-form-field>
-        <button mat-raised-button color="primary" onclick="document.getElementById('flArchivo').click();" class="btn-select">Seleccionar Archivo</button>
+</div>
+    <p class="subtitles" style="margin-top: 0;">Pesos</p>
+    <hr>
+<div style="display: flex; flex-wrap: wrap; justify-content: space-around;">
+    <mat-form-field appearance="outline" >
+        <mat-label>Peso neto</mat-label>
+        <input matInput [(ngModel)]="this.vehicle.netWeight" name="netWeight" type="number" required>
+        <span matSuffix> t</span>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+        <mat-label>Peso bruto</mat-label>
+        <input matInput [(ngModel)]="this.vehicle.grossWeight" name="grossWeight" type="number" required>
+        <span matSuffix> t</span>
+    </mat-form-field>
+        <button mat-raised-button color="primary" onclick="document.getElementById('flArchivo').click();" class="btn-select">Seleccionar Imagen</button>
         <input id="flArchivo" type="file" (change)="selectFile($event)" style="display: none">
-        <div style="width: 100%;">
+        <div style="width: 90%;">
             <img mat-card-image [src]="imagenData" *ngIf="imagenEstado" style="display: block; width:180px ;height:180px;margin: auto;" />
         </div>
         <p style="color: red; justify-content: center; margin-bottom: 0;">{{labelFile}}</p>
