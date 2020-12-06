@@ -12,4 +12,8 @@ export class JobOfferBean extends MainBean {
      totalWeight: number;
      departmentOrigin: string;
      order: OrderBean;
+
+    originProvince: string;
+    originRegion: string;
+    originDistrict: string;
 }

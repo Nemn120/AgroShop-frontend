@@ -93,7 +93,7 @@ export class ProductFormComponent implements OnInit {
   listCategories() {
     let param = {
       data: {
-        userCreateId: 1
+        userCreateId: this.sharedService.userSession.id
       }
     }
     this.restService.requestApiRestData('categoryproduct/gcp', param).subscribe(data => {

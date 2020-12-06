@@ -36,17 +36,12 @@ export class ProductListComponent implements OnInit {
 
 
     this.restService.messageChange.subscribe(data => {
-      console.log('messageChange: ',data);
       this.listProduct();
       this.restService.message(data.message, data.action);
     });
 
   }
 
-  //list product all
-  //this.restService.requestApiRestData('product/gap',param)
-
-  //list products
   public listProduct() {
 
     let param = {
@@ -85,12 +80,10 @@ export class ProductListComponent implements OnInit {
     }
 
     this.restService.requestApiRestData('product/dp', param).subscribe(data => {
-      console.log('se elimino con exito!', data);
       this.restService.message('Producto eliminado con exito!', 'Delete');
       this.listProduct();
 
     },error => {
-      console.log("Error al eliminar producto! ", error);
       this.restService.message('Error al eliminar producto!', 'Error');
     });
 
