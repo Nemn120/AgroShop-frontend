@@ -23,8 +23,8 @@ export class DataClientComponent implements OnInit {
   address: FormControl;
   reference: FormControl;
   phone: FormControl;
-  destinationProvince: FormControl;
   destinationRegion: FormControl;
+  destinationProvince: FormControl;
   destinationDistrict: FormControl;
   districtList:UbigeoBean[]=[];
   provinceList:UbigeoBean[]=[];
@@ -119,6 +119,7 @@ export class DataClientComponent implements OnInit {
 
   ngOnInit(): void {
     this.listarRegiones();
+    this.order=new OrderBean();
     this.address = new FormControl(''),
     this.reference = new FormControl(''),
     this.phone = new FormControl(''),

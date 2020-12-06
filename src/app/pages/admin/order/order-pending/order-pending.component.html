@@ -10,10 +10,6 @@
                 <td mat-cell *matCellDef="let row"> {{row.id}} </td>
             </ng-container>
 
-            <ng-container matColumnDef="attentDate" style="width: 13%;">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header> Fecha </th>
-                <td mat-cell *matCellDef="let row"> {{row.createDate | date:'dd/MM/yyyy HH:mm:ss'}} </td>
-            </ng-container>
 
             <ng-container matColumnDef="address" style="width: 13%;">
                 <th mat-header-cell *matHeaderCellDef mat-sort-header> Direccion</th>
@@ -25,9 +21,24 @@
                 <td mat-cell *matCellDef="let row"> {{row.phone}} </td>
             </ng-container>
 
-            <ng-container matColumnDef="total" style="width: 13%;">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header> Total</th>
-                <td mat-cell *matCellDef="let row"> S/.{{row.total}} </td>
+            <ng-container matColumnDef="reference" style="width: 13%;">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Referencia</th>
+                <td mat-cell *matCellDef="let row"> {{row.reference}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="destinationRegion" style="width: 13%;">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Departamento</th>
+                <td mat-cell *matCellDef="let row"> {{row.destinationRegion}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="destinationProvince" style="width: 13%;">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Provincia</th>
+                <td mat-cell *matCellDef="let row"> {{row.destinationProvince}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="destinationDistrict" style="width: 13%;">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Distrito</th>
+                <td mat-cell *matCellDef="let row"> {{row.destinationDistrict}} </td>
             </ng-container>
 
 
