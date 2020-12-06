@@ -13,7 +13,7 @@ const routes: Routes = [
     path: 'company', loadChildren: () => import('./pages/admin/company/company.module').then(m => m.CompanyModule)
   },
   {
-    path: 'product', loadChildren: () => import('./pages/admin/product/product.module').then(m => m.ProductModule),
+    path: 'product', loadChildren: () => import('./pages/admin/product/product.module').then(m => m.ProductModule)
     
   },
   { path: 'vehicle', loadChildren: () => import('./pages/admin/vehicle/vehicle.module').then(m => m.VehicleModule)
@@ -29,7 +29,7 @@ const routes: Routes = [
     path: 'auth', loadChildren: () => import('./pages/authorization/authorization.module').then(m => m.AuthorizationModule)
   },
 
-  { path: '**', pathMatch: 'full', redirectTo: '/driver/list' },
+  { path: '**', pathMatch: 'full', redirectTo: '' },
 ];
 
 @NgModule({

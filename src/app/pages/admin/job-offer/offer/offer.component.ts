@@ -2,8 +2,10 @@ import { ChangeDetectorRef, Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
+import { rejects } from 'assert';
 import { Observable } from 'rxjs';
 import { JobOfferByFields } from 'src/app/_model/JobOfferByFields';
+import { UbigeoBean } from 'src/app/_model/UbigeoBean';
 import { RestService } from 'src/app/_service/rest.service';
 import { OfferDetailComponent } from '../offer-detail/offer-detail.component';
 @Component({
@@ -23,7 +25,10 @@ export class OfferComponent implements OnInit {
   , 'Tacna', 'Tumbes', 'Ucayali'];
   name: string;
   lastName: string;
-
+  districtList:UbigeoBean[]=[];
+  provinceList:UbigeoBean[]=[];
+  regionList:UbigeoBean[]=[];
+  regionCode:string;
   constructor(
     public dialog: MatDialog,
     private changeDetectorRef: ChangeDetectorRef,
@@ -31,6 +36,7 @@ export class OfferComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.listarRegiones();
     this.listOffer();
   }
 
@@ -47,6 +53,47 @@ export class OfferComponent implements OnInit {
     if (this.dataSource) { 
       this.dataSource.disconnect(); 
     }
+  }
+  public listarRegiones() :Promise<any>{
+    return new Promise((resolve,reject)=>{
+      this.restService.requestApiRestData("ubigeo/grl", {}).subscribe((result: any) => {
+        result.datalist.forEach(ubigeo=>{
+          this.regionList.push(ubigeo)  
+        })
+        resolve("success")
+      }, error => {
+        console.error(error);
+      });
+    });
+  }
+
+  public listarProvinciasSegunIdRegion(event: any) {
+    let params = {
+      data: {
+        codigoDepartamento: event.value
+      }
+    }
+    this.restService.requestApiRestData("ubigeo/gpbr", params).subscribe((result: any) => {
+      this.regionCode = event.value
+      this.provinceList = result.datalist;
+      this.districtList = [];
+    }, error => {
+      console.error(error);
+    });
+  }
+
+  public listarDistritosSegunIdProvincia(event: any) {
+    let params = {
+      data: {
+        codigoProvincia: event.value,
+        codigoDepartamento: this.regionCode
+      }
+    }
+    this.restService.requestApiRestData("ubigeo/gdbpr", params).subscribe((result: any) => {
+      this.districtList = result.datalist;
+    }, error => {
+      console.error(error);
+    });
   }
 
   listOffer(){

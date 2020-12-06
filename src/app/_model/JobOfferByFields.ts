@@ -7,4 +7,8 @@ export class JobOfferByFields{
     priceIni: number;
     priceFin: number;
     idFarmer: number;
+    
+    originProvince:String;
+	originRegion:String;
+	originDistrict:String;
 }
