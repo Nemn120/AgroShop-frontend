@@ -13,23 +13,33 @@ const routes: Routes = [
     path: 'company', loadChildren: () => import('./pages/admin/company/company.module').then(m => m.CompanyModule)
   },
   {
-    path: 'product', loadChildren: () => import('./pages/admin/product/product.module').then(m => m.ProductModule),
-    
+    path: 'product', loadChildren: () => import('./pages/admin/product/product.module').then(m => m.ProductModule)
+
   },
-  { path: 'vehicle', loadChildren: () => import('./pages/admin/vehicle/vehicle.module').then(m => m.VehicleModule)
+  {
+    path: 'vehicle', loadChildren: () => import('./pages/admin/vehicle/vehicle.module').then(m => m.VehicleModule)
   },
-  { path: 'job', loadChildren: () => import('./pages/admin/job-offer/job-offer.module').then(m => m.JobOfferModule)
+  {
+    path: 'postulation', loadChildren: () => import('./pages/admin/postulation/postulation.module').then(m => m.PostulationModule)
   },
-  { path: 'order', loadChildren: () => import('./pages/admin/order/order.module').then(m => m.OrderModule)
+  {
+    path: 'farmer', loadChildren: () => import('./pages/admin/farmer/farmer.module').then(m => m.FarmerModule)
   },
-  { path: 'driver', loadChildren: () => import('./pages/admin/driver-panel/driver-panel.module').then(m => m.DriverPanelModule)
+  {
+    path: 'job', loadChildren: () => import('./pages/admin/job-offer/job-offer.module').then(m => m.JobOfferModule)
+  },
+  {
+    path: 'order', loadChildren: () => import('./pages/admin/order/order.module').then(m => m.OrderModule)
+  },
+  {
+    path: 'driver', loadChildren: () => import('./pages/admin/driver-panel/driver-panel.module').then(m => m.DriverPanelModule)
   }
   ]},
   {
     path: 'auth', loadChildren: () => import('./pages/authorization/authorization.module').then(m => m.AuthorizationModule)
   },
 
-  { path: '**', pathMatch: 'full', redirectTo: '/driver/list' },
+  { path: '**', pathMatch: 'full', redirectTo: '' },
 ];
 
 @NgModule({

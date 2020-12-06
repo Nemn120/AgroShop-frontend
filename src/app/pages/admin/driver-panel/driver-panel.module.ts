@@ -9,7 +9,6 @@ import { DriveJobProfileComponent } from './drive-job-profile/drive-job-profile.
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 const routes: Routes = [
-  { path: '', component: DriverComponent },
   { path: 'list', component: DriverComponent },
   //{ path: 'profile', component: DriverProfileComponent },
   { path: 'profileJob', component: DriveJobProfileComponent }

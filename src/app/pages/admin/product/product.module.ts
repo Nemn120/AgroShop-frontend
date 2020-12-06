@@ -47,7 +47,6 @@ const routes: Routes = [
   imports: [
     CommonModule,
     MaterialModule,
-    PanelAdminModule,
     RouterModule.forChild(routes),
 
     ReactiveFormsModule,
