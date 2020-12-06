@@ -16,7 +16,7 @@ import Swal from 'sweetalert2';
   styleUrls: ['./order-pending.component.scss']
 })
 export class OrderPendingComponent implements OnInit {
-  displayedColumns: string[] = ['id', 'attentDate','address','phone','total','status','actions','message'];
+  displayedColumns: string[] = ['id','address','phone','reference','destinationRegion','destinationProvince','destinationDistrict','status','actions','message'];
   dataSource: MatTableDataSource<OrderBean>;
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatPaginator) paginator: MatPaginator;
@@ -37,18 +37,11 @@ export class OrderPendingComponent implements OnInit {
   public openDetails(order: OrderBean) {
     let ord = order != null ? order : new OrderBean();
     this.dialog.open(OrderDetailsComponent, {
-      width: '750px',
+      width: '500px',
       data: ord,
     });
   }
 
-  public open(order: OrderBean) {
-    Swal.fire({
-      title: 'Este pedido solo tiene un producto',
-      allowOutsideClick:false
-  });
-  
-  }
   
   public sendOffer(order: OrderBean){
     let ord = order != null ? order : new OrderBean();
