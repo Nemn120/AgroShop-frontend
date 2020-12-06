@@ -16,14 +16,24 @@
         <span class="card__init">Fecha Final: <span>{{this.data.finalDate}}</span></span>
         <span>Peso total: <span>{{this.data.totalWeight}}</span></span>
     </div>
+    <p class="card__requer" style="text-align: center; color: #009865;">Ubigeo Inicio</p>
+    <hr>
     <div>
-        <span class="card__init">Departamento Inicio: <span>{{this.data.departmentOrigin}}</span></span>
-        <span>Departamento Fin: <span>{{this.data.order.reference }}</span></span>
+        <span class="card__init">Region Inicio: <span>{{this.data.originRegion}}</span></span>
+        <span>Provincia Inicio: <span>{{this.data.originProvince }}</span></span>
     </div>
+    <span style="text-align: center;">Distrito Inicio: <span>{{this.data.originDistrict }}</span></span>
+    <p class="card__requer" style="text-align: center; color: #009865;">Ubigeo Final</p>
+    <hr>
+    <div>
+        <span class="card__init">Region Final: <span>{{this.data.order.destinationRegion}}</span></span>
+        <span>Provincia Final: <span>{{this.data.order.destinationProvince}}</span></span>
+    </div>
+    <span style="text-align: center;">Distrito Final: <span>{{this.data.order.destinationDistrict }}</span></span>
     <br>
     <p class="card__requer">Propuesta de trabajo:</p>
     <mat-form-field class="example-full-width" appearance="outline">
-        <textarea matInput [(ngModel)]="this.detail" placeholder="Escribir aqui..."></textarea>
+        <textarea matInput [(ngModel)]="this.detail" placeholder="Escribir aqui..." rows="4"></textarea>
     </mat-form-field>
     <br>
     <div style="float: right">

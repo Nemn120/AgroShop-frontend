@@ -10,5 +10,9 @@ export class JobOfferByFields{
     
     originProvince:String;
 	originRegion:String;
-	originDistrict:String;
+    originDistrict:String;
+    
+    destinationProvince:String;
+	destinationRegion:String;
+	destinationDistrict:String;
 }

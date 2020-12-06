@@ -1,49 +1,52 @@
-<p class="offer__title">Listado de Ofertas</p>
+<p class="offer__title">Listado de Ofertas de Trabajos</p>
 <div class="cards">
     <mat-card class="card__search">
         <form>
-            <mat-form-field appearance="outline" class="example-form-field">
-                <mat-label>Id Agricultor</mat-label>
-                <input matInput [(ngModel)]="this.searchJobOffer.idFarmer" name="weightIni" type="number" min="0">
-                <mat-hint *ngIf="this.name!=undefined">{{this.name}} {{this.lastName}}</mat-hint>
-            </mat-form-field>
-            <mat-form-field appearance="fill" class="example-form-field" appearance="outline" name="departmentIni">
-                <mat-label>Departamento Inicio</mat-label>
-                <mat-select name="chefId" [(ngModel)]="this.searchJobOffer.departmentIni">
-                    <mat-option *ngFor="let d of this.departments" [value]="d">
-                        {{d}}
-                    </mat-option>
-                </mat-select>
-            </mat-form-field>
-            <mat-form-field appearance="fill" class="example-form-field" appearance="outline" name="departmentFin">
-                <mat-label>Departamento Final</mat-label>
-                <mat-select name="chefId" [(ngModel)]="this.searchJobOffer.departmentFin">
-                    <mat-option *ngFor="let d of this.departments" [value]="d">
-                        {{d}}
-                    </mat-option>
-                </mat-select>
-            </mat-form-field>
-
             <mat-form-field appearance="outline" class="example-form-field" name="region">
-                <mat-label>Región</mat-label>
+                <mat-label>Región Inicio</mat-label>
                 <mat-select name="regionSelect" (selectionChange)="listarProvinciasSegunIdRegion($event)" [(ngModel)]="this.searchJobOffer.originRegion">
-                    <mat-option *ngFor="let region of this.regionList" [value]="region.codigoDepartamento">
+                    <mat-option *ngFor="let region of this.originRegionList" [value]="region.codigoDepartamento">
                         {{region.nombreUbigeo}}
                     </mat-option>
                 </mat-select>
             </mat-form-field>
             <mat-form-field appearance="outline" class="example-form-field" name="provincia">
-                <mat-label>Provincia</mat-label>
+                <mat-label>Provincia Inicio</mat-label>
                 <mat-select name="provinceSelect" (selectionChange)="listarDistritosSegunIdProvincia($event)" [(ngModel)]="this.searchJobOffer.originProvince">
-                    <mat-option *ngFor="let province of this.provinceList" [value]="province.codigoProvincia">
+                    <mat-option *ngFor="let province of this.originProvinceList" [value]="province.codigoProvincia">
                         {{province.nombreUbigeo}}
                     </mat-option>
                 </mat-select>
             </mat-form-field>
             <mat-form-field appearance="outline" class="example-form-field" name="distrito">
-                <mat-label>Distrito </mat-label>
+                <mat-label>Distrito Inicio</mat-label>
                 <mat-select name="distritoSelect" [(ngModel)]="this.searchJobOffer.originDistrict">
-                    <mat-option *ngFor="let district of this.districtList" [value]="district.codigoDistrito">
+                    <mat-option *ngFor="let district of this.originDistrictList" [value]="district.codigoDistrito">
+                        {{district.nombreUbigeo}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline" class="example-form-field" name="region">
+                <mat-label>Región Final</mat-label>
+                <mat-select name="regionSelect" (selectionChange)="listarProvinciasSegunIdRegionDestination($event)" [(ngModel)]="this.searchJobOffer.destinationRegion">
+                    <mat-option *ngFor="let region of this.destinationRegionList" [value]="region.codigoDepartamento">
+                        {{region.nombreUbigeo}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+            <mat-form-field appearance="outline" class="example-form-field" name="provincia">
+                <mat-label>Provincia Final</mat-label>
+                <mat-select name="provinceSelect" (selectionChange)="listarDistritosSegunIdProvinciaDestination($event)" [(ngModel)]="this.searchJobOffer.destinationProvince">
+                    <mat-option *ngFor="let province of this.destinationProvinceList" [value]="province.codigoProvincia">
+                        {{province.nombreUbigeo}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+            <mat-form-field appearance="outline" class="example-form-field" name="distrito">
+                <mat-label>Distrito Final</mat-label>
+                <mat-select name="distritoSelect" [(ngModel)]="this.searchJobOffer.destinationDistrict">
+                    <mat-option *ngFor="let district of this.destinationDistrictList" [value]="district.codigoDistrito">
                         {{district.nombreUbigeo}}
                     </mat-option>
                 </mat-select>
