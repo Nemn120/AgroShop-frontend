@@ -10,6 +10,7 @@ import { ClientBean } from 'src/app/_model/ClientBean';
 import { SharedService } from 'src/app/_service/shared.service';
 import { RestService } from 'src/app/_service/rest.service';
 import { UbigeoBean } from 'src/app/_model/UbigeoBean';
+import { OrderDetailBean } from 'src/app/_model/OrderDetailBean';
 
 @Component({
   selector: 'app-data-client',
@@ -69,13 +70,13 @@ export class DataClientComponent implements OnInit {
   }
   
   enviarOrden() {
-
-    this.order = this.data;
+    this.order.orderDetailList=[];
+    this.order.orderDetailList = this.data.orderDetailList;
     this.order.address = this.form.value['address'];
     this.order.reference = this.form.value['reference'];
     this.order.phone = this.form.value['phone'];
-    this.order.destinationRegion=this.form.value['destinationRegion'];
-    this.order.destinationProvince=this.form.value['destinationProvince'];
+  //  this.order.destinationRegion=this.form.value['destinationRegion'];
+   // this.order.destinationProvince=this.form.value['destinationProvince'];
     this.order.destinationDistrict=this.form.value['destinationDistrict'];
     this.order.client = new ClientBean();
     this.order.client=this.sharedData.userSession;
@@ -163,13 +164,14 @@ export class DataClientComponent implements OnInit {
   }
 
   public listarProvinciasSegunIdRegion(event: any) {
+    this.order.destinationRegion=event.value.nombreUbigeo
     let params = {
       data: {
-        codigoDepartamento: event.value
+        codigoDepartamento: event.value.codigoDepartamento
       }
     }
     this.restService.requestApiRestData("ubigeo/gpbr", params).subscribe((result: any) => {
-      this.regionCode = event.value
+      this.regionCode = event.value.codigoDepartamento
       this.provinceList = result.datalist;
       this.districtList = [];
     }, error => {
@@ -178,9 +180,10 @@ export class DataClientComponent implements OnInit {
   }
 
   public listarDistritosSegunIdProvincia(event: any) {
+    this.order.destinationProvince=event.value.nombreUbigeo
     let params = {
       data: {
-        codigoProvincia: event.value,
+        codigoProvincia: event.value.codigoProvincia,
         codigoDepartamento: this.regionCode
       }
     }

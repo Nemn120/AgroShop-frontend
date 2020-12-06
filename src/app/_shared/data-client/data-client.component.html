@@ -9,8 +9,8 @@
 
     <form [formGroup]="form" (ngSubmit)="enviarOrden()" #frmUsuario="ngForm">
 
-       
-            
+
+
         <mat-form-field appearance="outline" style="width: 95%;">
             <mat-label>Direccion</mat-label>
             <input matInput formControlName="address" [formGroup]="form" [(ngModel)]="order.address" required>
@@ -20,23 +20,23 @@
             <mat-label>Referencia</mat-label>
             <input matInput formControlName="reference" [formGroup]="form" [(ngModel)]="order.reference" required>
         </mat-form-field>
-            
-       
-        
+
+
+
         <div style="display: flex;">
             <div style=" width: 50%;">
                 <mat-form-field appearance="outline" style="width: 95%;">
                     <mat-label>Telefono</mat-label>
-                    <input matInput formControlName="phone" [formGroup]="form" type="text" onkeypress="return event.charCode >= 48 && event.charCode <=57"  maxlength="9" [(ngModel)]="order.phone" required>
+                    <input matInput formControlName="phone" [formGroup]="form" type="text" onkeypress="return event.charCode >= 48 && event.charCode <=57" maxlength="9" [(ngModel)]="order.phone" required>
                 </mat-form-field>
             </div>
             <div style=" width: 50%;">
                 <mat-form-field appearance="outline" style="width: 95%;">
                     <mat-label>Departamento</mat-label>
-                    <mat-select formControlName="destinationRegion" [formGroup]="form" [(ngModel)]="order.destinationRegion" (selectionChange)="listarProvinciasSegunIdRegion($event)" required>
-                            <mat-option *ngFor="let region of this.regionList" [value]="region.codigoDepartamento">
-                                {{region.nombreUbigeo}}
-                            </mat-option>
+                    <mat-select [formGroup]="form" (selectionChange)="listarProvinciasSegunIdRegion($event)" required>
+                        <mat-option *ngFor="let region of this.regionList" [value]="region">
+                            {{region.nombreUbigeo}}
+                        </mat-option>
                     </mat-select>
                 </mat-form-field>
             </div>
@@ -44,24 +44,24 @@
 
         <div style="display: flex;">
             <div style=" width: 50%;">
-                    <mat-form-field appearance="outline" style="width: 95%;">
-                        <mat-label>Provincia</mat-label>
-                            <mat-select formControlName="destinationProvince" [formGroup]="form" [(ngModel)]="order.destinationProvince" (selectionChange)="listarDistritosSegunIdProvincia($event)" required>
-                                <mat-option *ngFor="let province of this.provinceList" [value]="province.codigoProvincia">
-                                    {{province.nombreUbigeo}}
-                                </mat-option>
-                            </mat-select>
-                    </mat-form-field>
+                <mat-form-field appearance="outline" style="width: 95%;">
+                    <mat-label>Provincia</mat-label>
+                    <mat-select (selectionChange)="listarDistritosSegunIdProvincia($event)" required>
+                        <mat-option *ngFor="let province of this.provinceList" [value]="province">
+                            {{province.nombreUbigeo}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
             </div>
             <div style=" width: 50%;">
-                    <mat-form-field appearance="outline" style="width: 95%;">
-                        <mat-label>Distrito</mat-label>
-                        <mat-select formControlName="destinationDistrict" [formGroup]="form" [(ngModel)]="order.destinationDistrict" required>
-                            <mat-option *ngFor="let district of this.districtList" [value]="district.codigoDistrito">
-                                {{district.nombreUbigeo}}
-                            </mat-option>
-                        </mat-select>
-                    </mat-form-field>
+                <mat-form-field appearance="outline" style="width: 95%;">
+                    <mat-label>Distrito</mat-label>
+                    <mat-select formControlName="destinationDistrict" [(ngModel)]="order.destinationDistrict" required>
+                        <mat-option *ngFor="let district of this.districtList" [value]="district.nombreUbigeo">
+                            {{district.nombreUbigeo}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
             </div>
         </div>
         <button style="width: 100%;" mat-raised-button color="primary" type="submit" [disabled]="frmUsuario.invalid">{{buttonTitle}}</button>
