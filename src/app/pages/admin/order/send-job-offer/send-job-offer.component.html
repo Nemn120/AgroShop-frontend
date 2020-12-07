@@ -4,7 +4,7 @@
 
 <br>
 
-<div mat-dialog-content>
+<div style="display: flex; flex-wrap: wrap; justify-content: center;">
 
     <form [formGroup]="form" (ngSubmit)="publicarOferta()" #frmUsuario="ngForm">
         <div style="display: flex;">
@@ -35,13 +35,13 @@
 
         <mat-form-field appearance="outline" style="width: 100%;">
             <mat-label>Descripcion</mat-label>
-            <input matInput formControlName="description" [formGroup]="form" [(ngModel)]="jobOffer.description" required>
+            <textarea class="area" matInput rows="3" formControlName="description" [formGroup]="form" [(ngModel)]="jobOffer.description" required></textarea>
         </mat-form-field>
 
 
         <mat-form-field appearance="outline" style="width: 100%;">
             <mat-label>Requerimientos</mat-label>
-            <input matInput formControlName="requirements" [formGroup]="form" [(ngModel)]="jobOffer.requirements" required>
+            <textarea class="area" matInput rows="3" formControlName="requirements" [formGroup]="form" [(ngModel)]="jobOffer.requirements" required></textarea>
         </mat-form-field>
 
         <div style="display: flex;">
@@ -49,8 +49,8 @@
             <div style="width: 33%;">
                 <mat-form-field appearance="outline" style="width: 95%;">
                     <mat-label>Departamento origen</mat-label>
-                    <mat-select formControlName="originRegion" [formGroup]="form" [(ngModel)]="jobOffer.originRegion" (selectionChange)="listarProvinciasSegunIdRegion($event)" required>
-                            <mat-option *ngFor="let region of this.regionList" [value]="region.codigoDepartamento">
+                    <mat-select [formGroup]="form" (selectionChange)="listarProvinciasSegunIdRegion($event)" required>
+                            <mat-option *ngFor="let region of this.regionList" [value]="region">
                                 {{region.nombreUbigeo}}
                             </mat-option>
                     </mat-select>
@@ -59,9 +59,9 @@
 
             <div style="width: 33%;">
                 <mat-form-field appearance="outline" style="width: 95%;">
-                    <mat-label>Provincia</mat-label>
-                    <mat-select formControlName="originProvince" [formGroup]="form" [(ngModel)]="jobOffer.originProvince" (selectionChange)="listarDistritosSegunIdProvincia($event)" required>
-                            <mat-option *ngFor="let province of this.provinceList" [value]="province.codigoProvincia">
+                    <mat-label>Provincia de origen</mat-label>
+                    <mat-select (selectionChange)="listarDistritosSegunIdProvincia($event)" required>
+                            <mat-option *ngFor="let province of this.provinceList" [value]="province">
                                 {{province.nombreUbigeo}}
                             </mat-option>
                     </mat-select>
@@ -69,10 +69,10 @@
             </div>
 
             <div style="width: 33%;">
-                <mat-form-field appearance="outline" style="width: 95%;">
-                    <mat-label>Distrito</mat-label>
-                    <mat-select formControlName="originDistrict" [formGroup]="form" [(ngModel)]="jobOffer.originDistrict" required>
-                            <mat-option *ngFor="let district of this.districtList" [value]="district.codigoDistrito">
+                <mat-form-field appearance="outline" style="width: 100%;">
+                    <mat-label>Distrito de origen</mat-label>
+                    <mat-select formControlName="originDistrict" [(ngModel)]="jobOffer.originDistrict" required>
+                            <mat-option *ngFor="let district of this.districtList" [value]="district.nombreUbigeo">
                                 {{district.nombreUbigeo}}
                             </mat-option>
                     </mat-select>

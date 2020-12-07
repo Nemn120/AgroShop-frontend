@@ -45,14 +45,14 @@ export function tokenGetter() {
     MaterialModule,
     FlexLayoutModule,
     PanelAdminModule, 
-    AuthorizationModule,
+    AuthorizationModule, 
     MatSnackBarModule,  
     /*JwtModule.forRoot({  
       config: { 
         tokenGetter,
         whitelistedDomains: ['localhost:8080'],
         blacklistedRoutes: ['http://localhost:8080/oauth/token']
-      } 
+      }  
     }),*/         
     MatFabMenuModule,  
    FormsModule,   
