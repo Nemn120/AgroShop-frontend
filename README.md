@@ -27,7 +27,7 @@ https://5fcc570e8a25c485e510254c--jolly-galileo-f939d6.netlify.app/#/auth/login
 6. Finalmente abrir el navegador de su preferencia y ingrese la siguiente ruta:
   ### http://localhost:4200/
 
-## Equipo de desarrolladores
+## Equipo de desarrolladores Frontend
 
   ### Barrozo Figueroa Osti Katriel
   ### Chavez Chavez Fernando
