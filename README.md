@@ -2,13 +2,13 @@
 
 El plan elaborado para el proyecto AgroShop busca poder cumplir con las expectativas de los usuarios al mejorar, facilitar, automatizar y expandir la oferta y demanda de productos agrícolas a nivel nacional para el beneficio del  consumo interno del pais.
 
-## Estado del proyecto
-
-En desarrollo.
-
 ## Año de elaboracion
 
 2020
+
+## Estado del proyecto
+
+En desarrollo.
 
 ## Demo
 
@@ -27,7 +27,7 @@ https://5fcc570e8a25c485e510254c--jolly-galileo-f939d6.netlify.app/#/auth/login
 6. Finalmente abrir el navegador de su preferencia y ingrese la siguiente ruta:
   ### http://localhost:4200/
 
-## Desarrolladores
+## Equipo de desarrolladores
 
   ### Barrozo Figueroa Osti Katriel
   ### Chavez Chavez Fernando
