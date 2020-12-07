@@ -18,7 +18,7 @@ https://5fcc570e8a25c485e510254c--jolly-galileo-f939d6.netlify.app/#/auth/login
 3. Descargar las dependencias necesarias para el correcto funcionamiento del proyecto, mediante el siguiente comando:
    ### npm install
 4. Abrir el proyecto con el editor de su preferencia, para nuestro caso se uso el Visual Studio Code.
-5. Mediante la consola interna del editor ejecutar el siguiente comando para la ejecucion del proyecto de manera local.
+5. Mediante la consola interna del editor ejecutar el siguiente comando para la ejecucion del proyecto de manera local:
   ### ng serve
 6. Finalmente abrir el navegador de su preferencia y ingrese la siguiente ruta:
   ### http://localhost:4200/
