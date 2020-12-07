@@ -72,14 +72,14 @@ export class SendJobOfferComponent implements OnInit {
   }
 
   publicarOferta(){
-    this.jobOffer= new JobOfferBean();
+    
     this.jobOffer.order = this.data;
     this.jobOffer.title = this.form.value['title'];
     this.jobOffer.description = this.form.value['description'];
     this.jobOffer.requirements = this.form.value['requirements'];
     this.jobOffer.shippingCost=this.form.value['shippingCost'];
-    this.jobOffer.originRegion=this.form.value['originRegion'];
-    this.jobOffer.originProvince=this.form.value['originProvince'];
+    //this.jobOffer.originRegion=this.form.value['originRegion'];
+    //this.jobOffer.originProvince=this.form.value['originProvince'];
     this.jobOffer.originDistrict=this.form.value['originDistrict'];
     this.jobOffer.finalDate=this.form.value['finalDate'];
     Swal.fire({
@@ -136,13 +136,14 @@ export class SendJobOfferComponent implements OnInit {
   }
 
   public listarProvinciasSegunIdRegion(event: any) {
+    this.jobOffer.originRegion=event.value.nombreUbigeo;
     let params = {
       data: {
-        codigoDepartamento: event.value
+        codigoDepartamento: event.value.codigoDepartamento
       }
     }
     this.restService.requestApiRestData("ubigeo/gpbr", params).subscribe((result: any) => {
-      this.regionCode = event.value
+      this.regionCode = event.value.codigoDepartamento
       this.provinceList = result.datalist;
       this.districtList = [];
     }, error => {
@@ -151,9 +152,10 @@ export class SendJobOfferComponent implements OnInit {
   }
 
   public listarDistritosSegunIdProvincia(event: any) {
+    this.jobOffer.originProvince=event.value.nombreUbigeo
     let params = {
       data: {
-        codigoProvincia: event.value,
+        codigoProvincia: event.value.codigoProvincia,
         codigoDepartamento: this.regionCode
       }
     }
