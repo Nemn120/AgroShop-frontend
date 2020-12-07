@@ -1,18 +1,18 @@
+import { UbigeoBean } from './UbigeoBean';
+
 export class JobOfferByFields{
     status: string;
-    departmentIni: string;
-    departmentFin: string;
     weightIni: number;
     weightFin: number;
     priceIni: number;
     priceFin: number;
     idFarmer: number;
     
-    originProvince:String;
-	originRegion:String;
-    originDistrict:String;
+    originProvince:string;
+	originRegion:string;
+    originDistrict:string;
     
-    destinationProvince:String;
-	destinationRegion:String;
-	destinationDistrict:String;
+    destinationProvince:string;
+	destinationRegion:string;
+	destinationDistrict:string;
 }

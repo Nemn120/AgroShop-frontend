@@ -23,7 +23,6 @@ export class OfferDetailComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    console.log(this.data);
   }
 
   offerPostulate(){
