@@ -29,6 +29,40 @@
         </mat-form-field>
     </div>
     <br>
+    <div style="width: 80%; display: flex;">
+      <div style=" width: 36%;">
+        <mat-form-field appearance="outline" style="width: 95%;">
+            <mat-label>Departamento</mat-label>
+            <mat-select  (selectionChange)="listarProvinciasSegunIdRegion($event)"  required>
+                <mat-option *ngFor="let region of this.regionList" [value]="region">
+                    {{region.nombreUbigeo}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+      </div>
+      <div style=" width: 33%;">
+        <mat-form-field appearance="outline" style="width: 95%;">
+            <mat-label>Provincia</mat-label>
+            <mat-select  (selectionChange)="listarDistritosSegunIdProvincia($event)"  required>
+                <mat-option  *ngFor="let province of this.provinceList" [value]="province">
+                    {{province.nombreUbigeo}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+      </div>
+      <div style=" width: 33%;">
+        <mat-form-field appearance="outline" style="width: 95%;">
+            <mat-label>Distrito</mat-label>
+            <mat-select [(ngModel)]="this.destinationDistrict" required>
+                <mat-option *ngFor="let district of this.districtList" [value]="district.nombreUbigeo">
+                    {{district.nombreUbigeo}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+      </div>
+    </div>
+    <br>
+
     <div class="names" style="width: 80%;">
         <div style=" border-radius: 10px 10px 0px 0px; width: 50%; margin-right: 2px;">
             <mat-form-field appearance="outline" style="width: 100%;">

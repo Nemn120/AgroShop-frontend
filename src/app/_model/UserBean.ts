@@ -17,4 +17,7 @@ export class UserBean extends MainBean{
     dateBirth:Date;
     _foto: any;
     _isFoto: boolean;
+    originProvince: string;
+    originRegion: string;
+    originDistrict: string;
 }
