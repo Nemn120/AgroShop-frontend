@@ -39,9 +39,9 @@ export class SendJobOfferComponent implements OnInit {
     private sharedData:SharedService,
     private restService:RestService
   ) { 
-    const currentyear = new Date().getFullYear();
+    const currentyear = new Date().getFullYear(); 
     const currentmonth = new Date().getMonth();
-    const currentday = new Date().getDay();
+    const currentday = new Date().getDate();
         this.minDate = new Date(currentyear,currentmonth,currentday );
   }
 
