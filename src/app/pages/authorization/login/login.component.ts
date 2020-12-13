@@ -78,17 +78,19 @@ export class LoginComponent implements OnInit {
     };
 
     this.restService.requestApiRestData('user/gubus', u)
-      .subscribe( typeUser => {
-        if (typeUser === 'DRIVER') {
+      .subscribe( dto => {
+        if (dto.data.typeUser === 'DRIVER') {
           this.restService.requestApiRestData('driver/gmfd', param)
           .subscribe( result => {
-              Swal.fire({
-                title: 'Important',
-                text: result.data,
-                icon: 'warning',
-                confirmButtonColor: '#3085d6',
-                confirmButtonText: 'Ok'
-              });
+              if (result.data) {
+                Swal.fire({
+                  title: 'Important',
+                  text: result.data,
+                  icon: 'warning',
+                  confirmButtonColor: '#3085d6',
+                  confirmButtonText: 'Ok'
+                });
+              }
             }
           );
         }

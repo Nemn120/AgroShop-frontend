@@ -1,30 +1,28 @@
-.container {
-    display: grid;
-    justify-content: center;
-    align-items: center;
-    justify-items: center;
-    text-align: center;
-    background: linear-gradient(100deg, antiquewhite, aquamarine);
+.card__title {
+    color: #009865;
+    font-weight: bold;
+    font-size: 18px;
+    display: block;
+    width: 100%;
 }
 
-h1 {
-    margin: 2%;
+.card__requer {
+    font-weight: bold;
 }
 
-img {
-    border-style: outset;
-    border-color: darkgrey;
+.card__init {
+    width: 50%;
+    display: inline-block;
 }
 
-.perfil-img {
-    background-color: #b6ce99;
-    width: 100px;
-    height: 100px;
-    border-radius: 64px;
+.example-full-width {
+    width: 100%;
 }
 
-h1,
-p {
-    color: #497B6C;
-    font-family: monospace;
+span {
+    font-weight: bold;
+}
+
+span>span {
+    font-weight: normal;
 }

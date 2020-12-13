@@ -56,7 +56,6 @@ export class PostulationListComponent implements OnInit {
           this.dataSource = new MatTableDataSource(data.datalist);
           this.dataSource.paginator = this.paginator;
           this.dataSource.sort = this.sort;
-          this.restService.message(data.responseMessage, 'Info');
         }
       );
   }
@@ -129,7 +128,4 @@ export class PostulationListComponent implements OnInit {
 
 
   }
-
-
-
 }

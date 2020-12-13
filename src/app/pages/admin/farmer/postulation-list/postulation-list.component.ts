@@ -38,7 +38,6 @@ export class PostulationListComponent implements OnInit {
     private dialog: MatDialog
     ) {
        this.farmer.id = this.sharedService.userSession.id;
-       // this.farmer.id = 1;
     }
 
     ngOnInit(): void {
@@ -55,25 +54,15 @@ export class PostulationListComponent implements OnInit {
       const param = {
         data: this.postulation
       };
-      console.log(param);
       this.restService.requestApiRestData('postulation/fpbsafid', param)
       .subscribe(
         data => {
           this.dataSource = new MatTableDataSource(data.datalist);
           this.dataSource.paginator = this.paginator;
           this.dataSource.sort = this.sort;
-          this.restService.message(data.responseMessage, 'Info');
         }
       );
   }
-
-  /* public searchPostulation(event: Event) {
-    const item = (event.target as HTMLInputElement).value;
-    this.dataSource.filter = item.trim().toLowerCase();
-    if (this.dataSource.paginator) {
-      this.dataSource.paginator.firstPage();
-    }
-  } */
 
   public viewDetailPostulation(postulation: PostulationBean) {
     this.dialog.open(PostulationDetailComponent, {

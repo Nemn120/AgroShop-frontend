@@ -12,7 +12,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  declarations: [PostulationDetailComponent, PostulationListComponent],
+  declarations: [PostulationDetailComponent, PostulationListComponent, ApplicantsViewComponentComponent],
   imports: [
     CommonModule,
     RouterModule.forChild(routes),

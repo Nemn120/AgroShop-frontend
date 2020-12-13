@@ -3,7 +3,8 @@ import { OrderBean } from './OrderBean';
 
 export class JobOfferBean extends MainBean {
 
-     finalDate: Date;
+    id: number;
+    finalDate: Date;
      statusOffer: string;
      description: string;
      title: string;

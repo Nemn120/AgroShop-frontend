@@ -4,16 +4,16 @@
         <button *ngFor="let status of statusList" mat-raised-button (click)="getPostulationByStatusAndId(status)">{{status}}</button>
 
         <!-- <button mat-raised-button (click)="getPostulationByStatusAndId('Pendiente')">Pendiente</button>
-      <button mat-raised-button (click)="getPostulationByStatusAndId('Rechazada')">Rechazada</button>
-      <button mat-raised-button (click)="getPostulationByStatusAndId('Aceptada')">Aceptada</button> -->
+    <button mat-raised-button (click)="getPostulationByStatusAndId('Rechazada')">Rechazada</button>
+    <button mat-raised-button (click)="getPostulationByStatusAndId('Aceptada')">Aceptada</button> -->
     </div>
 </div>
 <div class="layout-data">
 
     <!-- <mat-form-field>
-          <mat-label>Buscar postulación</mat-label>
-          <input matInput (keyup)="searchPostulation($event)" placeholder="Ingresar empresa a buscar" #input>
-      </mat-form-field> -->
+        <mat-label>Buscar postulación</mat-label>
+        <input matInput (keyup)="searchPostulation($event)" placeholder="Ingresar empresa a buscar" #input>
+    </mat-form-field> -->
 
     <div class="mat-elevation-z8">
         <table mat-table [dataSource]="dataSource" matSort>
@@ -48,16 +48,16 @@
                 <td mat-cell *matCellDef="let row">
 
                     <button mat-icon-button (click)="viewDetailPostulation(row)">
-            <mat-icon>visibility</mat-icon>
-          </button>
+          <mat-icon>visibility</mat-icon>
+        </button>
 
                     <button mat-icon-button (click)="aceptarPostulation(row.id)">
-            <mat-icon>done_outline</mat-icon>
-          </button>
+          <mat-icon>done_outline</mat-icon>
+        </button>
 
                     <button mat-icon-button (click)="deletePostulation(row.id)">
-            <mat-icon>delete</mat-icon>
-          </button>
+          <mat-icon>delete</mat-icon>
+        </button>
                 </td>
             </ng-container>
 
