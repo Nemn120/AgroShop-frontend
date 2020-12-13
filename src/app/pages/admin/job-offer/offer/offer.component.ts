@@ -20,15 +20,16 @@ export class OfferComponent implements OnInit {
   dataSource: MatTableDataSource<any>;
   obs: Observable<any>;
   searchJobOffer : JobOfferByFields = new JobOfferByFields;
-  departments : string[] = ['Todos','Amazonas', 'Ancash', 'Apurimac', 'Arequipa', 'Ayacucho', 'Cajamarca', 'Cusco', 'Huancavelica', 'Huanuco'
-  , 'Ica', 'Junin', 'La Libertad', 'Lambayeque', 'Lima', 'Loreto', 'Madre de Dios', 'Moquegua', 'Pasco', 'Piura', 'Puno', 'San Martin'
-  , 'Tacna', 'Tumbes', 'Ucayali'];
-  name: string;
-  lastName: string;
-  districtList:UbigeoBean[]=[];
-  provinceList:UbigeoBean[]=[];
-  regionList:UbigeoBean[]=[];
-  regionCode:string;
+  originDistrictList:UbigeoBean[]=[];
+  originProvinceList:UbigeoBean[]=[];
+  originRegionList:UbigeoBean[]=[];
+  originRegionCode:string;
+
+  destinationDistrictList:UbigeoBean[]=[];
+  destinationProvinceList:UbigeoBean[]=[];
+  destinationRegionList:UbigeoBean[]=[];
+  destinationRegionCode:string;
+
   constructor(
     public dialog: MatDialog,
     private changeDetectorRef: ChangeDetectorRef,
@@ -38,6 +39,7 @@ export class OfferComponent implements OnInit {
   ngOnInit(): void {
     this.listarRegiones();
     this.listOffer();
+    this.listarRegionesDestination();
   }
 
   moreDetails(job){
@@ -58,7 +60,7 @@ export class OfferComponent implements OnInit {
     return new Promise((resolve,reject)=>{
       this.restService.requestApiRestData("ubigeo/grl", {}).subscribe((result: any) => {
         result.datalist.forEach(ubigeo=>{
-          this.regionList.push(ubigeo)  
+          this.originRegionList.push(ubigeo)  
         })
         resolve("success")
       }, error => {
@@ -74,9 +76,9 @@ export class OfferComponent implements OnInit {
       }
     }
     this.restService.requestApiRestData("ubigeo/gpbr", params).subscribe((result: any) => {
-      this.regionCode = event.value
-      this.provinceList = result.datalist;
-      this.districtList = [];
+      this.originRegionCode = event.value
+      this.originProvinceList = result.datalist;
+      this.originDistrictList = [];
     }, error => {
       console.error(error);
     });
@@ -86,25 +88,60 @@ export class OfferComponent implements OnInit {
     let params = {
       data: {
         codigoProvincia: event.value,
-        codigoDepartamento: this.regionCode
+        codigoDepartamento: this.originRegionCode
       }
     }
     this.restService.requestApiRestData("ubigeo/gdbpr", params).subscribe((result: any) => {
-      this.districtList = result.datalist;
+      this.originDistrictList = result.datalist;
+      
+    }, error => {
+      console.error(error);
+    });
+  }
+
+  public listarRegionesDestination() :Promise<any>{
+    return new Promise((resolve,reject)=>{
+      this.restService.requestApiRestData("ubigeo/grl", {}).subscribe((result: any) => {
+        result.datalist.forEach(ubigeo=>{
+          this.destinationRegionList.push(ubigeo)  
+        })
+        resolve("success")
+      }, error => {
+        console.error(error);
+      });
+    });
+  }
+
+  public listarProvinciasSegunIdRegionDestination(event: any) {
+    let params = {
+      data: {
+        codigoDepartamento: event.value
+      }
+    }
+    this.restService.requestApiRestData("ubigeo/gpbr", params).subscribe((result: any) => {
+      this.destinationRegionCode = event.value
+      this.destinationProvinceList = result.datalist;
+      this.destinationDistrictList = [];
+    }, error => {
+      console.error(error);
+    });
+  }
+
+  public listarDistritosSegunIdProvinciaDestination(event: any) {
+    let params = {
+      data: {
+        codigoProvincia: event.value,
+        codigoDepartamento: this.destinationRegionCode
+      }
+    }
+    this.restService.requestApiRestData("ubigeo/gdbpr", params).subscribe((result: any) => {
+      this.destinationDistrictList = result.datalist;
     }, error => {
       console.error(error);
     });
   }
 
   listOffer(){
-    this.name = undefined;
-    this.lastName = undefined;
-    if(this.searchJobOffer.departmentIni == 'Todos')
-      this.searchJobOffer.departmentIni = undefined;
-
-    if(this.searchJobOffer.departmentFin == 'Todos')
-      this.searchJobOffer.departmentFin = undefined;
-
     if(this.searchJobOffer.weightIni == null)
       this.searchJobOffer.weightFin = undefined;
 
@@ -127,17 +164,6 @@ export class OfferComponent implements OnInit {
           this.restService.messageChange.next({ message: result.responseMessage, action: "Ofertas" });
         }
       })
-      if(this.searchJobOffer.idFarmer != null){
-        let param2 = {
-          id: this.searchJobOffer.idFarmer
-        }
-        this.restService.requestApiRestData('farmer/gfbi',param2).subscribe(result =>{
-          if(result.responseMessage != 'No se encontró al agricultor'){
-            this.name = result.data.user.name;
-            this.lastName = result.data.user.lastName;
-          }
-        })
-      }
     }
   }
 }

@@ -15,4 +15,7 @@ export class OrderBean extends MainBean{
      attentDate : Date;
      farmer:FarmerBean;
      reference:string;
+     destinationProvince: string;
+     destinationRegion: string;
+     destinationDistrict: string;
 }
