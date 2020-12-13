@@ -5,6 +5,8 @@ import { FormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
 import { PostulationListComponent } from '../farmer/postulation-list/postulation-list.component';
 import { PostulationDetailComponent } from '../farmer/postulation-detail/postulation-detail.component';
+import { PostulationApplicantsComponent } from './postulation-applicants/postulation-applicants.component';
+import { PostulationApplicantsDetailComponent } from './postulation-applicants-detail/postulation-applicants-detail.component';
 
 const routes: Routes = [
   { path: 'list', component: PostulationListComponent},
@@ -12,13 +14,13 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  declarations: [PostulationDetailComponent, PostulationListComponent, ApplicantsViewComponentComponent],
+  declarations: [PostulationDetailComponent, PostulationListComponent, PostulationApplicantsComponent, PostulationApplicantsDetailComponent],
   imports: [
     CommonModule,
     RouterModule.forChild(routes),
     MaterialModule,
     FormsModule
   ],
-  entryComponents: [PostulationDetailComponent]
+  entryComponents: [PostulationDetailComponent, PostulationApplicantsComponent, PostulationApplicantsDetailComponent]
 })
 export class FarmerModule { }

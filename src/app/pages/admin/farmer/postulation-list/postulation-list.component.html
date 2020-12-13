@@ -20,44 +20,46 @@
 
             <ng-container matColumnDef="id">
                 <th mat-header-cell *matHeaderCellDef mat-sort-header> ID </th>
-                <td mat-cell *matCellDef="let row"> {{row.id}} </td>
+                <td mat-cell *matCellDef="let row"> {{row[0].id}} </td>
             </ng-container>
 
             <ng-container matColumnDef="statusPostulation">
                 <th mat-header-cell *matHeaderCellDef mat-sort-header> Estado </th>
-                <td mat-cell *matCellDef="let row"> {{row.statusPostulation}} </td>
+                <td mat-cell *matCellDef="let row"> {{row[0].statusPostulation}} </td>
             </ng-container>
 
             <ng-container matColumnDef="title">
                 <th mat-header-cell *matHeaderCellDef mat-sort-header> Oferta </th>
-                <td mat-cell *matCellDef="let row"> {{row.jobOffer.title}} </td>
+                <td mat-cell *matCellDef="let row"> {{row[0].jobOffer.title}} </td>
             </ng-container>
 
             <ng-container matColumnDef="statusOffer">
                 <th mat-header-cell *matHeaderCellDef mat-sort-header> Estado de la oferta</th>
-                <td mat-cell *matCellDef="let row"> {{row.jobOffer.statusOffer}} </td>
+                <td mat-cell *matCellDef="let row"> {{row[0].jobOffer.statusOffer}} </td>
             </ng-container>
 
             <ng-container matColumnDef="name">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header> Conductor</th>
-                <td mat-cell *matCellDef="let row"> {{row.driver.user.name}} {{row.driver.user.lastName}} </td>
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Postulantes</th>
+                <td mat-cell *matCellDef="let row">
+                    <button (click)="viewApplicants(row)" mat-icon-button><mat-icon>person</mat-icon></button>
+                </td>
             </ng-container>
 
             <ng-container matColumnDef="actions">
                 <th mat-header-cell *matHeaderCellDef mat-sort-header> Acciones </th>
                 <td mat-cell *matCellDef="let row">
 
-                    <button mat-icon-button (click)="viewDetailPostulation(row)">
+                    <button mat-icon-button (click)="viewDetailPostulation(row[0])">
           <mat-icon>visibility</mat-icon>
         </button>
 
-                    <button mat-icon-button (click)="aceptarPostulation(row.id)">
+                    <!--  <button mat-icon-button (click)="aceptarPostulation(row[0].id)">
           <mat-icon>done_outline</mat-icon>
-        </button>
+        </button> -->
 
-                    <button mat-icon-button (click)="deletePostulation(row.id)">
+                    <!-- <button mat-icon-button (click)="deletePostulation(row[0].id)">
           <mat-icon>delete</mat-icon>
-        </button>
+        </button> -->
                 </td>
             </ng-container>
 

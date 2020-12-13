@@ -1,10 +1,10 @@
 <div class="mat-card">
     <div class="header">
         <div class="select-status">
-            <span class="text">Estado</span>
+            <span class="text">Estado: </span>
             <mat-select>
                 <mat-option *ngFor="let item of status" [value]="item" ngDefaultControl (click)="getListDriverByStatus(item)">
-                    {{ item }}
+                    {{item}}
                 </mat-option>
             </mat-select>
         </div>
