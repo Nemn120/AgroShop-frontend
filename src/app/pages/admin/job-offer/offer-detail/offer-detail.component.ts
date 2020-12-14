@@ -40,8 +40,9 @@ export class OfferDetailComponent implements OnInit {
       cancelButtonColor: '#d33',
       confirmButtonText: 'Postular'
     }).then((result) => {
-      let OfferId = this.data.id;
-      this.idUser = this.sharedService.userSession.id;
+      if (result.isConfirmed) {
+        let OfferId = this.data.id;
+        this.idUser = this.sharedService.userSession.id;
         let param = {
           data: {
             jobOffer : {
@@ -57,6 +58,7 @@ export class OfferDetailComponent implements OnInit {
           this.restService.messageChange.next({ message: result.responseMessage, action: "Postulación" });
         })
       this.dialog.closeAll();
+      }
     });
   }
 
