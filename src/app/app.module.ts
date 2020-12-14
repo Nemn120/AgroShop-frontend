@@ -25,6 +25,9 @@ import { LoginComponent } from './pages/authorization/login/login.component';
 
 import { FormsModule } from '@angular/forms';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
+import {AngularFireModule} from '@angular/fire';
+import {AngularFirestoreModule} from '@angular/fire/firestore';
+import { AngularFireFunctionsModule, REGION } from '@angular/fire/functions';
 
 export function tokenGetter() {
   const tk = sessionStorage.getItem(environment.TOKEN_NAME);
@@ -44,24 +47,27 @@ export function tokenGetter() {
     EcoFabSpeedDialModule,
     MaterialModule,
     FlexLayoutModule,
-    PanelAdminModule, 
-    AuthorizationModule, 
-    MatSnackBarModule,  
-    /*JwtModule.forRoot({  
-      config: { 
+    PanelAdminModule,
+    AuthorizationModule,
+    MatSnackBarModule,
+    /*JwtModule.forRoot({
+      config: {
         tokenGetter,
         whitelistedDomains: ['localhost:8080'],
         blacklistedRoutes: ['http://localhost:8080/oauth/token']
-      }  
-    }),*/         
-    MatFabMenuModule,  
-   FormsModule,   
+      }
+    }),*/
+    MatFabMenuModule,
+    FormsModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig, 'angular-auth-firebase'),
+    AngularFirestoreModule,
+    AngularFireFunctionsModule
 
 
   ],
   providers: [
- 
 
+    {provide: REGION, useValue: 'us-central1'},
     {provide: HTTP_INTERCEPTORS,
       useClass: ServerErrorsInterceptor,
       multi: true
@@ -70,7 +76,7 @@ export function tokenGetter() {
   ],
   bootstrap: [AppComponent],
   exports: [
-    FlexLayoutModule, 
+    FlexLayoutModule,
 
 
   ],

@@ -4,7 +4,6 @@
 
 export const environment = {
   production: false,
-
   // HOST:"http://localhost:8080",
   HOST: 'https://agroshopbackend-qa.herokuapp.com',
   TOKEN_NAME : 'access_token',
@@ -14,6 +13,19 @@ export const environment = {
   MICRO_CRUD: 'micro-crud',
   MICRO_CR : 'micro-cr',
   MICRO_AUTH : 'uaa',
+  // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+  stripe:{
+    testKey: 'pk_test_51HyNurH6AduFV6L4xeChJSJgQ9Yb2CKZmL4Kl92KVT6IpATUTdzwfUeGf9r5U5dhJeI50kPRYpamP1dLdnUNoXNQ00mPvMF2uo'
+  },
+  firebaseConfig :{
+    apiKey: "AIzaSyB9MLcpIS3cImZ3V7GdYJyihwaenbXj0h4",
+    authDomain: "stripe-agroshop-a4e6b.firebaseapp.com",
+    projectId: "stripe-agroshop-a4e6b",
+    storageBucket: "stripe-agroshop-a4e6b.appspot.com",
+    messagingSenderId: "335851554041",
+    appId: "1:335851554041:web:ca4f5ceeb424a9d3ce4e28",
+    measurementId: "G-Y6EKS0HWVK"
+  }
 };
 
 /*

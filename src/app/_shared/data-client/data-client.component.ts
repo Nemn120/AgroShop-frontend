@@ -12,6 +12,12 @@ import { RestService } from 'src/app/_service/rest.service';
 import { UbigeoBean } from 'src/app/_model/UbigeoBean';
 import { OrderDetailBean } from 'src/app/_model/OrderDetailBean';
 
+
+
+import { loadStripe, Stripe } from '@stripe/stripe-js';
+import { environment } from 'src/environments/environment';
+import { AngularFireFunctions } from '@angular/fire/functions';
+
 @Component({
   selector: 'app-data-client',
   templateUrl: './data-client.component.html',
@@ -34,6 +40,7 @@ export class DataClientComponent implements OnInit {
   title: string = "Lugar de entrega";
   buttonTitle: string = "Enviar Orden";
   isUpdateOrder: boolean = false;
+  private stripe: Stripe;
   constructor(
     public dialog: MatDialog, public dialogo: MatDialogRef<DataClientComponent>,
     @Inject(MAT_DIALOG_DATA) public data: OrderBean,
@@ -42,11 +49,12 @@ export class DataClientComponent implements OnInit {
     private dialogMap: MatDialog,
     public orderService: OrderService,
     private sharedData:SharedService,
-    private restService:RestService
+    private restService:RestService,
+    private fns: AngularFireFunctions
 
   ) { }
-  
-  ngOnInit(): void {
+
+  ngOnInit() {
     this.listarRegiones();
     this.order=new OrderBean();
     this.address = new FormControl(''),
@@ -67,8 +75,9 @@ export class DataClientComponent implements OnInit {
       });
 
 
+
   }
-  
+
   enviarOrden() {
     this.order.orderDetailList=[];
     this.order.orderDetailList = this.data.orderDetailList;
@@ -154,7 +163,7 @@ export class DataClientComponent implements OnInit {
     return new Promise((resolve,reject)=>{
       this.restService.requestApiRestData("ubigeo/grl", {}).subscribe((result: any) => {
         result.datalist.forEach(ubigeo=>{
-          this.regionList.push(ubigeo)  
+          this.regionList.push(ubigeo)
         })
         resolve("success")
       }, error => {

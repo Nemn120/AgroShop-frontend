@@ -5,13 +5,14 @@ import { DialogoConfirmacionComponent } from './dialogo-confirmacion/dialogo-con
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { OrderDetailComponent } from './order-detail/order-detail.component';
 import { DataClientComponent } from './data-client/data-client.component';
+import { PaymentComponent } from './payment/payment.component';
 
 
 
 @NgModule({
-  declarations: [DialogoConfirmacionComponent, OrderDetailComponent, DataClientComponent],
+  declarations: [DialogoConfirmacionComponent, OrderDetailComponent, DataClientComponent, PaymentComponent],
   imports: [
-    
+
     CommonModule,
     MaterialModule,
     FormsModule,
@@ -19,9 +20,9 @@ import { DataClientComponent } from './data-client/data-client.component';
 
   ],
   exports:[
-   DialogoConfirmacionComponent,OrderDetailComponent,DataClientComponent
+   DialogoConfirmacionComponent,OrderDetailComponent,DataClientComponent,PaymentComponent
   ],
-  
- 
+
+
 })
 export class SharedModule { }
