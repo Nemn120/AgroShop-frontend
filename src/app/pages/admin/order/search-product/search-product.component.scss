@@ -156,8 +156,28 @@ li {
   background-color: #fff;
 }
 
+.data-farmer2{
+  margin-left: 50px;
+  padding: 20px 0px 20px 10px;
+  margin-right: 50px;
+  border: solid 4px rgb(55, 150, 111);
+  border: solid 4px rgb(55, 150, 111);
+  border-radius: 20px;
+  margin-top: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  font-family: 'Poppins', sans-serif;
+  color: #332927;
+  font-size: 20px;
+  font-weight: bold;
+  background-color: #fff;
+  padding: 40px;
+}
+
 .card{
   display: flex;
+  flex-wrap: wrap;
   position: relative;
   top: 15px;
 }

@@ -78,9 +78,7 @@ export class DriverFormContainerComponent implements OnInit {
     if (this.userType == 'DRIVER') {
       param = {
         userType: this.userType,
-        originRegion: newDriver.user.originRegion,
-        originProvince: newDriver.user.originProvince,
-        originDistrict: newDriver.user.originDistrict,
+
         userRegister: {
           driverLicenseNumber: newDriver.driverLicenseNumber,
           user: {
@@ -88,7 +86,10 @@ export class DriverFormContainerComponent implements OnInit {
             password: newDriver.user.password,
             name: newDriver.user.nombre,
             lastName: newDriver.user.lastName,
-            documentNumber: newDriver.user.documentNumber
+            documentNumber: newDriver.user.documentNumber,
+            region: newDriver.user.originRegion,
+            province: newDriver.user.originProvince,
+            district: newDriver.user.originDistrict,
           },
           status: 'Pendiente'
         }
@@ -96,9 +97,6 @@ export class DriverFormContainerComponent implements OnInit {
     } else {
       param = {
         userType: this.userType,
-        originRegion: newDriver.user.originRegion,
-        originProvince: newDriver.user.originProvince,
-        originDistrict: newDriver.user.originDistrict,
         userRegister: {
 
           user: {
@@ -106,7 +104,10 @@ export class DriverFormContainerComponent implements OnInit {
             password: newDriver.user.password,
             name: newDriver.user.nombre,
             lastName: newDriver.user.lastName,
-            documentNumber: newDriver.user.documentNumber
+            documentNumber: newDriver.user.documentNumber,
+            region: newDriver.user.originRegion,
+            province: newDriver.user.originProvince,
+            district: newDriver.user.originDistrict,
           },
 
         }
