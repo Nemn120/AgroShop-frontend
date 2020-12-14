@@ -35,13 +35,13 @@
 
         <mat-form-field appearance="outline" style="width: 100%;">
             <mat-label>Descripcion</mat-label>
-            <textarea class="area" matInput rows="3" formControlName="description" [formGroup]="form" [(ngModel)]="jobOffer.description" required></textarea>
+            <textarea class="area" matInput formControlName="description" [formGroup]="form" [(ngModel)]="jobOffer.description" cdkTextareaAutosize cdkAutosizeMinRows="1" cdkAutosizeMaxRows="3" required></textarea>
         </mat-form-field>
 
 
         <mat-form-field appearance="outline" style="width: 100%;">
             <mat-label>Requerimientos</mat-label>
-            <textarea class="area" matInput rows="3" formControlName="requirements" [formGroup]="form" [(ngModel)]="jobOffer.requirements" required></textarea>
+            <textarea class="area" matInput formControlName="requirements" [formGroup]="form" [(ngModel)]="jobOffer.requirements" cdkTextareaAutosize cdkAutosizeMinRows="1" cdkAutosizeMaxRows="3" required></textarea>
         </mat-form-field>
 
         <div style="display: flex;">
