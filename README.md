@@ -32,8 +32,9 @@ https://5fcc570e8a25c485e510254c--jolly-galileo-f939d6.netlify.app/#/auth/login
   ### Barrozo Figueroa Osti Katriel
   ### Chavez Chavez Fernando
   ### Condori Mendoza Jose
-  ### Sarmiento Jordy
-  ### Cruz Ivan
+  ### Sarmiento Espinoza Jordy
+  ### Lopez Camus Ivan
+  ### Jimenez Gutierrez Felipe
   
 ## Institucion
 
