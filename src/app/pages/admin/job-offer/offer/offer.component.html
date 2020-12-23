@@ -2,56 +2,61 @@
 <div class="cards">
     <mat-card class="card__search">
         <form>
-            <mat-form-field appearance="outline" class="example-form-field" name="region">
-                <mat-label>Región Inicio</mat-label>
-                <mat-select name="regionSelect" (selectionChange)="listarProvinciasSegunIdRegion($event)" [(ngModel)]="this.searchJobOffer.originRegion">
-                    <mat-option *ngFor="let region of this.originRegionList" [value]="region.codigoDepartamento">
+            <mat-form-field appearance="outline" class="example-form-field">
+                <mat-label>Departamento Inicio</mat-label>
+                <mat-select (selectionChange)="listarProvinciasSegunIdRegion($event)">
+                    <mat-option [value]="this.allString">{{this.allString}}</mat-option> 
+                    <mat-option *ngFor="let region of this.regionList" [value]="region">
                         {{region.nombreUbigeo}}
-                    </mat-option>
+                    </mat-option>   
                 </mat-select>
             </mat-form-field>
-            <mat-form-field appearance="outline" class="example-form-field" name="provincia">
+            <mat-form-field appearance="outline" class="example-form-field">
                 <mat-label>Provincia Inicio</mat-label>
-                <mat-select name="provinceSelect" (selectionChange)="listarDistritosSegunIdProvincia($event)" [(ngModel)]="this.searchJobOffer.originProvince">
-                    <mat-option *ngFor="let province of this.originProvinceList" [value]="province.codigoProvincia">
+                <mat-select (selectionChange)="listarDistritosSegunIdProvincia($event)">
+                    <mat-option [value]="this.allString">{{this.allString}}</mat-option> 
+                    <mat-option *ngFor="let province of this.provinceList" [value]="province">
                         {{province.nombreUbigeo}}
-                    </mat-option>
+                    </mat-option>    
                 </mat-select>
             </mat-form-field>
-            <mat-form-field appearance="outline" class="example-form-field" name="distrito">
+            <mat-form-field appearance="outline" class="example-form-field">
                 <mat-label>Distrito Inicio</mat-label>
-                <mat-select name="distritoSelect" [(ngModel)]="this.searchJobOffer.originDistrict">
-                    <mat-option *ngFor="let district of this.originDistrictList" [value]="district.codigoDistrito">
+                <mat-select name="districtSelect" [(ngModel)]="this.searchJobOffer.originDistrict">
+                    <mat-option [value]="this.allString">{{this.allString}}</mat-option> 
+                    <mat-option *ngFor="let district of this.districtList" [value]="district.nombreUbigeo">
                         {{district.nombreUbigeo}}
                     </mat-option>
                 </mat-select>
             </mat-form-field>
-
-            <mat-form-field appearance="outline" class="example-form-field" name="region">
-                <mat-label>Región Final</mat-label>
-                <mat-select name="regionSelect" (selectionChange)="listarProvinciasSegunIdRegionDestination($event)" [(ngModel)]="this.searchJobOffer.destinationRegion">
-                    <mat-option *ngFor="let region of this.destinationRegionList" [value]="region.codigoDepartamento">
+            <mat-form-field appearance="outline" class="example-form-field">
+                <mat-label>Departamento Final</mat-label>
+                <mat-select (selectionChange)="listarProvinciasSegunIdRegionDestination($event)">
+                    <mat-option [value]="this.allString">{{this.allString}}</mat-option> 
+                    <mat-option *ngFor="let region of this.destinationRegionList" [value]="region">
                         {{region.nombreUbigeo}}
                     </mat-option>
                 </mat-select>
             </mat-form-field>
-            <mat-form-field appearance="outline" class="example-form-field" name="provincia">
+            <mat-form-field appearance="outline" class="example-form-field">
                 <mat-label>Provincia Final</mat-label>
-                <mat-select name="provinceSelect" (selectionChange)="listarDistritosSegunIdProvinciaDestination($event)" [(ngModel)]="this.searchJobOffer.destinationProvince">
-                    <mat-option *ngFor="let province of this.destinationProvinceList" [value]="province.codigoProvincia">
+                <mat-select (selectionChange)="listarDistritosSegunIdProvinciaDestination($event)">
+                    <mat-option [value]="this.allString">{{this.allString}}</mat-option> 
+                    <mat-option *ngFor="let province of this.destinationProvinceList" [value]="province">
                         {{province.nombreUbigeo}}
                     </mat-option>
                 </mat-select>
             </mat-form-field>
-            <mat-form-field appearance="outline" class="example-form-field" name="distrito">
+            <mat-form-field appearance="outline" class="example-form-field">
                 <mat-label>Distrito Final</mat-label>
-                <mat-select name="distritoSelect" [(ngModel)]="this.searchJobOffer.destinationDistrict">
-                    <mat-option *ngFor="let district of this.destinationDistrictList" [value]="district.codigoDistrito">
+                <mat-select name="districtSelectFinal" [(ngModel)]="this.searchJobOffer.destinationDistrict">
+                    <mat-option [value]="this.allString">{{this.allString}}</mat-option> 
+                    <mat-option *ngFor="let district of this.destinationDistrictList" [value]="district.nombreUbigeo">
                         {{district.nombreUbigeo}}
                     </mat-option>
                 </mat-select>
             </mat-form-field>
-
+            
             <mat-form-field appearance="outline" class="example-form-field">
                 <mat-label>Peso Inicio</mat-label>
                 <input matInput [(ngModel)]="this.searchJobOffer.weightIni" name="weightIni" type="number" min="0">

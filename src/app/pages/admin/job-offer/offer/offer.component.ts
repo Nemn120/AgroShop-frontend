@@ -20,10 +20,11 @@ export class OfferComponent implements OnInit {
   dataSource: MatTableDataSource<any>;
   obs: Observable<any>;
   searchJobOffer : JobOfferByFields = new JobOfferByFields;
-  originDistrictList:UbigeoBean[]=[];
-  originProvinceList:UbigeoBean[]=[];
-  originRegionList:UbigeoBean[]=[];
-  originRegionCode:string;
+  districtList:UbigeoBean[]=[];
+  provinceList:UbigeoBean[]=[];
+  regionList:UbigeoBean[]=[];
+  regionCode:string;
+  allString: string = 'Todos';
 
   destinationDistrictList:UbigeoBean[]=[];
   destinationProvinceList:UbigeoBean[]=[];
@@ -56,11 +57,12 @@ export class OfferComponent implements OnInit {
       this.dataSource.disconnect(); 
     }
   }
+
   public listarRegiones() :Promise<any>{
     return new Promise((resolve,reject)=>{
       this.restService.requestApiRestData("ubigeo/grl", {}).subscribe((result: any) => {
         result.datalist.forEach(ubigeo=>{
-          this.originRegionList.push(ubigeo)  
+          this.regionList.push(ubigeo);
         })
         resolve("success")
       }, error => {
@@ -70,30 +72,33 @@ export class OfferComponent implements OnInit {
   }
 
   public listarProvinciasSegunIdRegion(event: any) {
+    this.searchJobOffer.originProvince = undefined;
+    this.searchJobOffer.originRegion=event.value.nombreUbigeo;
     let params = {
       data: {
-        codigoDepartamento: event.value
+        codigoDepartamento: event.value.codigoDepartamento
       }
     }
     this.restService.requestApiRestData("ubigeo/gpbr", params).subscribe((result: any) => {
-      this.originRegionCode = event.value
-      this.originProvinceList = result.datalist;
-      this.originDistrictList = [];
+      this.regionCode = event.value.codigoDepartamento
+      this.provinceList = result.datalist;
+      this.districtList = [];
     }, error => {
       console.error(error);
     });
   }
 
   public listarDistritosSegunIdProvincia(event: any) {
+    this.searchJobOffer.originDistrict  = undefined;
+    this.searchJobOffer.originProvince=event.value.nombreUbigeo
     let params = {
       data: {
-        codigoProvincia: event.value,
-        codigoDepartamento: this.originRegionCode
+        codigoProvincia: event.value.codigoProvincia,
+        codigoDepartamento: this.regionCode
       }
     }
     this.restService.requestApiRestData("ubigeo/gdbpr", params).subscribe((result: any) => {
-      this.originDistrictList = result.datalist;
-      
+      this.districtList = result.datalist;
     }, error => {
       console.error(error);
     });
@@ -113,13 +118,15 @@ export class OfferComponent implements OnInit {
   }
 
   public listarProvinciasSegunIdRegionDestination(event: any) {
+    this.searchJobOffer.destinationProvince  = undefined;
+    this.searchJobOffer.destinationRegion=event.value.nombreUbigeo;
     let params = {
       data: {
-        codigoDepartamento: event.value
+        codigoDepartamento: event.value.codigoDepartamento
       }
     }
     this.restService.requestApiRestData("ubigeo/gpbr", params).subscribe((result: any) => {
-      this.destinationRegionCode = event.value
+      this.destinationRegionCode = event.value.codigoDepartamento
       this.destinationProvinceList = result.datalist;
       this.destinationDistrictList = [];
     }, error => {
@@ -128,9 +135,11 @@ export class OfferComponent implements OnInit {
   }
 
   public listarDistritosSegunIdProvinciaDestination(event: any) {
+    this.searchJobOffer.destinationDistrict  = undefined;
+    this.searchJobOffer.destinationProvince=event.value.nombreUbigeo
     let params = {
       data: {
-        codigoProvincia: event.value,
+        codigoProvincia: event.value.codigoProvincia,
         codigoDepartamento: this.destinationRegionCode
       }
     }
@@ -147,6 +156,23 @@ export class OfferComponent implements OnInit {
 
     if(this.searchJobOffer.priceIni == null)
       this.searchJobOffer.priceFin = undefined;
+
+    if(this.searchJobOffer.originDistrict == 'Todos')
+      this.searchJobOffer.originDistrict = undefined;
+
+    if(this.searchJobOffer.destinationDistrict == 'Todos')
+      this.searchJobOffer.destinationDistrict = undefined;
+
+    if(this.searchJobOffer.originRegion == undefined && (this.searchJobOffer.originProvince != undefined || this.searchJobOffer.originProvince != undefined)){
+      this.searchJobOffer.originProvince = undefined;
+      this.searchJobOffer.originDistrict = undefined;
+    }
+
+    if(this.searchJobOffer.destinationRegion == undefined && (this.searchJobOffer.destinationProvince != undefined || this.searchJobOffer.destinationProvince != undefined)){
+      this.searchJobOffer.destinationProvince == undefined;
+      this.searchJobOffer.destinationDistrict == undefined;
+    }
+      
 
     if(this.searchJobOffer.weightIni>this.searchJobOffer.weightFin || this.searchJobOffer.priceIni>this.searchJobOffer.priceFin){
       this.restService.messageChange.next({ message: 'Rango equivocado', action: "Fail" });
@@ -165,5 +191,6 @@ export class OfferComponent implements OnInit {
         }
       })
     }
+    console.log(this.searchJobOffer);
   }
 }

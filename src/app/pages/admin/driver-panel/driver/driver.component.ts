@@ -6,7 +6,7 @@ import Swal from 'sweetalert2';
 import { MatTableDataSource } from '@angular/material/table';
 import { InfoDriverComponent } from '../info-driver/info-driver.component';
 import { MatDialog } from '@angular/material/dialog';
-//import { Router } from '@angular/router';
+// import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-driver',
@@ -22,13 +22,14 @@ export class DriverComponent implements OnInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
   status: string[] = ['Pendiente', 'Aceptado'];
+  state = 'Aceptado';
   ids: number[] = [];
   drivers: any[] = [];
 
   constructor(
     private restService: RestService,
     public dialog: MatDialog,
-    //private router: Router,
+    // private router: Router,
   ) { this.getListDriverByStatus('Aceptado'); }
 
   ngOnInit(): void {

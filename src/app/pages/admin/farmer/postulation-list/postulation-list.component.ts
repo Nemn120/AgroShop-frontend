@@ -12,6 +12,7 @@ import { RestService } from 'src/app/_service/rest.service';
 import { SharedService } from 'src/app/_service/shared.service';
 import Swal from 'sweetalert2';
 import { PostulationDetailComponent } from '../../farmer/postulation-detail/postulation-detail.component';
+import { PostulationApplicantsComponent } from '../postulation-applicants/postulation-applicants.component';
 
 @Component({
   selector: 'app-postulation-list',
@@ -38,7 +39,6 @@ export class PostulationListComponent implements OnInit {
     private dialog: MatDialog
     ) {
        this.farmer.id = this.sharedService.userSession.id;
-       // this.farmer.id = 1;
     }
 
     ngOnInit(): void {
@@ -55,25 +55,34 @@ export class PostulationListComponent implements OnInit {
       const param = {
         data: this.postulation
       };
-      console.log(param);
       this.restService.requestApiRestData('postulation/fpbsafid', param)
       .subscribe(
         data => {
-          this.dataSource = new MatTableDataSource(data.datalist);
+          this.dataSource = new MatTableDataSource(this.filterByJobOfferId(data.datalist));
           this.dataSource.paginator = this.paginator;
           this.dataSource.sort = this.sort;
-          this.restService.message(data.responseMessage, 'Info');
         }
       );
   }
 
-  /* public searchPostulation(event: Event) {
-    const item = (event.target as HTMLInputElement).value;
-    this.dataSource.filter = item.trim().toLowerCase();
-    if (this.dataSource.paginator) {
-      this.dataSource.paginator.firstPage();
+  public filterByJobOfferId(arr: any[]): any {
+    let ids = [];
+    let response = [];
+
+    arr.forEach(a => ids.push([a.jobOffer.id]));
+    ids = ids.filter((v, i, arreglo) => {
+      return arreglo.findIndex(valor => JSON.stringify(valor) === JSON.stringify(v)) === i;
+    });
+
+    for (const item of arr) {
+      const id = item.jobOffer.id;
+      response.push(arr.filter(current => id === current.jobOffer.id));
+      response = response.filter((v, i, arreglo) => {
+        return arreglo.findIndex(valor => JSON.stringify(valor) === JSON.stringify(v)) === i;
+      });
     }
-  } */
+    return response;
+  }
 
   public viewDetailPostulation(postulation: PostulationBean) {
     this.dialog.open(PostulationDetailComponent, {
@@ -82,7 +91,15 @@ export class PostulationListComponent implements OnInit {
     });
   }
 
-  public deletePostulation(id: number) {
+  public viewApplicants(applicants: any) {
+    console.log(applicants);
+    const ref = this.dialog.open(PostulationApplicantsComponent, {
+      width: 'auto', height: 'auto',
+      data: applicants
+    });
+  }
+
+  /* public deletePostulation(id: number) {
     const param = {
       data: id
     };
@@ -105,7 +122,7 @@ export class PostulationListComponent implements OnInit {
           );
       }
     });
-  }
+  } */
 
   aceptarPostulation(id: number) {
     const param = {
