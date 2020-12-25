@@ -12,6 +12,7 @@ import { SearchProductComponent } from './search-product/search-product.componen
 import { OrderPendingComponent } from './order-pending/order-pending.component';
 import { OrderDetailsComponent } from './order-details/order-details.component';
 import { SendJobOfferComponent } from './send-job-offer/send-job-offer.component';
+import { OrderSearchComponent } from './order-search/order-search.component';
 
 const routes: Routes = [
   {
@@ -19,11 +20,12 @@ const routes: Routes = [
     {path: 'list', component: OrderListComponent},
     {path: 'store', component: OrderStoreComponent},
     {path: 'pending', component: OrderPendingComponent},
+    {path: 'test', component: OrderSearchComponent},
     {path: 'search/:nameProduct', component: SearchProductComponent}
 ];
 
 @NgModule({
-  declarations: [OrderListComponent, OrderNewComponent, OrderStoreComponent, OrderStoreCardComponent, SearchProductComponent, OrderPendingComponent, OrderDetailsComponent, SendJobOfferComponent],
+  declarations: [OrderListComponent, OrderNewComponent, OrderStoreComponent, OrderStoreCardComponent, SearchProductComponent, OrderPendingComponent, OrderDetailsComponent, SendJobOfferComponent, OrderSearchComponent],
   imports: [
     CommonModule,
     MaterialModule,

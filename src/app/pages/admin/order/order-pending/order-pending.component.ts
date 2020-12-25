@@ -48,6 +48,7 @@ export class OrderPendingComponent implements OnInit {
     this.dialog.open(SendJobOfferComponent, {
       width: '750px',
       data: ord,
+      autoFocus: false
     });
   }
 listData(){
