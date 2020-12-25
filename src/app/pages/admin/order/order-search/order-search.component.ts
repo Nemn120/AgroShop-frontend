@@ -131,5 +131,4 @@ export class OrderSearchComponent implements OnInit {
       console.error(error);
     });
   }
-
 }
