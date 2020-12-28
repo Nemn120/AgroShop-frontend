@@ -8,6 +8,7 @@ import { RestService } from 'src/app/_service/rest.service';
 import { SharedService } from 'src/app/_service/shared.service';
 import { OrderDetailsComponent } from '../order-details/order-details.component';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-client-order-pending',
@@ -20,6 +21,7 @@ export class ClientOrderPendingComponent implements OnInit {
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatPaginator) paginator: MatPaginator;
   orderBean: OrderBean;
+  action: string = 'SUCCESS';
   constructor( private restService: RestService,
                public dialog: MatDialog,
                public sharedService: SharedService,
@@ -40,7 +42,38 @@ export class ClientOrderPendingComponent implements OnInit {
       data: ord,
     });
   }
-  loadData(){
+
+  cancellOrder(order: OrderBean) { 
+    Swal.fire({
+      title: 'Esta seguro de cancelar la orden?', 
+      showClass: {
+        popup: 'animate__animated animate__fadeInDown'
+      },
+      hideClass: {
+        popup: 'animate__animated animate__fadeOutUp'
+      },
+      icon: 'warning',
+      showCancelButton: true,
+      allowOutsideClick:false,
+      confirmButtonColor: 'green',
+      cancelButtonColor: '#d33', 
+      confirmButtonText: 'Cancelar orden'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        let param={
+          id: order.id
+        }
+        this.restService.requestApiRestData('order/cor',param).subscribe(result=>{
+          this.restService.messageChange.next({ message: result.responseMessage, action:this.action });
+          console.log(result)
+        })
+        
+      }
+
+    });
+  }
+ 
+  loadData(){ 
     let param = {
       id: this.sharedService.userSession.id,
       data: {
@@ -49,13 +82,11 @@ export class ClientOrderPendingComponent implements OnInit {
     };
     this.restService.requestApiRestData('order/golbspac', param)
       .subscribe( result => {
-        this.snackBar.open(result.responseCode, 'INFO', {
-          duration: 2000
-        });
+        
         this.dataSource = new MatTableDataSource(result.datalist);
         this.dataSource.sort = this.sort;
         this.dataSource.paginator = this.paginator;
-        console.log(result.datalist); 
+        
   
       }
       ); 
