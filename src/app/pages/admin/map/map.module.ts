@@ -15,7 +15,7 @@ import { NgxMapboxGLModule } from 'ngx-mapbox-gl';
     })
   ],
   exports:[
-
+    
     ProductMapComponent
 
   ],
