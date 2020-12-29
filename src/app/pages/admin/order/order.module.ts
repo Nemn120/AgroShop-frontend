@@ -12,6 +12,8 @@ import { SearchProductComponent } from './search-product/search-product.componen
 import { OrderPendingComponent } from './order-pending/order-pending.component';
 import { OrderDetailsComponent } from './order-details/order-details.component';
 import { SendJobOfferComponent } from './send-job-offer/send-job-offer.component';
+import { ProductMapComponent } from '../map/product-map/product-map.component';
+import { MapModule } from '../map/map.module';
 
 const routes: Routes = [
   {
@@ -31,9 +33,12 @@ const routes: Routes = [
     FormsModule,
     ReactiveFormsModule,
     RouterModule.forChild(routes),
+
+    MapModule
   ],
   entryComponents:[
-    OrderDetailsComponent,SendJobOfferComponent
+    OrderDetailsComponent,SendJobOfferComponent,
+    ProductMapComponent
   ],
 })
 export class OrderModule { }
