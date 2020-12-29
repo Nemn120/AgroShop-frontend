@@ -1,3 +1,4 @@
+import { ProductMapComponent } from './../../pages/admin/map/product-map/product-map.component';
 import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA, MatDialog } from '@angular/material/dialog';
 import { OrderBean } from '../../_model/OrderBean';
@@ -11,6 +12,7 @@ import { SharedService } from 'src/app/_service/shared.service';
 import { RestService } from 'src/app/_service/rest.service';
 import { UbigeoBean } from 'src/app/_model/UbigeoBean';
 import { OrderDetailBean } from 'src/app/_model/OrderDetailBean';
+import { ProductBean } from '../../_model/ProductBean';
 
 @Component({
   selector: 'app-data-client',
@@ -194,5 +196,15 @@ export class DataClientComponent implements OnInit {
     });
   }
 
+
+     //open map product
+     openProductMap(){
+      this.dialog.open(ProductMapComponent, {
+        width: '50%',
+        height: '50%',
+        data: null,
+      });
+    }
+  
 
 }
