@@ -59,6 +59,10 @@
             </mat-form-field>
             <button mat-raised-button type="submit" color="primary" (keyup.enter)="getAsignOrderByFields()" (click)="getAsignOrderByFields()" [disabled]="
             (this.searchOrderByFieldsDTO.priceIni != undefined && this.searchOrderByFieldsDTO.priceFin == undefined)">Buscar</button>
+            &nbsp;
+            <button mat-raised-button type="submit" color="warn" (click)="exportAsXLSX()">
+                Exportar <mat-icon>trending_down</mat-icon>
+            </button>
         </form>
     </mat-card>
 </div>

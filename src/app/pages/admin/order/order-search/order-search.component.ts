@@ -9,6 +9,7 @@ import { MatSort } from '@angular/material/sort';
 import { OrderBean } from 'src/app/_model/OrderBean';
 import { MatDialog } from '@angular/material/dialog';
 import { OrderDetailsComponent } from '../order-details/order-details.component';
+import {ExporterService} from '../../../../_service/exporter.service';
 
 @Component({
   selector: 'app-order-search',
@@ -29,7 +30,8 @@ export class OrderSearchComponent implements OnInit {
   allString: string = 'Todos';
 
   constructor(
-    private restService: RestService, private sharedService: SharedService, public dialog: MatDialog
+    private restService: RestService, private sharedService: SharedService, public dialog: MatDialog,
+    private excelService: ExporterService
   ) { }
 
   ngOnInit(): void {
@@ -130,5 +132,9 @@ export class OrderSearchComponent implements OnInit {
     }, error => {
       console.error(error);
     });
+  }
+
+  public exportAsXLSX():void{
+    this.excelService.exportToExcel(this.dataSource.data,'orders_export');
   }
 }

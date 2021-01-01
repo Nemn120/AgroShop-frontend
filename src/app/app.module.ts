@@ -14,7 +14,7 @@ import { MatFabMenuModule } from '@angular-material-extensions/fab-menu';
 import { EcoFabSpeedDialModule } from '@ecodev/fab-speed-dial';
 import { PanelAdminModule } from './pages/admin/panel-admin/panel-admin.module';
 import { RegistryComponent } from './pages/authorization/registry/registry.component';
-
+import {ExporterService} from '../app/_service/exporter.service';
 
 import { DriverFormContainerComponent } from './pages/authorization/registry/driver-form-container/driver-form-container.component';
 
@@ -57,7 +57,6 @@ export function tokenGetter() {
     MatFabMenuModule,  
    FormsModule,   
 
-
   ],
   providers: [
  
@@ -66,7 +65,8 @@ export function tokenGetter() {
       useClass: ServerErrorsInterceptor,
       multi: true
     },
-    { provide: LocationStrategy, useClass: HashLocationStrategy}
+    { provide: LocationStrategy, useClass: HashLocationStrategy},
+    ExporterService
   ],
   bootstrap: [AppComponent],
   exports: [
