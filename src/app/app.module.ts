@@ -59,7 +59,6 @@ export function tokenGetter() {
 
   ],
   providers: [
- 
 
     {provide: HTTP_INTERCEPTORS,
       useClass: ServerErrorsInterceptor,
