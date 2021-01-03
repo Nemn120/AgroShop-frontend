@@ -26,7 +26,7 @@ export class OrderSearchComponent implements OnInit {
   regionCode:string;
   searchOrderByFieldsDTO:SearchOrderByFieldsDTO;
   dataSource: MatTableDataSource<any>;
-  statusList: any[] = ['Todos', 'Publicada', 'Pendiente'];
+  statusList: any[] = ['Todos', 'Publicada', 'Pendiente','Cancelado'];
   allString: string = 'Todos';
 
   constructor(
@@ -68,7 +68,6 @@ export class OrderSearchComponent implements OnInit {
         this.dataSource.paginator = this.paginator;
         this.dataSource.sort = this.sort;
       })
-      console.log(this.searchOrderByFieldsDTO);
     }
   }
 
@@ -76,6 +75,7 @@ export class OrderSearchComponent implements OnInit {
     switch(status){
       case 'Publicada': return '#009865';
       case 'Pendiente': return '#F26A24';
+      case 'Cancelado': return '#E3BB6A';
     }
   }
 
@@ -132,9 +132,31 @@ export class OrderSearchComponent implements OnInit {
     }, error => {
       console.error(error);
     });
+
   }
 
-  public exportAsXLSX():void{
-    this.excelService.exportToExcel(this.dataSource.data,'orders_export');
+  public exportAsXLSXFiltered():void{
+    this.excelService.exportToExcel(this.dataSource.data,'orders');
+  }
+
+  public reload(){
+    this.searchOrderByFieldsDTO.farmer = this.sharedService.userSession.id;
+    this.searchOrderByFieldsDTO.status = undefined;
+    this.searchOrderByFieldsDTO.dateIni = undefined;
+    this.searchOrderByFieldsDTO.dateFin = undefined;
+    this.searchOrderByFieldsDTO.destinationDistrict = undefined;
+    this.searchOrderByFieldsDTO.destinationProvince = undefined;
+    this.searchOrderByFieldsDTO.destinationRegion = undefined;
+    this.searchOrderByFieldsDTO.priceFin = undefined;
+    this.searchOrderByFieldsDTO.priceIni = undefined;
+
+    let param = {
+      data : this.searchOrderByFieldsDTO
+    }
+    this.restService.requestApiRestData('order/globf',param).subscribe(result =>{
+      this.dataSource = new MatTableDataSource(result.datalist);
+      this.dataSource.paginator = this.paginator;
+      this.dataSource.sort = this.sort;
+    })
   }
 }
