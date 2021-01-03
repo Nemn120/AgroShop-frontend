@@ -65,7 +65,6 @@ export class ClientOrderPendingComponent implements OnInit {
         }
         this.restService.requestApiRestData('order/cor',param).subscribe(result=>{
           this.restService.messageChange.next({ message: result.responseMessage, action:this.action });
-          console.log(result)
         })
         
       }
