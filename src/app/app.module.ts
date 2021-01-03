@@ -56,12 +56,9 @@ export function tokenGetter() {
     }),*/         
     MatFabMenuModule,  
    FormsModule,   
-
-
   ],
   providers: [
  
-
     {provide: HTTP_INTERCEPTORS,
       useClass: ServerErrorsInterceptor,
       multi: true
