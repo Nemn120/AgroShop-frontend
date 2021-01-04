@@ -1,0 +1,34 @@
+<p class="subtitle">Datos del contrato</p>
+<hr />
+
+<p>Nombre del contrato:</p>
+<mat-form-field appearance="outline">
+  <input
+    matInput
+    placeholder="Contrato001"
+    [(ngModel)]="contract.nameContract"
+  />
+</mat-form-field>
+<hr />
+
+<mat-form-field color="accent" appearance="fill">
+  <mat-label>Fecha de inicio:</mat-label>
+  <input matInput [matDatepicker]="picker1" [(ngModel)]="contract.initDate" />
+  <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+  <mat-datepicker #picker1></mat-datepicker>
+</mat-form-field>
+
+<mat-form-field color="accent" appearance="fill">
+  <mat-label>Fecha de término:</mat-label>
+  <input
+    matInput
+    [matDatepicker]="picker2"
+    [(ngModel)]="contract.endContract"
+  />
+  <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+  <mat-datepicker #picker2 color="primary"></mat-datepicker>
+</mat-form-field>
+
+<button mat-button color="primary" (click)="generateContract()">
+  Generar contrato
+</button>
