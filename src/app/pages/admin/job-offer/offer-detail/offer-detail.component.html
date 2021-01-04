@@ -22,14 +22,27 @@
         <span class="card__init">Departamento Inicio: <span>{{this.data.originRegion}}</span></span>
         <span>Provincia Inicio: <span>{{this.data.originProvince }}</span></span>
     </div>
-    <span style="text-align: center;">Distrito Inicio: <span>{{this.data.originDistrict }}</span></span>
+
+    <!--<span style="text-align: center;">Distrito Inicio: <span>{{this.data.originDistrict }}</span></span>-->
+
+    <div>
+        <span class="card__init">Distrito Inicio: <span>{{this.data.originDistrict }}</span></span>
+        <span> <span><button mat-raised-button style="width: 25%;" (click)="openProductMap()">Ver ubicacion inicial</button></span></span>
+    </div>
+
     <p class="card__requer" style="text-align: center; color: #009865;">Ubigeo Final</p>
     <hr>
     <div>
         <span class="card__init">Departamento Final: <span>{{this.data.order.destinationRegion}}</span></span>
         <span>Provincia Final: <span>{{this.data.order.destinationProvince}}</span></span>
     </div>
-    <span style="text-align: center;">Distrito Final: <span>{{this.data.order.destinationDistrict }}</span></span>
+    <!--<span style="text-align: center;">Distrito Final: <span>{{this.data.order.destinationDistrict }}</span></span>-->
+
+    <div>
+        <span class="card__init">Distrito Final: <span>{{this.data.order.destinationDistrict }}</span></span>
+        <span> <span><button mat-raised-button style="width: 25%;" (click)="openProductMap()">Ver ubicacion final</button></span></span>
+    </div>
+
     <br>
     <p class="card__requer">Propuesta de trabajo:</p>
     <mat-form-field class="example-full-width" appearance="outline">

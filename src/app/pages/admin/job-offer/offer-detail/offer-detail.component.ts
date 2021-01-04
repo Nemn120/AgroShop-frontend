@@ -3,6 +3,7 @@ import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { RestService } from 'src/app/_service/rest.service';
 import { SharedService } from 'src/app/_service/shared.service';
 import Swal from 'sweetalert2';
+import { ProductMapComponent } from '../../map/product-map/product-map.component';
 
 @Component({
   selector: 'app-offer-detail',
@@ -69,6 +70,15 @@ export class OfferDetailComponent implements OnInit {
     this.restService.requestApiRestData('fpbs',param).subscribe(result =>{
       console.log("Aceptado",result);
     })
+  }
+
+  //open map product
+  openProductMap(){
+    this.dialog.open(ProductMapComponent, {
+      width: '50%',
+      height: '50%',
+      data: null,
+    });
   }
 
 }
