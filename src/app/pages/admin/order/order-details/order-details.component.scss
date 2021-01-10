@@ -5,3 +5,21 @@ table {
 .mat-form-field {
     width: 100%;
 }
+
+.offer__title{
+    font-size: 25px;
+    font-weight: bold;
+    border-bottom: 5px solid #009865;
+    text-align: center;
+    padding-bottom: 3px;
+    margin-top: 0;
+    margin-bottom: 0;
+    color:  #009865;
+}
+
+th{
+    background-color: #009865;
+    color: white;
+    font-size: 15px;
+    font-weight: bold;
+}

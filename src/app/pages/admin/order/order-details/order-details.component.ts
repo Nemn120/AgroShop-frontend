@@ -36,7 +36,7 @@ export class OrderDetailsComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-
+    console.log(this.data);
     let param = {
       id: this.data.id,
     };
@@ -45,9 +45,9 @@ export class OrderDetailsComponent implements OnInit {
         this.dataSource = new MatTableDataSource(result.datalist);
         this.dataSource.sort = this.sort;
         this.dataSource.paginator = this.paginator;
-        console.log(result.datalist);
       }
       );
+      
   }
 
 }
