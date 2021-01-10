@@ -18,5 +18,6 @@ export class ProductSalesBean extends MainBean{
     statusSales:String;
     quantitySelect:number;
 
-    place:PlaceBean;
+    place:PlaceBean=new PlaceBean();
+
 }

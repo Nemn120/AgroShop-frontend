@@ -19,6 +19,7 @@ import { MaterialModule } from '../../../_material/material.module';
 
   ],
   exports:[
+    
     ProductMapComponent
   ],
 })

@@ -71,7 +71,7 @@ export class ProductsSalesFormComponent implements OnInit {
     let param = {
       data: this.productSalesSelect,
     }
-
+    
     this.restService.requestApiRestData('productsales/sps', param).subscribe(result => {
 
       console.log('result: ', result);
