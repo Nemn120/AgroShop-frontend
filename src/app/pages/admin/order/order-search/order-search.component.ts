@@ -137,6 +137,7 @@ export class OrderSearchComponent implements OnInit {
 
   public exportAsXLSXFiltered():void{
     this.excelService.exportToExcel(this.dataSource.data,'orders');
+    console.log(this.dataSource.data);
   }
 
   public reload(){
