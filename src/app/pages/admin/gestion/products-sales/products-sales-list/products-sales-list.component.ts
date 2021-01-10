@@ -8,6 +8,7 @@ import { SharedService } from 'src/app/_service/shared.service';
 import { RestService } from 'src/app/_service/rest.service';
 import { ProductSalesBean } from '../../../../../_model/ProductSalesBean';
 import { ProductsSalesFormComponent } from '../products-sales-form/products-sales-form.component';
+import { ProductMapComponent } from '../../../map/product-map/product-map.component';
 
 @Component({
   selector: 'app-products-sales-list',
@@ -109,6 +110,16 @@ export class ProductsSalesListComponent implements OnInit {
     if (this.dataSource.paginator) {
       this.dataSource.paginator.firstPage();
     }
+  }
+
+
+   //open map product
+   openProductMap(ProductSales: ProductSalesBean){
+    this.dialog.open(ProductMapComponent, {
+      width: '50%',
+      height: '50%',
+      data: ProductSales,
+    });
   }
 
 }

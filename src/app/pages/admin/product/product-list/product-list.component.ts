@@ -9,7 +9,6 @@ import { ProductFormComponent } from '../product-form/product-form.component';
 import { MatDialog } from '@angular/material/dialog';
 import { ProductViewComponent } from '../product-view/product-view.component';
 import { SharedService } from 'src/app/_service/shared.service';
-import { ProductMapComponent } from '../../map/product-map/product-map.component';
 
 @Component({
   selector: 'app-product-list',
@@ -107,15 +106,6 @@ export class ProductListComponent implements OnInit {
     if (this.dataSource.paginator) {
       this.dataSource.paginator.firstPage();
     }
-  }
-
-  //open map product
-  openProductMap(product: ProductBean){
-    this.dialog.open(ProductMapComponent, {
-      width: '50%',
-      height: '50%',
-      data: product,
-    });
   }
 
 
