@@ -62,8 +62,6 @@ listData(){
       this.dataSource = new MatTableDataSource(result.datalist);
       this.dataSource.sort = this.sort;
       this.dataSource.paginator = this.paginator;
-      console.log(result.datalist);
-
     }
     );
 }
