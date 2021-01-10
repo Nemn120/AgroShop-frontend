@@ -15,6 +15,7 @@ import { ProductsSalesListComponent } from '../gestion/products-sales/products-s
 import { ProductsSalesViewComponent } from '../gestion/products-sales/products-sales-view/products-sales-view.component';
 import { MapModule } from '../map/map.module';
 import { ProductMapComponent } from '../map/product-map/product-map.component';
+import { ProductSalesMapComponent } from '../map/product-sales-map/product-sales-map.component';
 const routes: Routes = [
   
     
@@ -70,6 +71,7 @@ const routes: Routes = [
     ProductsSalesViewComponent,
     //map
     ProductMapComponent,
+    ProductSalesMapComponent
    ],
 })
 export class ProductModule { }

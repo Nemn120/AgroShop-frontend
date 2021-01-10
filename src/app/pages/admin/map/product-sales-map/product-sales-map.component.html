@@ -1,0 +1,13 @@
+<mgl-map [style]="'mapbox://styles/mapbox/streets-v9'" [zoom]="[14.5]" [center]="[-77.0824914, -12.0587117]" [maxBounds]="[[-81.594163,-18.733253], [-68.608323, 0.479432]]">
+    <mgl-control mglFullscreen position="bottom-right"></mgl-control>
+    <mgl-control mglNavigation position="bottom-right"></mgl-control>
+
+    <mgl-marker [lngLat]="positionMarker" [draggable]="this.edit" (dragEnd)="onDragEnd($event)"></mgl-marker>
+
+
+
+</mgl-map>
+
+<button style="margin-top: 0.5% ;width: 33.3%;" mat-raised-button color="primary" [disabled]="this.edit" (click)="editPlace()">Editar</button>
+<button style="width: 33.4%;" mat-raised-button color="primary" [disabled]="!this.edit" (click)="guardarPlace()">Guardar</button>
+<button style="width: 33.3%;" mat-raised-button color="accent" (click)="close()">Cancelar</button>

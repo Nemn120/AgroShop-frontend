@@ -8,7 +8,7 @@ import { SharedService } from 'src/app/_service/shared.service';
 import { RestService } from 'src/app/_service/rest.service';
 import { ProductSalesBean } from '../../../../../_model/ProductSalesBean';
 import { ProductsSalesFormComponent } from '../products-sales-form/products-sales-form.component';
-import { ProductMapComponent } from '../../../map/product-map/product-map.component';
+import { ProductSalesMapComponent } from '../../../map/product-sales-map/product-sales-map.component';
 
 @Component({
   selector: 'app-products-sales-list',
@@ -113,9 +113,9 @@ export class ProductsSalesListComponent implements OnInit {
   }
 
 
-   //open map product
-   openProductMap(ProductSales: ProductSalesBean){
-    this.dialog.open(ProductMapComponent, {
+   //open map product sales
+   openProductSalesMap(ProductSales: ProductSalesBean){
+    this.dialog.open(ProductSalesMapComponent, {
       width: '50%',
       height: '50%',
       data: ProductSales,
