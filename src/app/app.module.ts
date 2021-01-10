@@ -71,7 +71,6 @@ export function tokenGetter() {
   exports: [
     FlexLayoutModule, 
 
-
   ],
 })
 export class AppModule { }
