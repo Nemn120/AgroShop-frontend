@@ -8,10 +8,12 @@
 
 
 #registry-button-container{
-  position: absolute;top: 1px;margin-top: 20px; width: 100%;
+  position: absolute;top: 1px;margin-top: 10px; width: 100%;
   display: flex;
   justify-content: flex-end;
   padding-right: 50px;
+
+  padding-bottom:50px ;
 }
 
 
@@ -27,7 +29,7 @@
 
 .mat-card {
     box-shadow: 1px 1px 10px 2px #888888;
-    height: 800px;
+    height: 850px;
     width: 1200px;
     display: flex;
 }
