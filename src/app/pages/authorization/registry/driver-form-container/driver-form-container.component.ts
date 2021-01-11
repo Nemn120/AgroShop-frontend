@@ -27,6 +27,8 @@ export class DriverFormContainerComponent implements OnInit {
       DNI: new FormControl('', [Validators.required, Validators.pattern('^[0-9]{8}$')]),
       Name: new FormControl('', [Validators.required] ),
       LastName: new FormControl('', [Validators.required]),
+      Email: new FormControl('',[Validators.required]),
+      Phone: new FormControl('',[Validators.required, Validators.pattern('^[0-9]{9}$')]),
       UserName: new FormControl('', [Validators.required]),
       Password: ['', [Validators.required]],
       ConfirmPassword: ['', [Validators.required]]
