@@ -6,9 +6,10 @@ import { NgxMapboxGLModule } from 'ngx-mapbox-gl';
 import { ProductSalesMapComponent } from './product-sales-map/product-sales-map.component';
 import { MaterialModule } from '../../../_material/material.module';
 import { environment } from '../../../../environments/environment.prod';
+import { ProductSalesPlaceMapComponent } from './product-sales-place-map/product-sales-place-map.component';
 
 @NgModule({
-  declarations: [ProductMapComponent, ProductSalesMapComponent],
+  declarations: [ProductMapComponent, ProductSalesMapComponent, ProductSalesPlaceMapComponent],
   imports: [
     CommonModule,
     MaterialModule,
@@ -17,11 +18,12 @@ import { environment } from '../../../../environments/environment.prod';
       accessToken:  environment.TOKEN_MAPBOX,   // Optional, can also be set per map (accessToken input of mgl-map)
       geocoderAccessToken:  environment.TOKEN_MAPBOX,   // Optional, specify if different from the map access token, can also be set per mgl-geocoder (accessToken input of mgl-geocoder)
     })
-    
+
   ],
   exports:[
     ProductMapComponent,
     ProductSalesMapComponent,
+    ProductSalesPlaceMapComponent
   ],
 })
 export class MapModule { }

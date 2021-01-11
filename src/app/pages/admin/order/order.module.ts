@@ -14,6 +14,7 @@ import { OrderDetailsComponent } from './order-details/order-details.component';
 import { SendJobOfferComponent } from './send-job-offer/send-job-offer.component';
 import { ProductMapComponent } from '../map/product-map/product-map.component';
 import { MapModule } from '../map/map.module';
+import { ProductSalesPlaceMapComponent } from '../map/product-sales-place-map/product-sales-place-map.component';
 
 const routes: Routes = [
   {
@@ -37,8 +38,10 @@ const routes: Routes = [
     MapModule
   ],
   entryComponents:[
-    OrderDetailsComponent,SendJobOfferComponent,
-    ProductMapComponent
+    OrderDetailsComponent,
+    SendJobOfferComponent,
+  
+    ProductSalesPlaceMapComponent,
   ],
 })
 export class OrderModule { }

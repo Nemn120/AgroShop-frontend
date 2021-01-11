@@ -6,7 +6,7 @@ import { OrderService } from 'src/app/_service/order.service';
 import { SharedService } from 'src/app/_service/shared.service';
 
 import { MatDialog } from '@angular/material/dialog';
-import { ProductMapComponent } from '../../map/product-map/product-map.component';
+import { ProductSalesPlaceMapComponent } from '../../map/product-sales-place-map/product-sales-place-map.component';
 @Component({
   selector: 'app-order-store-card',
   templateUrl: './order-store-card.component.html',
@@ -60,11 +60,11 @@ export class OrderStoreCardComponent implements OnInit {
 
 
    //open map product
-   openProductMap(product: ProductBean){
-    this.dialog.open(ProductMapComponent, {
+   openProductMap(productSales: ProductSalesBean){
+    this.dialog.open(ProductSalesPlaceMapComponent, {
       width: '50%',
-      height: '50%',
-      data: product,
+      height: '70%',
+      data: productSales,
     });
   }
 
