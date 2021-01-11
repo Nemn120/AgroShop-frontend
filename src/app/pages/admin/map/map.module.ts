@@ -9,13 +9,14 @@ import { ProductSalesPlaceMapComponent } from './product-sales-place-map/product
 import { OrderMapComponent } from './order-map/order-map.component';
 import { ViewProductsSalesMapComponent } from './view-products-sales-map/view-products-sales-map.component';
 import { JobOfferMapComponent } from './job-offer-map/job-offer-map.component';
+import { PlaceMapComponent } from './place-map/place-map.component';
 
 @NgModule({
   declarations: [
     ProductMapComponent, 
     ProductSalesMapComponent, 
     ProductSalesPlaceMapComponent, 
-    OrderMapComponent, ViewProductsSalesMapComponent, JobOfferMapComponent],
+    OrderMapComponent, ViewProductsSalesMapComponent, JobOfferMapComponent, PlaceMapComponent],
   imports: [
     CommonModule,
     MaterialModule,
@@ -30,7 +31,7 @@ import { JobOfferMapComponent } from './job-offer-map/job-offer-map.component';
     ProductMapComponent,
     ProductSalesMapComponent,
     ProductSalesPlaceMapComponent
-    
+  
   ],
 })
 export class MapModule { }

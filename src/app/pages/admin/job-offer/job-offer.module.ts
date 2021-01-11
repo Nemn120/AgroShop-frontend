@@ -7,6 +7,7 @@ import { FormsModule } from '@angular/forms';
 import { OfferDetailComponent } from './offer-detail/offer-detail.component';
 import { MapModule } from '../map/map.module';
 import { MapComponent } from 'ngx-mapbox-gl';
+import { PlaceMapComponent } from '../map/place-map/place-map.component';
 
 const routes: Routes = [
   {
@@ -15,7 +16,6 @@ const routes: Routes = [
   {
     path: '', component: OfferComponent,
   }
-
 ];
 
 @NgModule({
@@ -28,8 +28,10 @@ const routes: Routes = [
 
     MapModule,
   ],
-  entryComponents: [OfferDetailComponent,
-  MapComponent,
+  entryComponents: [
+    OfferDetailComponent,
+    MapComponent,
+    PlaceMapComponent,
 ]
 })
 export class JobOfferModule { }
