@@ -47,7 +47,8 @@
         line-height: 25px;
         height: 40px;
         .item-price {
-            width: 50%;
+            //width: 50%;
+            width: 30%;
             font-size: 1.2em;
             font-weight: 700;
             margin-top: auto;
@@ -65,8 +66,10 @@
                 border: 1px solid #ebebed;
                 border-radius: 20px;
                 //width: 90px!important;
-                padding: 5px 10px;
+                //padding: 5px 10px;
+                padding: 5px 5px;
                 width: 35px !important;
+                margin-left: 15px;
                 background-color: rgb(226, 226, 225);
             }
             .btn-add {
@@ -78,9 +81,10 @@
                 transition-property: color, background-color, border-color, box-shadow;
                 box-shadow: 2px 15px 50px rgba(41, 44, 61, .1);
                 border-radius: 500px;
-                width: 20px;
-                height: 20px;
-                margin-left: 25px;
+                width: 25px;
+                height: 25px;
+                //margin-left: 25px;
+                margin-left: 30px;
                 margin-top: auto;
                 margin-bottom: auto;
             }
@@ -127,22 +131,26 @@
 li {
     text-align: left;
 }
+
 input[type="number"]::-webkit-outer-spin-button,
 input[type="number"]::-webkit-inner-spin-button {
--webkit-appearance: none;
-margin: 0;
+    -webkit-appearance: none;
+    margin: 0;
 }
+
 //Firefox:
 input[type="number"] {
--moz-appearance: textfield;
+    -moz-appearance: textfield;
 }
+
 input[type="number"]:hover,
 input[type="number"]:focus {
--moz-appearance: number-input;
+    -moz-appearance: number-input;
 }
+
 //Other
 input[type=number]::-webkit-inner-spin-button,
 input[type=number]::-webkit-outer-spin-button {
--webkit-appearance: none;
-margin: 0;
+    -webkit-appearance: none;
+    margin: 0;
 }

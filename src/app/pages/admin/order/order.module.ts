@@ -12,8 +12,13 @@ import { SearchProductComponent } from './search-product/search-product.componen
 import { OrderPendingComponent } from './order-pending/order-pending.component';
 import { OrderDetailsComponent } from './order-details/order-details.component';
 import { SendJobOfferComponent } from './send-job-offer/send-job-offer.component';
+import { ProductMapComponent } from '../map/product-map/product-map.component';
+import { MapModule } from '../map/map.module';
+import { ProductSalesPlaceMapComponent } from '../map/product-sales-place-map/product-sales-place-map.component';
 import { ClientOrderPendingComponent } from './client-order-pending/client-order-pending.component';
 import { OrderSearchComponent } from './order-search/order-search.component';
+import { ViewProductsSalesMapComponent } from '../map/view-products-sales-map/view-products-sales-map.component';
+import { JobOfferMapComponent } from '../map/job-offer-map/job-offer-map.component';
 
 const routes: Routes = [
   {
@@ -35,9 +40,16 @@ const routes: Routes = [
     FormsModule,
     ReactiveFormsModule,
     RouterModule.forChild(routes),
+  
+    MapModule
   ],
   entryComponents:[
-    OrderDetailsComponent,SendJobOfferComponent
+    OrderDetailsComponent,
+    SendJobOfferComponent,
+  
+    ProductSalesPlaceMapComponent,
+    ViewProductsSalesMapComponent,
+    JobOfferMapComponent,
   ],
 })
 export class OrderModule { }

@@ -1,0 +1,11 @@
+<div>
+    {{name}}
+</div>
+<br>
+<mgl-map [style]="'mapbox://styles/mapbox/streets-v9'" [zoom]="[14.5]" [center]="positionMarker" [maxBounds]="[[-81.594163,-18.733253], [-68.608323, 0.479432]]">
+
+    <mgl-marker [lngLat]="positionMarker" [draggable]="false"></mgl-marker>
+
+    <mgl-control mglFullscreen position="bottom-right"></mgl-control>
+
+</mgl-map>

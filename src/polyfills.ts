@@ -128,5 +128,5 @@ import 'zone.js/dist/zone';  // Included with Angular CLI.
  * APPLICATION IMPORTS
  */
 
- //PARA MAPBOX
+ //mapbox
 (window as any).global = window;

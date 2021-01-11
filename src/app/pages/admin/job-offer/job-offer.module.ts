@@ -5,6 +5,9 @@ import { OfferComponent } from './offer/offer.component';
 import { MaterialModule } from 'src/app/_material/material.module';
 import { FormsModule } from '@angular/forms';
 import { OfferDetailComponent } from './offer-detail/offer-detail.component';
+import { MapModule } from '../map/map.module';
+import { MapComponent } from 'ngx-mapbox-gl';
+import { PlaceMapComponent } from '../map/place-map/place-map.component';
 
 const routes: Routes = [
   {
@@ -13,7 +16,6 @@ const routes: Routes = [
   {
     path: '', component: OfferComponent,
   }
-
 ];
 
 @NgModule({
@@ -22,8 +24,14 @@ const routes: Routes = [
     CommonModule,
     RouterModule.forChild(routes),
     MaterialModule,
-    FormsModule
+    FormsModule,
+
+    MapModule,
   ],
-  entryComponents: [OfferDetailComponent]
+  entryComponents: [
+    OfferDetailComponent,
+    MapComponent,
+    PlaceMapComponent,
+]
 })
 export class JobOfferModule { }
