@@ -16,7 +16,7 @@ export class CategoriesFormComponent implements OnInit {
 
   titulo:string="Nueva ";
   categorySelect: CategoryProductBean;
-
+  categories=['Tubérculos','Verduras','Frutas','hortalizas','Legumbres']
   formulario:FormGroup;
 
   constructor(
@@ -27,7 +27,7 @@ export class CategoriesFormComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public data: CategoryProductBean,
 
     private builder:FormBuilder,
-    
+
   ) { }
 
   ngOnInit(): void {
@@ -61,7 +61,7 @@ export class CategoriesFormComponent implements OnInit {
     let param = {
       data: this.categorySelect,
     }
-    
+
     this.restService.requestApiRestData('categoryproduct/scp', param,).subscribe(result => {
       console.log('result: ',result);
 
@@ -78,7 +78,7 @@ export class CategoriesFormComponent implements OnInit {
     });
     this.closeDialog();
   }
-  
+
   closeDialog(): void {
     this.dialogRef.close();
   }

@@ -19,6 +19,8 @@ export class ProductsSalesFormComponent implements OnInit {
   productos: ProductBean[];
   estados: String[] = ['Activo', 'Desactivo'];
 
+  unites:String[] = ['Kg','quintal','tonelada','jaba','cajon','costalillo'];
+
   constructor(
     private restService: RestService,
     private sharedService: SharedService,
@@ -61,7 +63,7 @@ export class ProductsSalesFormComponent implements OnInit {
     if (!this.productSalesSelect.totalQuantity) {
       this.productSalesSelect.totalQuantity = 0;
     }
-    
+
     //PRODUCTO UN BUSCADOR
     //temporal validacion de producto nulo
     if (!this.productSalesSelect.product) {

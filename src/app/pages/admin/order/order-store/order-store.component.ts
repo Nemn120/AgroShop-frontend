@@ -10,17 +10,19 @@ import { RestService } from 'src/app/_service/rest.service';
 })
 export class OrderStoreComponent implements OnInit {
   productSalesList:ProductSalesBean[]=[];
+  categories:String[]=['Tubérculos','Verduras','Frutas','hortalizas','Legumbres'];
+  unites:String[] = ['Kg','quintal','tonelada','jaba','cajon','costalillo'];
   constructor(
     private restService:RestService,
-    private sanitization: DomSanitizer  
+    private sanitization: DomSanitizer
 
   ) { }
 
   ngOnInit(): void {
     this.restService.requestApiRestData("productsales/glpsaa",{}).subscribe(result =>{
       this.activatedPhoto(result.datalist);
-      this.productSalesList=result.datalist; 
-    }) 
+      this.productSalesList=result.datalist;
+    })
   }
   activatedPhoto(data:any){
     for(const m of data){

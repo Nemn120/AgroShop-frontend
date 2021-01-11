@@ -15,9 +15,17 @@
             </mat-select>
         </mat-form-field>
         <br>
+        <!--
         <mat-form-field>
             <mat-label>Unidad de Medida</mat-label>
             <input matInput [(ngModel)]="this.productSalesSelect.measureUnite" placeholder="Ingresar unidad de medida">
+        </mat-form-field>
+        -->
+        <mat-form-field appearance="fill">
+          <mat-label>Unidad de medida</mat-label>
+          <mat-select [(ngModel)]="this.productSalesSelect.measureUnite">
+            <mat-option *ngFor="let unite of unites" [value]="unite">{{unite}}</mat-option>
+          </mat-select>
         </mat-form-field>
         <br>
         <mat-form-field>
@@ -49,7 +57,7 @@
             <input matInput [(ngModel)]="this.data.availableQuantity">
         </mat-form-field>
         <br>
-        
+
         <mat-form-field>
             <mat-label>Disponibiliad</mat-label>
             <input matInput [(ngModel)]="this.data.statusSales">

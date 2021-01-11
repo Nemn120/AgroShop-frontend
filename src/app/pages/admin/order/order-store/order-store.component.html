@@ -1,6 +1,35 @@
 <div class="layout-data2">
     Productos disponibles !
 </div>
+
+<mat-card style="margin: 20px 50px; height: 100px; display: flex; align-items: center; padding-top: 30px;">
+  <mat-form-field appearance="fill" style="margin-right: 10px;">
+    <mat-label>Categoría</mat-label>
+    <mat-select>
+      <mat-option>None</mat-option>
+      <mat-option *ngFor="let c of categories" [value]="state">{{c}}</mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field appearance="fill" style="margin-right: 10px;">
+    <mat-label>Unidad de medida</mat-label>
+    <mat-select>
+      <mat-option>None</mat-option>
+      <mat-option *ngFor="let u of unites" [value]="state">{{u}}</mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field appearance="fill" style="margin-right: 10px;">
+    <mat-label>Region</mat-label>
+    <mat-select>
+      <mat-option>None</mat-option>
+      <mat-option *ngFor="let r of regions" [value]="state">{{r}}</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <div class="button-filter">
+    <button mat-raised-button style="height: 100%; width: 100%; font-size: 20px;" color="primary">Buscar</button>
+  </div>
+</mat-card>
+
 <div class="layout-data">
     <div class="body-item">
         <div class="grid-item">

@@ -2,11 +2,22 @@
 
 <div [formGroup]="formulario">
     <div class="example-container">
+        <!--
         <mat-form-field>
             <mat-label>Nombre</mat-label>
             <input matInput placeholder="Ingresar nombre" formControlName="name" required>
-            <!--<mat-error *ngIf="formulario.controls['name'].invalid">{{getErrorMessage()}}</mat-error>-->
+            meterle comentario <mat-error *ngIf="formulario.controls['name'].invalid">{{getErrorMessage()}}</mat-error>
         </mat-form-field>
+        -->
+
+        <mat-form-field appearance="fill">
+          <mat-label>Categoría</mat-label>
+          <mat-select formControlName="name" required>
+            <mat-option>Ninguno</mat-option>
+            <mat-option *ngFor="let category of categories" [value]="category">{{category}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+
     </div>
     <div class="example-container">
         <mat-form-field>
