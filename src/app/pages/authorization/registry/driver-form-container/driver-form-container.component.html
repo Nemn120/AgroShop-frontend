@@ -65,7 +65,7 @@
     <div style=" border-radius: 10px 10px 0px 0px; width: 80%;">
       <mat-form-field appearance="outline" style="width: 100%;">
           <mat-label>Teléfono</mat-label>
-          <input matInput maxlength="8" onkeypress="return event.charCode >= 48 && event.charCode <=57" pattern='^[0-9]{8}$' formControlName="Phone" required>
+          <input matInput maxlength="9" onkeypress="return event.charCode >= 48 && event.charCode <=57" pattern='^[0-9]{9}$' formControlName="Phone" required>
           <mat-error *ngIf="f.Phone.hasError('required') && f.Phone.touched">
               Es requerido
           </mat-error>
