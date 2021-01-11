@@ -1,30 +1,26 @@
-import { BrowserModule } from '@angular/platform-browser';
+import { MatFabMenuModule } from '@angular-material-extensions/fab-menu';
+import { HashLocationStrategy, LocationStrategy } from '@angular/common';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { NgModule } from '@angular/core';
+import { FlexLayoutModule } from '@angular/flex-layout';
+import { FormsModule } from '@angular/forms';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { EcoFabSpeedDialModule } from '@ecodev/fab-speed-dial';
+import { environment } from '../environments/environment';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { MaterialModule } from './_material/material.module';
-import { JwtModule } from '@auth0/angular-jwt';
-import { environment } from '../environments/environment';
-import { HTTP_INTERCEPTORS } from '@angular/common/http';
-import { LocationStrategy, HashLocationStrategy } from '@angular/common';
-import { HttpClientModule } from '@angular/common/http';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { FlexLayoutModule } from '@angular/flex-layout';
-import { MatFabMenuModule } from '@angular-material-extensions/fab-menu';
-import { EcoFabSpeedDialModule } from '@ecodev/fab-speed-dial';
+import { ContractComponent } from './pages/admin/contract/contract.component';
 import { PanelAdminModule } from './pages/admin/panel-admin/panel-admin.module';
-import { RegistryComponent } from './pages/authorization/registry/registry.component';
-
-
-import { DriverFormContainerComponent } from './pages/authorization/registry/driver-form-container/driver-form-container.component';
-
-
-import { ServerErrorsInterceptor } from './_service/server-errors.interceptor';
 import { AuthorizationModule } from './pages/authorization/authorization.module';
-import { LoginComponent } from './pages/authorization/login/login.component';
+import { MaterialModule } from './_material/material.module';
+import { ServerErrorsInterceptor } from './_service/server-errors.interceptor';
 
-import { FormsModule } from '@angular/forms';
-import {MatSnackBarModule} from '@angular/material/snack-bar';
+
+
+
+
 
 export function tokenGetter() {
   const tk = sessionStorage.getItem(environment.TOKEN_NAME);
@@ -33,8 +29,8 @@ export function tokenGetter() {
 }
 
 @NgModule({
-  declarations: [ 
-    AppComponent
+  declarations: [
+    AppComponent, ContractComponent
   ],
   imports: [
     BrowserModule,
@@ -44,23 +40,14 @@ export function tokenGetter() {
     EcoFabSpeedDialModule,
     MaterialModule,
     FlexLayoutModule,
-    PanelAdminModule, 
-    AuthorizationModule, 
-    MatSnackBarModule,  
-    /*JwtModule.forRoot({  
-      config: { 
-        tokenGetter,
-        whitelistedDomains: ['localhost:8080'],
-        blacklistedRoutes: ['http://localhost:8080/oauth/token']
-      }  
-    }),*/         
-    MatFabMenuModule,  
-   FormsModule,   
+    PanelAdminModule,
+    AuthorizationModule,
+    MatSnackBarModule,
+    MatFabMenuModule,
+   FormsModule,
 
   ],
   providers: [
- 
-
     {provide: HTTP_INTERCEPTORS,
       useClass: ServerErrorsInterceptor,
       multi: true
@@ -69,9 +56,7 @@ export function tokenGetter() {
   ],
   bootstrap: [AppComponent],
   exports: [
-    FlexLayoutModule, 
-
-
+    FlexLayoutModule,
   ],
 })
 export class AppModule { }
