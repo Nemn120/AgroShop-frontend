@@ -1,20 +1,20 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ProductMapComponent } from './product-map/product-map.component';
-
 import { NgxMapboxGLModule } from 'ngx-mapbox-gl';
 import { ProductSalesMapComponent } from './product-sales-map/product-sales-map.component';
 import { MaterialModule } from '../../../_material/material.module';
 import { environment } from '../../../../environments/environment.prod';
 import { ProductSalesPlaceMapComponent } from './product-sales-place-map/product-sales-place-map.component';
 import { OrderMapComponent } from './order-map/order-map.component';
+import { ViewProductsSalesMapComponent } from './view-products-sales-map/view-products-sales-map.component';
 
 @NgModule({
   declarations: [
     ProductMapComponent, 
     ProductSalesMapComponent, 
     ProductSalesPlaceMapComponent, 
-    OrderMapComponent],
+    OrderMapComponent, ViewProductsSalesMapComponent],
   imports: [
     CommonModule,
     MaterialModule,
@@ -29,5 +29,6 @@ import { OrderMapComponent } from './order-map/order-map.component';
     ProductSalesMapComponent,
     ProductSalesPlaceMapComponent
   ],
+  
 })
 export class MapModule { }
