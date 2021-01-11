@@ -56,11 +56,6 @@ export class DataClientComponent implements OnInit {
     this.listarRegiones();
     this.order=new OrderBean();
 
-    this.order.destinyPlace=new PlaceBean();
-    this.order.destinyPlace.name='no hay';
-    this.order.destinyPlace.longitude=0;
-    this.order.destinyPlace.latitude=0;
-
     this.address = new FormControl(''),
     this.reference = new FormControl(''),
     this.phone = new FormControl(''),
@@ -82,10 +77,10 @@ export class DataClientComponent implements OnInit {
       this.mapService.placeChange.subscribe(data => {
         console.log('direccion enviada',data);
         this.order.address=data.name;
-        
-        //this.order.destinyPlace.name=data.name;
-        //this.order.destinyPlace.longitude=data.longitude;
-        //this.order.destinyPlace.latitude=data.latitude;
+        this.order.destinyPlace=new PlaceBean();
+        this.order.destinyPlace.name=data.name;
+        this.order.destinyPlace.longitude=data.longitude;
+        this.order.destinyPlace.latitude=data.latitude;
       });
   }
   

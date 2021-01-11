@@ -25,7 +25,9 @@ import { OrderMapComponent } from '../pages/admin/map/order-map/order-map.compon
    DialogoConfirmacionComponent,OrderDetailComponent,DataClientComponent,
   ],
   entryComponents:[
+
     OrderMapComponent
+    
   ],
 })
 export class SharedModule { }
