@@ -38,14 +38,14 @@ export function tokenGetter() {
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
+    AppRoutingModule, 
     HttpClientModule,
     BrowserAnimationsModule,
     EcoFabSpeedDialModule,
     MaterialModule,
     FlexLayoutModule,
     PanelAdminModule, 
-    AuthorizationModule, 
+    AuthorizationModule,  
     MatSnackBarModule,  
     /*JwtModule.forRoot({  
       config: { 
