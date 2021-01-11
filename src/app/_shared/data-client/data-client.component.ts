@@ -13,6 +13,9 @@ import { RestService } from 'src/app/_service/rest.service';
 import { UbigeoBean } from 'src/app/_model/UbigeoBean';
 import { OrderDetailBean } from 'src/app/_model/OrderDetailBean';
 import { ProductBean } from '../../_model/ProductBean';
+import { MapService } from '../../_service/map.service';
+import { OrderMapComponent } from '../../pages/admin/map/order-map/order-map.component';
+import { PlaceBean } from 'src/app/_model/PlaceBean';
 
 @Component({
   selector: 'app-data-client',
@@ -44,13 +47,20 @@ export class DataClientComponent implements OnInit {
     private dialogMap: MatDialog,
     public orderService: OrderService,
     private sharedData:SharedService,
-    private restService:RestService
+    private restService:RestService,
+    private mapService:MapService,
 
   ) { }
   
   ngOnInit(): void {
     this.listarRegiones();
     this.order=new OrderBean();
+
+    this.order.destinyPlace=new PlaceBean();
+    this.order.destinyPlace.name='no hay';
+    this.order.destinyPlace.longitude=0;
+    this.order.destinyPlace.latitude=0;
+
     this.address = new FormControl(''),
     this.reference = new FormControl(''),
     this.phone = new FormControl(''),
@@ -68,7 +78,15 @@ export class DataClientComponent implements OnInit {
 
       });
 
-
+      //Add destiny place
+      this.mapService.placeChange.subscribe(data => {
+        console.log('direccion enviada',data);
+        this.order.address=data.name;
+        
+        //this.order.destinyPlace.name=data.name;
+        //this.order.destinyPlace.longitude=data.longitude;
+        //this.order.destinyPlace.latitude=data.latitude;
+      });
   }
   
   enviarOrden() {
@@ -121,7 +139,10 @@ export class DataClientComponent implements OnInit {
           this.dialog.open(OrderDetailComponent, {
             width:'33%',
             data: result.datalist
+            
           })
+          
+          console.log('order con place: ',result);
 
         },error=>{
           //this.snackBar.open(error.responseMessage, 'SUCESS', { duration: 5000 })
@@ -197,12 +218,12 @@ export class DataClientComponent implements OnInit {
   }
 
 
-     //open map product
-     openProductMap(){
-      this.dialog.open(ProductMapComponent, {
+     //open order map 
+     openOrderMap(){
+      this.dialog.open(OrderMapComponent, {
         width: '50%',
-        height: '50%',
-        data: null,
+        height: '70%',
+        //data: null,
       });
     }
   
