@@ -1,5 +1,6 @@
 export class PlaceBean{
-    name: string='0';
-    long:number=0;
-    lat:number=0;
+    id:number;
+    name: string;
+    longitude:number;
+    latitude:number;
 }
