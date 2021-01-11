@@ -58,6 +58,8 @@ export class DriverFormContainerComponent implements OnInit {
     newDriver.user.lastName = this.driverForm.value.LastName;
     newDriver.user.username = this.driverForm.value.UserName;
     newDriver.user.password = this.driverForm.value.Password;
+    newDriver.user.email = this.driverForm.value.Email;
+    newDriver.user.cellPhone = this.driverForm.value.Phone;
     let param = new Object();
     if (this.userType == 'DRIVER') {
       param = {
@@ -69,7 +71,9 @@ export class DriverFormContainerComponent implements OnInit {
             password: newDriver.user.password,
             name: newDriver.user.nombre,
             lastName: newDriver.user.lastName,
-            documentNumber: newDriver.user.documentNumber
+            documentNumber: newDriver.user.documentNumber,
+            email: newDriver.user.email,
+            cellPhone: newDriver.user.cellPhone
           },
           status: 'Pendiente'
         }
@@ -84,7 +88,9 @@ export class DriverFormContainerComponent implements OnInit {
             password: newDriver.user.password,
             name: newDriver.user.nombre,
             lastName: newDriver.user.lastName,
-            documentNumber: newDriver.user.documentNumber
+            documentNumber: newDriver.user.documentNumber,
+            email: newDriver.user.email,
+            cellPhone: newDriver.user.cellPhone
           },
 
         }
