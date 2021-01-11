@@ -18,4 +18,5 @@ export class UserBean extends MainBean {
     _foto: any;
     _isFoto: boolean;
     typeUser: string;
+    email: string
 }
