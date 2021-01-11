@@ -15,7 +15,7 @@
 
         <mat-form-field appearance="outline" style="width: 100%;">
             <mat-label>Direccion</mat-label>
-            <input matInput formControlName="address" [formGroup]="form" [(ngModel)]="order.address" required>
+            <input matInput formControlName="address" [formGroup]="form" [(ngModel)]="order.address" readonly="true" required>
         </mat-form-field>
 
         <mat-form-field appearance="outline" style="width: 100%;">

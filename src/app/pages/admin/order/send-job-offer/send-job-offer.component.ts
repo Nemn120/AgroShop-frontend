@@ -6,6 +6,9 @@ import { FormBuilder, FormGroup, FormControl } from '@angular/forms';
 import Swal from 'sweetalert2';
 import { RestService } from 'src/app/_service/rest.service';
 import { UbigeoBean } from 'src/app/_model/UbigeoBean';
+import { PlaceBean } from 'src/app/_model/PlaceBean';
+import { JobOfferMapComponent } from '../../map/job-offer-map/job-offer-map.component';
+import { MapService } from '../../../../_service/map.service';
 
 @Component({
   selector: 'app-send-job-offer',
@@ -29,11 +32,15 @@ export class SendJobOfferComponent implements OnInit {
    provinceList:UbigeoBean[]=[];
    regionList:UbigeoBean[]=[];
    regionCode:string;
+
+   direccion:string='';
+   
   constructor(
     public dialog: MatDialog, public dialogo: MatDialogRef<SendJobOfferComponent>,
     @Inject(MAT_DIALOG_DATA) public data: OrderBean,
     private fb: FormBuilder,
-    private restService:RestService
+    private restService:RestService,
+    private mapService:MapService
   ) { 
     const currentyear = new Date().getFullYear(); 
     const currentmonth = new Date().getMonth();
@@ -63,6 +70,21 @@ export class SendJobOfferComponent implements OnInit {
         'shippingCost': this.shippingCost,
         'finalDate': this.finalDate,
 
+      });
+/*
+      this.jobOffer.originPlace=new PlaceBean();
+      this.jobOffer.originPlace.name='desconocido';
+      this.jobOffer.originPlace.longitude=0;
+      this.jobOffer.originPlace.latitude=0;
+*/
+      //Add destiny place
+      this.mapService.jobOfferPlaceChange.subscribe(data => {
+        console.log('direccion recibida: ',data);
+        this.direccion=data.name;
+        this.jobOffer.originPlace=new PlaceBean();
+        this.jobOffer.originPlace.name=data.name;
+        this.jobOffer.originPlace.longitude=data.longitude;
+        this.jobOffer.originPlace.latitude=data.latitude;
       });
 
   }
@@ -97,6 +119,8 @@ export class SendJobOfferComponent implements OnInit {
         }
         this.restService.requestApiRestData('joboffer/po',param).subscribe(result=>{
            this.restService.messageChange.next({ message: result.responseMessage, action:this.action });       
+
+           console.log('jobOffer with place: ',result);
 
         },error=>{
           this.restService.messageChange.next({ message: error.responseMessage, action: "ERROR" });
@@ -155,6 +179,14 @@ export class SendJobOfferComponent implements OnInit {
       this.districtList = result.datalist;
     }, error => {
       console.error(error);
+    });
+  }
+
+   //open job offer map 
+   openJobOfferMap(){
+    this.dialog.open(JobOfferMapComponent, {
+      width: '50%',
+      height: '70%',
     });
   }
 }

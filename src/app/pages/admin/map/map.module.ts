@@ -8,13 +8,14 @@ import { environment } from '../../../../environments/environment.prod';
 import { ProductSalesPlaceMapComponent } from './product-sales-place-map/product-sales-place-map.component';
 import { OrderMapComponent } from './order-map/order-map.component';
 import { ViewProductsSalesMapComponent } from './view-products-sales-map/view-products-sales-map.component';
+import { JobOfferMapComponent } from './job-offer-map/job-offer-map.component';
 
 @NgModule({
   declarations: [
     ProductMapComponent, 
     ProductSalesMapComponent, 
     ProductSalesPlaceMapComponent, 
-    OrderMapComponent, ViewProductsSalesMapComponent],
+    OrderMapComponent, ViewProductsSalesMapComponent, JobOfferMapComponent],
   imports: [
     CommonModule,
     MaterialModule,
@@ -25,10 +26,11 @@ import { ViewProductsSalesMapComponent } from './view-products-sales-map/view-pr
     })
   ],
   exports:[
+
     ProductMapComponent,
     ProductSalesMapComponent,
     ProductSalesPlaceMapComponent
+    
   ],
-  
 })
 export class MapModule { }

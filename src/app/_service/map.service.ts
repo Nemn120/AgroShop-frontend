@@ -17,6 +17,8 @@ export class MapService {
 
   placeChange = new Subject<PlaceBean>();
 
+  jobOfferPlaceChange = new Subject<PlaceBean>();
+
   constructor(private httpClient: HttpClient) { }
 
   //OBTENCION DEL LUGAR APARTIR COORDENADAS
