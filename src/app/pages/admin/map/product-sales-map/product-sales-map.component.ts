@@ -8,6 +8,7 @@ import { ProductSalesBean } from '../../../../_model/ProductSalesBean';
 import { PlaceBean } from '../../../../_model/PlaceBean';
 import { RestService } from 'src/app/_service/rest.service';
 import { SharedService } from 'src/app/_service/shared.service';
+import { MapService } from '../../../../_service/map.service';
 
 @Component({
   selector: 'app-product-sales-map',
@@ -22,42 +23,69 @@ export class ProductSalesMapComponent implements OnInit {
 
   long: number = -77.0824914;
   lat: number = -12.0587117;
+  name:string='No tiene ubicacion registrada';
 
   constructor(
     public dialogRef: MatDialogRef<MapComponent>,
     @Inject(MAT_DIALOG_DATA) public data: ProductSalesBean,
     private restService:RestService,
     private sharedService: SharedService,
+    private mapService:MapService,
   ) { }
 
   ngOnInit(): void {
 
     console.log('productSalesIn: ',this.data);
 
-    
     //If Place exits
-    //if(this.data.originPlace!=null){
-      if(this.data.originPlace){
-        this.long=this.data.originPlace.longitude;
-        this.lat=this.data.originPlace.latitude;
-        this.positionMarker = [this.long, this.lat];
+    if(this.data.originPlace){
+      this.long=this.data.originPlace.longitude;
+      this.lat=this.data.originPlace.latitude;
+      this.name=this.data.originPlace.name;
+      this.positionMarker = [this.long, this.lat];
     }
     
+  }
+  onDragEnd(marker: Marker) {
+    NgZone.assertInAngularZone();
+    this.long = marker.getLngLat().lng;
+    this.lat = marker.getLngLat().lat;
+    console.log(marker.getLngLat());
+    this.findPlace(this.long, this.lat);
     
+  }
+
+  //GEOCODER
+  onGeocoder(resultado: any) {
+    this.long = resultado.result.geometry.coordinates[0];
+    this.lat = resultado.result.geometry.coordinates[1];
+    this.findPlace(this.long, this.lat);
+    //this.updateMarker();
+  }
+
+  //GEOLOCATE
+  onGeolocate(position: Position) {
+    this.long = position.coords.longitude;
+    this.lat = position.coords.latitude;  
+    this.findPlace(this.long, this.lat);
+   // this.updateMarker();
+  }
+
+   //BUSCAR EL LUGAR  APARTIR DE LAS COODENADAS
+   findPlace(long: number, lat: number) {
+    this.mapService.getPlace(long, lat).subscribe(
+      data => {
+        this.name=data.features[0].place_name;
+        console.log('direccion: ',this.name);
+      }) 
   }
 
   editPlace() {
     this.edit = true;
+    this.positionMarker = [this.long, this.lat];
   }
 
   guardarPlace() {
-
-    //let place:PlaceBean=new PlaceBean();
-    //place.name='No definido';
-    //place.longitude=this.long;
-    //place.latitude=this.lat;
-
-    //aqui llamar al servicio de guardado de place
 
     let productSales = new ProductSalesBean();
 
@@ -78,11 +106,11 @@ export class ProductSalesMapComponent implements OnInit {
     if(this.data.originPlace){
       
       productSales.originPlace.id=this.data.originPlace.id;
-      productSales.originPlace.name='conocido';
+      productSales.originPlace.name=this.name;
       productSales.originPlace.longitude=this.long;
       productSales.originPlace.latitude= this.lat;
     }else{
-      productSales.originPlace.name='conocidox2';
+      productSales.originPlace.name=this.name;
       productSales.originPlace.longitude=this.long;
       productSales.originPlace.latitude= this.lat;
     }
@@ -93,39 +121,22 @@ export class ProductSalesMapComponent implements OnInit {
     
     this.restService.requestApiRestData('productsales/sps', param).subscribe(result => {
 
-      console.log('result: ', result);
+    console.log('result: ', result);
 
-      //temporal validacion de producto nulo
-      if (result.responseCode == "SUCCESS") {
-        if (productSales.id) {
-          this.restService.messageChange.next({ message: 'Producto Venta actualizado con exito!', action: "Update" });
-        }
-        else {
-          this.restService.messageChange.next({ message: 'Producto Venta agregado con exito!', action: "Create" });
-        }
-      } else {
-        this.restService.messageChange.next({ message: 'Seleccionar un producto!', action: "Info" });
-      }
+    this.restService.messageChange.next({ message: 'Ubicacion actualizado con exito!', action: "Update" });
 
     }, error => {
 
-      console.log("Error al agregar producto! ", error);
-      this.restService.message('Error al agregar producto!', 'Error');
+      this.restService.message('Error al actualizatr ubicacion!', 'Error');
 
     });
-
 
     this.edit = false;
     this.close();
   }
 
 
-  onDragEnd(marker: Marker) {
-    NgZone.assertInAngularZone();
-    this.long = marker.getLngLat().lng;
-    this.lat = marker.getLngLat().lat;
-    console.log(marker.getLngLat());
-  }
+  
 
   close() {
     this.dialogRef.close();

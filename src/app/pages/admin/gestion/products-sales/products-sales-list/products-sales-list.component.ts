@@ -117,7 +117,7 @@ export class ProductsSalesListComponent implements OnInit {
    openProductSalesMap(ProductSales: ProductSalesBean){
     this.dialog.open(ProductSalesMapComponent, {
       width: '50%',
-      height: '50%',
+      height: '70%',
       data: ProductSales,
     });
   }
