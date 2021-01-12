@@ -1,3 +1,4 @@
+import { HomeComponent } from './../public-view/home/home.component';
 import { NgModule } from '@angular/core';
 import { CommonModule, registerLocaleData } from '@angular/common';
 import { LoginComponent } from './login/login.component';
@@ -12,22 +13,34 @@ import { RightBannerComponent } from './login/right-banner/right-banner.componen
 import { ToolbarComponent } from '../public-view/toolbar/toolbar.component';
 
 const routes: Routes = [
+
   {
+    path: '', component: HomeComponent,
+  },
+  {
+    path: 'login', component: HomeComponent,
+  },
+ 
+  /*{
     path: '', component: LoginComponent,
   },
   {
     path: 'login', component: LoginComponent,
-  },
+  },*/
   {
     path: 'registry', component: RegistryComponent
   },
   {
     path: 'registry/:rol', component: RegistryComponent
   }
+ 
 ];
 
 @NgModule({
-  declarations: [LoginComponent,RegistryComponent,DriverFormContainerComponent,LeftBannerComponent,CentralViewComponent,RightBannerComponent,ToolbarComponent],
+  declarations: [LoginComponent,RegistryComponent,DriverFormContainerComponent,LeftBannerComponent,CentralViewComponent,RightBannerComponent,ToolbarComponent,
+    HomeComponent
+  
+  ],
   imports: [
     CommonModule,
     MaterialModule,

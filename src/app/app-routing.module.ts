@@ -1,11 +1,18 @@
+import { HomeComponent } from './pages/public-view/home/home.component';
 import { NgModule } from "@angular/core";
 import { Routes, RouterModule } from "@angular/router";
 import { WelcomeComponent } from "./pages/admin/panel-admin/welcome/welcome.component";
 
 const routes: Routes = [
   {
+
+    /*
     path: "",
     component: WelcomeComponent,
+    */
+    path: "",
+    component: HomeComponent,
+
     children: [
       {
         path: "panel",
@@ -85,4 +92,4 @@ const routes: Routes = [
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }
