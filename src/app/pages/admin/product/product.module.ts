@@ -13,6 +13,9 @@ import { CategoriesViewComponent } from '../gestion/categories/categories-view/c
 import { ProductsSalesFormComponent } from '../gestion/products-sales/products-sales-form/products-sales-form.component';
 import { ProductsSalesListComponent } from '../gestion/products-sales/products-sales-list/products-sales-list.component';
 import { ProductsSalesViewComponent } from '../gestion/products-sales/products-sales-view/products-sales-view.component';
+import { MapModule } from '../map/map.module';
+import { ProductMapComponent } from '../map/product-map/product-map.component';
+import { ProductSalesMapComponent } from '../map/product-sales-map/product-sales-map.component';
 const routes: Routes = [
   
     
@@ -51,6 +54,8 @@ const routes: Routes = [
 
     ReactiveFormsModule,
     FormsModule,
+
+    MapModule,
   ],
   exports: [
     RouterModule
@@ -64,6 +69,9 @@ const routes: Routes = [
     //temporal
     ProductsSalesFormComponent,
     ProductsSalesViewComponent,
+    //map
+    ProductMapComponent,
+    ProductSalesMapComponent
    ],
 })
 export class ProductModule { }

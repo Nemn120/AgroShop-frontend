@@ -1,5 +1,6 @@
 import { MainBean } from './MainBean';
 import { OrderBean } from './OrderBean';
+import { PlaceBean } from './PlaceBean';
 
 export class JobOfferBean extends MainBean {
 
@@ -17,4 +18,6 @@ export class JobOfferBean extends MainBean {
     originProvince: string;
     originRegion: string;
     originDistrict: string;
+
+    originPlace:PlaceBean;
 }

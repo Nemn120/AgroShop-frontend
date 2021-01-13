@@ -12,20 +12,37 @@ import { SearchProductComponent } from './search-product/search-product.componen
 import { OrderPendingComponent } from './order-pending/order-pending.component';
 import { OrderDetailsComponent } from './order-details/order-details.component';
 import { SendJobOfferComponent } from './send-job-offer/send-job-offer.component';
+<<<<<<< HEAD
 import { OrderSearchComponent } from './order-search/order-search.component';
+=======
+import { ProductMapComponent } from '../map/product-map/product-map.component';
+import { MapModule } from '../map/map.module';
+import { ProductSalesPlaceMapComponent } from '../map/product-sales-place-map/product-sales-place-map.component';
+import { ClientOrderPendingComponent } from './client-order-pending/client-order-pending.component';
+import { ViewProductsSalesMapComponent } from '../map/view-products-sales-map/view-products-sales-map.component';
+import { JobOfferMapComponent } from '../map/job-offer-map/job-offer-map.component';
+>>>>>>> bd645cd7d47ab340389a038492a7ee29dee10235
 
 const routes: Routes = [
   {
-    path: '', component:OrderStoreComponent},
+    path: '', component:OrderStoreComponent}, 
     {path: 'list', component: OrderListComponent},
     {path: 'store', component: OrderStoreComponent},
     {path: 'pending', component: OrderPendingComponent},
+<<<<<<< HEAD
     {path: 'test', component: OrderSearchComponent},
+=======
+    {path: 'clientPending', component:ClientOrderPendingComponent},
+>>>>>>> bd645cd7d47ab340389a038492a7ee29dee10235
     {path: 'search/:nameProduct', component: SearchProductComponent}
 ];
 
 @NgModule({
+<<<<<<< HEAD
   declarations: [OrderListComponent, OrderNewComponent, OrderStoreComponent, OrderStoreCardComponent, SearchProductComponent, OrderPendingComponent, OrderDetailsComponent, SendJobOfferComponent, OrderSearchComponent],
+=======
+  declarations: [OrderListComponent, OrderNewComponent, OrderStoreComponent, OrderStoreCardComponent, SearchProductComponent, OrderPendingComponent, OrderDetailsComponent, SendJobOfferComponent, ClientOrderPendingComponent],
+>>>>>>> bd645cd7d47ab340389a038492a7ee29dee10235
   imports: [
     CommonModule,
     MaterialModule,
@@ -33,9 +50,16 @@ const routes: Routes = [
     FormsModule,
     ReactiveFormsModule,
     RouterModule.forChild(routes),
+  
+    MapModule
   ],
   entryComponents:[
-    OrderDetailsComponent,SendJobOfferComponent
+    OrderDetailsComponent,
+    SendJobOfferComponent,
+  
+    ProductSalesPlaceMapComponent,
+    ViewProductsSalesMapComponent,
+    JobOfferMapComponent,
   ],
 })
 export class OrderModule { }

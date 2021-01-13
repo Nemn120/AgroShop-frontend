@@ -9,4 +9,8 @@ export const environment = {
   MICRO_CRUD: 'micro-crud',
   MICRO_CR : 'micro-cr',
   MICRO_AUTH : 'uaa',
+
+  HOST_MAPBOX:'https://api.mapbox.com',
+  TOKEN_MAPBOX:'pk.eyJ1Ijoiam9zZWNvbmRvcmk1IiwiYSI6ImNrZTR0cW5nZzB3bjkyeXBkZXlmank2a3kifQ.z8hPiaEmZpSaEV67dtKlkw'
+
 };

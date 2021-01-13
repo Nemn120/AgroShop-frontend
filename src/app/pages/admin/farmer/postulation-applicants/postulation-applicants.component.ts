@@ -3,7 +3,6 @@ import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dial
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
-import { DriverBean } from 'src/app/_model/DriverBean';
 import { RestService } from 'src/app/_service/rest.service';
 import Swal from 'sweetalert2';
 import { PostulationApplicantsDetailComponent } from '../postulation-applicants-detail/postulation-applicants-detail.component';
@@ -13,10 +12,11 @@ import { PostulationApplicantsDetailComponent } from '../postulation-applicants-
   templateUrl: './postulation-applicants.component.html',
   styleUrls: ['./postulation-applicants.component.scss']
 })
-export class PostulationApplicantsComponent {
+export class PostulationApplicantsComponent implements OnInit {
 
   displayedColumns: string[] = ['id', 'name', 'lastname', 'documentNumber', 'actions'];
   dataSource: MatTableDataSource<any>;
+  titleDetailPostulation = 'Postulantes';
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
@@ -27,6 +27,15 @@ export class PostulationApplicantsComponent {
     public dialogRef: MatDialogRef<PostulationApplicantsComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any
   ) { this.dataSource = new MatTableDataSource(data); }
+  ngOnInit(): void {
+    this.setTitleDetailPostulation();
+  }
+
+  setTitleDetailPostulation(): void {
+    if (this.data[0].statusPostulation === 'Aceptada') {
+      this.titleDetailPostulation = 'Conductor';
+    }
+  }
 
   onNoClick(): void {
     this.dialogRef.close();
