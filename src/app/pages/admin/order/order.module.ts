@@ -13,15 +13,22 @@ import { OrderPendingComponent } from './order-pending/order-pending.component';
 import { OrderDetailsComponent } from './order-details/order-details.component';
 import { SendJobOfferComponent } from './send-job-offer/send-job-offer.component';
 <<<<<<< HEAD
+<<<<<<< HEAD
 import { OrderSearchComponent } from './order-search/order-search.component';
 =======
+=======
+>>>>>>> ccfed54d4d65d66ec9025f8ddc2a3ebd4ae19594
 import { ProductMapComponent } from '../map/product-map/product-map.component';
 import { MapModule } from '../map/map.module';
 import { ProductSalesPlaceMapComponent } from '../map/product-sales-place-map/product-sales-place-map.component';
 import { ClientOrderPendingComponent } from './client-order-pending/client-order-pending.component';
+import { OrderSearchComponent } from './order-search/order-search.component';
 import { ViewProductsSalesMapComponent } from '../map/view-products-sales-map/view-products-sales-map.component';
 import { JobOfferMapComponent } from '../map/job-offer-map/job-offer-map.component';
+<<<<<<< HEAD
 >>>>>>> bd645cd7d47ab340389a038492a7ee29dee10235
+=======
+>>>>>>> ccfed54d4d65d66ec9025f8ddc2a3ebd4ae19594
 
 const routes: Routes = [
   {
@@ -30,19 +37,28 @@ const routes: Routes = [
     {path: 'store', component: OrderStoreComponent},
     {path: 'pending', component: OrderPendingComponent},
 <<<<<<< HEAD
+<<<<<<< HEAD
     {path: 'test', component: OrderSearchComponent},
 =======
     {path: 'clientPending', component:ClientOrderPendingComponent},
 >>>>>>> bd645cd7d47ab340389a038492a7ee29dee10235
+=======
+    {path: 'clientPending', component:ClientOrderPendingComponent},
+    {path: 'test', component: OrderSearchComponent},
+>>>>>>> ccfed54d4d65d66ec9025f8ddc2a3ebd4ae19594
     {path: 'search/:nameProduct', component: SearchProductComponent}
 ];
 
 @NgModule({
 <<<<<<< HEAD
+<<<<<<< HEAD
   declarations: [OrderListComponent, OrderNewComponent, OrderStoreComponent, OrderStoreCardComponent, SearchProductComponent, OrderPendingComponent, OrderDetailsComponent, SendJobOfferComponent, OrderSearchComponent],
 =======
   declarations: [OrderListComponent, OrderNewComponent, OrderStoreComponent, OrderStoreCardComponent, SearchProductComponent, OrderPendingComponent, OrderDetailsComponent, SendJobOfferComponent, ClientOrderPendingComponent],
 >>>>>>> bd645cd7d47ab340389a038492a7ee29dee10235
+=======
+  declarations: [OrderListComponent, OrderNewComponent, OrderStoreComponent, OrderStoreCardComponent, SearchProductComponent, OrderPendingComponent, OrderDetailsComponent, SendJobOfferComponent, OrderSearchComponent,ClientOrderPendingComponent],
+>>>>>>> ccfed54d4d65d66ec9025f8ddc2a3ebd4ae19594
   imports: [
     CommonModule,
     MaterialModule,
