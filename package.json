@@ -17,9 +17,9 @@
   "private": true,
   "dependencies": {
     "@angular-builders/custom-webpack": "^10.0.1",
-    "@angular-devkit/build-angular": "~0.900.5",
+    "@angular-devkit/build-angular": "^0.1100.7",
     "@angular-material-extensions/fab-menu": "^2.0.2",
-    "@angular/animations": "~11.0.9",
+    "@angular/animations": "^11.0.9",
     "@angular/cdk": "^11.0.4",
     "@angular/cli": "^11.0.7",
     "@angular/common": "~11.0.9",
@@ -68,12 +68,12 @@
     "codelyzer": "^5.1.2",
     "jasmine-core": "~3.4.0",
     "jasmine-spec-reporter": "~4.2.1",
-    "karma": "~4.1.0",
+    "karma": "^6.0.0",
     "karma-chrome-launcher": "~2.2.0",
     "karma-coverage-istanbul-reporter": "~2.0.1",
     "karma-jasmine": "~2.0.1",
     "karma-jasmine-html-reporter": "^1.4.0",
-    "protractor": "~5.4.0",
+    "protractor": "^7.0.0",
     "ts-node": "~7.0.0",
     "tslint": "~5.15.0"
   }

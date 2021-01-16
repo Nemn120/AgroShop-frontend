@@ -18,9 +18,9 @@
       <div style="display: flex; justify-content: center; align-items: center; flex-direction: column;">
         <mat-form-field class="full-width" appearance="outline">
           <mat-label>Usuario</mat-label>
-          <input matInput formControlName="username" type="text" name="username" placeholder="Usuario" [class.is-invalid]="f.username.hasError('required') && f.username.touched" />
+          <input matInput formControlName="username" type="text" name="username" placeholder="Usuario" [class.is-invalid]="this.loginForm.controls.username.hasError('required') && this.loginForm.controls.username.touched" />
 
-          <mat-error *ngIf="f.username.hasError('required') && f.username.touched">
+          <mat-error *ngIf="this.loginForm.controls.username.hasError('required') && this.loginForm.controls.username.touched">
               Es requerido
           </mat-error>
 
@@ -28,9 +28,9 @@
 
       <mat-form-field class="full-width" appearance="outline">
           <mat-label>Contraseña</mat-label>
-          <input matInput formControlName="password" type="password" name="password" placeholder="********" [class.is-invalid]="f.password.hasError('required') && f.password.touched" />
+          <input matInput formControlName="password" type="password" name="password" placeholder="********" [class.is-invalid]="this.loginForm.controls.password.hasError('required') && this.loginForm.controls.password.touched" />
 
-          <mat-error *ngIf="f.password.hasError('required') && f.password.touched">
+          <mat-error *ngIf="this.loginForm.controls.password.hasError('required') && this.loginForm.controls.password.touched">
               Es requerido
           </mat-error>
 
