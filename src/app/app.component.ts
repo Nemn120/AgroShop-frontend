@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
-import { MenuOptionBean } from './_model/MenuOptionBean';
 import { AuthService } from './_service/auth.service';
 import { SharedService } from './_service/shared.service';
 
@@ -26,10 +25,6 @@ export class AppComponent {
           duration: 3000
         });
       })
-    
-     }
 
-    ngOnInit(){
-      
     }
 }
