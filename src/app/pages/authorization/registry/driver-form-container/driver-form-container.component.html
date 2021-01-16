@@ -56,7 +56,7 @@
       <mat-form-field appearance="outline" style="width: 100%;">
           <mat-label>Correo Electrónico</mat-label>
           <input matInput type="email" formControlName="Email" required>
-          <mat-error *ngIf="f.Email.hasError('required') && f.Email.touched">
+          <mat-error *ngIf="this.driverForm.controls.Email.hasError('required') && this.driverForm.controls.Email.touched">
               Es requerido
           </mat-error>
       </mat-form-field>
