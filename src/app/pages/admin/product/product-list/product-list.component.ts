@@ -1,14 +1,14 @@
-import {Component,OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
-
 import { RestService } from 'src/app/_service/rest.service';
+import { SharedService } from 'src/app/_service/shared.service';
 import { ProductBean } from '../../../../_model/ProductBean';
 import { ProductFormComponent } from '../product-form/product-form.component';
-import { MatDialog } from '@angular/material/dialog';
 import { ProductViewComponent } from '../product-view/product-view.component';
-import { SharedService } from 'src/app/_service/shared.service';
+
 
 @Component({
   selector: 'app-product-list',
@@ -27,11 +27,11 @@ export class ProductListComponent implements OnInit {
     private restService: RestService,
     public dialog: MatDialog,
     private sharedService:SharedService
- 
+
   ) {}
 
   ngOnInit() {
-   
+
     this.listProduct();
 
 
@@ -55,10 +55,10 @@ export class ProductListComponent implements OnInit {
         this.dataSource.paginator = this.paginator;
         this.dataSource.sort = this.sort;
       }, error => {
-        this.restService.message('Error al listar productos!', 'Error');
+        this.restService.message('Error al listar productos!', error);
       });
   }
-    
+
 
   //new and update product
   newAndUpdateProduct(product?: ProductBean) {
