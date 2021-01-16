@@ -3,7 +3,7 @@
     <mat-card class="card__search">
         <form>
             <mat-form-field appearance="outline" class="example-form-field">
-                <mat-label>Departamento Inicio</mat-label>
+                <mat-label>Departamento Destino</mat-label>
                 <mat-select (selectionChange)="listarProvinciasSegunIdRegion($event)">
                     <mat-option [value]="this.allString">{{this.allString}}</mat-option> 
                     <mat-option *ngFor="let region of this.regionList" [value]="region">
@@ -12,7 +12,7 @@
                 </mat-select>
             </mat-form-field>
             <mat-form-field appearance="outline" class="example-form-field">
-                <mat-label>Provincia Inicio</mat-label>
+                <mat-label>Provincia Destino</mat-label>
                 <mat-select (selectionChange)="listarDistritosSegunIdProvincia($event)">
                     <mat-option [value]="this.allString">{{this.allString}}</mat-option> 
                     <mat-option *ngFor="let province of this.provinceList" [value]="province">
@@ -21,8 +21,8 @@
                 </mat-select>
             </mat-form-field>
             <mat-form-field appearance="outline" class="example-form-field">
-                <mat-label>Distrito Inicio</mat-label>
-                <mat-select name="districtSelect" [(ngModel)]="this.searchJobOffer.originDistrict">
+                <mat-label>Distrito Destino</mat-label>
+                <mat-select name="districtSelect" [(ngModel)]="this.searchJobOffer.destinationDistrict">
                     <mat-option [value]="this.allString">{{this.allString}}</mat-option> 
                     <mat-option *ngFor="let district of this.districtList" [value]="district.nombreUbigeo">
                         {{district.nombreUbigeo}}

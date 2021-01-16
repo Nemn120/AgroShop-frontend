@@ -8,6 +8,10 @@ import { ProductSalesBean } from '../../../../_model/ProductSalesBean';
 import { FarmerAndProductsDTO } from '../../../../_DTO/FarmerAndProductsDTO';
 import { OrderDetailBean} from '../../../../_model/OrderDetailBean';
 import { OrderService } from 'src/app/_service/order.service';
+
+import { MatDialogRef, MAT_DIALOG_DATA, MatDialog } from '@angular/material/dialog';
+import { ViewProductsSalesMapComponent } from '../../map/view-products-sales-map/view-products-sales-map.component';
+
 @Component({
   selector: 'app-search-product',
   templateUrl: './search-product.component.html',
@@ -24,7 +28,15 @@ export class SearchProductComponent implements OnInit {
   flag: any;
   farmerWithProductsList: FarmerAndProductsDTO[] = [];
 
-  constructor(private orderService: OrderService, private sharedData:SharedService, private sharedService: SharedService, private restService: RestService, private _activatedRoute:ActivatedRoute, private sanitization: DomSanitizer) { }
+  constructor(
+    private orderService: OrderService, 
+    private sharedData:SharedService, 
+    private sharedService: SharedService, 
+    private restService: RestService, 
+    private _activatedRoute:ActivatedRoute, 
+    private sanitization: DomSanitizer,
+    public dialog: MatDialog,
+    ) { }
 
   ngOnInit(): void {
     this.productSearch = new ProductSalesBean();
@@ -59,7 +71,7 @@ export class SearchProductComponent implements OnInit {
 
       })
     })
-
+    console.log('products: ',this.farmerWithProductsList);
   }
 
 
@@ -82,6 +94,12 @@ export class SearchProductComponent implements OnInit {
     return this.sanitization.bypassSecurityTrustResourceUrl(data);
   }
 
-
+openMap(){
+  this.dialog.open(ViewProductsSalesMapComponent, {
+    width: '50%',
+    height: '70%',
+    data: this.farmerWithProductsList[0]._listOfProductsShowed,
+  });
+}
 
 }

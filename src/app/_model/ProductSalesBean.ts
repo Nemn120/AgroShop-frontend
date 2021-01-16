@@ -1,5 +1,6 @@
 import { MainBean } from './MainBean';
 import { ProductBean } from './ProductBean';
+import { PlaceBean } from './PlaceBean';
 
 export class ProductSalesBean extends MainBean{
     id: number;
@@ -16,4 +17,7 @@ export class ProductSalesBean extends MainBean{
     offerPrice:number;
     statusSales:String;
     quantitySelect:number;
+
+    originPlace:PlaceBean;
+
 }

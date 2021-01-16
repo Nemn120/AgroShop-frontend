@@ -1,3 +1,4 @@
+import { ProductMapComponent } from './../../pages/admin/map/product-map/product-map.component';
 import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA, MatDialog } from '@angular/material/dialog';
 import { OrderBean } from '../../_model/OrderBean';
@@ -11,6 +12,10 @@ import { SharedService } from 'src/app/_service/shared.service';
 import { RestService } from 'src/app/_service/rest.service';
 import { UbigeoBean } from 'src/app/_model/UbigeoBean';
 import { OrderDetailBean } from 'src/app/_model/OrderDetailBean';
+import { ProductBean } from '../../_model/ProductBean';
+import { MapService } from '../../_service/map.service';
+import { OrderMapComponent } from '../../pages/admin/map/order-map/order-map.component';
+import { PlaceBean } from 'src/app/_model/PlaceBean';
 
 @Component({
   selector: 'app-data-client',
@@ -42,13 +47,15 @@ export class DataClientComponent implements OnInit {
     private dialogMap: MatDialog,
     public orderService: OrderService,
     private sharedData:SharedService,
-    private restService:RestService
+    private restService:RestService,
+    private mapService:MapService,
 
   ) { }
   
   ngOnInit(): void {
     this.listarRegiones();
     this.order=new OrderBean();
+
     this.address = new FormControl(''),
     this.reference = new FormControl(''),
     this.phone = new FormControl(''),
@@ -66,7 +73,15 @@ export class DataClientComponent implements OnInit {
 
       });
 
-
+      //Add destiny place
+      this.mapService.placeChange.subscribe(data => {
+        console.log('direccion enviada',data);
+        this.order.address=data.name;
+        this.order.destinyPlace=new PlaceBean();
+        this.order.destinyPlace.name=data.name;
+        this.order.destinyPlace.longitude=data.longitude;
+        this.order.destinyPlace.latitude=data.latitude;
+      });
   }
   
   enviarOrden() {
@@ -119,7 +134,10 @@ export class DataClientComponent implements OnInit {
           this.dialog.open(OrderDetailComponent, {
             width:'33%',
             data: result.datalist
+            
           })
+          
+          console.log('order con place: ',result);
 
         },error=>{
           //this.snackBar.open(error.responseMessage, 'SUCESS', { duration: 5000 })
@@ -194,5 +212,15 @@ export class DataClientComponent implements OnInit {
     });
   }
 
+
+     //open order map 
+     openOrderMap(){
+      this.dialog.open(OrderMapComponent, {
+        width: '50%',
+        height: '70%',
+        //data: null,
+      });
+    }
+  
 
 }

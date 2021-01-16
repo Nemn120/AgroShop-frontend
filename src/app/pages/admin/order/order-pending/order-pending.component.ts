@@ -48,6 +48,7 @@ export class OrderPendingComponent implements OnInit {
     this.dialog.open(SendJobOfferComponent, {
       width: '750px',
       data: ord,
+      autoFocus: false
     });
   }
 listData(){
@@ -62,6 +63,7 @@ listData(){
       this.dataSource = new MatTableDataSource(result.datalist);
       this.dataSource.sort = this.sort;
       this.dataSource.paginator = this.paginator;
+      console.log('orders with place: ',result);
     }
     );
 }

@@ -5,8 +5,9 @@ import { DialogoConfirmacionComponent } from './dialogo-confirmacion/dialogo-con
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { OrderDetailComponent } from './order-detail/order-detail.component';
 import { DataClientComponent } from './data-client/data-client.component';
-
-
+import { ProductMapComponent } from '../pages/admin/map/product-map/product-map.component';
+import { MapModule } from '../pages/admin/map/map.module';
+import { OrderMapComponent } from '../pages/admin/map/order-map/order-map.component';
 
 @NgModule({
   declarations: [DialogoConfirmacionComponent, OrderDetailComponent, DataClientComponent],
@@ -15,13 +16,18 @@ import { DataClientComponent } from './data-client/data-client.component';
     CommonModule,
     MaterialModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+
+    MapModule,
 
   ],
   exports:[
-   DialogoConfirmacionComponent,OrderDetailComponent,DataClientComponent
+   DialogoConfirmacionComponent,OrderDetailComponent,DataClientComponent,
   ],
-  
- 
+  entryComponents:[
+
+    OrderMapComponent
+    
+  ],
 })
 export class SharedModule { }

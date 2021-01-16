@@ -11,7 +11,7 @@
         <mat-form-field appearance="outline" style="width: 100%;">
             <mat-label>Nro. de Licencia</mat-label>
             <input matInput maxlength="10" onkeypress="return event.charCode >= 48 && event.charCode <=57" pattern='^[0-9]{10}$' formControlName="driverLicencia" required>
-            <mat-error *ngIf="f.driverLicencia.hasError('required') && f.driverLicencia.touched">
+            <mat-error *ngIf="this.driverForm.controls.driverLicencia.hasError('required') && this.driverForm.controls.driverLicencia.touched">
                 Es requerido
             </mat-error>
         </mat-form-field>
@@ -21,10 +21,10 @@
         <mat-form-field appearance="outline" style="width: 100%;">
             <mat-label>DNI</mat-label>
             <input matInput maxlength="8" onkeypress="return event.charCode >= 48 && event.charCode <=57" pattern='^[0-9]{8}$' formControlName="DNI" required>
-            <mat-error *ngIf="f.DNI.hasError('required') && f.DNI.touched">
+            <mat-error *ngIf="this.driverForm.controls.DNI.hasError('required') && this.driverForm.controls.DNI.touched">
                 Es requerido
             </mat-error>
-            <mat-error *ngIf="f.DNI.hasError('pattern')">El campo debe tener 8 dígitos</mat-error>
+            <mat-error *ngIf="this.driverForm.controls.DNI.hasError('pattern')">El campo debe tener 8 dígitos</mat-error>
 
         </mat-form-field>
     </div>
@@ -34,7 +34,7 @@
             <mat-form-field appearance="outline" style="width: 100%;">
                 <mat-label>Nombres</mat-label>
                 <input matInput type="text" onkeypress="return !(event.charCode >= 48 && event.charCode <=57)" formControlName="Name" required>
-                <mat-error *ngIf="f.Name.hasError('required') && f.Name.touched">
+                <mat-error *ngIf="this.driverForm.controls.Name.hasError('required') && this.driverForm.controls.Name.touched">
                     Es requerido
                 </mat-error>
 
@@ -44,7 +44,7 @@
             <mat-form-field appearance="outline" style="width: 100%;">
                 <mat-label>Apellidos</mat-label>
                 <input matInput type="text" onkeypress="return !(event.charCode >= 48 && event.charCode <=57)" formControlName="LastName" required>
-                <mat-error *ngIf="f.LastName.hasError('required') && f.LastName.touched">
+                <mat-error *ngIf="this.driverForm.controls.LastName.hasError('required') && this.driverForm.controls.LastName.touched">
                     Es requerido
                 </mat-error>
 
@@ -52,11 +52,31 @@
         </div>
     </div>
     <br>
+    <div style=" border-radius: 10px 10px 0px 0px; width: 80%;">
+      <mat-form-field appearance="outline" style="width: 100%;">
+          <mat-label>Correo Electrónico</mat-label>
+          <input matInput type="email" formControlName="Email" required>
+          <mat-error *ngIf="this.driverForm.controls.Email.hasError('required') && this.driverForm.controls.Email.touched">
+              Es requerido
+          </mat-error>
+      </mat-form-field>
+    </div>
+    <br>
+    <div style=" border-radius: 10px 10px 0px 0px; width: 80%;">
+      <mat-form-field appearance="outline" style="width: 100%;">
+          <mat-label>Teléfono</mat-label>
+          <input matInput maxlength="9" onkeypress="return event.charCode >= 48 && event.charCode <=57" pattern='^[0-9]{9}$' formControlName="Phone" required>
+          <mat-error *ngIf="this.driverForm.controls.Phone.hasError('required') && this.driverForm.controls.Phone.touched">
+              Es requerido
+          </mat-error>
+      </mat-form-field>
+    </div>
+    <br>
     <div style=" border-radius: 10px 10px 0px 0px;  width: 80%;">
         <mat-form-field appearance="outline" color="primary" style="width: 100%;">
             <mat-label>Usuario</mat-label>
             <input matInput formControlName="UserName" required>
-            <mat-error *ngIf="f.UserName.hasError('required') && f.UserName.touched">
+            <mat-error *ngIf="this.driverForm.controls.UserName.hasError('required') && this.driverForm.controls.UserName.touched">
                 Es requerido
             </mat-error>
         </mat-form-field>
@@ -70,7 +90,7 @@
                 <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide" required>
           <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
         </button>
-                <mat-error *ngIf="f.Password.hasError('required') && f.Password.touched">
+                <mat-error *ngIf="this.driverForm.controls.Password.hasError('required') && this.driverForm.controls.Password.touched">
                     Es requerido
                 </mat-error>
             </mat-form-field>
@@ -79,10 +99,10 @@
             <mat-form-field appearance="outline" style="width: 100%;">
                 <mat-label>Repetir contraseña</mat-label>
                 <input matInput [type]="hide ? 'password' : 'text'" formControlName="ConfirmPassword" required>
-                <mat-error *ngIf="f.ConfirmPassword.hasError('required') && f.ConfirmPassword.touched">
+                <mat-error *ngIf="this.driverForm.controls.ConfirmPassword.hasError('required') && this.driverForm.controls.ConfirmPassword.touched">
                     Es requerido
                 </mat-error>
-                <mat-error *ngIf="f.Password != f.ConfirmPassword">Las contraseñas deben coincidir</mat-error>
+                <mat-error *ngIf="this.driverForm.controls.Password != this.driverForm.controls.ConfirmPassword">Las contraseñas deben coincidir</mat-error>
             </mat-form-field>
         </div>
     </div>

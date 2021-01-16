@@ -16,11 +16,6 @@ import { AuthorizationModule } from './pages/authorization/authorization.module'
 import { MaterialModule } from './_material/material.module';
 import { ServerErrorsInterceptor } from './_service/server-errors.interceptor';
 
-
-
-
-
-
 export function tokenGetter() {
   const tk = sessionStorage.getItem(environment.TOKEN_NAME);
   const token = tk != null ? tk : '';
@@ -28,9 +23,7 @@ export function tokenGetter() {
 }
 
 @NgModule({
-  declarations: [
-    AppComponent
-  ],
+  declarations: [AppComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -42,31 +35,21 @@ export function tokenGetter() {
     PanelAdminModule,
     AuthorizationModule,
     MatSnackBarModule,
-    /*JwtModule.forRoot({
-      config: {
-        tokenGetter,
-        whitelistedDomains: ['localhost:8080'],
-        blacklistedRoutes: ['http://localhost:8080/oauth/token']
-      }
-    }),*/
     MatFabMenuModule,
-   FormsModule
-
+    FormsModule,
   ],
+
   providers: [
-
-
-    {provide: HTTP_INTERCEPTORS,
+    MatFabMenuModule,
+    FormsModule,
+    {
+      provide: HTTP_INTERCEPTORS,
       useClass: ServerErrorsInterceptor,
-      multi: true
+      multi: true,
     },
-    { provide: LocationStrategy, useClass: HashLocationStrategy}
+    { provide: LocationStrategy, useClass: HashLocationStrategy },
   ],
   bootstrap: [AppComponent],
-  exports: [
-    FlexLayoutModule
-
-
-  ],
+  exports: [FlexLayoutModule],
 })
-export class AppModule { }
+export class AppModule {}

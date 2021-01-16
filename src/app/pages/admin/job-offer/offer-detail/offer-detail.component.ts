@@ -3,6 +3,8 @@ import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { RestService } from 'src/app/_service/rest.service';
 import { SharedService } from 'src/app/_service/shared.service';
 import Swal from 'sweetalert2';
+import { ProductMapComponent } from '../../map/product-map/product-map.component';
+import { PlaceMapComponent } from '../../map/place-map/place-map.component';
 
 @Component({
   selector: 'app-offer-detail',
@@ -23,6 +25,7 @@ export class OfferDetailComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    console.log('Offers with places: ',this.data);
   }
 
   offerPostulate(){
@@ -69,6 +72,23 @@ export class OfferDetailComponent implements OnInit {
     this.restService.requestApiRestData('fpbs',param).subscribe(result =>{
       console.log("Aceptado",result);
     })
+  }
+
+  //open origin place map 
+  openOriginPlaceMap(){
+    this.dialog.open(PlaceMapComponent, {
+      width: '50%',
+      height: '70%',
+      data: this.data.originPlace,
+    });
+  }
+  //open destiny place map 
+  openDestinyPlaceMap(){
+    this.dialog.open(PlaceMapComponent, {
+      width: '50%',
+      height: '70%',
+      data: this.data.order.destinyPlace,
+    });
   }
 
 }
