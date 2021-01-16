@@ -42,6 +42,7 @@
         "classlist.js": "^1.1.20150312",
         "exceljs": "^4.1.1",
         "express": "^4.17.1",
+        "file-saver": "^2.0.5",
         "jwt-decode": "^2.2.0",
         "mapbox-gl": "^1.11.1",
         "material-design-icons": "^3.0.1",
@@ -55,13 +56,14 @@
         "tslib": "^1.10.0",
         "typescript": "~3.7.5",
         "web-animations-js": "^2.3.2",
+        "xlsx": "^0.16.9",
         "zone.js": "~0.10.2"
     },
     "devDependencies": {
+        "@angular/cli": "~9.0.5",
         "@angular/compiler": "~9.0.5",
         "@angular/compiler-cli": "~9.0.5",
         "@angular/language-service": "~9.0.5",
-        "@angular/cli": "~9.0.5",
         "@types/jasmine": "~3.3.8",
         "@types/jasminewd2": "~2.0.3",
         "@types/mapbox-gl": "^1.11.1",

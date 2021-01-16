@@ -1,0 +1,22 @@
+<div>
+    {{name}}
+</div>
+<br>
+<mgl-map [style]="'mapbox://styles/mapbox/streets-v9'" [zoom]="[14.5]" [center]="positionMarker" [maxBounds]="[[-81.594163,-18.733253], [-68.608323, 0.479432]]">
+
+    <mgl-marker [lngLat]="positionMarker" [draggable]="this.edit" (dragEnd)="onDragEnd($event)"></mgl-marker>
+
+    <mgl-control mglGeocoder [countries]="'pe'" [limit]="8" (result)="onGeocoder($event)" class="mgl-Geocoder"></mgl-control>
+
+    <mgl-control mglGeolocate [positionOptions]="{
+        enableHighAccuracy: true
+      }" [trackUserLocation]="true" (geolocate)="onGeolocate($event)" position="top-right"></mgl-control>
+
+
+    <mgl-control mglFullscreen position="bottom-right"></mgl-control>
+
+</mgl-map>
+
+<button style="margin-top: 0.5% ;width: 33.3%;" mat-raised-button color="primary" [disabled]="this.edit" (click)="editPlace()">Editar</button>
+<button style="width: 33.4%;" mat-raised-button color="primary" [disabled]="!this.edit" (click)="enviarPlace()">Guardar</button>
+<button style="width: 33.3%;" mat-raised-button color="accent" (click)="close()">Cancelar</button>

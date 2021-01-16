@@ -3,7 +3,6 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { MaterialModule } from './_material/material.module';
-import { JwtModule } from '@auth0/angular-jwt';
 import { environment } from '../environments/environment';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { LocationStrategy, HashLocationStrategy } from '@angular/common';
@@ -15,14 +14,12 @@ import { EcoFabSpeedDialModule } from '@ecodev/fab-speed-dial';
 import { PanelAdminModule } from './pages/admin/panel-admin/panel-admin.module';
 import { RegistryComponent } from './pages/authorization/registry/registry.component';
 
-
 import { DriverFormContainerComponent } from './pages/authorization/registry/driver-form-container/driver-form-container.component';
 
+import {ExporterService} from '../app/_service/exporter.service';
 
 import { ServerErrorsInterceptor } from './_service/server-errors.interceptor';
 import { AuthorizationModule } from './pages/authorization/authorization.module';
-import { LoginComponent } from './pages/authorization/login/login.component';
-
 import { FormsModule } from '@angular/forms';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 
@@ -38,14 +35,14 @@ export function tokenGetter() {
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
+    AppRoutingModule, 
     HttpClientModule,
     BrowserAnimationsModule,
     EcoFabSpeedDialModule,
     MaterialModule,
     FlexLayoutModule,
     PanelAdminModule, 
-    AuthorizationModule, 
+    AuthorizationModule,  
     MatSnackBarModule,  
     /*JwtModule.forRoot({  
       config: { 
@@ -56,19 +53,19 @@ export function tokenGetter() {
     }),*/         
     MatFabMenuModule,  
    FormsModule,   
+
   ],
   providers: [
- 
     {provide: HTTP_INTERCEPTORS,
       useClass: ServerErrorsInterceptor,
       multi: true
     },
-    { provide: LocationStrategy, useClass: HashLocationStrategy}
+    { provide: LocationStrategy, useClass: HashLocationStrategy},
+    ExporterService
   ],
   bootstrap: [AppComponent],
   exports: [
     FlexLayoutModule, 
-
 
   ],
 })

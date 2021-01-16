@@ -3,6 +3,7 @@ import { OrderDetailBean } from './OrderDetailBean';
 import { MainBean } from './MainBean';
 import { ClientBean } from './ClientBean';
 import { FarmerBean } from './FarmerBean';
+import { PlaceBean } from './PlaceBean';
 export class OrderBean extends MainBean{
      id:number;
      total:number;
@@ -18,4 +19,6 @@ export class OrderBean extends MainBean{
      destinationProvince: string;
      destinationRegion: string;
      destinationDistrict: string;
+
+     destinyPlace:PlaceBean
 }

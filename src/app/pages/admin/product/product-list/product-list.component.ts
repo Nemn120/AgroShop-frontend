@@ -92,8 +92,8 @@ export class ProductListComponent implements OnInit {
   //view product
   viewProduct(product: ProductBean){
     this.dialog.open(ProductViewComponent, {
-     /* width: '30%',
-      height: '50%',*/
+      //width: '30%',
+      //height: '50%',
       data: product
     });
   }

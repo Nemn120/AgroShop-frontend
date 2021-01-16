@@ -1,6 +1,7 @@
 import { Component, OnInit, Inject } from '@angular/core';
 
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { PlaceBean } from 'src/app/_model/PlaceBean';
 import { ProductSalesBean } from 'src/app/_model/ProductSalesBean';
 import { RestService } from 'src/app/_service/rest.service';
 import { SharedService } from 'src/app/_service/shared.service';
@@ -37,6 +38,12 @@ export class ProductsSalesFormComponent implements OnInit {
     this.productSalesSelect.farmerNumber = this.sharedService.userSession.id;
     this.productSalesSelect.price = 0;
     this.productSalesSelect.totalQuantity = 0;
+
+    /*
+    this.productSalesSelect.originPlace=new PlaceBean();
+    this.productSalesSelect.originPlace.name='desconocido';
+*/
+
     console.log('this.productSalesSelect: ', this.productSalesSelect);
     if (this.data.id > 0) {
       this.productSalesSelect.id = this.data.id;
@@ -47,6 +54,11 @@ export class ProductsSalesFormComponent implements OnInit {
       this.productSalesSelect.price = this.data.price;
       this.productSalesSelect.totalQuantity = this.data.totalQuantity;
       this.productSalesSelect.status = this.data.status;
+
+      /*
+      this.productSalesSelect.originPlace=this.data.originPlace;
+      this.productSalesSelect.originPlace.name='conocido';
+*/
 
       this.titulo = "Actualizar ";
     }
@@ -71,7 +83,7 @@ export class ProductsSalesFormComponent implements OnInit {
     let param = {
       data: this.productSalesSelect,
     }
-
+    
     this.restService.requestApiRestData('productsales/sps', param).subscribe(result => {
 
       console.log('result: ', result);
