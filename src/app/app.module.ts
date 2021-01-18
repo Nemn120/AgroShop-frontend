@@ -17,6 +17,7 @@ import { AuthorizationModule } from './pages/authorization/authorization.module'
 import { FormsModule } from '@angular/forms';
 
 
+
 export function tokenGetter() {
   const tk = sessionStorage.getItem(environment.TOKEN_NAME);
   const token = tk != null ? tk : '';
@@ -40,6 +41,7 @@ export function tokenGetter() {
     AuthorizationModule,
     MatFabMenuModule,
     FormsModule
+   
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS,

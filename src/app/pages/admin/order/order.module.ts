@@ -20,6 +20,15 @@ import { OrderSearchComponent } from './order-search/order-search.component';
 import { ViewProductsSalesMapComponent } from '../map/view-products-sales-map/view-products-sales-map.component';
 import { JobOfferMapComponent } from '../map/job-offer-map/job-offer-map.component';
 import { OrderCalendarComponent } from './order-calendar/order-calendar.component';
+import { FullCalendarModule } from '@fullcalendar/angular'; // the main connector. must go first
+import dayGridPlugin from '@fullcalendar/daygrid'; // a plugin
+import interactionPlugin from '@fullcalendar/interaction'; // a plugin
+
+FullCalendarModule.registerPlugins([ // register FullCalendar plugins
+  dayGridPlugin,
+  interactionPlugin
+]);
+
 
 const routes: Routes = [
   {
@@ -42,7 +51,7 @@ const routes: Routes = [
     FormsModule,
     ReactiveFormsModule,
     RouterModule.forChild(routes),
-  
+    FullCalendarModule,
     MapModule
   ],
   entryComponents:[
