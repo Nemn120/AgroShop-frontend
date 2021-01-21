@@ -16,6 +16,7 @@ import { ProductMapComponent } from '../map/product-map/product-map.component';
 import { MapModule } from '../map/map.module';
 import { ProductSalesPlaceMapComponent } from '../map/product-sales-place-map/product-sales-place-map.component';
 import { ClientOrderPendingComponent } from './client-order-pending/client-order-pending.component';
+import { OrderSearchComponent } from './order-search/order-search.component';
 import { ViewProductsSalesMapComponent } from '../map/view-products-sales-map/view-products-sales-map.component';
 import { JobOfferMapComponent } from '../map/job-offer-map/job-offer-map.component';
 
@@ -26,11 +27,12 @@ const routes: Routes = [
     {path: 'store', component: OrderStoreComponent},
     {path: 'pending', component: OrderPendingComponent},
     {path: 'clientPending', component:ClientOrderPendingComponent},
+    {path: 'test', component: OrderSearchComponent},
     {path: 'search/:nameProduct', component: SearchProductComponent}
 ];
 
 @NgModule({
-  declarations: [OrderListComponent, OrderNewComponent, OrderStoreComponent, OrderStoreCardComponent, SearchProductComponent, OrderPendingComponent, OrderDetailsComponent, SendJobOfferComponent, ClientOrderPendingComponent],
+  declarations: [OrderListComponent, OrderNewComponent, OrderStoreComponent, OrderStoreCardComponent, SearchProductComponent, OrderPendingComponent, OrderDetailsComponent, SendJobOfferComponent, OrderSearchComponent,ClientOrderPendingComponent],
   imports: [
     CommonModule,
     MaterialModule,
