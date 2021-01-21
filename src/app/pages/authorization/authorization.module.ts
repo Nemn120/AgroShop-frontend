@@ -20,13 +20,15 @@ const routes: Routes = [
   {
     path: 'login', component: HomeComponent,
   },
- 
-  /*{
+  
+ /*
+  {
     path: '', component: LoginComponent,
   },
   {
     path: 'login', component: LoginComponent,
-  },*/
+  },
+  */
   {
     path: 'registry', component: RegistryComponent
   },

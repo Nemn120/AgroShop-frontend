@@ -6,13 +6,10 @@ import { WelcomeComponent } from "./pages/admin/panel-admin/welcome/welcome.comp
 const routes: Routes = [
   {
 
-    /*
+    
     path: "",
     component: WelcomeComponent,
-    */
-    path: "",
-    component: HomeComponent,
-
+   
     children: [
       {
         path: "panel",

@@ -13,6 +13,7 @@ import Swal from 'sweetalert2';
 })
 export class HomeComponent implements OnInit {
 
+
   loginForm: FormGroup;
 
   username: string;
@@ -56,7 +57,7 @@ export class HomeComponent implements OnInit {
   registry() {
     this.router.navigate(['auth/registry']);
   }
-  get f() { return this.loginForm.controls; }
+
 
   public registryForm(rol: string): void {
     this.router.navigate(['auth/registry', rol]);
