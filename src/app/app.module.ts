@@ -60,7 +60,7 @@ export function tokenGetter() {
   bootstrap: [AppComponent],
   exports: [
     FlexLayoutModule, 
-
+  
   ],
 })
 export class AppModule { }
