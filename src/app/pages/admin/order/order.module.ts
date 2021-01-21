@@ -22,7 +22,8 @@ import { JobOfferMapComponent } from '../map/job-offer-map/job-offer-map.compone
 import { OrderCalendarComponent } from './order-calendar/order-calendar.component';
 import { FullCalendarModule } from '@fullcalendar/angular'; // the main connector. must go first
 import dayGridPlugin from '@fullcalendar/daygrid'; // a plugin
-import interactionPlugin from '@fullcalendar/interaction'; // a plugin
+import interactionPlugin from '@fullcalendar/interaction';
+import { OrderReportComponent } from './order-report/order-report.component'; // a plugin
 
 FullCalendarModule.registerPlugins([ // register FullCalendar plugins
   dayGridPlugin,
@@ -39,11 +40,12 @@ const routes: Routes = [
     {path: 'clientPending', component:ClientOrderPendingComponent},
     {path: 'test', component: OrderSearchComponent},
     {path: 'calendar', component: OrderCalendarComponent},
+    {path: 'report', component: OrderReportComponent},
     {path: 'search/:nameProduct', component: SearchProductComponent}
 ];
 
 @NgModule({
-  declarations: [OrderListComponent, OrderNewComponent, OrderStoreComponent, OrderStoreCardComponent, SearchProductComponent, OrderPendingComponent, OrderDetailsComponent, SendJobOfferComponent, OrderSearchComponent,ClientOrderPendingComponent, OrderCalendarComponent],
+  declarations: [OrderListComponent, OrderNewComponent, OrderStoreComponent, OrderStoreCardComponent, SearchProductComponent, OrderPendingComponent, OrderDetailsComponent, SendJobOfferComponent, OrderSearchComponent,ClientOrderPendingComponent, OrderCalendarComponent, OrderReportComponent],
   imports: [
     CommonModule,
     MaterialModule,
