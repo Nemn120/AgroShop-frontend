@@ -7,8 +7,9 @@ import { OrderBean } from 'src/app/_model/OrderBean';
 import { RestService } from 'src/app/_service/rest.service';
 import { SharedService } from 'src/app/_service/shared.service';
 import { OrderDetailsComponent } from '../order-details/order-details.component';
-import { SendJobOfferComponent } from '../send-job-offer/send-job-offer.component';
 import { SearchOrderByFieldsDTO } from 'src/app/_DTO/SearchOrderByFieldsDTO';
+import jsPDF from 'jspdf';
+import html2canvas from 'html2canvas';
 
 @Component({
   selector: 'app-order-report',
@@ -62,5 +63,26 @@ listData(){
     }
     );
 }
+downloadPDF() {
+  const DATA = document.getElementById('htmlData');
+  const doc = new jsPDF('p', 'pt', 'a4');
+  const options = {
+    background: 'white',
+    scale: 3
+  };
+  html2canvas(DATA, options).then((canvas) => {
 
+    const img = canvas.toDataURL('image/PNG');
+
+    const bufferX = 15;
+    const bufferY = 15;
+    const imgProps = (doc as any).getImageProperties(img);
+    const pdfWidth = doc.internal.pageSize.getWidth() - 2 * bufferX;
+    const pdfHeight = (imgProps.height * pdfWidth) / imgProps.width;
+    doc.addImage(img, 'PNG', bufferX, bufferY, pdfWidth, pdfHeight, undefined, 'FAST');
+    return doc;
+  }).then((docResult) => {
+    docResult.save("ventas.pdf");
+  });
+}
 }

@@ -18,13 +18,15 @@
             </mat-form-field>
             <button mat-raised-button type="submit" color="primary" style="width:30%;" (keyup.enter)="getAsignOrderByFields()" (click)="getAsignOrderByFields()" [disabled]="
             (this.searchOrderByFieldsDTO.dateIni != undefined && this.searchOrderByFieldsDTO.dateFin == undefined)">Buscar</button>
+            <button mat-raised-button type="submit" color="warn" style="width:30%;" (click)="downloadPDF()">Descargar PDF</button>
+              
 
 
             
         </form>
     </mat-card>
 </div>
-<div class="layout-data">
+<div id="htmlData" class="layout-data">
     <div class="mat-elevation-z8">
         <table mat-table [dataSource]="dataSource" matSort>
 
