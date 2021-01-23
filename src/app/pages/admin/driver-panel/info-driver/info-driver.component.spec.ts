@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { InfoDriverComponent } from './info-driver.component';
 
@@ -6,7 +6,7 @@ describe('InfoDriverComponent', () => {
   let component: InfoDriverComponent;
   let fixture: ComponentFixture<InfoDriverComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ InfoDriverComponent ]
     })

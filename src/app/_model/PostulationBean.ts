@@ -10,6 +10,6 @@ export class PostulationBean {
   reply: string;
   jobOffer: JobOfferBean;
   driver: DriverBean;
-
+  haveContract: boolean;
 }
 

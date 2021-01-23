@@ -58,7 +58,7 @@ export class LoginComponent implements OnInit {
   registry() {
     this.router.navigate(['auth/registry']);
   }
-  get f() { return this.loginForm.controls; }
+
 
   public registryForm(rol: string): void {
     this.router.navigate(['auth/registry', rol]);

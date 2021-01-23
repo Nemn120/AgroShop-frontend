@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
-import { CentralViewComponent } from './central-view.component';
+import { OrderSearchComponent } from './order-search.component';
 
-describe('CentralViewComponent', () => {
-  let component: CentralViewComponent;
-  let fixture: ComponentFixture<CentralViewComponent>;
+describe('OrderSearchComponent', () => {
+  let component: OrderSearchComponent;
+  let fixture: ComponentFixture<OrderSearchComponent>;
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ CentralViewComponent ]
+      declarations: [ OrderSearchComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(CentralViewComponent);
+    fixture = TestBed.createComponent(OrderSearchComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
