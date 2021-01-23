@@ -7,9 +7,10 @@ import { OrderBean } from 'src/app/_model/OrderBean';
 import { RestService } from 'src/app/_service/rest.service';
 import { SharedService } from 'src/app/_service/shared.service';
 import { OrderDetailsComponent } from '../order-details/order-details.component';
-import { SearchOrderByFieldsDTO } from 'src/app/_DTO/SearchOrderByFieldsDTO';
+import { FormBuilder, FormGroup,FormControl  } from '@angular/forms';
 import jsPDF from 'jspdf';
 import html2canvas from 'html2canvas';
+import { SalesReportDTO } from 'src/app/_DTO/SalesReportDTO';
 
 @Component({
   selector: 'app-order-report',
@@ -17,52 +18,53 @@ import html2canvas from 'html2canvas';
   styleUrls: ['./order-report.component.scss']
 })
 export class OrderReportComponent implements OnInit {
-  displayedColumns: string[] = ['id','address','phone','reference','destinationRegion','destinationProvince','destinationDistrict','status','actions'];
+  displayedColumns: string[] = ['count','price','name','total'];
   dataSource: MatTableDataSource<OrderBean>;
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatPaginator) paginator: MatPaginator;
+  form: FormGroup;
   orderBean: OrderBean;
-  searchOrderByFieldsDTO:SearchOrderByFieldsDTO;
+  salesReportDTO:SalesReportDTO;
+  initialDate:Date;
+  finalDate:Date;
   constructor(
     private restService: RestService,
     public dialog: MatDialog,
-    public sharedService: SharedService
+    public sharedService: SharedService,
+    private fb: FormBuilder,
   ) { }
 
   ngOnInit(): void {
-    this.searchOrderByFieldsDTO = new SearchOrderByFieldsDTO();
-    this.listData();
-    this.restService.messageChange.subscribe(data => {
-      this.listData();
-      this.restService.message(data.message, data.action);
+    this.salesReportDTO = new SalesReportDTO();
+    this.initialDate = new Date("2020-12-29"),
+    this.finalDate = new Date(),
+    this.form = this.fb.group({
+      'initialDate': this.initialDate,
+      'finalDate': this.finalDate,
+
     });
-  }
-  public openDetails(order: OrderBean) {
-    let ord = order != null ? order : new OrderBean();
-    this.dialog.open(OrderDetailsComponent, {
-      width: '500px',
-      data: ord,
-    });
+    this.searchByDates();
   }
 
+  public searchByDates(){
+   
+    
+      this.salesReportDTO.farmer = this.sharedService.userSession.id;
+      this.salesReportDTO.status = "Pendiente";
+      this.salesReportDTO.dateIni = this.form.value['initialDate'];
+      this.salesReportDTO.dateFin = this.form.value['finalDate'];
+      let param = {
+        data : this.salesReportDTO
+      }
+      this.restService.requestApiRestData('orderDetail/gsr',param).subscribe(result =>{
+        this.dataSource = new MatTableDataSource(result.datalist);
+        this.dataSource.paginator = this.paginator;
+        this.dataSource.sort = this.sort;
+        console.log(result.datalist)
+      })
+    
+  }
   
-  
-listData(){
-  let param = {
-    id: this.sharedService.userSession.id,
-    data: {
-      status:"Pendiente"
-    }
-  };
-  this.restService.requestApiRestData('order/gobsf', param)
-    .subscribe( result => {
-      this.dataSource = new MatTableDataSource(result.datalist);
-      this.dataSource.sort = this.sort;
-      this.dataSource.paginator = this.paginator;
-      console.log('orders with place: ',result);
-    }
-    );
-}
 downloadPDF() {
   const DATA = document.getElementById('htmlData');
   const doc = new jsPDF('p', 'pt', 'a4');
