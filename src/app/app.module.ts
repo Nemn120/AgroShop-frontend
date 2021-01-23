@@ -36,12 +36,12 @@ export function tokenGetter() {
     AuthorizationModule,
     MatSnackBarModule,
     MatFabMenuModule,
-    FormsModule,
+    FormsModule
   ],
 
   providers: [
-    MatFabMenuModule,
     FormsModule,
+    MatFabMenuModule,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: ServerErrorsInterceptor,
