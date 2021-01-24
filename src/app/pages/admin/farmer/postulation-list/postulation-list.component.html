@@ -56,7 +56,10 @@
           </button>
 
           <button
-            *ngIf="row[0].statusPostulation === 'Aceptada'"
+            *ngIf="
+              row[0].statusPostulation === 'Aceptada' &&
+              row[0].haveContract === false
+            "
             mat-icon-button
             (click)="generateContract(row[0])"
           >
@@ -66,12 +69,12 @@
           <button
             *ngIf="
               row[0].statusPostulation === 'Aceptada' &&
-              row[0].haveContract == true
+              row[0].haveContract === true
             "
             mat-icon-button
             (click)="dowloadContract(row[0].id)"
           >
-            <mat-icon>article</mat-icon>
+            <mat-icon>get_app</mat-icon>
           </button>
         </td>
       </ng-container>
