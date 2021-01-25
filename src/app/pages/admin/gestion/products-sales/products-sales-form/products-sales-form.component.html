@@ -17,12 +17,12 @@
         <br>
         <mat-form-field>
             <mat-label>Unidad de Medida</mat-label>
-            <input matInput [(ngModel)]="this.productSalesSelect.measureUnite" placeholder="Ingresar unidad de medida">
+            <input matInput [(ngModel)]="this.productSalesSelect.measureUnite" placeholder="Arroba, Jaba, Saco, Caja ,..." onkeypress="return event.charCode != 45">
         </mat-form-field>
         <br>
         <mat-form-field>
             <mat-label>Peso x Unidad</mat-label>
-            <input matInput [(ngModel)]="this.productSalesSelect.weight" placeholder="Ingresar peso x unidad" type="number">
+            <input matInput [(ngModel)]="this.productSalesSelect.weight" placeholder="Ingresar peso x unidad" type="number" min="0" onkeypress="return event.charCode != 45">
         </mat-form-field>
 
     </mat-tab>
@@ -35,12 +35,12 @@
         <br>
         <mat-form-field>
             <mat-label>Precio</mat-label>
-            <input matInput type="number" [(ngModel)]="this.productSalesSelect.price" value="0" min="0">
+            <input matInput type="number" [(ngModel)]="this.productSalesSelect.price" value="0" min="0" onkeypress="return event.charCode != 45">
         </mat-form-field>
         <br>
         <mat-form-field>
             <mat-label>Cantidad Total</mat-label>
-            <input matInput type="number" [(ngModel)]="this.productSalesSelect.totalQuantity" min="0">
+            <input matInput type="number" [(ngModel)]="this.productSalesSelect.totalQuantity" min="0" onkeypress="return event.charCode != 45">
         </mat-form-field>
         <br>
         <!--
