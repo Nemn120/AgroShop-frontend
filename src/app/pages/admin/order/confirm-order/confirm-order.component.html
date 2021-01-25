@@ -1,33 +1,29 @@
-<p>Confirmación de llegada de pedido</p>
-<hr />
-<div>
-  <ng-template mat-tab-label>
-    <mat-icon class="example-tab-icon">image</mat-icon>
-  </ng-template>
-  <br />
-  <button
-    mat-button
-    onclick="document.getElementById('flArchivo').click();"
-    style="width: 100%"
-  >
-    Seleccionar Archivo
-  </button>
-  <br />
-  <input
-    id="flArchivo"
-    type="file"
-    (change)="selectFile($event)"
-    style="display: none"
-  />
-  <img mat-card-image id="output" [src]="url" width="500px" height="500px" />
-  <p>{{ labelFile }}</p>
+<div class="center">
+  <p>Confirmación de llegada de pedido</p>
+  <hr />
+  <div class="custom-input-file">
+    <input
+      (change)="selectImage($event)"
+      type="file"
+      class="input-file"
+      id="inputGroupFile04"
+      aria-describedby="inputGroupFileAddon04"
+      aria-label="Subir imagen"
+    />Subir imagen
+  </div>
+  <div class="div-imagen">
+    <img [src]="src" alt="Client photo" id="blah" />
+  </div>
+  <div>
+    <button
+      mat-raised-button
+      color="accent"
+      (click)="uploadImage()"
+      [disabled]="!imageSelected"
+      type="button"
+      id="inputGroupFileAddon04"
+    >
+      Enviar
+    </button>
+  </div>
 </div>
-
-<button
-  style="width: 50%"
-  mat-raised-button
-  color="primary"
-  (click)="confirmArrivedOrder()"
->
-  Aceptar
-</button>

@@ -1,9 +1,6 @@
-import { Component, Inject, OnInit } from '@angular/core';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { DomSanitizer } from '@angular/platform-browser';
+import { Component, OnInit } from '@angular/core';
 import { RestService } from 'src/app/_service/rest.service';
-import { OrderBean } from '../../../../_model/OrderBean';
-import { OrderListComponent } from '../order-list/order-list.component';
+import swal from 'sweetalert2';
 
 @Component({
   selector: 'app-confirm-order',
@@ -12,54 +9,59 @@ import { OrderListComponent } from '../order-list/order-list.component';
 })
 export class ConfirmOrderComponent implements OnInit {
 
-  selectedFiles: FileList;
-  currentFileUpload: File;
-  labelFile: string;
-  imagenEstado = false;
-  imagenData: any;
-  url: any;
+  imageSelected: File;
+  src: any = '../../../../../assets/images/fruta.jpg';
 
   constructor(
     private restService: RestService,
-    @Inject(MAT_DIALOG_DATA) public data: OrderBean,
-    private sanitization: DomSanitizer,
-    public dialogRef: MatDialogRef<OrderListComponent>,
+   //  @Inject(MAT_DIALOG_DATA) public data: OrderBean,
+   //  public dialogRef: MatDialogRef<OrderListComponent>,
   ) { }
 
   ngOnInit(): void {
   }
 
-  confirmArrivedOrder() {
+  confirmArrivedOrder(image: File, id: number) {
 
-    const param = {
-      data: this.data
-    };
 
-    if (this.selectedFiles != null) {
-      this.currentFileUpload = this.selectedFiles.item(0);
-    } else {
-      this.currentFileUpload = new File([''], 'blanco');
-    }
-   /*  this.restService.requestApiRestData('order/cao', param, this.currentFileUpload).subscribe(result => {
-        this.restService.messageChange.next(result.responseMessage);
+    const formData = new FormData();
+    formData.append('file', image);
+
+    let path = `order/cao/${id}`;
+
+    this.restService.requestApiRestData(path, formData).subscribe(data => {
+      console.log(data);
+      this.src = data.data;
     });
-    this.dialogRef.close(); */
+
   }
 
-  selectFile(e: any) {
-    this.labelFile = e.target.files[0].name;
-    this.selectedFiles = e.target.files;
-
-    if (e.target.files && e.target.files[0]) {
-      const reader = new FileReader();
-
-      reader.onload = (event: any) => {
-        this.url = event.target.result;
-      };
-
-      reader.readAsDataURL(e.target.files[0]);
+  selectImage(event): void {
+    this.imageSelected = event.target.files[0];
+    console.log(this.imageSelected);
+    if (this.imageSelected.type?.indexOf('image') < 0) {
+      swal.fire('Error image selected: ', 'The file is not a image', 'error');
+      this.imageSelected = null;
     }
+    if(event.target.files && event.target.files[0]) {
+      const file = event.target.files[0];
+      const reader = new FileReader();
+      reader.onload = e => this.src =  reader.result;
+      reader.readAsDataURL(file);
+    }
+  }
 
+  uploadImage(): void {
+    if (!this.imageSelected) {
+      swal.fire('Error upload: ', 'You are not selected a photo', 'error');
+    } else {
+      this
+        .confirmArrivedOrder(this.imageSelected, 1)
+            swal.fire(
+              'Upload image successfully!',
+              'success'
+            );
+    }
   }
 
 }
