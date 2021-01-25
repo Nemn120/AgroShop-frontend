@@ -62,6 +62,17 @@
           >
             <mat-icon>article</mat-icon>
           </button>
+
+          <button
+            *ngIf="
+              row[0].statusPostulation === 'Aceptada' &&
+              row[0].haveContract == true
+            "
+            mat-icon-button
+            (click)="dowloadContract(row[0].id)"
+          >
+            <mat-icon>article</mat-icon>
+          </button>
         </td>
       </ng-container>
 

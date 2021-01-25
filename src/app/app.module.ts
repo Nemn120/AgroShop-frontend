@@ -1,21 +1,20 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-import { AppComponent } from './app.component';
-import { AppRoutingModule } from './app-routing.module';
-import { HttpClientModule } from '@angular/common/http';
-import { MaterialModule } from './_material/material.module';
-import { environment } from '../environments/environment';
-import { HTTP_INTERCEPTORS } from '@angular/common/http';
-import { LocationStrategy, HashLocationStrategy } from '@angular/common';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatFabMenuModule } from '@angular-material-extensions/fab-menu';
-import { EcoFabSpeedDialModule } from '@ecodev/fab-speed-dial';
-import { PanelAdminModule } from './pages/admin/panel-admin/panel-admin.module';
-import { ServerErrorsInterceptor } from './_service/server-errors.interceptor';
-import { AuthorizationModule } from './pages/authorization/authorization.module';
+import { HashLocationStrategy, LocationStrategy } from '@angular/common';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { NgModule } from '@angular/core';
+import { FlexLayoutModule } from '@angular/flex-layout';
 import { FormsModule } from '@angular/forms';
-
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { EcoFabSpeedDialModule } from '@ecodev/fab-speed-dial';
+import { environment } from '../environments/environment';
+import { AppRoutingModule } from './app-routing.module';
+import { AppComponent } from './app.component';
+import { PanelAdminModule } from './pages/admin/panel-admin/panel-admin.module';
+import { AuthorizationModule } from './pages/authorization/authorization.module';
+import { MaterialModule } from './_material/material.module';
+import { ServerErrorsInterceptor } from './_service/server-errors.interceptor';
 
 export function tokenGetter() {
   const tk = sessionStorage.getItem(environment.TOKEN_NAME);
@@ -23,11 +22,8 @@ export function tokenGetter() {
   return token;
 }
 
-
 @NgModule({
-  declarations: [
-    AppComponent
-  ],
+  declarations: [AppComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -38,18 +34,22 @@ export function tokenGetter() {
     FlexLayoutModule,
     PanelAdminModule,
     AuthorizationModule,
+    MatSnackBarModule,
     MatFabMenuModule,
     FormsModule
   ],
+
   providers: [
-    {provide: HTTP_INTERCEPTORS,
+    FormsModule,
+    MatFabMenuModule,
+    {
+      provide: HTTP_INTERCEPTORS,
       useClass: ServerErrorsInterceptor,
-      multi: true
+      multi: true,
     },
-    { provide: LocationStrategy, useClass: HashLocationStrategy}
+    { provide: LocationStrategy, useClass: HashLocationStrategy },
   ],
   bootstrap: [AppComponent],
-  exports: [FlexLayoutModule]
+  exports: [FlexLayoutModule],
 })
-
-export class AppModule{}
+export class AppModule {}
