@@ -12,7 +12,6 @@ import { SearchProductComponent } from './search-product/search-product.componen
 import { OrderPendingComponent } from './order-pending/order-pending.component';
 import { OrderDetailsComponent } from './order-details/order-details.component';
 import { SendJobOfferComponent } from './send-job-offer/send-job-offer.component';
-import { ProductMapComponent } from '../map/product-map/product-map.component';
 import { MapModule } from '../map/map.module';
 import { ProductSalesPlaceMapComponent } from '../map/product-sales-place-map/product-sales-place-map.component';
 import { ClientOrderPendingComponent } from './client-order-pending/client-order-pending.component';
@@ -24,11 +23,13 @@ import { FullCalendarModule } from '@fullcalendar/angular'; // the main connecto
 import dayGridPlugin from '@fullcalendar/daygrid'; // a plugin
 import interactionPlugin from '@fullcalendar/interaction';
 import { OrderReportComponent } from './order-report/order-report.component'; // a plugin
+import { ExporterService } from 'src/app/_service/exporter.service';
 
 FullCalendarModule.registerPlugins([ // register FullCalendar plugins
   dayGridPlugin,
   interactionPlugin
 ]);
+
 
 
 const routes: Routes = [
@@ -55,14 +56,17 @@ const routes: Routes = [
     RouterModule.forChild(routes),
     FullCalendarModule,
     MapModule
+    
   ],
   entryComponents:[
     OrderDetailsComponent,
     SendJobOfferComponent,
-  
     ProductSalesPlaceMapComponent,
     ViewProductsSalesMapComponent,
     JobOfferMapComponent,
   ],
+  providers:[
+    ExporterService
+  ]
 })
 export class OrderModule { }
