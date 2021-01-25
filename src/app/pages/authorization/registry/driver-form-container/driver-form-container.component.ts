@@ -27,10 +27,10 @@ export class DriverFormContainerComponent implements OnInit {
       DNI: new FormControl('', [Validators.required, Validators.pattern('^[0-9]{8}$')]),
       Name: new FormControl('', [Validators.required] ),
       LastName: new FormControl('', [Validators.required]),
-      Email: new FormControl('',[Validators.required]),
+      Email: new FormControl('',[Validators.required, Validators.pattern("^([d0-9a-z_.-]+)@([da-z.-]+).([a-z.]{2,6})$")]),
       Phone: new FormControl('',[Validators.required, Validators.pattern('^[0-9]{9}$')]),
       UserName: new FormControl('', [Validators.required]),
-      Password: ['', [Validators.required]],
+      Password: ['', [Validators.required, Validators.pattern("^(?=\w*\d)(?=\w*[A-Z])(?=\w*[a-z])\S{8,16}$")]],
       ConfirmPassword: ['', [Validators.required]]
     }, {
       validator: this.MatchPassword
