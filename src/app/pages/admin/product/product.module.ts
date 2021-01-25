@@ -20,15 +20,8 @@ const routes: Routes = [
 
    {path: 'list', component: ProductListComponent},//gestion productos
    {path: 'category', component: CategoriesListComponent},//gestion categorias
-<<<<<<< HEAD
    {path: 'sales', component: ProductsSalesListComponent}//gestion productos venta
-=======
-   //{path: 'list', component: CategoriesListComponent},//gestion categorias
-  
-   //temporal
-   {path: 'sales', component: ProductsSalesListComponent}
->>>>>>> origin/develop
-  
+
 ];
 
 @NgModule({
