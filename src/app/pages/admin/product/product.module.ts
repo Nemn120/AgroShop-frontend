@@ -35,6 +35,7 @@ const routes: Routes = [
     ProductsSalesListComponent,
     ProductsSalesFormComponent,
     ProductsSalesViewComponent,
+
   ],
   imports: [
     CommonModule,
