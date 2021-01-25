@@ -7,26 +7,16 @@
         <br>
         <mat-form-field>
             <mat-label>Nombre</mat-label>
-            <input matInput [(ngModel)]="productSelect.name" placeholder="Ingresar nombre">
+            <input matInput [(ngModel)]="productSelect.name" placeholder="Ingresar nombre" onkeypress="return event.charCode != 45" required>
 
         </mat-form-field>
         <br>
         <mat-form-field>
             <mat-label>Descripcion</mat-label>
-            <input matInput [(ngModel)]="productSelect.description" placeholder="Ingresar descripcion">
+            <input matInput [(ngModel)]="productSelect.description" placeholder="Ingresar descripcion" onkeypress="return event.charCode != 45">
         </mat-form-field>
         <br>
-        <!--
-        <mat-form-field>
-            <mat-label>Estado</mat-label>
-            <mat-select [(ngModel)]="productSelect.status">
-                <mat-option *ngFor="let e of estados" [value]="e">
-                    {{e}}
-                </mat-option>
-            </mat-select>
-        </mat-form-field>
-        <br>
-        -->
+
         <mat-form-field>
             <mat-label>Categoria</mat-label>
             <mat-select [(ngModel)]="productSelect.category">
@@ -57,5 +47,5 @@
 
 </mat-tab-group>
 
-<button style="width: 50%;" mat-raised-button color="primary" (click)="save()">Aceptar</button>
+<button style="width: 50%;" mat-raised-button color="primary" (click)="save()" [disabled]="!productSelect.name ">Aceptar</button>
 <button style="width: 50%;" mat-raised-button color="accent" (click)="closeDialog()">Cancelar</button>

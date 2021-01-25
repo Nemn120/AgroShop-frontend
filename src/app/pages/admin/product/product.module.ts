@@ -10,14 +10,24 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ProductViewComponent } from './product-view/product-view.component';
 import { CategoriesListComponent } from '../gestion/categories/categories-list/categories-list.component';
 import { CategoriesViewComponent } from '../gestion/categories/categories-view/categories-view.component';
-import { ProductsSalesListComponent } from '../gestion/products-sales/products-sales-list/products-sales-list.component';
 import { ProductsSalesFormComponent } from '../gestion/products-sales/products-sales-form/products-sales-form.component';
+import { ProductsSalesListComponent } from '../gestion/products-sales/products-sales-list/products-sales-list.component';
 import { ProductsSalesViewComponent } from '../gestion/products-sales/products-sales-view/products-sales-view.component';
+import { MapModule } from '../map/map.module';
+import { ProductMapComponent } from '../map/product-map/product-map.component';
+import { ProductSalesMapComponent } from '../map/product-sales-map/product-sales-map.component';
 const routes: Routes = [
 
    {path: 'list', component: ProductListComponent},//gestion productos
    {path: 'category', component: CategoriesListComponent},//gestion categorias
+<<<<<<< HEAD
    {path: 'sales', component: ProductsSalesListComponent}//gestion productos venta
+=======
+   //{path: 'list', component: CategoriesListComponent},//gestion categorias
+  
+   //temporal
+   {path: 'sales', component: ProductsSalesListComponent}
+>>>>>>> origin/develop
   
 ];
 
@@ -36,10 +46,11 @@ const routes: Routes = [
   imports: [
     CommonModule,
     MaterialModule,
-    PanelAdminModule,
     RouterModule.forChild(routes),
     ReactiveFormsModule,
     FormsModule,
+
+    MapModule,
   ],
   exports: [
     RouterModule
@@ -51,6 +62,9 @@ const routes: Routes = [
     CategoriesViewComponent,
     ProductsSalesFormComponent,
     ProductsSalesViewComponent,
+    //map
+    ProductMapComponent,
+    ProductSalesMapComponent
    ],
 })
 export class ProductModule { }

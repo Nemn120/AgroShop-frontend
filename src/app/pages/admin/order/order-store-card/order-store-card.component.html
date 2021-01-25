@@ -16,19 +16,30 @@
                 </ul>
 
             </div>
-            <img class="image-src" [src]="productSales.product._foto">
+            <img *ngIf="productSales.product._foto!=null" class="image-src" [src]="productSales.product._foto">
+            <img *ngIf="productSales.product._foto==null" class="image-src" src="/assets/images/sin-imagen.jpg">
         </div>
         <div class="item-data">
             <div class="item-title">{{productSales.product.name}} x {{productSales.measureUnite || 'kg'}}</div>
             <div class="item-description">
+
                 <div class="item-price">S/. {{productSales.price}}</div>
+
                 <div class="item-quantity">
+
                     <mat-form-field style="width:30px">
-                        <input matInput class="input-quantity" [(ngModel)]="productSales.quantitySelect">
+                        <input matInput class="input-quantity" [(ngModel)]="productSales.quantitySelect" type="number" onkeypress="return event.charCode >= 48 && event.charCode <=57" min="1">
                     </mat-form-field>
+
                     <div class="btn-add" (click)="addProduct()">
                         <i class="fas fa-cart-plus" style="color: white;"></i>
                     </div>
+
+                    <button mat-icon-button style="margin-left: 10px;margin-right:20px;background-color: #37966F;
+                    color: #fff;height: 38px;" (click)="openProductMap(productSales)">
+            <mat-icon >place</mat-icon>
+          </button>
+
                 </div>
             </div>
         </div>

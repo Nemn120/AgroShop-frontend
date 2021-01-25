@@ -23,7 +23,7 @@ export class RegistryComponent implements OnInit {
     switch(this.rol){
       case 'FARMER':this.title = "Agricultor"; this.image = '/assets/images/agricultor.jpg/'; break;
       case 'CLIENT': this.title = "Comprador"; this.image = '/assets/images/comprador.jpg/' ;break;
-      case 'DRIVER': this.title = "Transportista";this.image = '/assets/images/transportista.jpg/'; break;
+      case 'DRIVER': this.title = "Transportista";this.image = '/assets/images/driver.jpg/'; break;
     }
     this.userType = this.rol;
   }

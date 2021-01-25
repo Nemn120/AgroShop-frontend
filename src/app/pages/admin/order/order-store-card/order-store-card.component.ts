@@ -3,9 +3,10 @@ import { OrderDetailBean } from 'src/app/_model/OrderDetailBean';
 import { ProductBean } from 'src/app/_model/ProductBean';
 import { ProductSalesBean } from 'src/app/_model/ProductSalesBean';
 import { OrderService } from 'src/app/_service/order.service';
-import { RestService } from 'src/app/_service/rest.service';
 import { SharedService } from 'src/app/_service/shared.service';
 
+import { MatDialog } from '@angular/material/dialog';
+import { ProductSalesPlaceMapComponent } from '../../map/product-sales-place-map/product-sales-place-map.component';
 @Component({
   selector: 'app-order-store-card',
   templateUrl: './order-store-card.component.html',
@@ -15,10 +16,12 @@ export class OrderStoreCardComponent implements OnInit {
 
   @Input() productSales: ProductSalesBean;
   quantity:number;
+  imagenEstado: boolean = false;
+
   constructor(
   private sharedData:SharedService,
-  private orderService:OrderService
-    
+  private orderService:OrderService,
+  public dialog: MatDialog,
   ) { }
 
   ngOnInit(): void {
@@ -26,7 +29,7 @@ export class OrderStoreCardComponent implements OnInit {
   }
 
   addProduct(){
-    if(this.productSales.quantitySelect>this.productSales.totalQuantity){
+    if(this.productSales.quantitySelect>this.productSales.availableQuantity){
       this.sharedData.messageChange.next("La cantidad ingresada supera a la cantidad disponible")
       this.productSales.quantitySelect=null;
     }else{
@@ -49,9 +52,20 @@ export class OrderStoreCardComponent implements OnInit {
     this.orderService.addProductToCar(orderDetailSelect);
     this.sharedData.messageChange.next("Se agrego "+this.productSales.quantitySelect+" unidades al carrito");
     this.productSales.quantitySelect=null;
-    
+
+
     }
-    
+
+  }
+
+
+   //open map product
+   openProductMap(productSales: ProductSalesBean){
+    this.dialog.open(ProductSalesPlaceMapComponent, {
+      width: '50%',
+      height: '70%',
+      data: productSales,
+    });
   }
 
 }

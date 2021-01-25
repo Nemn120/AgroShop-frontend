@@ -4,6 +4,9 @@
 @import "src/themes/styles/colors";
 @import "src/themes/styles/variables";
 @import "src/themes/styles/font";
+//mapbox
+@import '~mapbox-gl/dist/mapbox-gl.css';
+@import '~@mapbox/mapbox-gl-geocoder/lib/mapbox-gl-geocoder.css';
 // Plus imports for other components in your app.
 // Include the common styles for Angular Material. We include this here so that you only
 // have to load a single css file for Angular Material in your app.
@@ -344,3 +347,21 @@ div.apexcharts-xaxistooltip-bottom:after {
 table {
     width: 100%;
 }
+
+.mat-form-field-appearance-legacy .mat-form-field-underline {
+    background: white !important;
+}
+
+.mat-checkbox-layout {
+    margin-left: 10%;
+}
+
+.mat-form-field-appearance-legacy .mat-form-field-underline {
+    height: 0 !important;
+}
+
+.mat-focused .mat-form-field-underline .mat-form-field-ripple {
+    height: 0 !important;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');

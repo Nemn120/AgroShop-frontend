@@ -67,10 +67,10 @@ export class VehicleComponent implements OnInit {
   newVehicle(vh ?: VehicleEntity){
     let vhSelect = vh != null ? vh : new VehicleEntity();
     this.dialog.open(NewVehicleComponent, {
-      width: '60%',
-      minHeight: '40%',
+      width: '50%',
+      maxHeight: '750px',
+      minHeight: '70%',
       minWidth: '400px',
-      maxHeight: '650px',
       data: vhSelect
     });
   }

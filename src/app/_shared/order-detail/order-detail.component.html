@@ -59,13 +59,13 @@
                 <span class="mat-header-cell" mat-sort-header="name">Producto</span>
                 <span class="mat-header-cell" mat-sort-header="price">Precio</span>
                 <span class="mat-header-cell" mat-sort-header="quantity">Cantidad</span>
-                <span class="mat-header-cell" mat-sort-header="total">Costo</span>
+                <span class="mat-header-cell" mat-sort-header="total">Total</span>
 
             </section>
             <div *ngFor="let orderDetail of item.orderDetailList" class="mat-row" style="background-color: #FAFAF8;">
-                <span class="mat-cell">{{orderDetail.productSales.product.name}}</span>
+                <span class="mat-cell">{{orderDetail.productName}}</span>
                 <span class="mat-cell">S/. {{orderDetail.price}}</span>
-                <span class="mat-cell">{{orderDetail.quantity}} {{orderDetail.productSales.measureUnite || 'kg'}}</span>
+                <span class="mat-cell">{{orderDetail.quantity}} {{orderDetail.measureUnite || 'kg'}}</span>
                 <span class="mat-cell">S/. {{orderDetail.total}}</span>
 
             </div>

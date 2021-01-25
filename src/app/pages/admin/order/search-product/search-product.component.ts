@@ -8,6 +8,10 @@ import { ProductSalesBean } from '../../../../_model/ProductSalesBean';
 import { FarmerAndProductsDTO } from '../../../../_DTO/FarmerAndProductsDTO';
 import { OrderDetailBean} from '../../../../_model/OrderDetailBean';
 import { OrderService } from 'src/app/_service/order.service';
+
+import { MatDialogRef, MAT_DIALOG_DATA, MatDialog } from '@angular/material/dialog';
+import { ViewProductsSalesMapComponent } from '../../map/view-products-sales-map/view-products-sales-map.component';
+
 @Component({
   selector: 'app-search-product',
   templateUrl: './search-product.component.html',
@@ -15,7 +19,7 @@ import { OrderService } from 'src/app/_service/order.service';
 })
 export class SearchProductComponent implements OnInit {
 
-  @Input() productSales: ProductSalesBean;
+
   quantity:number;
   productSearch: ProductSalesBean;
   farmerList: any;
@@ -24,7 +28,15 @@ export class SearchProductComponent implements OnInit {
   flag: any;
   farmerWithProductsList: FarmerAndProductsDTO[] = [];
 
-  constructor(private orderService: OrderService, private sharedData:SharedService, private sharedService: SharedService, private restService: RestService, private _activatedRoute:ActivatedRoute, private sanitization: DomSanitizer) { }
+  constructor(
+    private orderService: OrderService, 
+    private sharedData:SharedService, 
+    private sharedService: SharedService, 
+    private restService: RestService, 
+    private _activatedRoute:ActivatedRoute, 
+    private sanitization: DomSanitizer,
+    public dialog: MatDialog,
+    ) { }
 
   ngOnInit(): void {
     this.productSearch = new ProductSalesBean();
@@ -35,6 +47,7 @@ export class SearchProductComponent implements OnInit {
       const param = {
         data: this.productSearch
       }
+
       this.restService.requestApiRestData('productsales/glsps',param).subscribe(result=>{
           for(let [farmer,products] of Object.entries(result.dataMap)){
             this.activatedPhoto(products);
@@ -42,14 +55,23 @@ export class SearchProductComponent implements OnInit {
           for(let [farmer, products] of Object.entries(result.dataMap)){
             let dto = new FarmerAndProductsDTO();
             dto._listOfProductsShowed = [];
+            const dat ={
+              id: farmer
+            }
             for(let [key,value] of Object.entries(products)){
               dto._listOfProductsShowed.push(value);
             }
-            this.farmerWithProductsList.push(dto);
+            this.restService.requestApiRestData('farmer/gfbi',dat).subscribe(result2=>{
+              console.log(result2.data.user.username);
+              dto._farmer = result2;
+              console.log(dto._farmer);
+              this.farmerWithProductsList.push(dto);
+            })
           }
+
       })
     })
-
+    console.log('products: ',this.farmerWithProductsList);
   }
 
 
@@ -72,6 +94,12 @@ export class SearchProductComponent implements OnInit {
     return this.sanitization.bypassSecurityTrustResourceUrl(data);
   }
 
-  
+openMap(){
+  this.dialog.open(ViewProductsSalesMapComponent, {
+    width: '50%',
+    height: '70%',
+    data: this.farmerWithProductsList[0]._listOfProductsShowed,
+  });
+}
 
 }

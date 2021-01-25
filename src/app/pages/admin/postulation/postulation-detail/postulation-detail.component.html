@@ -1,0 +1,67 @@
+<div class="card_title">
+    <p class="card__title">Datos de mi postulación</p>
+    <div class="card_content">
+        <div>
+            <span class="card__init">Fecha de postulación: <span>{{data.postulationDate | date}}</span></span>
+            <span>Estado: <span>{{data.statusPostulation}}</span></span>
+        </div>
+        <div>
+            <span class="card__init">Detalles: <span>{{data.detail}}</span></span>
+            <span *ngIf="data.reply">Reformulación: <span>{{data.reply}}</span></span>
+        </div>
+    </div>
+</div>
+<p class="card__title">Oferta de trabajo</p>
+
+<div class="card__content">
+    <span class="card__init">{{data.jobOffer.title}}</span>
+    <span class="card__init">Descripción:
+    <span>{{this.data.jobOffer.description}}</span></span>
+    <span class="card__init">Requisitos mínimos:
+    <span>{{this.data.jobOffer.requirements}}</span></span>
+    <div>
+        <span class="card__init">Fecha de finalización: <span>{{data.jobOffer.finalDate | date}}</span></span>
+        <span>Estado: <span>{{data.jobOffer.statusOffer}}</span></span>
+    </div>
+    <div>
+        <span class="card__init">Total de carga: <span>{{data.jobOffer.totalWeight}}</span></span>
+        <span>Costo: <span>$/.{{data.jobOffer.shippingCost}}</span></span>
+    </div>
+    <div>
+        <span class="card__init">Lugar de origen:
+      <span>{{data.jobOffer.departmentOrigin}}-{{data.jobOffer.originProvince}}-{{data.jobOffer.originRegion}}-{{data.jobOffer.originDistrict}}</span></span>
+    </div>
+    <br>
+    <div *ngIf="data.jobOffer.order">
+        <p class="card__title">Datos de la orden</p>
+        <div>
+            <span class="card__init">Total: <span>{{data.jobOffer.order.total}}</span></span>
+            <span class="card__init">Cantidad: <span>{{data.jobOffer.order.quantity}}</span></span>
+            <span class="card__init">Teléfono de contacto: <span>{{data.jobOffer.order.phone}}</span></span>
+            <span class="card__init">Dirección: <span>{{data.jobOffer.order.address}}</span></span>
+            <span *ngIf="data.jobOffer.order.deliveryDate" class="card__init">Fecha de envío:
+        <span>{{data.jobOffer.order.deliveryDate}}</span></span>
+            <span *ngIf="data.jobOffer.order.attentDate" class="card__init">Fecha de atención:
+        <span>{{data.jobOffer.order.attentDate}}</span></span>
+            <span class="card__init">Referencia: <span>{{data.jobOffer.order.reference}}</span></span>
+            <div *ngFor="let offer of data.jobOffer.order.orderDetailList">
+                <p class="card__title">Detalles de las órdenes</p>
+                <span class="card__init">Precio: {{offer.price}}</span>
+                <span class="card__init">Cantidad: {{offer.quantity}}</span>
+                <span class="card__init">Total: {{offer.total}}</span>
+                <span class="card__init">Producto: {{offer.productName}}</span>
+                <span class="card__init">Unidad de medida: {{offer.measureUnite}}</span>
+            </div>
+        </div>
+    </div>
+    <mat-form-field *ngIf="data.statusPostulation == 'Rechazada'" class="example-full-width" appearance="outline">
+        <span class="card__title">Reformulación: </span>
+        <textarea cdkTextareaAutosize cdkAutosizeMinRows="4" cdkAutosizeMaxRows="7" matInput [(ngModel)]="reply" placeholder="Escribir aqui..." required></textarea>
+    </mat-form-field>
+    <br>
+    <div *ngIf="data.statusPostulation == 'Rechazada'" style="float: right">
+        <button mat-raised-button mat-dialog-close style="margin-right: 5px;" color="basic">Cancelar</button>
+        <button mat-raised-button color="primary" (click)="reformulatePostulation()">Enviar</button>
+    </div>
+
+</div>

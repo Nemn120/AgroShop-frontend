@@ -30,6 +30,12 @@
   margin-top: 50px;
 }
 
+@media screen and (max-width:1260px){
+  .title-registry{
+    font-size: 30px;
+  }
+}
+
 .title-farmer{
   text-align: center;
   font-family: 'Itim', cursive;

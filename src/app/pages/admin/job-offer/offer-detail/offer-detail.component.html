@@ -1,0 +1,57 @@
+<div class="card__title">{{this.data.title}}</div>
+
+<div class="card__content">
+    <p>{{this.data.description}}</p>
+    <p class="card__requer">Requisitos mínimos:</p>
+    <p>{{this.data.requirements}}</p>
+    <div>
+        <span class="card__init">Solicitante: <span>{{this.data.order.farmer.user.name}}</span></span>
+        <span>Telefono: <span>{{this.data.order.phone}}</span></span>
+    </div>
+    <div>
+        <span class="card__init">Direccion: <span>{{this.data.order.address}}</span></span>
+        <span>Costo: <span>$/.{{this.data.shippingCost}}</span></span>
+    </div>
+    <div>
+        <span class="card__init">Fecha Final: <span>{{this.data.finalDate}}</span></span>
+        <span>Peso total: <span>{{this.data.totalWeight}}</span></span>
+    </div>
+    <p class="card__requer" style="text-align: center; color: #009865;">Ubigeo Inicio</p>
+    <hr>
+    <div>
+        <span class="card__init">Departamento Inicio: <span>{{this.data.originRegion}}</span></span>
+        <span>Provincia Inicio: <span>{{this.data.originProvince }}</span></span>
+    </div>
+
+    <!--<span style="text-align: center;">Distrito Inicio: <span>{{this.data.originDistrict }}</span></span>-->
+
+    <div>
+        <span class="card__init">Distrito Inicio: <span>{{this.data.originDistrict }}</span></span>
+        <span> <span><button mat-raised-button style="width: 25%;" (click)="openOriginPlaceMap()">Ver ubicacion inicial</button></span></span>
+    </div>
+
+    <p class="card__requer" style="text-align: center; color: #009865;">Ubigeo Final</p>
+    <hr>
+    <div>
+        <span class="card__init">Departamento Final: <span>{{this.data.order.destinationRegion}}</span></span>
+        <span>Provincia Final: <span>{{this.data.order.destinationProvince}}</span></span>
+    </div>
+    <!--<span style="text-align: center;">Distrito Final: <span>{{this.data.order.destinationDistrict }}</span></span>-->
+
+    <div>
+        <span class="card__init">Distrito Final: <span>{{this.data.order.destinationDistrict }}</span></span>
+        <span> <span><button mat-raised-button style="width: 25%;" (click)="openDestinyPlaceMap()">Ver ubicacion final</button></span></span>
+    </div>
+
+    <br>
+    <p class="card__requer">Propuesta de trabajo:</p>
+    <mat-form-field class="example-full-width" appearance="outline">
+        <textarea matInput [(ngModel)]="this.detail" placeholder="Escribir aqui..." cdkTextareaAutosize cdkAutosizeMinRows="4" cdkAutosizeMaxRows="7"></textarea>
+    </mat-form-field>
+    <br>
+    <div style="float: right">
+        <button mat-raised-button mat-dialog-close style="margin-right: 5px;" color="basic">Cancelar</button>
+        <button mat-raised-button color="primary" (click)="offerPostulate()">POSTULAR</button>
+    </div>
+
+</div>

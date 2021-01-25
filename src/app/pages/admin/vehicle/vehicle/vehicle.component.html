@@ -1,25 +1,25 @@
 <div class="container">
     <div style="width: 100%; position: relative;">
         <mat-toolbar color="primary" class="title-component">
-            <p>Mis vehiculos</p>
+            <p style="margin-left:20px">Mis vehiculos</p>
             <span class="flexExpand"></span>
             <button mat-button class="vehicle-btn" (click)="newVehicle()">Registrar Vehiculo</button>
         </mat-toolbar>
     </div>
     <div *ngIf="this.carsLength==0" style="display: flex; ">
-        <div style="margin-top: 30px;font-weight: bold; font-size: 40px;">No se encontraron vehiculos</div> 
+        <div style="margin-top: 30px;font-weight: bold; font-size: 40px;">No se encontraron vehiculos</div>
     </div>
     <div class="cards">
-        <mat-card *ngFor="let car of cars"> 
+        <mat-card *ngFor="let car of cars">
             <mat-card-header>
                 <mat-card-title>
                     {{car.vehicleModel}}
-                    <button mat-icon-button color="primary" style="display: inline-block;"(click)="newVehicle(car)"><mat-icon>edit</mat-icon></button>
-                    <button mat-icon-button color="primary" style="display: inline-block;"(click)="delete(car)"><mat-icon>delete</mat-icon></button>
+                    <button mat-icon-button color="primary" style="display: inline-block;" (click)="newVehicle(car)"><mat-icon>edit</mat-icon></button>
+                    <button mat-icon-button color="primary" style="display: inline-block;" (click)="delete(car)"><mat-icon>delete</mat-icon></button>
                 </mat-card-title>
                 <mat-card-subtitle>Nro. Placa: {{car.plateNumber}}</mat-card-subtitle>
             </mat-card-header>
-            <img mat-card-image *ngIf="car.photo" [src]="car.photo" alt="carPhoto" >
+            <img mat-card-image *ngIf="car.photo" [src]="car.photo" alt="carPhoto">
             <img mat-card-image *ngIf="!car.photo" src="assets/images/no-image.png" alt="carPhoto">
             <hr>
             <mat-card-content>

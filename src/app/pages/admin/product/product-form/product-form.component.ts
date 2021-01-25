@@ -1,4 +1,4 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, OnInit, Inject, AfterViewChecked } from '@angular/core';
 
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { DomSanitizer } from '@angular/platform-browser';
@@ -12,14 +12,14 @@ import { SharedService } from '../../../../_service/shared.service';
   templateUrl: './product-form.component.html',
   styleUrls: ['./product-form.component.scss']
 })
-export class ProductFormComponent implements OnInit {
+export class ProductFormComponent implements OnInit/*, AfterViewChecked */ {
 
   selected = 'option2';
-  titulo:string="Nuevo ";
+  titulo: string = "Nuevo ";
 
   productSelect: ProductBean;
   categorias: CategoryProductBean[];
-  estados: String[]=['Activo','Desactivo'];
+  estados: String[] = ['Activo', 'Desactivo'];
 
 
   imagenData: any;
@@ -28,9 +28,11 @@ export class ProductFormComponent implements OnInit {
   currentFileUpload: File;
   labelFile: string;
 
+  //negativo: boolean = false;
+
   constructor(
     private restService: RestService,
-    private sharedService:SharedService,
+    private sharedService: SharedService,
 
     public dialogRef: MatDialogRef<ProductFormComponent>,
     @Inject(MAT_DIALOG_DATA) public data: ProductBean,
@@ -41,7 +43,7 @@ export class ProductFormComponent implements OnInit {
 
 
   ngOnInit(): void {
-   
+
     this.listCategories();
 
     this.productSelect = new ProductBean();
@@ -59,11 +61,32 @@ export class ProductFormComponent implements OnInit {
       }, error => {
         this.restService.message('Error al mostrar imagen!', 'Error');
       });
-      this.titulo="Actualizar ";
+      this.titulo = "Actualizar ";
     }
 
-
   }
+
+
+  /*
+  //validar negativo no optimo con la varible negativo boleana
+    ngAfterViewChecked() {
+  
+      if (this.productSelect.name) {
+  
+        if (this.productSelect.name.match("^[0-9]+")) {
+  
+          this.negativo = true;
+          console.log('es negativo?');
+        } else {
+  
+          this.negativo = false;
+          console.log('no es negativo?');
+        }
+      }
+      console.log('cambio');
+    }
+  */
+
   save() {
 
     let param = {
@@ -93,7 +116,7 @@ export class ProductFormComponent implements OnInit {
   listCategories() {
     let param = {
       data: {
-        userCreateId: 1
+        userCreateId: this.sharedService.userSession.id
       }
     }
     this.restService.requestApiRestData('categoryproduct/gcp', param).subscribe(data => {

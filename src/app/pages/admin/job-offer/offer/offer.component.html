@@ -1,0 +1,98 @@
+<p class="offer__title">Listado de Ofertas de Trabajos</p>
+<div class="cards">
+    <mat-card class="card__search">
+        <form>
+            <mat-form-field appearance="outline" class="example-form-field">
+                <mat-label>Departamento Destino</mat-label>
+                <mat-select (selectionChange)="listarProvinciasSegunIdRegion($event)">
+                    <mat-option [value]="this.allString">{{this.allString}}</mat-option> 
+                    <mat-option *ngFor="let region of this.regionList" [value]="region">
+                        {{region.nombreUbigeo}}
+                    </mat-option>   
+                </mat-select>
+            </mat-form-field>
+            <mat-form-field appearance="outline" class="example-form-field">
+                <mat-label>Provincia Destino</mat-label>
+                <mat-select (selectionChange)="listarDistritosSegunIdProvincia($event)">
+                    <mat-option [value]="this.allString">{{this.allString}}</mat-option> 
+                    <mat-option *ngFor="let province of this.provinceList" [value]="province">
+                        {{province.nombreUbigeo}}
+                    </mat-option>    
+                </mat-select>
+            </mat-form-field>
+            <mat-form-field appearance="outline" class="example-form-field">
+                <mat-label>Distrito Destino</mat-label>
+                <mat-select name="districtSelect" [(ngModel)]="this.searchJobOffer.destinationDistrict">
+                    <mat-option [value]="this.allString">{{this.allString}}</mat-option> 
+                    <mat-option *ngFor="let district of this.districtList" [value]="district.nombreUbigeo">
+                        {{district.nombreUbigeo}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+            <mat-form-field appearance="outline" class="example-form-field">
+                <mat-label>Departamento Final</mat-label>
+                <mat-select (selectionChange)="listarProvinciasSegunIdRegionDestination($event)">
+                    <mat-option [value]="this.allString">{{this.allString}}</mat-option> 
+                    <mat-option *ngFor="let region of this.destinationRegionList" [value]="region">
+                        {{region.nombreUbigeo}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+            <mat-form-field appearance="outline" class="example-form-field">
+                <mat-label>Provincia Final</mat-label>
+                <mat-select (selectionChange)="listarDistritosSegunIdProvinciaDestination($event)">
+                    <mat-option [value]="this.allString">{{this.allString}}</mat-option> 
+                    <mat-option *ngFor="let province of this.destinationProvinceList" [value]="province">
+                        {{province.nombreUbigeo}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+            <mat-form-field appearance="outline" class="example-form-field">
+                <mat-label>Distrito Final</mat-label>
+                <mat-select name="districtSelectFinal" [(ngModel)]="this.searchJobOffer.destinationDistrict">
+                    <mat-option [value]="this.allString">{{this.allString}}</mat-option> 
+                    <mat-option *ngFor="let district of this.destinationDistrictList" [value]="district.nombreUbigeo">
+                        {{district.nombreUbigeo}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+            
+            <mat-form-field appearance="outline" class="example-form-field">
+                <mat-label>Peso Inicio</mat-label>
+                <input matInput [(ngModel)]="this.searchJobOffer.weightIni" name="weightIni" type="number" min="0">
+            </mat-form-field>
+            <mat-form-field *ngIf="this.searchJobOffer.weightIni != undefined" appearance="outline" class="example-form-field">
+                <mat-label>Peso Final</mat-label>
+                <input matInput [(ngModel)]="this.searchJobOffer.weightFin" name="weightFin" type="number" min="0">
+            </mat-form-field>
+            <mat-form-field appearance="outline" class="example-form-field">
+                <mat-label>Precio Inicio</mat-label>
+                <input matInput [(ngModel)]="this.searchJobOffer.priceIni" name="priceIni" type="number" min="0">
+            </mat-form-field>
+            <mat-form-field *ngIf="this.searchJobOffer.priceIni != undefined" appearance="outline" class="example-form-field">
+                <mat-label>Precio Final</mat-label>
+                <input matInput [(ngModel)]="this.searchJobOffer.priceFin" name="priceFin" type="number" min="0">
+            </mat-form-field>
+            <button mat-raised-button type="submit" color="primary" (keyup.enter)="listOffer()" (click)="listOffer()" [disabled]="(this.searchJobOffer.weightIni != undefined && this.searchJobOffer.weightFin == undefined)
+            || (this.searchJobOffer.priceIni != undefined && this.searchJobOffer.priceFin == undefined)">Buscar</button>
+        </form>
+    </mat-card>
+</div>
+
+<div class="cards">
+    <mat-card *ngFor="let job of obs | async" class="card__total">
+        <div class="card__title">{{job.title}}</div>
+        <div class="card__content">
+            <p>{{job.description}}</p>
+            <p class="card__requer">Requisitos mínimos:</p>
+            <p>{{job.requirements}}</p>
+            <div style="float: left">
+                <button mat-raised-button color="primary" (click)="moreDetails(job)">VER OFERTA</button>
+            </div>
+            <div style="float: right" class="card__opc">
+                <span class="material-icons" style="font-size: 14px">calendar_today</span> Postula hasta el {{job.finalDate}}
+            </div>
+        </div>
+    </mat-card>
+    <mat-paginator [length]="100" [pageSize]="5" [pageSizeOptions]="[5, 10, 25, 100]" style="width: 83%;"></mat-paginator>
+</div>

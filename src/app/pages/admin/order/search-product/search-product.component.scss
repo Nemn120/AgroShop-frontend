@@ -4,13 +4,16 @@
 }
 
 .grid-item {
-  width: 100%;
+
   height: auto;
   transition: .3s all ease;
   margin-left: 20px;
   min-height: 20vh;
-  display: grid;
+
   grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  margin-left: 50px;
+  width: 250px;
+
 }
 
 
@@ -135,3 +138,37 @@ li {
   text-align: left;
 }
 
+.data-farmer{
+  margin-left: 50px;
+  padding: 20px 0px 20px 10px;
+  margin-right: 50px;
+  border: solid 4px rgb(55, 150, 111);
+  border: solid 4px rgb(55, 150, 111);
+  border-radius: 20px;
+  margin-top: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  font-family: 'Poppins', sans-serif;
+  color: #332927;
+  font-size: 20px;
+  font-weight: bold;
+  background-color: #fff;
+}
+
+.card{
+  display: flex;
+  position: relative;
+  top: 15px;
+}
+
+.circulo{
+  height: 40px;
+  padding: 5px 0px;
+  border-radius: 50%;
+  border: solid 2px rgb(55, 150, 111);
+  position:relative;
+  background-color: white;
+  top:5px;
+  margin-right:10px ;
+}

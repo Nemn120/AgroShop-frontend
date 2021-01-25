@@ -11,4 +11,7 @@ export class OrderDetailBean extends MainBean{
     productSales:ProductSalesBean;
     _foto:any; 
     _isFoto: boolean;   
+
+    productName:string;
+    measureUnite:string;
 }

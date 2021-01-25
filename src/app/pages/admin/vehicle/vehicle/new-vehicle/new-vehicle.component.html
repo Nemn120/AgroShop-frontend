@@ -5,28 +5,28 @@
         <hr>
         <br>
 <form>
-    <div style="display: flex; flex-wrap: wrap; justify-content: center;">
-        <mat-form-field appearance="outline">
+    <div style="display: flex; flex-wrap: wrap; justify-content: space-around;">
+        <mat-form-field appearance="outline" style="width: 30%;">
             <mat-label>Numero de placa</mat-label>
             <input matInput [(ngModel)]="this.vehicle.plateNumber" name="plateNumber" required>
         </mat-form-field>
-        <mat-form-field appearance="outline">
+        <mat-form-field appearance="outline" style="width: 30%;">
             <mat-label>Numero de serie</mat-label>
             <input matInput [(ngModel)]="this.vehicle.serialNumber" name="serialNumber" required>
         </mat-form-field>
-        <mat-form-field appearance="outline">
+        <mat-form-field appearance="outline" style="width: 30%;">
             <mat-label>Marca del vehiculo</mat-label>
             <input matInput [(ngModel)]="this.vehicle.vehicleBrand" name="vehicleBrand" required>
         </mat-form-field>
-        <mat-form-field appearance="outline">
+        <mat-form-field appearance="outline" style="width: 30%;">
             <mat-label>Modelo del vehiculo</mat-label>
             <input matInput [(ngModel)]="this.vehicle.vehicleModel" name="vehicleModel" required>
         </mat-form-field>
-        <mat-form-field appearance="outline">
+        <mat-form-field appearance="outline" style="width: 30%;">
             <mat-label>Año de uso</mat-label>
-            <input matInput [(ngModel)]="this.vehicle.yearsOfUse" name="yearsOfUse" type="number" min="0" required>
+            <input matInput [(ngModel)]="this.vehicle.yearsOfUse" name="yearsOfUse" type="number" value="0" min="0" required>
         </mat-form-field>
-        <mat-form-field appearance="outline">
+        <mat-form-field appearance="outline" style="width: 30%;">
             <mat-label>Tipo de combustible</mat-label>
             <mat-select [(ngModel)]="this.vehicle.fuelType" name="fuelType" required>
                 <mat-option *ngFor="let e of fuel" [value]="e">
@@ -34,7 +34,7 @@
                 </mat-option>
             </mat-select>
         </mat-form-field>
-        <mat-form-field appearance="outline">
+        <mat-form-field appearance="outline" style="width: 30%;">
             <mat-label>Estado</mat-label>
             <mat-select [(ngModel)]="this.vehicle.statusCar" name="statusCar" required>
                 <mat-option *ngFor="let e of status" [value]="e">
@@ -42,36 +42,38 @@
                 </mat-option>
             </mat-select>
         </mat-form-field>
-    </div>
-        <p class="subtitles" style="margin-top: 0;">Pesos</p>
-        <hr>
-    <div style="display: flex; flex-wrap: wrap; justify-content: center;">
-        <mat-form-field appearance="outline" >
-            <mat-label>Peso neto</mat-label>
-            <input matInput [(ngModel)]="this.vehicle.netWeight" name="netWeight" type="number" required>
-            <span matSuffix> t</span>
-        </mat-form-field>
-        <mat-form-field appearance="outline">
-            <mat-label>Peso bruto</mat-label>
-            <input matInput [(ngModel)]="this.vehicle.grossWeight" name="grossWeight" type="number" required>
-            <span matSuffix> t</span>
-        </mat-form-field>
-        <button mat-raised-button color="primary" onclick="document.getElementById('flArchivo').click();" class="btn-select">Seleccionar Archivo</button>
+</div>
+    <p class="subtitles" style="margin-top: 0;">Pesos</p>
+    <hr>
+<div style="display: flex; flex-wrap: wrap; justify-content: space-around;">
+    <mat-form-field appearance="outline" style="width: 30%;">
+        <mat-label>Peso neto</mat-label>
+        <input matInput [(ngModel)]="this.vehicle.netWeight" name="netWeight" type="number" required>
+        <span matSuffix> t</span>
+    </mat-form-field>
+    <mat-form-field appearance="outline" style="width: 30%;">
+        <mat-label>Peso bruto</mat-label>
+        <input matInput [(ngModel)]="this.vehicle.grossWeight" name="grossWeight" type="number" required>
+        <span matSuffix> t</span>
+    </mat-form-field>
+        <button mat-raised-button color="primary" onclick="document.getElementById('flArchivo').click();" class="btn-select">Seleccionar Imagen</button>
         <input id="flArchivo" type="file" (change)="selectFile($event)" style="display: none">
-        <br>
-        <p style="color: red; justify-content: center;">{{labelFile}}</p>
+        <div style="width: 90%;">
+            <img mat-card-image [src]="imagenData" *ngIf="imagenEstado" style="display: block; width:180px ;height:180px;margin: auto;" />
+        </div>
+        <p style="color: red; justify-content: center; margin-bottom: 0;">{{labelFile}}</p>
     </div>
         <br>
         <div class="buttons">
             <button class="first-btn btn-form" mat-stroked-button color="basic" mat-dialog-close>Cancelar</button>
-            <button *ngIf="this.data.id>0" mat-raised-button type="submit" class="btn-form" color="warn" [disabled]="
-            !this.vehicle.plateNumber || !this.vehicle.serialNumber || !this.vehicle.vehicleBrand || !this.vehicle.vehicleModel || !labelFile ||
+            <button mat-raised-button *ngIf="this.data.id>0" type="submit" class="btn-form" color="warn" [disabled]="
+            !this.vehicle.plateNumber || !this.vehicle.serialNumber || !this.vehicle.vehicleBrand || !this.vehicle.vehicleModel || this._isPhoto == false || this.vehicle.yearsOfUse<=0 ||
             !this.vehicle.yearsOfUse || !this.vehicle.fuelType || !this.vehicle.statusCar || !this.vehicle.netWeight || !this.vehicle.grossWeight"  
             mat-dialog-close (click)="newVehicle()">{{this.button}}</button>
-            <button *ngIf="!this.data.id" mat-raised-button type="submit" class="btn-form" color="warn" [disabled]="
-            !this.vehicle.plateNumber || !this.vehicle.serialNumber || !this.vehicle.vehicleBrand || !this.vehicle.vehicleModel || !labelFile ||
-            !this.vehicle.yearsOfUse || !this.vehicle.fuelType || !this.vehicle.statusCar || !this.vehicle.netWeight || !this.vehicle.grossWeight"  
-            mat-dialog-close (click)="newVehicle()">{{this.button}}</button>
+            <button mat-raised-button *ngIf="!this.data.id" type="submit" class="btn-form" color="warn" [disabled]="
+                !this.vehicle.plateNumber || !this.vehicle.serialNumber || !this.vehicle.vehicleBrand || !this.vehicle.vehicleModel || !labelFile || this.vehicle.yearsOfUse<=0 ||
+                !this.vehicle.yearsOfUse || !this.vehicle.fuelType || !this.vehicle.statusCar || !this.vehicle.netWeight || !this.vehicle.grossWeight"  
+                mat-dialog-close (click)="newVehicle()">{{this.button}}</button>
         </div>
     
 </form>

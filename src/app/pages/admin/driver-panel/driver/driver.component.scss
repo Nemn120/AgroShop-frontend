@@ -12,6 +12,7 @@
 .header {
     float: right;
     display: flex;
+    margin: 1rem;
 }
 
 .header-search {
@@ -56,7 +57,7 @@ input::placeholder {
     padding-top: 15px;
 }
 
-mat-card {
+.mat-card {
     background-color: inherit;
     box-sizing: border-box;
     padding: 3%;
@@ -74,6 +75,9 @@ table {
 
 .select-status {
     margin-top: 0.8rem;
+    margin-top: 1.5rem;
+    margin-right: 3.5rem;
+    display: flex;
 }
 
 .text {
