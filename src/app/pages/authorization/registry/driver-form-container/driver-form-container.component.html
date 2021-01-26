@@ -53,32 +53,24 @@
     </div>
     <br>
     <div style=" border-radius: 10px 10px 0px 0px; width: 80%;">
-      <mat-form-field appearance="outline" style="width: 100%;">
-          <mat-label>Correo Electrónico</mat-label>
-<<<<<<< HEAD
-          <input matInput type="email" formControlName="Email" pattern="^([d0-9a-z_.-]+)@([da-z.-]+).([a-z.]{2,6})$" required>
-          <mat-error *ngIf="this.driverForm.controls.Email.hasError('required') && this.driverForm.controls.Email.touched">
-              Es requerido
-          </mat-error>
-          <mat-error *ngIf="this.driverForm.controls.Email.hasError('pattern')">Error al introducir su correo</mat-error>
-=======
-          <input matInput type="email" formControlName="Email" pattern="^([d0-9A-Za-z_.-]+)@([da-z.-]+).([a-z.]{2,6})$" required>
-          <mat-error *ngIf="this.driverForm.controls.Email.hasError('required') && this.driverForm.controls.Email.touched">
-              Es requerido
-          </mat-error>
-          <mat-error *ngIf="this.driverForm.controls.Email.hasError('pattern')">Correo electrónico no válido</mat-error>
->>>>>>> origin/hotfix
-      </mat-form-field>
+        <mat-form-field appearance="outline" style="width: 100%;">
+            <mat-label>Correo Electrónico</mat-label>
+            <input matInput type="email" formControlName="Email" pattern="^([d0-9A-Za-z_.-]+)@([da-z.-]+).([a-z.]{2,6})$" required>
+            <mat-error *ngIf="this.driverForm.controls.Email.hasError('required') && this.driverForm.controls.Email.touched">
+                Es requerido
+            </mat-error>
+            <mat-error *ngIf="this.driverForm.controls.Email.hasError('pattern')">Correo electrónico no válido</mat-error>
+        </mat-form-field>
     </div>
     <br>
     <div style=" border-radius: 10px 10px 0px 0px; width: 80%;">
-      <mat-form-field appearance="outline" style="width: 100%;">
-          <mat-label>Teléfono</mat-label>
-          <input matInput maxlength="9" onkeypress="return event.charCode >= 48 && event.charCode <=57" pattern='^[0-9]{9}$' formControlName="Phone" required>
-          <mat-error *ngIf="this.driverForm.controls.Phone.hasError('required') && this.driverForm.controls.Phone.touched">
-              Es requerido
-          </mat-error>
-      </mat-form-field>
+        <mat-form-field appearance="outline" style="width: 100%;">
+            <mat-label>Teléfono</mat-label>
+            <input matInput maxlength="9" onkeypress="return event.charCode >= 48 && event.charCode <=57" pattern='^[0-9]{9}$' formControlName="Phone" required>
+            <mat-error *ngIf="this.driverForm.controls.Phone.hasError('required') && this.driverForm.controls.Phone.touched">
+                Es requerido
+            </mat-error>
+        </mat-form-field>
     </div>
     <br>
     <div style=" border-radius: 10px 10px 0px 0px;  width: 80%;">
