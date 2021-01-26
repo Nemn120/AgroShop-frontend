@@ -13,22 +13,22 @@ import { RightBannerComponent } from './login/right-banner/right-banner.componen
 import { ToolbarComponent } from '../public-view/toolbar/toolbar.component';
 
 const routes: Routes = [
-
+/*
   {
     path: '', component: HomeComponent,
   },
   {
     path: 'login', component: HomeComponent,
   },
- 
- /*
+*/
+
   {
     path: '', component: LoginComponent,
   },
   {
     path: 'login', component: LoginComponent,
   },
-  */
+ 
   {
     path: 'registry', component: RegistryComponent
   },
@@ -51,7 +51,7 @@ const routes: Routes = [
     FormsModule,
   ],
   exports:[
-    LoginComponent, RegistryComponent,DriverFormContainerComponent
+    LoginComponent,HomeComponent, RegistryComponent,DriverFormContainerComponent
   ]
 })
 export class AuthorizationModule { }

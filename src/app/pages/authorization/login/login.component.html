@@ -1,6 +1,6 @@
 <div id="background">
-    <div id = "login-panel">
-        <div  id="login-image">
+    <div id="login-panel">
+        <div id="login-image">
             <div class="texto-flotante">
                 <span id="txtportal" class="texto-portal"><b style="font-size: 30px;">Sistema de integracion entre cliente y
             agricultor</b></span>
@@ -9,82 +9,82 @@
             <img src="../../../../assets/images/login/background2.jpg" style="height: 100%; width: 100%;">
         </div>
         <div id="login-form">
-            <div style = "height: 60%; width: 100%; ">
-              <form [formGroup]="loginForm" class="signup-form" fxLayout="column" (ngSubmit)="login()">
+            <div style="height: 60%; width: 100%; ">
+                <form [formGroup]="loginForm" class="signup-form" fxLayout="column" (ngSubmit)="login()">
 
-                <div class="form-headline text-center mb-32" style="display: flex; justify-content: center;">
-                    <h1 class="font-weight-light" style="font-size: 30px; text-align: center;">Bienvenido a Agroshop</h1>
-                </div>
+                    <div class="form-headline text-center mb-32" style="display: flex; justify-content: center;">
+                        <h1 class="font-weight-light" style="font-size: 30px; text-align: center;">Bienvenido a Agroshop</h1>
+                    </div>
 
-                <div class="mb-48" fxLayout="row wrap" fxLayoutAlign="center center">
-                </div>
-
-
-                <div fxLayout="row" *ngIf="enProceso">
-                    <mat-progress-bar mode="query" color="accent" fxFlex></mat-progress-bar>
-                    <br />
-                </div>
-
-                <div style="display: flex; justify-content: center; align-items: center; flex-direction: column;">
-                    <mat-form-field class="full-width" appearance="outline" style="width: 80%;">
-                        <mat-label>Usuario</mat-label>
-                        <input matInput formControlName="username" type="text" name="username" placeholder="Usuario" [class.is-invalid]="this.loginForm.controls.username.hasError('required') && this.loginForm.controls.username.touched" />
-
-                        <mat-error *ngIf="this.loginForm.controls.username.hasError('required') && this.loginForm.controls.username.touched">
-                            Es requerido
-                        </mat-error>
-
-                    </mat-form-field>
-
-                    <mat-form-field class="full-width" appearance="outline" style="width: 80%;">
-                        <mat-label>Contraseña</mat-label>
-                        <input matInput formControlName="password" type="password" name="password" placeholder="********" [class.is-invalid]="this.loginForm.controls.password.hasError('required') && this.loginForm.controls.password.touched" />
-
-                        <mat-error *ngIf="this.loginForm.controls.password.hasError('required') && this.loginForm.controls.password.touched">
-                            Es requerido
-                        </mat-error>
-
-                    </mat-form-field>
-                </div>
-                <br>
-                <br>
-                <mat-checkbox class="mb-24" style="position: relative;display: block; bottom: 30px;">Recordar</mat-checkbox>
-
-                <div class="button-container">
-                    <div style="text-align:center; margin:10px;">
-                        <button mat-raised-button color="primary" style="width: 50%; text-align: center;
-              font-family: 'Itim', cursive; font-size: 20px;
-              color:#fff;
-              background-color: rgb(6, 110, 54); border-radius: 20px; height: 100%; margin-bottom: 10px;" [disabled]="enProceso">Ingresa</button>
+                    <div class="mb-48" fxLayout="row wrap" fxLayoutAlign="center center">
                     </div>
 
 
-                </div>
+                    <div fxLayout="row" *ngIf="enProceso">
+                        <mat-progress-bar mode="query" color="accent" fxFlex></mat-progress-bar>
+                        <br />
+                    </div>
+
+                    <div style="display: flex; justify-content: center; align-items: center; flex-direction: column;">
+                        <mat-form-field class="full-width" appearance="outline" style="width: 80%;">
+                            <mat-label>Usuario</mat-label>
+                            <input matInput formControlName="username" type="text" name="username" placeholder="Usuario" [class.is-invalid]="this.loginForm.controls.username.hasError('required') && this.loginForm.controls.username.touched" />
+
+                            <mat-error *ngIf="this.loginForm.controls.username.hasError('required') && this.loginForm.controls.username.touched">
+                                Es requerido
+                            </mat-error>
+
+                        </mat-form-field>
+
+                        <mat-form-field class="full-width" appearance="outline" style="width: 80%;">
+                            <mat-label>Contraseña</mat-label>
+                            <input matInput formControlName="password" type="password" name="password" placeholder="********" [class.is-invalid]="this.loginForm.controls.password.hasError('required') && this.loginForm.controls.password.touched" />
+
+                            <mat-error *ngIf="this.loginForm.controls.password.hasError('required') && this.loginForm.controls.password.touched">
+                                Es requerido
+                            </mat-error>
+
+                        </mat-form-field>
+                    </div>
+                    <br>
+                    <br>
+                    <mat-checkbox class="mb-24" style="position: relative;display: block; bottom: 30px;">Recordar</mat-checkbox>
+
+                    <div class="button-container">
+                        <div style="text-align:center; margin:10px;">
+                            <button mat-raised-button color="primary" style="width: 50%; text-align: center;
+              font-family: 'Itim', cursive; font-size: 20px;
+              color:#fff;
+              background-color: rgb(6, 110, 54); border-radius: 20px; height: 100%; margin-bottom: 10px;" [disabled]="enProceso">Ingresa</button>
+                        </div>
 
 
-                <p style="width: 100%;
+                    </div>
+
+
+                    <p style="width: 100%;
       text-align: center;
       border-bottom: 1px solid grey;
       line-height: 0.1em;
       margin: 20px 0 20px;"><span style="padding: 0 10px; background: #fafafa;">o sino</span></p>
 
-            </form>
+                </form>
 
-            <div style="text-align:center">
-                <button mat-raised-button color="primary" style="width: 50%; text-align: center;
+                <div style="text-align:center">
+                    <button mat-raised-button color="primary" style="width: 50%; text-align: center;
         font-family: 'Itim', cursive;
         font-size: 20px;
         color:#fff;
         background-color: rgb(6, 110, 54); border-radius: 20px; height: 100%;" [disabled]="enProceso" [matMenuTriggerFor]="menu">Registrate</button>
 
-                <mat-menu #menu="matMenu">
-                    <button mat-menu-item (click)="registryForm('FARMER')">Agricultor</button>
-                    <button mat-menu-item (click)="registryForm('CLIENT')">Cliente</button>
-                    <button mat-menu-item (click)="registryForm('DRIVER')">Transportista</button>
-                </mat-menu>
+                    <mat-menu #menu="matMenu">
+                        <button mat-menu-item (click)="registryForm('FARMER')">Agricultor</button>
+                        <button mat-menu-item (click)="registryForm('CLIENT')">Cliente</button>
+                        <button mat-menu-item (click)="registryForm('DRIVER')">Transportista</button>
+                    </mat-menu>
 
 
-            </div>
+                </div>
             </div>
         </div>
     </div>
