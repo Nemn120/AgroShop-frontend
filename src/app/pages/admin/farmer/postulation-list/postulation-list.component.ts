@@ -40,13 +40,14 @@ export class PostulationListComponent implements OnInit {
   farmer: FarmerBean = new FarmerBean();
   statusList: any[] = ['Pendiente', 'Aceptada', 'Rechazada'];
   subtitlePerson = 'Postulantes';
+  // array = [];
 
   constructor(
     private restService: RestService,
     private sharedService: SharedService,
     private dialog: MatDialog
   ) {
-    this.farmer.id = this.sharedService.userSession.id;
+    this.order.farmer = this.sharedService.userSession;
   }
 
   ngOnInit(): void {
@@ -55,12 +56,11 @@ export class PostulationListComponent implements OnInit {
 
   public getPostulationByStatusAndId(status: string = 'Pendiente'): any {
     this.postulation.statusPostulation = status;
-    this.order.farmer = this.farmer;
     this.jobOffer.order = this.order;
     this.postulation.jobOffer = this.jobOffer;
 
     const param = {
-      data: this.postulation,
+      data: this.postulation
     };
 
     if (status === 'Aceptada') {

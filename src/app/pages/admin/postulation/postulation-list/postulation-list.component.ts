@@ -33,8 +33,7 @@ export class PostulationListComponent implements OnInit {
     private sharedService: SharedService,
     private dialog: MatDialog
     ) {
-       this.driver.id = this.sharedService.userSession.id;
-       // this.driver.id = 1;
+       this.driver = this.sharedService.userSession;
     }
 
     ngOnInit(): void {

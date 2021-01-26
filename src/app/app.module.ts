@@ -50,13 +50,17 @@ export function tokenGetter() {
     AuthorizationModule,
     MatSnackBarModule,
     MatFabMenuModule,
+<<<<<<< HEAD
     FormsModule,
 >>>>>>> 1df15fce4b281e0d5ec25afeffe54412e2a88dcb
+=======
+    FormsModule
+>>>>>>> 2930b927f1b795bbce400c4114c74e0cb62e9170
   ],
 
   providers: [
-    MatFabMenuModule,
     FormsModule,
+    MatFabMenuModule,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: ServerErrorsInterceptor,
