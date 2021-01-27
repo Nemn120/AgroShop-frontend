@@ -4633,7 +4633,7 @@ dl {
         right: 0;
         left: 0;
         z-index: -1;
-        border: 5px solid #dcd1d5;
+        border: 5px solid #ffffff;
         content: "";
         transform: translate(-22px, -20px);
         transition: 550ms ease-in-out;
@@ -4729,7 +4729,7 @@ dl {
     content: "|";
     font-size: 20px;
     display: inline-block;
-    color: #ddd;
+    color: rgba(221, 221, 221, 0.76);
     padding-left: 13px;
     padding-right: 13px;
 }
@@ -15424,8 +15424,8 @@ ol ol {
     height: 50px;
     font-size: 24px !important;
     line-height: 46px;
-    color: #FFF;
-    background: #8f859e;
+    color: #37966F;
+    background: #009865;
     position: fixed;
     right: 15px;
     bottom: 15px;
@@ -15443,7 +15443,7 @@ ol ol {
 
 .ui-to-top:hover {
     color: #fff;
-    background: #756a86;
+    background: #37966F;
     text-decoration: none;
 }
 
