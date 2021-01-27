@@ -15,7 +15,7 @@
 
                 <div class="cell-lg-8 cell-xl-9">
                     <!-- Classic slider-->
-                    <section class="section" style="background-color: red;">
+                    <section class="section" style="background-color: #37966F;background:  #37966F;">
                         <!-- Swiper -->
                         <div class="swiper-container swiper-slider swiper-style-2" data-loop="false" data-autoplay="5500" data-simulate-touch="false" data-slide-effect="slide" data-direction="vertical">
                             <img src="/assets/images/login/background2.jpg" alt="" style="width: 100%;height: 100%;">
@@ -25,7 +25,7 @@
 
                 <div class="cell-lg-4 cell-xl-3 reveal-lg-flex">
                     <div class="hotel-booking-form">
-                        <h1 style="font-size:45px;font-weight:bold;">Iniciar Sesion</h1>
+                        <h1 style="font-size:45px;font-weight:bold;"> <span style="color: rgb(0, 0, 0);"> Iniciar</span><span style="color: #37966F;"> Sesion</span> </h1>
                         <br>
 
                         <!-- RD Mailform-->
@@ -39,11 +39,11 @@
 
 
                                 <div class="cell-lg-12 cell-md-4">
-                                    <p class="text-uppercase">Ususario</p>
+                                    <p style="font-weight:bold;">Usuario</p>
                                     <div class="form-wrap">
                                         <!--<label class="form-label" for="contact-first-name">Your Full Name</label>-->
                                         <label class="form-label" for="contact-first-name"></label>
-                                        <input class="form-input" id="contact-first-name" type="text" name="name" formControlName="username" type="text" name="username" placeholder="Usuario" [class.is-invalid]="this.loginForm.controls.username.hasError('required') && this.loginForm.controls.username.touched">
+                                        <input class="form-input" id="contact-first-name" type="text" name="name" formControlName="username" type="text" name="username" placeholder="Ingresar usuario" [class.is-invalid]="this.loginForm.controls.username.hasError('required') && this.loginForm.controls.username.touched">
                                     </div>
 
                                     <mat-error *ngIf="this.loginForm.controls.username.hasError('required') && this.loginForm.controls.username.touched">
@@ -56,10 +56,10 @@
 
 
                                 <div class="cell-lg-12 cell-md-4 cell-sm-6">
-                                    <p class="text-uppercase">Contraseña</p>
+                                    <p style="font-weight:bold;">Contraseña</p>
                                     <div class="form-wrap">
                                         <label class="form-label" for="password"></label>
-                                        <input class="form-input" formControlName="password" type="password" name="password" placeholder="Ingrese Contraseña" [class.is-invalid]="this.loginForm.controls.password.hasError('required') && this.loginForm.controls.password.touched">
+                                        <input class="form-input" formControlName="password" type="password" name="password" placeholder="Ingresar Contraseña" [class.is-invalid]="this.loginForm.controls.password.hasError('required') && this.loginForm.controls.password.touched">
                                     </div>
 
 
@@ -71,23 +71,23 @@
 
 
                                 <div class="cell-lg-12 cell-md-4">
-                                    <button class="button button-primary button-square button-block button-effect-ujarak" type="submit" [disabled]="enProceso" (click)="login()"><span>Ingresar</span></button>
+                                    <button class="button button-square button-block button-effect-ujarak" type="submit" [disabled]="enProceso" style="background-color: #37966F;;color: rgb(255, 255, 255);" (click)="login()"><span>Ingresar</span></button>
                                 </div>
 
                                 <p style="width: 100%;
               text-align: center;
-              border-bottom: 1px solid grey;
+              border-bottom: 1px solid #37966F;;
               line-height: 0.1em;
               "><span style="padding: 0 10px; "></span></p>
 
 
                                 <div class="cell-lg-12 cell-md-4">
-                                    <button class="button button-primary button-square button-block button-effect-ujarak" [matMenuTriggerFor]="menu" [disabled]="enProceso"><span>Registrate</span></button>
+                                    <button class="button button-square button-block button-effect-ujarak" [matMenuTriggerFor]="menu" [disabled]="enProceso" style="background-color: #37966F;;color: rgb(255, 255, 255);"><span>Registrate</span></button>
 
-                                    <mat-menu #menu="matMenu" class="cell-lg-12 cell-md-4" style="width: 100%;">
-                                        <button class="button button-primary button-square button-block button-effect-ujarak" style="width: 100%;" (click)="registryForm('FARMER')"><span>Agricultor</span></button>
-                                        <button class="button button-primary button-square button-block button-effect-ujarak" (click)="registryForm('CLIENT')"><span>Cliente</span></button>
-                                        <button class="button button-primary button-square button-block button-effect-ujarak" (click)="registryForm('DRIVER')"><span>Transportista</span></button>
+                                    <mat-menu #menu="matMenu" class="cell-lg-12 cell-md-4">
+                                        <button class="button button-square button-block button-effect-ujarak" style="background-color: #37966F;color: rgb(255, 255, 255);" (click)="registryForm('FARMER')"><span>Agricultor</span></button>
+                                        <button class="button button-square button-block button-effect-ujarak" style="background-color: #37966F;color: rgb(255, 255, 255);" (click)="registryForm('CLIENT')"><span>Cliente</span></button>
+                                        <button class="button button-square button-block button-effect-ujarak" style="background-color: #37966F;color: rgb(255, 255, 255);" (click)="registryForm('DRIVER')"><span>Transportista</span></button>
                                     </mat-menu>
 
 
@@ -240,14 +240,16 @@
                                     <figure><img class="img-circle" src="/assets/images/about-02-100x100.jpg" alt="" width="100" height="100" />
                                     </figure>
                                 </div>
+                                <!--
                                 <div class="item">
-                                    <figure><img class="img-circle" src="images/about-04-100x100.jpg" alt="" width="100" height="100" />
+                                    <figure><img class="img-circle" src="/assets/images/about-04-100x100.jpg" alt="" width="100" height="100" />
                                     </figure>
                                 </div>
                                 <div class="item">
-                                    <figure><img class="img-circle" src="images/about-05-100x100.jpg" alt="" width="100" height="100" />
+                                    <figure><img class="img-circle" src="/assets/images/about-05-100x100.jpg" alt="" width="100" height="100" />
                                     </figure>
                                 </div>
+                                -->
                             </div>
                         </div>
                     </div>
