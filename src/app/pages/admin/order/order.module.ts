@@ -22,12 +22,14 @@ import { OrderCalendarComponent } from './order-calendar/order-calendar.componen
 import { FullCalendarModule } from '@fullcalendar/angular'; // the main connector. must go first
 import dayGridPlugin from '@fullcalendar/daygrid'; // a plugin
 import interactionPlugin from '@fullcalendar/interaction';
+import timeGridPlugin from '@fullcalendar/timegrid';
 import { OrderReportComponent } from './order-report/order-report.component'; // a plugin
 import { ExporterService } from 'src/app/_service/exporter.service';
 
 FullCalendarModule.registerPlugins([ // register FullCalendar plugins
   dayGridPlugin,
-  interactionPlugin
+  interactionPlugin,
+  timeGridPlugin
 ]);
 
 

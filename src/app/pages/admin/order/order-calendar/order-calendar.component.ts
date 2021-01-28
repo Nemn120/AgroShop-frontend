@@ -3,6 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { CalendarOptions } from '@fullcalendar/angular'; 
 import { RestService } from 'src/app/_service/rest.service';
 import { SharedService } from 'src/app/_service/shared.service';
+import timeGridWeek from '@fullcalendar/timegrid'
 
 @Component({
   selector: 'app-order-calendar',
@@ -22,14 +23,19 @@ export class OrderCalendarComponent implements OnInit {
   }
   calendarOptions: CalendarOptions = {
     initialView: 'dayGridMonth',
+    headerToolbar: {
+      left: 'prev,next today',
+      center: 'title',
+      right: 'dayGridMonth,timeGridWeek'
+    },
     dateClick: this.handleDateClick.bind(this), 
     weekends:true,
     events: [
-      { title: 'Pedido 1', date: '2021-01-21' },
-      { title: 'Pedido 2', date: '2021-01-20' },
-      { title: 'Pedido 3', date: '2021-01-23' },
-      { title: 'Pedido 4', date: '2021-01-18' },
-      { title: 'Pedido 5', date: '2021-01-16' }
+      { title: 'Pedido 1', date: '2021-01-21'},
+      { title: 'Pedido 2', date: '2021-01-20'},
+      { title: 'Pedido 3', date: '2021-01-23'},
+      { title: 'Pedido 4', date: '2021-01-18'},
+      { title: 'Pedido 5', date: '2021-01-16'}
     ]
     
   };
