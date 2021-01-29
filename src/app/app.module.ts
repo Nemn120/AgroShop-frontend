@@ -32,11 +32,18 @@ export function tokenGetter() {
     EcoFabSpeedDialModule,
     MaterialModule,
     FlexLayoutModule,
-    PanelAdminModule,
-    AuthorizationModule,
-    MatSnackBarModule,
-    MatFabMenuModule,
-    FormsModule
+    PanelAdminModule, 
+    AuthorizationModule, 
+    MatSnackBarModule,  
+    /*JwtModule.forRoot({  
+      config: { 
+        tokenGetter,
+        whitelistedDomains: ['localhost:8080'],
+        blacklistedRoutes: ['http://localhost:8080/oauth/token']
+      }  
+    }),*/         
+    MatFabMenuModule,  
+   FormsModule,   
   ],
 
   providers: [
