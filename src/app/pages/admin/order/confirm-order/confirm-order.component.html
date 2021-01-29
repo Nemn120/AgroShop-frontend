@@ -7,6 +7,7 @@
   <br />
   <button
     mat-button
+    color="primary"
     onclick="document.getElementById('flArchivo').click();"
     style="width: 100%"
   >
@@ -19,12 +20,12 @@
     (change)="selectFile($event)"
     style="display: none"
   />
-  <img mat-card-image id="output" [src]="url" width="500px" height="500px" />
+  <img mat-card-image id="output" [src]="url" width="450px" height="500px" />
   <p>{{ labelFile }}</p>
 </div>
 
 <button
-  style="width: 50%"
+  style="width: 100%"
   mat-raised-button
   color="primary"
   (click)="confirmArrivedOrder()"

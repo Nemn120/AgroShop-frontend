@@ -17,7 +17,7 @@ export class ConfirmOrderComponent implements OnInit {
   labelFile: string;
   imagenEstado = false;
   imagenData: any;
-  url: any;
+  url: any = '../../../../../assets/images/upload.jpg';
 
   constructor(
     private restService: RestService,
@@ -31,19 +31,23 @@ export class ConfirmOrderComponent implements OnInit {
 
   confirmArrivedOrder() {
 
-    const param = {
-      data: this.data
-    };
-
     if (this.selectedFiles != null) {
       this.currentFileUpload = this.selectedFiles.item(0);
     } else {
       this.currentFileUpload = new File([''], 'blanco');
     }
-   /*  this.restService.requestApiRestData('order/cao', param, this.currentFileUpload).subscribe(result => {
+
+    const formData = new FormData();
+    formData.append('file', this.currentFileUpload);
+
+    const param = {
+      data: formData
+    };
+
+    this.restService.requestApiRestData(`order/cao/${this.data.id}`, formData).subscribe(result => {
         this.restService.messageChange.next(result.responseMessage);
     });
-    this.dialogRef.close(); */
+    this.dialogRef.close();
   }
 
   selectFile(e: any) {

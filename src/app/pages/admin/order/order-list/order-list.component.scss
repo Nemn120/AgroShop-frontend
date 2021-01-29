@@ -1,0 +1,24 @@
+table {
+  width: 100%;
+}
+
+.mat-form-field {
+  width: 100%;
+}
+
+.button-status {
+  display: flex;
+  flex-direction: row-reverse;
+  padding-top: 2rem;
+}
+
+#btn-status:focus {
+  color: rgb(155, 103, 103);
+  background-color: green;
+}
+
+.layout-data {
+  padding: 20px;
+  margin: 50px;
+  margin-top: 60px;
+}
