@@ -53,7 +53,7 @@ export class OrderListComponent implements OnInit {
 
   loadData(state: string = 'Pendiente') {
     const param = {
-      id: 1, // this.sharedService.userSession.id,
+      id: this.sharedService.userSession.id,
       data: {
         status: state
       }

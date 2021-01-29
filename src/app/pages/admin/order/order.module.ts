@@ -29,7 +29,8 @@ const routes: Routes = [
     {path: 'pending', component: OrderPendingComponent},
     {path: 'clientPending', component: ClientOrderPendingComponent},
     {path: 'test', component: OrderSearchComponent},
-    {path: 'search/:nameProduct', component: SearchProductComponent}
+    {path: 'search/:nameProduct', component: SearchProductComponent},
+    {path: 'confirm', component: ConfirmOrderComponent}
 ];
 
 @NgModule({

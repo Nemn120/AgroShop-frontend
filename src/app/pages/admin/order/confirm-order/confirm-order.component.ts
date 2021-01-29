@@ -1,6 +1,5 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { DomSanitizer } from '@angular/platform-browser';
 import { RestService } from 'src/app/_service/rest.service';
 import { OrderBean } from '../../../../_model/OrderBean';
 import { OrderListComponent } from '../order-list/order-list.component';
@@ -22,7 +21,6 @@ export class ConfirmOrderComponent implements OnInit {
   constructor(
     private restService: RestService,
     @Inject(MAT_DIALOG_DATA) public data: OrderBean,
-    private sanitization: DomSanitizer,
     public dialogRef: MatDialogRef<OrderListComponent>,
   ) { }
 
@@ -39,10 +37,6 @@ export class ConfirmOrderComponent implements OnInit {
 
     const formData = new FormData();
     formData.append('file', this.currentFileUpload);
-
-    const param = {
-      data: formData
-    };
 
     this.restService.requestApiRestData(`order/cao/${this.data.id}`, formData).subscribe(result => {
         this.restService.messageChange.next(result.responseMessage);
