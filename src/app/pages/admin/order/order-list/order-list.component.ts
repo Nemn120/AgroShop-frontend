@@ -22,7 +22,7 @@ export class OrderListComponent implements OnInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
   orderBean: OrderBean;
   action = 'SUCCESS';
-  statusList: any[] = ['Publicada', 'Sin conductor', 'Atendido', 'En camino', 'Entregado', 'Cancelado'];
+  statusList: any[] = ['Publicada', 'En camino', 'Entregado', 'Cancelado'];
 
   constructor( private restService: RestService,
                public dialog: MatDialog,
