@@ -20,6 +20,10 @@
     <div class="sign-button-wrapper" *ngIf="this.user.typeUser=='DRIVER'">
         <button class="sign-button" mat-flat-button (click)="openProfileJob()">Perfil Laboral</button>
     </div>
+    
+    <div class="sign-button-wrapper" *ngIf="this.user.profile.description=='Agricultor'">
+      <button class="sign-button" mat-flat-button [routerLink]="['/user/profile',this.user.id,this.sharedService.userSession.id]">Perfil</button>
+    </div>
 
     <div class="sign-button-wrapper">
         <button class="sign-button" mat-flat-button (click)="signOutEmit()">Cerrar sesión</button>

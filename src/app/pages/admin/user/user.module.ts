@@ -8,8 +8,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { OrderModule } from '../order/order.module';
 
 const routes: Routes = [
-  {path: 'profile', component: ProfileComponent},
- 
+  //{path: 'profile', component: ProfileComponent},
+  {path: 'profile/:id/:idFarmer', component: ProfileComponent}
 ]; 
 @NgModule({
   declarations: [ProfileComponent, ProfileEditComponent],

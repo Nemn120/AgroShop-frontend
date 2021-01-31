@@ -39,7 +39,14 @@ export class ProfileEditComponent implements OnInit {
 
   ngOnInit(): void {
     this.listarRegiones();
-    console.log(this.data);
+    this.restService.getUserPhoto(this.data.id).subscribe(data => {
+      if (data.size > 0){
+        this.imagenData = this.convertir(data);
+        this.imagenEstado = true;
+      }
+    }, error => {
+      this.restService.message('Error al mostrar imagen!', 'Error');
+    });
   }
 
   private buildForm(){
@@ -69,8 +76,6 @@ export class ProfileEditComponent implements OnInit {
   }
 
   public listarProvinciasSegunIdRegion(event: any) {
-    //this.searchOrderByFieldsDTO.destinationProvince = undefined;
-    //this.searchOrderByFieldsDTO.destinationRegion=event.value.nombreUbigeo;
     let params = {
       data: {
         codigoDepartamento: event.value.codigoDepartamento
@@ -86,8 +91,6 @@ export class ProfileEditComponent implements OnInit {
   }
 
   public listarDistritosSegunIdProvincia(event: any) {
-    //this.searchOrderByFieldsDTO.destinationDistrict  = undefined;
-    //this.searchOrderByFieldsDTO.destinationProvince=event.value.nombreUbigeo
     let params = {
       data: {
         codigoProvincia: event.value.codigoProvincia,
@@ -140,12 +143,10 @@ export class ProfileEditComponent implements OnInit {
         } else {
         this.currentFileUpload = new File([""], "blanco");
         }
-
         this.restService.requestApiRestData('user/uu',param,this.currentFileUpload).subscribe(result =>{
           this.restService.messageChange.next({ message: 'Se actualizó el perfil', action: result.responseCode });
           console.log(param);
         })
-
         this.dialogRef.closeAll();
         }
 
@@ -170,7 +171,6 @@ export class ProfileEditComponent implements OnInit {
 
   public sanar(base64: any) {
     this.imagenData = this.sanitization.bypassSecurityTrustResourceUrl(base64);
-    this.imagenEstado = true;
   }
 
 }

@@ -5,7 +5,7 @@
                 <div class="perfil-usuario-avatar">
                     <img [src]="this.imagenData" alt="img-avatar" style="height: 100%;">
                 </div>
-                <button type="button" class="boton-portada" (click)="editProfile()">
+                <button *ngIf="this.comparator==true" type="button" class="boton-portada" (click)="editProfile()">
                     <i class="far fa-image"></i> Editar Perfil
                 </button>
             </div>

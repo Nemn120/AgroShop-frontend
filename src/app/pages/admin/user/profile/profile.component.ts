@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { DomSanitizer } from '@angular/platform-browser';
+import { ActivatedRoute } from '@angular/router';
 import { ProductSalesBean } from 'src/app/_model/ProductSalesBean';
 import { UserModify } from 'src/app/_model/UserModify';
 import { AuthService } from 'src/app/_service/auth.service';
@@ -20,14 +21,17 @@ export class ProfileComponent implements OnInit {
   imagenEstado: boolean = false;
   imagenData: any;
   productSalesList:ProductSalesBean[]=[];
+  idPassed : number;
+  comparator : boolean = false;
+  idFarmer : number;
 
   constructor(
-    private restService: RestService, private sharedService: SharedService,public dialog: MatDialog, private sanitization: DomSanitizer
+    private restService: RestService, private sharedService: SharedService,public dialog: MatDialog, private sanitization: DomSanitizer,
+    private _activatedRoute:ActivatedRoute,
   ) { }
 
   ngOnInit(): void {
-    this.showData();
-    this.listProductSales();
+    this.receivingData();
     this.restService.messageChange.subscribe(data => {
       this.showData();
       this.restService.message(data.message, data.action);
@@ -35,13 +39,12 @@ export class ProfileComponent implements OnInit {
   }
 
   showData(){
-    this.id = this.sharedService.userSession.user.id;
+    this.id = this.idPassed;
     let param = {
       id : this.id
     }
     this.restService.requestApiRestData('user/gubi',param).subscribe(result =>{
       this.user = result.data;
-      console.log("User: ",this.user);
       this.restService.getUserPhoto(this.id).subscribe(data => {
         if (data.size > 0)
           this.imagenData = this.convertir(data);
@@ -75,10 +78,9 @@ export class ProfileComponent implements OnInit {
   }
 
   public listProductSales() {
-
     let param = {
       data: {
-        farmerNumber:this.sharedService.userSession.id,
+        farmerNumber:this.idFarmer,
         status:'Activo'
       }
     }
@@ -109,6 +111,25 @@ export class ProfileComponent implements OnInit {
 
  public setterPhoto(data:any){
     return this.sanitization.bypassSecurityTrustResourceUrl(data);
+  }
+
+  receivingData(){
+    this._activatedRoute.params.subscribe(params => {
+      this.idPassed = parseInt(params['id']);
+      this.idFarmer = parseInt(params['idFarmer']);
+      this.listProductSales();
+      this.showData();
+      this.compareID();
+    })
+  }
+
+  compareID(){
+    if(this.sharedService.userSession.id == this.idFarmer){
+      this.id = this.sharedService.userSession.user.id;
+      this.comparator = true;
+      console.log("ID: ",this.id);
+      console.log("IDPASSED: ",this.idPassed);
+    }
   }
 
 }
