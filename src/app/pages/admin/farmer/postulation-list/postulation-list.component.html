@@ -56,7 +56,10 @@
           </button>
 
           <button
-            *ngIf="row[0].statusPostulation === 'Aceptada'"
+            *ngIf="
+              row[0].statusPostulation === 'Aceptada' &&
+              row[0].haveContract === false
+            "
             mat-icon-button
             (click)="generateContract(row[0])"
           >
@@ -66,22 +69,18 @@
           <button
             *ngIf="
               row[0].statusPostulation === 'Aceptada' &&
-              row[0].haveContract == true
+              row[0].haveContract === true
             "
             mat-icon-button
             (click)="dowloadContract(row[0].id)"
           >
-            <mat-icon>article</mat-icon>
+            <mat-icon>get_app</mat-icon>
           </button>
         </td>
       </ng-container>
 
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
       <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
-
-      <tr *matNoDataRow>
-        <td colspan="4">No data matching the filter "{{ "input.value" }}"</td>
-      </tr>
     </table>
 
     <mat-paginator
