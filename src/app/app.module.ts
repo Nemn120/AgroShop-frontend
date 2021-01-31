@@ -13,9 +13,7 @@ import { MatFabMenuModule } from '@angular-material-extensions/fab-menu';
 import { EcoFabSpeedDialModule } from '@ecodev/fab-speed-dial';
 import { PanelAdminModule } from './pages/admin/panel-admin/panel-admin.module';
 import { RegistryComponent } from './pages/authorization/registry/registry.component';
-
 import { DriverFormContainerComponent } from './pages/authorization/registry/driver-form-container/driver-form-container.component';
-
 import {ExporterService} from '../app/_service/exporter.service';
 
 import { ServerErrorsInterceptor } from './_service/server-errors.interceptor';
@@ -27,12 +25,11 @@ export function tokenGetter() {
   const tk = sessionStorage.getItem(environment.TOKEN_NAME);
   const token = tk != null ? tk : '';
   return token;
-}
-
+} 
 @NgModule({
   declarations: [ 
-    AppComponent
-  ],
+    AppComponent 
+  ], 
   imports: [
     BrowserModule,
     AppRoutingModule, 
@@ -52,8 +49,7 @@ export function tokenGetter() {
       }  
     }),*/         
     MatFabMenuModule,  
-   FormsModule,   
-
+   FormsModule,  
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS,
@@ -66,7 +62,6 @@ export function tokenGetter() {
   bootstrap: [AppComponent],
   exports: [
     FlexLayoutModule, 
-
   ],
 })
 export class AppModule { }

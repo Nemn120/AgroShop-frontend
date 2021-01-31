@@ -51,5 +51,8 @@ const routes: Routes = [
     ViewProductsSalesMapComponent,
     JobOfferMapComponent,
   ],
+  exports: [
+    OrderStoreCardComponent
+  ]
 })
 export class OrderModule { }
