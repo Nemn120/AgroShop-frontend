@@ -1,10 +1,8 @@
 import { Calendar, createElement, DayHeaderContentArg } from '@fullcalendar/core';
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { CalendarOptions } from '@fullcalendar/angular';
 import { RestService } from 'src/app/_service/rest.service';
 import { SharedService } from 'src/app/_service/shared.service';
-import timeGridWeek from '@fullcalendar/timegrid';
 import { OrderDetailsComponent } from '../order-details/order-details.component';
 import { OrderBean } from 'src/app/_model/OrderBean';
 
@@ -50,11 +48,7 @@ export class OrderCalendarComponent implements OnInit {
     if(this.primeraVez){
       this.primeraVez = false;
     }else{
-      console.log("order---->",order.event);
-    //console.log("order.id:---->",order.event.id);
       let orderSelect = this.orderList.find(f => f.id == order.event.id);
-
-      console.log("ordrSelect:",orderSelect);
       this.dialog.open(OrderDetailsComponent, {
         width: '500px',
         data: orderSelect,
@@ -77,7 +71,6 @@ export class OrderCalendarComponent implements OnInit {
   listData(){
 
     setTimeout(()=>{
-      console.log(this.sharedService.userSession.id);
       let param = {
         id: this.sharedService.userSession.id,
         data: {
@@ -86,16 +79,12 @@ export class OrderCalendarComponent implements OnInit {
       };
       this.restService.requestApiRestData('order/gobsf', param).subscribe( result => {
         this.orderList = result.datalist;
-        console.log(this.orderList);
           this.calendarOptions.events = [];
-          console.log("result.datalist.lenght----->",result.datalist.length);
-          console.log(result);
           for(let i=0;i<result.datalist.length; i++){
             let objeto = {title: 'Pedido #'+result.datalist[i].id, date: result.datalist[i].createDate.substring(0,10), id: result.datalist[i].id.toString()};
             this.calendarOptions.events.push(objeto);
 
           }
-          console.log(this.calendarOptions.events);
         }
       );
       this.listData();
