@@ -7,13 +7,13 @@
         <br>
         <mat-form-field>
             <mat-label>Nombre</mat-label>
-            <input matInput [(ngModel)]="productSelect.name" placeholder="Ingresar nombre" onkeypress="return event.charCode != 45" required>
+            <input matInput [(ngModel)]="productSelect.name" placeholder="Ingresar nombre" onkeypress="return !(event.charCode >= 48 && event.charCode <=57)" required>
 
         </mat-form-field>
         <br>
         <mat-form-field>
             <mat-label>Descripcion</mat-label>
-            <input matInput [(ngModel)]="productSelect.description" placeholder="Ingresar descripcion" onkeypress="return event.charCode != 45">
+            <input matInput [(ngModel)]="productSelect.description" placeholder="Ingresar descripcion" onkeypress="return !(event.charCode >= 48 && event.charCode <=57)">
         </mat-form-field>
         <br>
 
