@@ -16,10 +16,24 @@ import { OrderListComponent } from './order-list/order-list.component';
 import { OrderNewComponent } from './order-new/order-new.component';
 import { OrderPendingComponent } from './order-pending/order-pending.component';
 import { OrderSearchComponent } from './order-search/order-search.component';
+import { OrderCalendarComponent } from './order-calendar/order-calendar.component';
+import { FullCalendarModule } from '@fullcalendar/angular'; // the main connector. must go first
+import dayGridPlugin from '@fullcalendar/daygrid'; // a plugin
+import interactionPlugin from '@fullcalendar/interaction';
+import timeGridPlugin from '@fullcalendar/timegrid';
+import { OrderReportComponent } from './order-report/order-report.component'; // a plugin
 import { OrderStoreCardComponent } from './order-store-card/order-store-card.component';
 import { OrderStoreComponent } from './order-store/order-store.component';
 import { SearchProductComponent } from './search-product/search-product.component';
 import { SendJobOfferComponent } from './send-job-offer/send-job-offer.component';
+
+FullCalendarModule.registerPlugins([ // register FullCalendar plugins
+  dayGridPlugin,
+  interactionPlugin,
+  timeGridPlugin
+]);
+
+
 
 const routes: Routes = [
   {
@@ -29,12 +43,14 @@ const routes: Routes = [
     {path: 'pending', component: OrderPendingComponent},
     {path: 'clientPending', component: ClientOrderPendingComponent},
     {path: 'test', component: OrderSearchComponent},
+    {path: 'calendar', component: OrderCalendarComponent},
+    {path: 'report', component: OrderReportComponent},
     {path: 'search/:nameProduct', component: SearchProductComponent},
     {path: 'confirm', component: ConfirmOrderComponent}
 ];
 
 @NgModule({
-  declarations: [OrderListComponent, OrderNewComponent, OrderStoreComponent, OrderStoreCardComponent, SearchProductComponent, OrderPendingComponent, OrderDetailsComponent, SendJobOfferComponent, OrderSearchComponent, ClientOrderPendingComponent, ConfirmOrderComponent],
+  declarations: [OrderListComponent, OrderNewComponent, OrderStoreComponent, OrderStoreCardComponent, SearchProductComponent, OrderPendingComponent, OrderDetailsComponent, SendJobOfferComponent, OrderSearchComponent, ClientOrderPendingComponent, OrderCalendarComponent, OrderReportComponent,ConfirmOrderComponent],
   imports: [
     CommonModule,
     MaterialModule,
@@ -42,7 +58,9 @@ const routes: Routes = [
     FormsModule,
     ReactiveFormsModule,
     RouterModule.forChild(routes),
-    MapModule,
+    FullCalendarModule,
+    MapModule
+    
   ],
   entryComponents: [
     OrderDetailsComponent,
