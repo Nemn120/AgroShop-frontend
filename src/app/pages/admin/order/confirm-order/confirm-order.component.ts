@@ -39,7 +39,7 @@ export class ConfirmOrderComponent implements OnInit {
     formData.append('file', this.currentFileUpload);
 
     this.restService.requestApiRestData(`order/cao/${this.data.id}`, formData).subscribe(result => {
-        this.restService.messageChange.next(result.responseMessage);
+        this.restService.messageChange.next(result.data);
     });
     this.dialogRef.close();
   }

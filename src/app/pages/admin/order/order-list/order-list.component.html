@@ -59,7 +59,11 @@
       <ng-container matColumnDef="actions" style="width: 50%">
         <th mat-header-cell *matHeaderCellDef mat-sort-header>Detalles</th>
         <td mat-cell *matCellDef="let row">
-          <button mat-icon-button (click)="openDetails(row)">
+          <button
+            mat-icon-button
+            (click)="openDetails(row)"
+            matTooltip="Detalles del pedido"
+          >
             <mat-icon>info</mat-icon>
           </button>
           <button
@@ -67,6 +71,7 @@
             style="margin-left: 20px"
             mat-icon-button
             (click)="openConfirmOrden(row)"
+            matTooltip="Confirmar llegada de pedido"
           >
             <mat-icon>spellcheck</mat-icon>
           </button>

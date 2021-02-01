@@ -92,9 +92,7 @@ export class ClientOrderPendingComponent implements OnInit {
 
   changeStatusOrder(idOrder: number) {
     const param = {
-      data: {
-        id: idOrder
-      }
+      data: idOrder
     };
     this.restService.requestApiRestData('order/cso', param)
       .subscribe( result => {
