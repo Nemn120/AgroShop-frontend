@@ -11,7 +11,7 @@
         <div *ngIf="!f._farmer._isFoto">
             <img class="circulo" src="/assets/images/login/user.png/">
         </div>
-        <div>{{f._farmer.data.user.username}}</div>
+        <div [routerLink]="['/user/profile',f._farmer.data.user.id,f._farmer.data.id]">{{f._farmer.data.user.username}}</div>
     </div>
     <div class="card">
         <div class="grid-item" *ngFor="let products of f._listOfProductsShowed">

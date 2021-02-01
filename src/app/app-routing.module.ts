@@ -29,6 +29,13 @@ const routes: Routes = [
           ),
       },
       {
+        path: "user",
+        loadChildren: () =>
+          import("./pages/admin/user/user.module").then(
+            (m) => m.UserModule
+          ),
+      },
+      {
         path: "vehicle",
         loadChildren: () =>
           import("./pages/admin/vehicle/vehicle.module").then(
@@ -68,6 +75,7 @@ const routes: Routes = [
             (m) => m.DriverPanelModule
           ),
       },
+      
     ],
   },
   {

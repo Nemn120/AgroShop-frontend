@@ -12,27 +12,20 @@ import { environment } from '../environments/environment';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { PanelAdminModule } from './pages/admin/panel-admin/panel-admin.module';
-<<<<<<< HEAD
 import { RegistryComponent } from './pages/authorization/registry/registry.component';
-
 import { DriverFormContainerComponent } from './pages/authorization/registry/driver-form-container/driver-form-container.component';
-
 import {ExporterService} from '../app/_service/exporter.service';
 
 import { ServerErrorsInterceptor } from './_service/server-errors.interceptor';
-=======
->>>>>>> 10536fcc70e6fa17510672cd92ede4c550df080b
 import { AuthorizationModule } from './pages/authorization/authorization.module';
 import { MaterialModule } from './_material/material.module';
-import { ServerErrorsInterceptor } from './_service/server-errors.interceptor';
 
 
 export function tokenGetter() {
   const tk = sessionStorage.getItem(environment.TOKEN_NAME);
   const token = tk != null ? tk : '';
   return token;
-}
-
+} 
 @NgModule({
   declarations: [AppComponent],
   imports: [

@@ -14,7 +14,7 @@ export class UserProfileComponent implements OnInit {
   public flatlogicEmail: string = "https://flatlogic.com";
   user: any;
   constructor(
-    private sharedService: SharedService,
+    public sharedService: SharedService,
     public dialog: MatDialog,
   ) { }
   ngOnInit() {

@@ -6,12 +6,6 @@ import { SearchProductComponent } from './search-product/search-product.componen
 import { OrderPendingComponent } from './order-pending/order-pending.component';
 import { OrderDetailsComponent } from './order-details/order-details.component';
 import { SendJobOfferComponent } from './send-job-offer/send-job-offer.component';
-<<<<<<< HEAD
-<<<<<<< HEAD
-import { OrderSearchComponent } from './order-search/order-search.component';
-=======
-=======
->>>>>>> ccfed54d4d65d66ec9025f8ddc2a3ebd4ae19594
 import { ProductMapComponent } from '../map/product-map/product-map.component';
 =======
 import { RouterModule, Routes } from '@angular/router';
@@ -33,6 +27,7 @@ import { OrderSearchComponent } from './order-search/order-search.component';
 <<<<<<< HEAD
 import { ViewProductsSalesMapComponent } from '../map/view-products-sales-map/view-products-sales-map.component';
 import { JobOfferMapComponent } from '../map/job-offer-map/job-offer-map.component';
+<<<<<<< HEAD
 <<<<<<< HEAD
 >>>>>>> bd645cd7d47ab340389a038492a7ee29dee10235
 =======
@@ -57,6 +52,8 @@ FullCalendarModule.registerPlugins([ // register FullCalendar plugins
 
 
 >>>>>>> 10536fcc70e6fa17510672cd92ede4c550df080b
+=======
+>>>>>>> jordy
 
 const routes: Routes = [
   {
@@ -67,26 +64,22 @@ const routes: Routes = [
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     {path: 'test', component: OrderSearchComponent},
 =======
     {path: 'clientPending', component:ClientOrderPendingComponent},
 >>>>>>> bd645cd7d47ab340389a038492a7ee29dee10235
 =======
+=======
+>>>>>>> jordy
     {path: 'clientPending', component:ClientOrderPendingComponent},
     {path: 'test', component: OrderSearchComponent},
->>>>>>> ccfed54d4d65d66ec9025f8ddc2a3ebd4ae19594
     {path: 'search/:nameProduct', component: SearchProductComponent}
 ];
 
 @NgModule({
-<<<<<<< HEAD
-<<<<<<< HEAD
-  declarations: [OrderListComponent, OrderNewComponent, OrderStoreComponent, OrderStoreCardComponent, SearchProductComponent, OrderPendingComponent, OrderDetailsComponent, SendJobOfferComponent, OrderSearchComponent],
-=======
-  declarations: [OrderListComponent, OrderNewComponent, OrderStoreComponent, OrderStoreCardComponent, SearchProductComponent, OrderPendingComponent, OrderDetailsComponent, SendJobOfferComponent, ClientOrderPendingComponent],
->>>>>>> bd645cd7d47ab340389a038492a7ee29dee10235
-=======
   declarations: [OrderListComponent, OrderNewComponent, OrderStoreComponent, OrderStoreCardComponent, SearchProductComponent, OrderPendingComponent, OrderDetailsComponent, SendJobOfferComponent, OrderSearchComponent,ClientOrderPendingComponent],
+<<<<<<< HEAD
 >>>>>>> ccfed54d4d65d66ec9025f8ddc2a3ebd4ae19594
 =======
     {path: 'clientPending', component: ClientOrderPendingComponent},
@@ -100,6 +93,8 @@ const routes: Routes = [
 @NgModule({
   declarations: [OrderListComponent, OrderNewComponent, OrderStoreComponent, OrderStoreCardComponent, SearchProductComponent, OrderPendingComponent, OrderDetailsComponent, SendJobOfferComponent, OrderSearchComponent, ClientOrderPendingComponent, OrderCalendarComponent, OrderReportComponent,ConfirmOrderComponent],
 >>>>>>> 10536fcc70e6fa17510672cd92ede4c550df080b
+=======
+>>>>>>> jordy
   imports: [
     CommonModule,
     MaterialModule,
@@ -119,8 +114,13 @@ const routes: Routes = [
     JobOfferMapComponent,
     ConfirmOrderComponent
   ],
+<<<<<<< HEAD
   providers: [
     ExporterService
+=======
+  exports: [
+    OrderStoreCardComponent
+>>>>>>> jordy
   ]
 })
 export class OrderModule { }
