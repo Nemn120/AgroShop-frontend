@@ -84,9 +84,7 @@
     }
 }
 
-.signup-form {
-
-}
+.signup-form {}
 
 .login {
     background-color: rgb(255, 255, 255);
@@ -97,63 +95,74 @@
     bottom: 20px;
 }
 
-#login-panel{
-  height: 82%;width: 63%; display: flex; box-shadow: 2px 4px 10px 8px grey;
+#login-panel {
+    height: 82%;
+    width: 63%;
+    display: flex;
+    box-shadow: 2px 4px 10px 8px grey;
 }
 
-#login-image{
-  height: 100%; width: 66%;
+#login-image {
+    height: 100%;
+    width: 66%;
 }
 
-#background{
-  height:100%;width: 100%; display: flex;justify-content: center;align-items: center;
+#background {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-#login-form{
-  height: 100%; width: 34%; display: flex;align-items: center;justify-content: center; padding: 0px 10px;
+#login-form {
+    height: 100%;
+    width: 34%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0px 10px;
 }
 
-@media screen and (max-height: 800px){
-  #background{
-    overflow: scroll;
-    height: 800px;
-  }
-  #login-panel{
-    height:  600px;
-  }
-  #login-image{
-    height: 600px;
-  }
-
-  #login-form{
-    height: 600px;
-  }
-
-
+@media screen and (max-height: 800px) {
+    #background {
+        overflow: scroll;
+        height: 800px;
+    }
+    #login-panel {
+        height: 600px;
+    }
+    #login-image {
+        height: 600px;
+    }
+    #login-form {
+        height: 600px;
+    }
 }
 
-@media screen and (max-width: 1270px){
-  #login-image{
-    display: none;
-  }
-  #login-form{
-    width: 400px;
-  }
-  #login-panel{
-    width: 400px;
-  }
+@media screen and (max-width: 1270px) {
+    #login-image {
+        display: none;
+    }
+    #login-form {
+        width: 400px;
+    }
+    #login-panel {
+        width: 400px;
+    }
 }
 
-@media screen and (max-width: 500px){
-  #login-form{
-    width: 400px;
-  }
-  #login-panel{
-    width: 400px;
-  }
-  #background{
-    overflow: scroll;
-    width: 500px;
-
-  }
+@media screen and (max-width: 500px) {
+    #login-form {
+        width: 400px;
+    }
+    #login-panel {
+        width: 400px;
+    }
+    #background {
+        overflow: scroll;
+        width: 500px;
+    }
 }
+
+//New styles
