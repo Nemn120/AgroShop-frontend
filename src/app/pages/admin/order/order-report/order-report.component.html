@@ -1,0 +1,59 @@
+<p class="offer__title">Reporte de ventas
+</p>
+<div class="container">
+    <mat-card class="card__search">
+        <form [formGroup]="form" #frmUsuario="ngForm">
+        
+            <mat-form-field class="example-form-field" appearance="outline">
+                <mat-label>Fecha Inicio</mat-label>
+                <input matInput [matDatepicker]="picker1" formControlName="initialDate" [formGroup]="form" [(ngModel)]="salesReportDTO.dateIni">
+                <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+                <mat-datepicker #picker1></mat-datepicker>
+            </mat-form-field>
+            <mat-form-field class="example-form-field" appearance="outline">
+                <mat-label>Fecha Final</mat-label>
+                <input matInput [matDatepicker]="picker2" formControlName="finalDate" [formGroup]="form" [(ngModel)]="salesReportDTO.dateFin">
+                <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+                <mat-datepicker #picker2></mat-datepicker>
+            </mat-form-field>
+            <button mat-raised-button type="submit" color="primary" style="width:30%;" (keyup.enter)="searchByDates()" (click)="searchByDates()" [disabled]="
+            (this.salesReportDTO.dateIni != undefined && this.salesReportDTO.dateFin == undefined)">Buscar</button>
+            <button mat-raised-button type="submit" color="warn" style="width:30%;" (click)="downloadPDF()">Descargar PDF</button>
+                      
+        </form>
+    </mat-card>
+</div>
+<div id="htmlData" class="layout-data">
+    <div class="mat-elevation-z8">
+        <table mat-table [dataSource]="dataSource" matSort>
+
+            <ng-container matColumnDef="count" style="width: 10%;">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Cantidad de Ventas </th>
+                <td mat-cell *matCellDef="let row"> {{row.count}} ventas </td>
+            </ng-container>
+
+
+            <ng-container matColumnDef="price" style="width: 13%;">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Precio por unidad</th>
+                <td mat-cell *matCellDef="let row"> S/{{row.price}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="name" style="width: 13%;">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Producto</th>
+                <td mat-cell *matCellDef="let row"> {{row.name}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="total" style="width: 13%;">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Precio total</th>
+                <td mat-cell *matCellDef="let row"> S/{{row.total}} </td>
+            </ng-container>
+
+        
+            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+        </table>
+        
+        <mat-paginator [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+    </div>
+</div>

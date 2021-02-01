@@ -17,18 +17,11 @@ import { MapModule } from '../map/map.module';
 import { ProductMapComponent } from '../map/product-map/product-map.component';
 import { ProductSalesMapComponent } from '../map/product-sales-map/product-sales-map.component';
 const routes: Routes = [
-  
-    
 
    {path: 'list', component: ProductListComponent},//gestion productos
-
-    //temporal
    {path: 'category', component: CategoriesListComponent},//gestion categorias
-   //{path: 'list', component: CategoriesListComponent},//gestion categorias
-  
-   //temporal
-   {path: 'sales', component: ProductsSalesListComponent}
-  
+   {path: 'sales', component: ProductsSalesListComponent}//gestion productos venta
+
 ];
 
 @NgModule({
@@ -36,22 +29,18 @@ const routes: Routes = [
     ProductListComponent,
     ProductFormComponent,
     ProductViewComponent,
-
-    //temporal
     CategoriesListComponent,
     CategoriesFormComponent,
     CategoriesViewComponent,
-
-    //temporal
     ProductsSalesListComponent,
     ProductsSalesFormComponent,
     ProductsSalesViewComponent,
+
   ],
   imports: [
     CommonModule,
     MaterialModule,
     RouterModule.forChild(routes),
-
     ReactiveFormsModule,
     FormsModule,
 
@@ -63,10 +52,8 @@ const routes: Routes = [
   entryComponents: [
     ProductFormComponent,
     ProductViewComponent,
-    //temporal
     CategoriesFormComponent,
     CategoriesViewComponent,
-    //temporal
     ProductsSalesFormComponent,
     ProductsSalesViewComponent,
     //map

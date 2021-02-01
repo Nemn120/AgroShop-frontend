@@ -47,7 +47,9 @@ export class PostulationListComponent implements OnInit {
     private sharedService: SharedService,
     private dialog: MatDialog
   ) {
+
     this.order.farmer = this.sharedService.userSession;
+
   }
 
   ngOnInit(): void {

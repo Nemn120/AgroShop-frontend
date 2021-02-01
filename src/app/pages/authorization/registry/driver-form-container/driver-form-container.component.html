@@ -87,14 +87,12 @@
         <div style="  border-radius: 10px 10px 0px 0px;  width: 50%; margin-right: 2px;">
             <mat-form-field appearance="outline" color="primary" style="width: 100%;">
                 <mat-label>Contraseña</mat-label>
-                <input matInput [type]="hide ? 'password' : 'text'" formControlName="Password" pattern="^(?=\w*\d)(?=\w*[A-Z])(?=\w*[a-z])\S{8,16}$" required>
+                <input matInput maxlength="8" [type]="hide ? 'password' : 'text'" formControlName="Password" required>
                 <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide" required>
-                  <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-               </button>
+                <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon></button>
                 <mat-error *ngIf="this.driverForm.controls.Password.hasError('required') && this.driverForm.controls.Password.touched">
                     Es requerido
                 </mat-error>
-                <mat-error *ngIf="this.driverForm.controls.Password.hasError('pattern')">La contraseña debe tener al entre 8 y 16 caracteres, al menos un dígito, al menos una minúscula, al menos una mayúscula y al menos un caracter no alfanumérico.</mat-error>
             </mat-form-field>
         </div>
         <div style=" border-radius: 10px 10px 0px 0px;  width: 50%; margin-left: 2px;">
