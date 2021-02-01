@@ -31,6 +31,8 @@ export class LoginComponent implements OnInit {
   //cssUrl1: string;
   //cssUrl2: string;
 
+  loading:boolean=true;
+
   constructor(
     private authService: AuthService,
     private router: Router,
@@ -42,6 +44,12 @@ export class LoginComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+
+      //loading off
+      setTimeout(()=>{
+        this.loading=false;
+      },250);
+
     this.loginForm = this.fb.group({
       username: ['', Validators.required],
       password: ['', Validators.required]

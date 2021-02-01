@@ -11,11 +11,12 @@
 <link rel="stylesheet" [href]="sanitizer.bypassSecurityTrustResourceUrl(cssUrl2)">
 -->
 
+<div *ngIf="loading" class="loading">
+    <mat-progress-spinner mode="determinate"></mat-progress-spinner>
+    <mat-spinner></mat-spinner>
+    </div>
 
-
-
-
-<div class="text-center page" style="margin-top: 10px;">
+<div class="text-center page" style="margin-top: 10px;" *ngIf="!loading">
     <!--
     <div style="text-align: left !important;border-left: 5px;margin-right:15px;margin-left:15px;margin-bottom:15px;;height: 70px;background-color:#E3E3E3;font-weight:bold;"> <span style="color: rgb(0, 0, 0);font-size:45px;font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;"> AgroShop</span></div>
 -->
@@ -23,7 +24,11 @@
         <div class="shell-wide">
             <div class="range range-30 range-xs-center">
 
+            
                 <div class="cell-lg-8 cell-xl-9">
+
+                    <div class="img">
+
                     <!-- Classic slider-->
                     <section class="section" style="background-color: #37966F;background:  #37966F;">
                         <!-- Swiper -->
@@ -31,6 +36,9 @@
                             <img src="/assets/images/login/background2.jpg" alt="" style="width: 100%;height: 100%;">
                         </div>
                     </section>
+
+                    </div>
+
                 </div>
 
                 <div class="cell-lg-4 cell-xl-3 reveal-lg-flex">
@@ -207,12 +215,10 @@
                                             <h4>Perfecto, complejo sistema y servicios!</h4>
                                         </div>
                                         <p class="quote-center-body">
-                                            <q>The minute you walk out of the airport you are greeted with a warm welcome from Royal Villas
-                                                staff member, and it doesn't stop. The staff truly seems to love their job and want to make sure
-                                                your visit and stay is everything you expect.</q>
+                                            <q>Nuevo en el mercado. Programa intensivo para empresarios que desean aumentar su productividad y dejar de ser esclavos de sus negocios</q>
                                         </p>
                                         <div class="quote-center-cite">
-                                            <cite>Jane Neddery</cite><span>Office manager</span>
+                                            <cite>Jane Neddery</cite><span>Gerente de oficina</span>
                                         </div>
                                     </div>
                                 </div>
@@ -222,12 +228,12 @@
                                             <h4>Gran ambiente de trabajo y nivel de servicio al cliente</h4>
                                         </div>
                                         <p class="quote-center-body">
-                                            <q>Got a Royal Villas certificate as a gift a few months ago, and I really had a fantastic spa
-                          experience there. I arrived early & was greeted warmly at the door. Surprisingly, I didn't have
-                          to wait. Everything was perfect. Highly recommend this amazing place to everybody!</q>
+                                            <q>¡Por fin! La solución que todos los empresarios buscaban para manejar los datos de sus clientes.
+                                                Asombroso cómo este sistema de desarrollo propio te permite gestionar todo online en tan solo 1 día.
+                                            </q>
                                         </p>
                                         <div class="quote-center-cite">
-                                            <cite>Sam Brown</cite><span>Journalist</span>
+                                            <cite>Sam Brown</cite><span>Gerente de Recursos humanos</span>
                                         </div>
                                     </div>
                                 </div>
@@ -237,12 +243,10 @@
                                             <h4>Una grandiosa herramienta para conectar con mis clientes</h4>
                                         </div>
                                         <p class="quote-center-body">
-                                            <q>No better way to rediscover the joy in everyday living than at Royal Villas. Second time to
-                          visit and experience was just as powerful as the first. They exceeded all my expectation one
-                          again. This is the place to visit if you are looking for a high-quality spa!</q>
+                                            <q>Esto es lo que los emprendedores de la calidad necesitan conocer para pasar al siguiente nivel con éxito. Ahora ya puedes olvidarte para siempre de tus deudas siguiendo nuestro sistema. Más de 500 empresas lo están aplicando con éxito</q>
                                         </p>
                                         <div class="quote-center-cite">
-                                            <cite>Julie Adams</cite><span>Babysitter</span>
+                                            <cite>Julie Adams</cite><span>Gerente de Marketing</span>
                                         </div>
                                     </div>
                                 </div>
@@ -277,7 +281,7 @@
                                 </ul>
                             </div>
                         </div>
-                        <div class="team-caption"><a class="link team-title">Felipe Jimenez</a><span>Scrum Master</span>
+                        <div class="team-caption"><a class="link team-title">Fernando Chavez</a><span>Scrum Master</span>
                         </div>
                     </div>
                 </div>
@@ -321,7 +325,7 @@
                                 </ul>
                             </div>
                         </div>
-                        <div class="team-caption"><a class="link team-title">Fernando Chavez</a><span>Scrum Team</span>
+                        <div class="team-caption"><a class="link team-title">Jordy Sarmineto</a><span>Scrum Team</span>
                         </div>
                     </div>
                 </div>
