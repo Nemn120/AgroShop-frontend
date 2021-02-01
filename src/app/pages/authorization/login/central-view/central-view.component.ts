@@ -50,7 +50,7 @@ export class CentralViewComponent implements OnInit {
   registry(){
     this.router.navigate(['auth/registry']);
   }
-  get f() { return this.loginForm.controls; }
+
 
 
 

@@ -1,8 +1,7 @@
-import { ProductMapComponent } from './../../pages/admin/map/product-map/product-map.component';
 import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA, MatDialog } from '@angular/material/dialog';
 import { OrderBean } from '../../_model/OrderBean';
-import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, FormControl } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import Swal from 'sweetalert2';
 import { OrderDetailComponent } from '../order-detail/order-detail.component';
@@ -11,8 +10,6 @@ import { ClientBean } from 'src/app/_model/ClientBean';
 import { SharedService } from 'src/app/_service/shared.service';
 import { RestService } from 'src/app/_service/rest.service';
 import { UbigeoBean } from 'src/app/_model/UbigeoBean';
-import { OrderDetailBean } from 'src/app/_model/OrderDetailBean';
-import { ProductBean } from '../../_model/ProductBean';
 import { MapService } from '../../_service/map.service';
 import { OrderMapComponent } from '../../pages/admin/map/order-map/order-map.component';
 import { PlaceBean } from 'src/app/_model/PlaceBean';
@@ -44,7 +41,6 @@ export class DataClientComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public data: OrderBean,
     private fb: FormBuilder,
     private snackBar: MatSnackBar,
-    private dialogMap: MatDialog,
     public orderService: OrderService,
     private sharedData:SharedService,
     private restService:RestService,
@@ -90,8 +86,6 @@ export class DataClientComponent implements OnInit {
     this.order.address = this.form.value['address'];
     this.order.reference = this.form.value['reference'];
     this.order.phone = this.form.value['phone'];
-  //  this.order.destinationRegion=this.form.value['destinationRegion'];
-   // this.order.destinationProvince=this.form.value['destinationProvince'];
     this.order.destinationDistrict=this.form.value['destinationDistrict'];
     this.order.client = new ClientBean();
     this.order.client=this.sharedData.userSession;
@@ -140,14 +134,8 @@ export class DataClientComponent implements OnInit {
           console.log('order con place: ',result);
 
         },error=>{
-          //this.snackBar.open(error.responseMessage, 'SUCESS', { duration: 5000 })
+          
           this.restService.message('Error al enviar la orden!', 'Error');
-          Swal.fire(
-            'No se ha podido registrar su orden',
-            'La orden no ha sido enviada.',
-            'error'
-
-          );
         })
 
         this.cerrarDialogo();

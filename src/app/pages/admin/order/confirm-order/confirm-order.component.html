@@ -1,0 +1,34 @@
+<p>Confirmación de llegada de pedido</p>
+<hr />
+<div>
+  <ng-template mat-tab-label>
+    <mat-icon class="example-tab-icon">image</mat-icon>
+  </ng-template>
+  <br />
+  <button
+    mat-button
+    color="primary"
+    onclick="document.getElementById('flArchivo').click();"
+    style="width: 100%"
+  >
+    Seleccionar Archivo
+  </button>
+  <br />
+  <input
+    id="flArchivo"
+    type="file"
+    (change)="selectFile($event)"
+    style="display: none"
+  />
+  <img mat-card-image id="output" [src]="url" width="450px" height="500px" />
+  <p>{{ labelFile }}</p>
+</div>
+
+<button
+  style="width: 100%"
+  mat-raised-button
+  color="primary"
+  (click)="confirmArrivedOrder()"
+>
+  Aceptar
+</button>

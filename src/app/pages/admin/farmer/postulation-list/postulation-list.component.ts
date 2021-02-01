@@ -3,6 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
+import * as FileSaver from 'file-saver';
 import { FarmerBean } from 'src/app/_model/FarmerBean';
 import { JobOfferBean } from 'src/app/_model/JobOfferBean';
 import { OrderBean } from 'src/app/_model/OrderBean';
@@ -39,13 +40,16 @@ export class PostulationListComponent implements OnInit {
   farmer: FarmerBean = new FarmerBean();
   statusList: any[] = ['Pendiente', 'Aceptada', 'Rechazada'];
   subtitlePerson = 'Postulantes';
+  // array = [];
 
   constructor(
     private restService: RestService,
     private sharedService: SharedService,
     private dialog: MatDialog
   ) {
-    this.farmer.id = this.sharedService.userSession.id;
+
+    this.order.farmer = this.sharedService.userSession;
+
   }
 
   ngOnInit(): void {
@@ -54,12 +58,11 @@ export class PostulationListComponent implements OnInit {
 
   public getPostulationByStatusAndId(status: string = 'Pendiente'): any {
     this.postulation.statusPostulation = status;
-    this.order.farmer = this.farmer;
     this.jobOffer.order = this.order;
     this.postulation.jobOffer = this.jobOffer;
 
     const param = {
-      data: this.postulation,
+      data: this.postulation
     };
 
     if (status === 'Aceptada') {
@@ -122,7 +125,7 @@ export class PostulationListComponent implements OnInit {
   }
 
   public generateContract(postulation: PostulationBean) {
-    this.dialog.open(FormContractComponent, {
+     this.dialog.open(FormContractComponent, {
       data: postulation,
       width: 'auto',
       height: 'auto'
@@ -152,4 +155,27 @@ export class PostulationListComponent implements OnInit {
       }
     });
   }
+
+  public dowloadContract(id: number): void {
+
+    const param = {
+      data: id
+    };
+
+    this.restService.requestApiRestData('api/contrato/dcontract', param)
+      .subscribe( resp => {
+        const byteCharacters = atob(resp.data);
+        const byteNumbers = new Array(byteCharacters.length);
+        for (let i = 0; i < byteCharacters.length; i++) {
+          byteNumbers[i] = byteCharacters.charCodeAt(i);
+        }
+        const byteArray = new Uint8Array(byteNumbers);
+        const blob = new Blob([byteArray], {type : 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'});
+        const nombre = 'MiContrato';
+        FileSaver.saveAs(blob, `${nombre}.docx`);
+        this.restService.message(resp.responseMessage, 'Procesando ...');
+    });
+
+  }
+
 }

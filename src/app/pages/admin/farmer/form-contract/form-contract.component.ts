@@ -6,7 +6,6 @@ import { PostulationBean } from 'src/app/_model/PostulationBean';
 import { RestService } from 'src/app/_service/rest.service';
 import { PostulationListComponent } from '../../postulation/postulation-list/postulation-list.component';
 
-
 @Component({
   selector: 'app-form-contract',
   templateUrl: './form-contract.component.html',
@@ -41,14 +40,8 @@ export class FormContractComponent {
 
     this.restService.requestApiRestData('api/contrato/rcontract', param)
       .subscribe( data => {
-        this.pathContract = data.data;
         this.restService.message(data.responseMessage, 'Info');
     });
-
-    console.log(param);
-    console.log(this.pathContract);
-
-    // this.router.navigate([this.pathContract]);
 
   }
 
