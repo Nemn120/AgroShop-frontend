@@ -8,6 +8,8 @@ import { AuthService } from 'src/app/_service/auth.service';
 import { RestService } from 'src/app/_service/rest.service';
 import Swal from 'sweetalert2';
 
+//import { DomSanitizer } from '@angular/platform-browser'
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -25,19 +27,36 @@ export class LoginComponent implements OnInit {
   title: string;
   userType: string;
   image: any;
+
+  //cssUrl1: string;
+  //cssUrl2: string;
+
+  loading:boolean=true;
+
   constructor(
     private authService: AuthService,
     private router: Router,
     private snack: MatSnackBar,
     private fb: FormBuilder,
-    private restService: RestService
+    private restService: RestService,
+
+    //public sanitizer: DomSanitizer
   ) { }
 
   ngOnInit(): void {
+
+      //loading off
+      setTimeout(()=>{
+        this.loading=false;
+      },250);
+
     this.loginForm = this.fb.group({
       username: ['', Validators.required],
       password: ['', Validators.required]
     });
+
+    //this.cssUrl1 = '/assets/css/style.css';
+    //this.cssUrl2 = '/assets/css/bootstrap.css';
   }
 
   // falta validar credenciales incorrectos(back)

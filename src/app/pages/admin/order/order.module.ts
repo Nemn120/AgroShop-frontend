@@ -4,10 +4,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
 import { MaterialModule } from 'src/app/_material/material.module';
 import { ExporterService } from 'src/app/_service/exporter.service';
-import { JobOfferMapComponent } from '../map/job-offer-map/job-offer-map.component';
 import { MapModule } from '../map/map.module';
 import { ProductSalesPlaceMapComponent } from '../map/product-sales-place-map/product-sales-place-map.component';
-import { ViewProductsSalesMapComponent } from '../map/view-products-sales-map/view-products-sales-map.component';
 import { PanelAdminModule } from '../panel-admin/panel-admin.module';
 import { ClientOrderPendingComponent } from './client-order-pending/client-order-pending.component';
 import { ConfirmOrderComponent } from './confirm-order/confirm-order.component';
@@ -16,6 +14,9 @@ import { OrderListComponent } from './order-list/order-list.component';
 import { OrderNewComponent } from './order-new/order-new.component';
 import { OrderPendingComponent } from './order-pending/order-pending.component';
 import { OrderSearchComponent } from './order-search/order-search.component';
+import { ViewProductsSalesMapComponent } from '../map/view-products-sales-map/view-products-sales-map.component';
+import { JobOfferMapComponent } from '../map/job-offer-map/job-offer-map.component';
+
 import { OrderCalendarComponent } from './order-calendar/order-calendar.component';
 import { FullCalendarModule } from '@fullcalendar/angular'; // the main connector. must go first
 import dayGridPlugin from '@fullcalendar/daygrid'; // a plugin
@@ -33,22 +34,19 @@ FullCalendarModule.registerPlugins([ // register FullCalendar plugins
   timeGridPlugin
 ]);
 
-
-
 const routes: Routes = [
   {
     path: '', component: OrderStoreComponent},
     {path: 'status', component: OrderListComponent},
     {path: 'store', component: OrderStoreComponent},
     {path: 'pending', component: OrderPendingComponent},
-    {path: 'clientPending', component: ClientOrderPendingComponent},
     {path: 'test', component: OrderSearchComponent},
+    {path: 'clientPending', component:ClientOrderPendingComponent},
+    {path: 'search/:nameProduct', component: SearchProductComponent},
+    {path: 'confirm', component: ConfirmOrderComponent},
     {path: 'calendar', component: OrderCalendarComponent},
     {path: 'report', component: OrderReportComponent},
-    {path: 'search/:nameProduct', component: SearchProductComponent},
-    {path: 'confirm', component: ConfirmOrderComponent}
 ];
-
 @NgModule({
   declarations: [OrderListComponent, OrderNewComponent, OrderStoreComponent, OrderStoreCardComponent, SearchProductComponent, OrderPendingComponent, OrderDetailsComponent, SendJobOfferComponent, OrderSearchComponent, ClientOrderPendingComponent, OrderCalendarComponent, OrderReportComponent,ConfirmOrderComponent],
   imports: [
@@ -72,6 +70,9 @@ const routes: Routes = [
   ],
   providers: [
     ExporterService
+  ],
+  exports: [
+    OrderStoreCardComponent
   ]
 })
 export class OrderModule { }

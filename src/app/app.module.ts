@@ -12,17 +12,16 @@ import { environment } from '../environments/environment';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { PanelAdminModule } from './pages/admin/panel-admin/panel-admin.module';
+import { ServerErrorsInterceptor } from './_service/server-errors.interceptor';
 import { AuthorizationModule } from './pages/authorization/authorization.module';
 import { MaterialModule } from './_material/material.module';
-import { ServerErrorsInterceptor } from './_service/server-errors.interceptor';
 
 
 export function tokenGetter() {
   const tk = sessionStorage.getItem(environment.TOKEN_NAME);
   const token = tk != null ? tk : '';
   return token;
-}
-
+} 
 @NgModule({
   declarations: [AppComponent],
   imports: [

@@ -1,0 +1,67 @@
+<mat-card-title>Modificar Perfil</mat-card-title>
+<hr>
+<div >
+    <form [formGroup]="form" (ngSubmit)="editProfile($event)">
+        <div class="container">
+            <mat-form-field appearance="outline">
+                <mat-label>Nombre</mat-label>
+                <input type="text" matInput formControlName="name"> 
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>Apellido</mat-label>
+                <input type="text" matInput formControlName="lastName">
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>Direccion</mat-label>
+                <input type="text" matInput formControlName="address">
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>Telefono</mat-label>
+                <input type="number" matInput formControlName="phone">
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>Email</mat-label>
+                <input type="email" matInput formControlName="email">
+            </mat-form-field>
+            <mat-form-field appearance="outline" class="example-form-field">
+                <mat-label>Departamento</mat-label>
+                <mat-select (selectionChange)="listarProvinciasSegunIdRegion($event)" formControlName="region">
+                    <mat-option *ngFor="let region of this.regionList" [value]="region">
+                        {{region.nombreUbigeo}}
+                    </mat-option>   
+                </mat-select>
+            </mat-form-field>
+            <mat-form-field appearance="outline" class="example-form-field">
+                <mat-label>Provincia</mat-label>
+                <mat-select (selectionChange)="listarDistritosSegunIdProvincia($event)" formControlName="province">
+                    <mat-option *ngFor="let province of this.provinceList" [value]="province">
+                        {{province.nombreUbigeo}}
+                    </mat-option>    
+                </mat-select>
+            </mat-form-field>
+            <mat-form-field appearance="outline" class="example-form-field">
+                <mat-label>Distrito </mat-label>
+                <mat-select name="districtSelect" formControlName="district">
+                    <mat-option *ngFor="let district of this.districtList" [value]="district.nombreUbigeo">
+                        {{district.nombreUbigeo}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+        <div style="display: block;">
+            <button mat-button onclick="document.getElementById('flArchivo').click();" style="width: 100%;">Seleccionar Archivo</button>
+        <br>
+        <input id="flArchivo" type="file" (change)="selectFile($event)" style="display: none">
+        <br>
+        <img mat-card-image [src]="imagenData" *ngIf="imagenEstado" style="display: block; width:180px ;height:180px;margin: auto;" />
+        <p style="text-align: center; color: red; ">{{labelFile}}</p>
+        </div>
+        <br>
+        <div class="buttons">
+            <button class="first-btn btn-form" mat-stroked-button color="basic" mat-dialog-close>Cancelar</button>
+            <button mat-raised-button [disabled]="form.invalid" type="submit" color="primary" >Editar</button>
+        </div>
+    </form>
+</div>
+
+

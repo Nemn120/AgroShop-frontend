@@ -18,7 +18,7 @@ import { SalesReportDTO } from 'src/app/_DTO/SalesReportDTO';
   styleUrls: ['./order-report.component.scss']
 })
 export class OrderReportComponent implements OnInit {
-  displayedColumns: string[] = ['count','price','name','total'];
+  displayedColumns: string[] = ['count','name','price','quantity','total'];
   dataSource: MatTableDataSource<OrderBean>;
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatPaginator) paginator: MatPaginator;

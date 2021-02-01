@@ -1,0 +1,38 @@
+<body>
+    <section class="seccion-perfil-usuario">
+        <div class="perfil-usuario-header">
+            <div class="perfil-usuario-portada">
+                <div class="perfil-usuario-avatar">
+                    <img [src]="this.imagenData" alt="img-avatar" style="height: 100%;">
+                </div>
+                <button *ngIf="this.comparator==true" type="button" class="boton-portada" (click)="editProfile()">
+                    <i class="far fa-image"></i> Editar Perfil
+                </button>
+            </div>
+        </div>
+        <div class="perfil-usuario-body">
+            <div class="perfil-usuario-bio">
+                <h3 class="titulo">{{this.user.name}} {{this.user.lastName}}</h3>
+            </div>
+            <div class="perfil-usuario-footer">
+                <ul class="lista-datos">
+                    <li><i class="icono fas fa-map-signs"></i> <strong> Direccion:</strong> {{this.user.address}}</li>
+                    <li><i class="icono fas fa-phone-alt"></i> <strong> Telefono:</strong> {{this.user.cellPhone}}</li>
+                </ul>
+                <ul class="lista-datos">
+                    <li><i class="icono fas fa-map-marker-alt"></i> <strong> Ubicacion:</strong> {{this.user.region}} / {{this.user.province}} / {{this.user.district}}</li>
+                    <li><i class="icono fas fa-share-alt"></i> <strong> Email:</strong> {{this.user.email}}</li>
+                </ul>
+            </div>
+        </div>
+        <div class="body-item">
+            <div class="grid-item">
+                <div *ngFor="let item of productSalesList" style="width: 280px; height: 370px;">
+                    <app-order-store-card [productSales]="item" ></app-order-store-card>
+                </div>
+    
+            </div>
+        </div>
+    </section>
+</body>
+

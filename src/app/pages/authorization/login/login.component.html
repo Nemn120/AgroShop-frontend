@@ -1,91 +1,589 @@
-<div id="background">
-    <div id = "login-panel">
-        <div  id="login-image">
-            <div class="texto-flotante">
-                <span id="txtportal" class="texto-portal"><b style="font-size: 30px;">Sistema de integracion entre cliente y
-            agricultor</b></span>
-                <span id="txtbienvenidos" class="texto-bienvenidos"><b>Agroshop</b></span>
+<!-- Stylesheets-->
+<!--malogra iconos-->
+<link rel="stylesheet" href="/assets/css/style.css">
+
+<!--malogra estilos-->
+<link rel="stylesheet" href="/assets/css/bootstrap.css">
+
+<!--
+<link rel="stylesheet" [href]="sanitizer.bypassSecurityTrustResourceUrl(cssUrl1)">
+
+<link rel="stylesheet" [href]="sanitizer.bypassSecurityTrustResourceUrl(cssUrl2)">
+-->
+
+<div *ngIf="loading" class="loading">
+    <mat-progress-spinner mode="determinate"></mat-progress-spinner>
+    <mat-spinner></mat-spinner>
+    </div>
+
+<div class="text-center page" style="margin-top: 10px;" *ngIf="!loading">
+    <!--
+    <div style="text-align: left !important;border-left: 5px;margin-right:15px;margin-left:15px;margin-bottom:15px;;height: 70px;background-color:#E3E3E3;font-weight:bold;"> <span style="color: rgb(0, 0, 0);font-size:45px;font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;"> AgroShop</span></div>
+-->
+    <section class="section">
+        <div class="shell-wide">
+            <div class="range range-30 range-xs-center">
+
+            
+                <div class="cell-lg-8 cell-xl-9">
+
+                    <div class="img">
+
+                    <!-- Classic slider-->
+                    <section class="section" style="background-color: #37966F;background:  #37966F;">
+                        <!-- Swiper -->
+                        <div class="swiper-container swiper-slider swiper-style-2" data-loop="false" data-autoplay="5500" data-simulate-touch="false" data-slide-effect="slide" data-direction="vertical">
+                            <img src="/assets/images/login/background2.jpg" alt="" style="width: 100%;height: 100%;">
+                        </div>
+                    </section>
+
+                    </div>
+
+                </div>
+
+                <div class="cell-lg-4 cell-xl-3 reveal-lg-flex">
+                    <div class="hotel-booking-form">
+
+                        <div style="text-align: center;">
+                            <span style="color:  #37966F;;font-size:50px;font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;"> Agro</span><span style="color: #37966F;;font-size:50px;font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;">Shop</span>
+
+                            <h1 style="font-size:30px;font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;"> <span style="color: rgb(255, 255, 255);">Iniciar </span><span style="color: #ffffff;"> Sesion</span> </h1>
+                        </div>
+
+                        <!-- RD Mailform-->
+                        <form class="rd-mailform" data-form-output="form-output-global" data-form-type="contact" [formGroup]="loginForm">
+                            <div class="range range-sm-bottom spacing-20">
+
+                                <div fxLayout="row" *ngIf="enProceso">
+                                    <mat-progress-bar mode="query" color="accent" fxFlex></mat-progress-bar>
+                                    <br>
+                                </div>
+
+
+                                <div class="cell-lg-12 cell-md-4">
+                                    <p style="font-weight:bold;">Usuario</p>
+                                    <div class="form-wrap">
+                                        <!--<label class="form-label" for="contact-first-name">Your Full Name</label>-->
+                                        <label class="form-label" for="contact-first-name"></label>
+                                        <input class="form-input" id="contact-first-name" type="text" name="name" formControlName="username" type="text" name="username" placeholder="Ingresar usuario" [class.is-invalid]="this.loginForm.controls.username.hasError('required') && this.loginForm.controls.username.touched">
+                                    </div>
+
+                                    <mat-error *ngIf="this.loginForm.controls.username.hasError('required') && this.loginForm.controls.username.touched">
+                                        Es requerido
+                                    </mat-error>
+
+                                </div>
+
+                                <div class="cell-lg-12 cell-md-4">
+                                    <p style="font-weight:bold;">Contraseña</p>
+                                    <div class="form-wrap">
+                                        <label class="form-label" for="password"></label>
+                                        <input class="form-input" formControlName="password" type="password" name="password" placeholder="Ingresar Contraseña" [class.is-invalid]="this.loginForm.controls.password.hasError('required') && this.loginForm.controls.password.touched">
+                                    </div>
+
+
+                                    <mat-error *ngIf="this.loginForm.controls.password.hasError('required') && this.loginForm.controls.password.touched">
+                                        Es requerido
+                                    </mat-error>
+
+                                </div>
+
+
+                                <div class="cell-lg-12 cell-md-4">
+                                    <button class="button button-square button-block button-effect-ujarak" type="submit" [disabled]="enProceso" style="background-color: #37966F;;color: rgb(255, 255, 255);" (click)="login()"><span>Ingresar</span></button>
+                                </div>
+
+                                <p style="width: 100%;
+              text-align: center;
+              border-bottom: 1px solid #37966F;;
+              line-height: 0.1em;
+              "><span style="padding: 0 10px; "></span></p>
+
+
+                                <div class="cell-lg-12 cell-md-4">
+                                    <button class="button button-square button-block button-effect-ujarak" [matMenuTriggerFor]="menu" [disabled]="enProceso" style="background-color: #37966F;;color: rgb(255, 255, 255);"><span>Registrate</span></button>
+
+                                    <mat-menu #menu="matMenu" class="cell-lg-12 cell-md-4">
+                                        <button class="button button-square button-block button-effect-ujarak" style="background-color: #37966F;color: rgb(255, 255, 255);" (click)="registryForm('FARMER')"><span>Agricultor</span></button>
+                                        <button class="button button-square button-block button-effect-ujarak" style="background-color: #37966F;color: rgb(255, 255, 255);" (click)="registryForm('CLIENT')"><span>Cliente</span></button>
+                                        <button class="button button-square button-block button-effect-ujarak" style="background-color: #37966F;color: rgb(255, 255, 255);" (click)="registryForm('DRIVER')"><span>Transportista</span></button>
+                                    </mat-menu>
+
+
+                                </div>
+
+
+
+
+                            </div>
+                        </form>
+
+
+
+
+                    </div>
+                </div>
             </div>
-            <img src="../../../../assets/images/login/background2.jpg" style="height: 100%; width: 100%;">
         </div>
-        <div id="login-form">
-            <div style = "height: 60%; width: 100%; ">
-              <form [formGroup]="loginForm" class="signup-form" fxLayout="column" (ngSubmit)="login()">
+    </section>
 
-                <div class="form-headline text-center mb-32" style="display: flex; justify-content: center;">
-                    <h1 class="font-weight-light" style="font-size: 30px; text-align: center;">Bienvenido a Agroshop</h1>
+
+
+    <section class="section section-md">
+        <div class="shell">
+            <h3>Beneficios</h3>
+            <p>Todo Lo Que Necesitas para Empezar a Vender en Línea Hoy. Solución con Hospedaje Web Basado en la Nube. Haz Crecer Tu Negocio con AgroShop. Las ventas online permiten que las personas ahorren dinero en transporte hacia las fuentes de origen
+                de los productos y tiempo a la hora de buscar el producto que desea. Esto facilita la decisión de realizar una compra online, ayudándote a aumentar las ventas de tus productos y generando mayor comodidad para tus clientes:
+            </p>
+            <div class="range range-30" data-lightgallery="group">
+                <div class="cell-sm-6 cell-md-4">
+                    <a class="thumbnail-classic" src="/assets/images/home/a1.jpg" data-lightgallery="item">
+                        <figure><img src="/assets/images/home/a1.jpg" alt="" style=" width:370px; height:276px" />
+                        </figure>
+                        <div class="caption">
+                            <p class="caption-title">Potencia tus ventas</p>
+                            <p class="caption-text">Each room has its own unique décor and arrangement.</p>
+                        </div>
+                    </a>
+                </div>
+                <div class="cell-sm-6 cell-md-4">
+                    <a class="thumbnail-classic" src="/assets/images/home/a3.jpg" data-lightgallery="item">
+                        <figure><img src="/assets/images/home/a3.jpg" alt="" style=" width:370px; height:276px" />
+                        </figure>
+                        <div class="caption">
+                            <p class="caption-title">Incrementa tus ganancias</p>
+                            <p class="caption-text">Each room has its own unique décor and arrangement.</p>
+                        </div>
+                    </a>
+                </div>
+                <div class="cell-sm-6 cell-md-4">
+                    <a class="thumbnail-classic" src="/assets/images/home/a5.jpg" data-lightgallery="item">
+                        <figure><img src="/assets/images/home/a5.jpg" alt="" style=" width:370px; height:276px" />
+                        </figure>
+                        <div class="caption">
+                            <p class="caption-title">Transacciones seguras</p>
+                            <p class="caption-text">Each room has its own unique décor and arrangement.</p>
+                        </div>
+                    </a>
+                </div>
+                <div class="cell-sm-6 cell-md-4">
+                    <a class="thumbnail-classic" src="/assets/images/home/a6.jpg" data-lightgallery="item">
+                        <figure><img src="/assets/images/home/a6.jpg" alt="" style=" width:370px; height:276px" />
+                        </figure>
+                        <div class="caption">
+                            <p class="caption-title">Aumenta tus clientes</p>
+                            <p class="caption-text">Each room has its own unique décor and arrangement.</p>
+                        </div>
+                    </a>
+                </div>
+                <div class="cell-sm-6 cell-md-4">
+                    <a class="thumbnail-classic" src="/assets/images/home/a7.jpg" data-lightgallery="item">
+                        <figure><img src="/assets/images/home/a7.jpg" alt="" style=" width:370px; height:276px" />
+                        </figure>
+                        <div class="caption">
+                            <p class="caption-title">Genere empleo</p>
+                            <p class="caption-text">Each room has its own unique décor and arrangement.</p>
+                        </div>
+                    </a>
+                </div>
+                <div class="cell-sm-6 cell-md-4">
+                    <a class="thumbnail-classic" src="/assets/images/home/a2.jpg" data-lightgallery="item">
+                        <figure><img src="/assets/images/home/a2.jpg" alt="" style=" width:370px; height:276px" />
+                        </figure>
+                        <div class="caption">
+                            <p class="caption-title">Optimiza tu negocio</p>
+                            <p class="caption-text">Each room has its own unique décor and arrangement.</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section section-md bg-secondary-3 text-center" style="background: #37966F;">
+        <div class="shell">
+            <h2>Lo Que La Gente Dice</h2>
+            <div class="range range-50">
+                <div class="cell-xs-12">
+                    <div class="box-outline box-outline-fullwidth box-outline__mod-1">
+                        <div class="quote-carousel-wrap" style="background:#009865">
+                            <!-- Slick Carousel-->
+                            <div class="slick-slider carousel-parent" data-arrows="false" data-loop="true" data-dots="false" data-swipe="true" data-items="1" data-child="#child-carousel" data-for="#child-carousel">
+                                <div class="item">
+                                    <div class="quote-center">
+                                        <div class="quote-center-title">
+                                            <h4>Perfecto, complejo sistema y servicios!</h4>
+                                        </div>
+                                        <p class="quote-center-body">
+                                            <q>Nuevo en el mercado. Programa intensivo para empresarios que desean aumentar su productividad y dejar de ser esclavos de sus negocios</q>
+                                        </p>
+                                        <div class="quote-center-cite">
+                                            <cite>Jane Neddery</cite><span>Gerente de oficina</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="item">
+                                    <div class="quote-center">
+                                        <div class="quote-center-title">
+                                            <h4>Gran ambiente de trabajo y nivel de servicio al cliente</h4>
+                                        </div>
+                                        <p class="quote-center-body">
+                                            <q>¡Por fin! La solución que todos los empresarios buscaban para manejar los datos de sus clientes.
+                                                Asombroso cómo este sistema de desarrollo propio te permite gestionar todo online en tan solo 1 día.
+                                            </q>
+                                        </p>
+                                        <div class="quote-center-cite">
+                                            <cite>Sam Brown</cite><span>Gerente de Recursos humanos</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="item">
+                                    <div class="quote-center">
+                                        <div class="quote-center-title">
+                                            <h4>Una grandiosa herramienta para conectar con mis clientes</h4>
+                                        </div>
+                                        <p class="quote-center-body">
+                                            <q>Esto es lo que los emprendedores de la calidad necesitan conocer para pasar al siguiente nivel con éxito. Ahora ya puedes olvidarte para siempre de tus deudas siguiendo nuestro sistema. Más de 500 empresas lo están aplicando con éxito</q>
+                                        </p>
+                                        <div class="quote-center-cite">
+                                            <cite>Julie Adams</cite><span>Gerente de Marketing</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section section-md bg-white">
+        <div class="shell">
+            <h2>Nuestro Team</h2>
+            <div class="range range-xs-center range-75">
+                <!--team member 1-->
+                <div class="cell-sm-6 cell-md-4 wow fadeInUp" data-wow-delay=".1s">
+                    <div class="team-box box-outline">
+                        <div class="team-image-box"><img src="/assets/images/home/u1.jpg" alt="" width="295" height="282" />
+                            <div class="team-image-caption">
+                                <ul class="list-inline">
+                                    <li>
+                                        <a class="icon-sm icon-white fa-instagram icon"></a>
+                                    </li>
+                                    <li>
+                                        <a class="icon-sm icon-white fa-facebook icon"></a>
+                                    </li>
+                                    <li>
+                                        <a class="icon-sm icon-white fa-twitter icon"></a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="team-caption"><a class="link team-title">Fernando Chavez</a><span>Scrum Master</span>
+                        </div>
+                    </div>
+                </div>
+                <!--team member 2-->
+                <div class="cell-sm-6 cell-md-4 wow fadeInUp" data-wow-delay=".2s">
+                    <div class="team-box box-outline">
+                        <div class="team-image-box"><img src="/assets/images/home/u1.jpg" alt="" width="295" height="282" />
+                            <div class="team-image-caption">
+                                <ul class="list-inline">
+                                    <li>
+                                        <a class="icon-sm icon-white fa-instagram icon"></a>
+                                    </li>
+                                    <li>
+                                        <a class="icon-sm icon-white fa-facebook icon"></a>
+                                    </li>
+                                    <li>
+                                        <a class="icon-sm icon-white fa-twitter icon"></a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="team-caption"><a class="link team-title">Jose Condori</a><span>Scrum Owner</span>
+                        </div>
+                    </div>
+                </div>
+                <!--team member 3-->
+                <div class="cell-sm-6 cell-md-4 wow fadeInUp" data-wow-delay=".3s">
+                    <div class="team-box box-outline">
+                        <div class="team-image-box"><img src="/assets/images/home/u1.jpg" alt="" width="295" height="282" />
+                            <div class="team-image-caption">
+                                <ul class="list-inline">
+                                    <li>
+                                        <a class="icon-sm icon-white fa-instagram icon"></a>
+                                    </li>
+                                    <li>
+                                        <a class="icon-sm icon-white fa-facebook icon"></a>
+                                    </li>
+                                    <li>
+                                        <a class="icon-sm icon-white fa-twitter icon"></a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="team-caption"><a class="link team-title">Jordy Sarmineto</a><span>Scrum Team</span>
+                        </div>
+                    </div>
                 </div>
 
-                <div class="mb-48" fxLayout="row wrap" fxLayoutAlign="center center">
+                <!--team member 4-->
+                <div class="cell-sm-6 cell-md-4 wow fadeInUp" data-wow-delay=".3s">
+                    <div class="team-box box-outline">
+                        <div class="team-image-box"><img src="/assets/images/home/u1.jpg" alt="" width="295" height="282" />
+                            <div class="team-image-caption">
+                                <ul class="list-inline">
+                                    <li>
+                                        <a class="icon-sm icon-white fa-instagram icon"></a>
+                                    </li>
+                                    <li>
+                                        <a class="icon-sm icon-white fa-facebook icon"></a>
+                                    </li>
+                                    <li>
+                                        <a class="icon-sm icon-white fa-twitter icon"></a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="team-caption"><a class="link team-title">Osti Katriel</a><span>Scrum Team</span>
+                        </div>
+                    </div>
                 </div>
-
-
-                <div fxLayout="row" *ngIf="enProceso">
-                    <mat-progress-bar mode="query" color="accent" fxFlex></mat-progress-bar>
-                    <br />
+                <!--team member 5-->
+                <div class="cell-sm-6 cell-md-4 wow fadeInUp" data-wow-delay=".3s">
+                    <div class="team-box box-outline">
+                        <div class="team-image-box"><img src="/assets/images/home/u1.jpg" alt="" width="295" height="282" />
+                            <div class="team-image-caption">
+                                <ul class="list-inline">
+                                    <li>
+                                        <a class="icon-sm icon-white fa-instagram icon"></a>
+                                    </li>
+                                    <li>
+                                        <a class="icon-sm icon-white fa-facebook icon"></a>
+                                    </li>
+                                    <li>
+                                        <a class="icon-sm icon-white fa-twitter icon"></a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="team-caption"><a class="link team-title">Giampierre Villegas</a><span>Scrum Team</span>
+                        </div>
+                    </div>
                 </div>
-
-                <div style="display: flex; justify-content: center; align-items: center; flex-direction: column;">
-                    <mat-form-field class="full-width" appearance="outline" style="width: 80%;">
-                        <mat-label>Usuario</mat-label>
-                        <input matInput formControlName="username" type="text" name="username" placeholder="Usuario" [class.is-invalid]="this.loginForm.controls.username.hasError('required') && this.loginForm.controls.username.touched" />
-
-                        <mat-error *ngIf="this.loginForm.controls.username.hasError('required') && this.loginForm.controls.username.touched">
-                            Es requerido
-                        </mat-error>
-
-                    </mat-form-field>
-
-                    <mat-form-field class="full-width" appearance="outline" style="width: 80%;">
-                        <mat-label>Contraseña</mat-label>
-                        <input matInput formControlName="password" type="password" name="password" placeholder="********" [class.is-invalid]="this.loginForm.controls.password.hasError('required') && this.loginForm.controls.password.touched" />
-
-                        <mat-error *ngIf="this.loginForm.controls.password.hasError('required') && this.loginForm.controls.password.touched">
-                            Es requerido
-                        </mat-error>
-
-                    </mat-form-field>
-                </div>
-                <br>
-                <br>
-                <mat-checkbox class="mb-24" style="position: relative;display: block; bottom: 30px;">Recordar</mat-checkbox>
-
-                <div class="button-container">
-                    <div style="text-align:center; margin:10px;">
-                        <button mat-raised-button color="primary" style="width: 50%; text-align: center;
-              font-family: 'Itim', cursive; font-size: 20px;
-              color:#fff;
-              background-color: rgb(6, 110, 54); border-radius: 20px; height: 100%; margin-bottom: 10px;" [disabled]="enProceso">Ingresa</button>
+                <!--team member 6-->
+                <div class="cell-sm-6 cell-md-4 wow fadeInUp" data-wow-delay=".3s">
+                    <div class="team-box box-outline">
+                        <div class="team-image-box"><img src="/assets/images/home/u1.jpg" alt="" width="295" height="282" />
+                            <div class="team-image-caption">
+                                <ul class="list-inline">
+                                    <li>
+                                        <a class="icon-sm icon-white fa-instagram icon" href="#"></a>
+                                    </li>
+                                    <li>
+                                        <a class="icon-sm icon-white fa-facebook icon" href="#"></a>
+                                    </li>
+                                    <li>
+                                        <a class="icon-sm icon-white fa-twitter icon" href="#"></a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="team-caption"><a class="link team-title" href="#">Ivan Lopez</a><span>Scrum Team</span>
+                        </div>
                     </div>
 
 
                 </div>
 
 
-                <p style="width: 100%;
-      text-align: center;
-      border-bottom: 1px solid grey;
-      line-height: 0.1em;
-      margin: 20px 0 20px;"><span style="padding: 0 10px; background: #fafafa;">o sino</span></p>
-
-            </form>
-
-            <div style="text-align:center">
-                <button mat-raised-button color="primary" style="width: 50%; text-align: center;
-        font-family: 'Itim', cursive;
-        font-size: 20px;
-        color:#fff;
-        background-color: rgb(6, 110, 54); border-radius: 20px; height: 100%;" [disabled]="enProceso" [matMenuTriggerFor]="menu">Registrate</button>
-
-                <mat-menu #menu="matMenu">
-                    <button mat-menu-item (click)="registryForm('FARMER')">Agricultor</button>
-                    <button mat-menu-item (click)="registryForm('CLIENT')">Cliente</button>
-                    <button mat-menu-item (click)="registryForm('DRIVER')">Transportista</button>
-                </mat-menu>
-
-
-            </div>
             </div>
         </div>
-    </div>
+
+
+    </section>
+
+
+
+
+
+    <section class="section section-md bg-white text-center">
+        <div class="shell">
+            <div class="range range-50 range-md-center">
+                <div class="cell-sm-8">
+                    <div class="contact-box">
+                        <h3>Contactenos</h3>
+                        <p>Estamos disponibles 24/7 por fax, correo electrónico o por teléfono. También puede utilizar nuestro formulario de contacto rápido para hacer una pregunta sobre nuestros servicios. Estaremos encantados de responder a sus preguntas.</p>
+                        <form class="rd-mailform" data-form-output="form-output-global" data-form-type="contact" method="post" action="bat/rd-mailform.php">
+                            <div class="range range-sm-bottom spacing-20">
+                                <div class="cell-sm-6">
+                                    <div class="form-wrap">
+                                        <input class="form-input" id="contact-first-name" type="text" name="name" data-constraints="@Required">
+                                        <label class="form-label" for="contact-first-name">Tu nombre</label>
+                                    </div>
+                                </div>
+                                <div class="cell-sm-6">
+                                    <div class="form-wrap">
+                                        <input class="form-input" id="contact-last-name" type="text" name="phone" data-constraints="@Numeric">
+                                        <label class="form-label" for="contact-last-name">Telefono</label>
+                                    </div>
+                                </div>
+                                <div class="cell-xs-12">
+                                    <div class="form-wrap">
+                                        <textarea class="form-input" id="contact-message" name="message" data-constraints="@Required"></textarea>
+                                        <label class="form-label" for="contact-message">Tu mensaje</label>
+                                    </div>
+                                </div>
+                                <div class="cell-sm-6">
+                                    <div class="form-wrap">
+                                        <input class="form-input" id="contact-email" type="email" name="email" data-constraints="@Email @Required">
+                                        <label class="form-label" for="contact-email">Correo</label>
+                                    </div>
+                                </div>
+                                <div class="cell-sm-6">
+                                    <button class="button button-square button-block button-effect-ujarak" type="submit" style="background-color: #37966F;;color: rgb(255, 255, 255);"><span>Enviar mensaje</span></button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="cell-sm-4">
+                    <aside class="contact-box-aside text-left">
+                        <div class="range range-50">
+                            <div class="cell-xs-6 cell-sm-12">
+                                <p class="aside-title">Redes Sociales</p>
+                                <hr class="divider divider-left divider-custom">
+                                <ul class="list-inline">
+                                    <li>
+                                        <a class="icon icon-sm icon-gray-3 fa fa-instagram"></a>
+                                    </li>
+                                    <li>
+                                        <a class="icon icon-sm icon-gray-3 fa fa-facebook"></a>
+                                    </li>
+                                    <li>
+                                        <a class="icon icon-sm icon-gray-3 fa fa-twitter"></a>
+                                    </li>
+                                    <li>
+                                        <a class="icon icon-sm icon-gray-3 fa fa-youtube" href="#"></a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="cell-xs-6 cell-sm-12">
+                                <p class="aside-title"> Telefono</p>
+                                <hr class="divider divider-left divider-custom">
+                                <div class="unit unit-middle unit-horizontal unit-spacing-xs unit-xs-top">
+                                    <div class="unit__left"><span class="text-middle icon icon-sm mdi mdi-phone icon-primary"></span>
+                                    </div>
+                                    <div class="unit__body"><a class="text-middle link link-gray-dark" href="tel:#">1-800-1234-567</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="cell-xs-6 cell-sm-12">
+                                <p class="aside-title"> Dirreccion</p>
+                                <hr class="divider divider-left divider-custom">
+                                <div class="unit unit-middle unit-horizontal unit-spacing-xs unit-xs-top">
+                                    <div class="unit__left"><span class="text-middle icon icon-sm mdi mdi-map-marker icon-primary"></span>
+                                    </div>
+                                    <div class="unit__body"><a class="text-middle link link-gray-dark">Av. Carlos Germán Amezaga #375 -. Cercado de Lima</a></div>
+                                </div>
+                            </div>
+                            <div class="cell-xs-6 cell-sm-12">
+                                <p class="aside-title"> Horario</p>
+                                <hr class="divider divider-left divider-custom">
+                                <div class="unit unit-middle unit-horizontal unit-spacing-xs unit-xs-top">
+                                    <div class="unit__left"><span class="text-middle icon icon-sm mdi mdi-clock icon-primary"></span>
+                                    </div>
+                                    <div class="unit__body text-gray-darker">
+                                        <p>Trabajamos todos los días de 9:00 a 23:00</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </aside>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- Page Footer-->
+    <footer class="page-footer text-left text-sm-left">
+        <div class="shell-wide">
+
+
+
+            <div class="page-footer-minimal">
+                <div class="shell-wide">
+                    <div class="range range-50">
+                        <div class="cell-sm-6 cell-md-3 cell-lg-4 wow fadeInUp" data-wow-delay=".1s">
+                            <div class="page-footer-minimal-inner">
+                                <h4>Horario</h4>
+                                <ul class="list-unstyled">
+                                    <li>
+                                        <div class="group-xs">
+                                            <div>
+                                                <dl class="list-desc">
+                                                    <dt>Días de la semana: </dt>
+                                                    <dd class="text-gray-darker"><span>8:00–20:00</span></dd>
+                                                </dl>
+                                            </div>
+                                            <div>
+                                                <dl class="list-desc">
+                                                    <dt>Fines de Semana: </dt>
+                                                    <dd class="text-gray-darker"><span>9:00–18:00</span></dd>
+                                                </dl>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <p class="rights"><span>&copy;&nbsp;</span><span>2021</span><span>&nbsp;</span><span class="copyright-year"></span>AgroShop. All Rights Reserved. Design by <a>TemplateAgroShop</a></p>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="cell-sm-6 cell-md-5 cell-lg-4 wow fadeInUp" data-wow-delay=".2s">
+                            <div class="page-footer-minimal-inner">
+                                <h4>Direccion</h4>
+                                <ul class="list-unstyled">
+                                    <li>
+                                        <dl class="list-desc">
+                                            <dt><span class="icon icon-sm mdi mdi-map-marker"></span></dt>
+                                            <dd><a class="link link-gray-darker">Cercado de Lima 15081</a></dd>
+                                        </dl>
+                                    </li>
+                                    <li>
+                                        <dl class="list-desc">
+                                            <dt><span class="icon icon-sm mdi mdi-phone"></span></dt>
+                                            <dd class="text-gray-darker">Llámenos: <a class="link link-gray-darker" href="tel:#">+1 (409)
+                            987–5874</a>
+                                            </dd>
+                                        </dl>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="cell-sm-8 cell-md-4 wow fadeInUp" data-wow-delay=".3s">
+                            <div class="page-footer-minimal-inner-subscribe">
+                                <h4>Suscríbase a nuestro pagina</h4>
+                                <!-- RD Mailform-->
+                                <form class="rd-mailform rd-mailform-inline form-center" data-form-output="form-output-global" data-form-type="subscribe">
+                                    <div class="form-wrap">
+                                        <input class="form-input" id="subscribe-email" type="email" name="email" data-constraints="@Email @Required">
+                                        <label class="form-label" for="subscribe-email">Ingrese su correo</label>
+                                    </div>
+                                    <button class="button  button-effect-ujarak button-square" type="submit" style="background-color: #37966F;;color: rgb(255, 255, 255);"><span>Suscribir</span></button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
 </div>
