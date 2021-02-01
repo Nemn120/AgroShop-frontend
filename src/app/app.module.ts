@@ -21,8 +21,7 @@ export function tokenGetter() {
   const tk = sessionStorage.getItem(environment.TOKEN_NAME);
   const token = tk != null ? tk : '';
   return token;
-}
-
+} 
 @NgModule({
   declarations: [AppComponent],
   imports: [

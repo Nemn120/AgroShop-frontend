@@ -83,6 +83,7 @@ export class VehicleComponent implements OnInit {
           reader.onloadend = () => {
           const base64 = reader.result;
           m.photo = this.sanar(base64);
+          console.log(photo);
         }
       })
     }

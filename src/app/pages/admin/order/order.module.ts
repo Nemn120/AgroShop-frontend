@@ -1,7 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { ProductMapComponent } from '../map/product-map/product-map.component';
 import { RouterModule, Routes } from '@angular/router';
 import { MaterialModule } from 'src/app/_material/material.module';
 import { ExporterService } from 'src/app/_service/exporter.service';
@@ -71,6 +70,9 @@ const routes: Routes = [
   ],
   providers: [
     ExporterService
+  ],
+  exports: [
+    OrderStoreCardComponent
   ]
 })
 export class OrderModule { }

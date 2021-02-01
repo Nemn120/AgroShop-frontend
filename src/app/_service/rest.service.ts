@@ -55,4 +55,10 @@ export class RestService {
     });
    }
 
+   getUserPhoto(id: number){
+    return this.http.get(`${this.urlHost}user/gp/${id}`,{
+      responseType: 'blob'
+    });
+   }
+
 }
