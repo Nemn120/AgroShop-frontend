@@ -12,10 +12,6 @@ import { environment } from '../environments/environment';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { PanelAdminModule } from './pages/admin/panel-admin/panel-admin.module';
-import { RegistryComponent } from './pages/authorization/registry/registry.component';
-import { DriverFormContainerComponent } from './pages/authorization/registry/driver-form-container/driver-form-container.component';
-import {ExporterService} from '../app/_service/exporter.service';
-
 import { ServerErrorsInterceptor } from './_service/server-errors.interceptor';
 import { AuthorizationModule } from './pages/authorization/authorization.module';
 import { MaterialModule } from './_material/material.module';

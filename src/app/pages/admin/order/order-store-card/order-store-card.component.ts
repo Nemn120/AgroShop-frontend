@@ -17,6 +17,7 @@ export class OrderStoreCardComponent implements OnInit {
   @Input() productSales: ProductSalesBean;
   quantity:number;
   imagenEstado: boolean = false;
+  profile:string;
 
   constructor(
   private sharedData:SharedService,
@@ -25,7 +26,7 @@ export class OrderStoreCardComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-
+    this.profile = this.sharedData.userSession.user.typeUser;
   }
 
   addProduct(){

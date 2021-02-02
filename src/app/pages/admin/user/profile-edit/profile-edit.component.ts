@@ -55,9 +55,9 @@ export class ProfileEditComponent implements OnInit {
       address : [this.data.address,[Validators.required]],
       phone : [this.data.cellPhone,[Validators.required,Validators.maxLength(9),Validators.minLength(8)]],
       email : [this.data.email,[Validators.email,Validators.required]],
-      region : [this.data.region,[Validators.required]],
-      province : [this.data.province,[Validators.required]],
-      district : [this.data.district,[Validators.required]]
+      region : ["",[Validators.required]],
+      province : ["",[Validators.required]],
+      district : ["",[Validators.required]]
     });
   }
 

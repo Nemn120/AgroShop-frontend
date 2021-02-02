@@ -40,7 +40,7 @@
         width: 100%;
         display: flex;
         justify-content: center;
-        background: linear-gradient(#B873FF, transparent);
+        background: linear-gradient(#37966F, transparent);
         margin-bottom: 1.25rem;
     }
     
@@ -51,8 +51,10 @@
         height: 17rem;
         background: linear-gradient(45deg, #BC3CFF, #317FFF);
         border-radius: 0 0 20px 20px;
+        background-image: url("../../../../../assets/images/sky.jpg");
+        background-size: cover;
     }
-    
+
     .seccion-perfil-usuario .perfil-usuario-portada .boton-portada {
         position: absolute;
         top: 1rem;
@@ -75,7 +77,7 @@
         height: 180px;
         align-items: center;
         justify-content: center;
-        border: 7px solid #8f4392;
+        border: 7px solid #37966F;
         background-color: #DFE5F2;
         border-radius: 50%;
         box-shadow: 0 0 12px rgba(0, 0, 0, .2);

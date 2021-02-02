@@ -23,6 +23,16 @@
                 <mat-label>Email</mat-label>
                 <input type="email" matInput formControlName="email">
             </mat-form-field>
+        </div>
+        <div style="display: block;">
+            <button mat-button onclick="document.getElementById('flArchivo').click();" style="width: 100%;">Seleccionar Archivo</button>
+        <br>
+        <input id="flArchivo" type="file" (change)="selectFile($event)" style="display: none">
+        <br>
+        <img mat-card-image [src]="imagenData" *ngIf="imagenEstado" style="display: block; width:180px ;height:180px;margin: auto;" />
+        <p style="text-align: center; color: red; ">{{labelFile}}</p>
+        </div>
+        <div class="container">
             <mat-form-field appearance="outline" class="example-form-field">
                 <mat-label>Departamento</mat-label>
                 <mat-select (selectionChange)="listarProvinciasSegunIdRegion($event)" formControlName="region">
@@ -47,14 +57,6 @@
                     </mat-option>
                 </mat-select>
             </mat-form-field>
-        </div>
-        <div style="display: block;">
-            <button mat-button onclick="document.getElementById('flArchivo').click();" style="width: 100%;">Seleccionar Archivo</button>
-        <br>
-        <input id="flArchivo" type="file" (change)="selectFile($event)" style="display: none">
-        <br>
-        <img mat-card-image [src]="imagenData" *ngIf="imagenEstado" style="display: block; width:180px ;height:180px;margin: auto;" />
-        <p style="text-align: center; color: red; ">{{labelFile}}</p>
         </div>
         <br>
         <div class="buttons">

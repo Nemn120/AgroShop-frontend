@@ -27,11 +27,11 @@
 
                 <div class="item-quantity">
 
-                    <mat-form-field style="width:30px">
+                    <mat-form-field style="width:30px" *ngIf="this.profile!='FARMER'">
                         <input matInput class="input-quantity" [(ngModel)]="productSales.quantitySelect" type="number" onkeypress="return event.charCode >= 48 && event.charCode <=57" min="1">
                     </mat-form-field>
 
-                    <div class="btn-add" (click)="addProduct()">
+                    <div class="btn-add" *ngIf="this.profile!='FARMER'" (click)="addProduct()">
                         <i class="fas fa-cart-plus" style="color: white;"></i>
                     </div>
 

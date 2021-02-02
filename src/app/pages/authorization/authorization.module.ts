@@ -11,6 +11,8 @@ import { CentralViewComponent } from './login/central-view/central-view.componen
 import { RightBannerComponent } from './login/right-banner/right-banner.component';
 import { ToolbarComponent } from '../public-view/toolbar/toolbar.component';
 
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+
 const routes: Routes = [
   {
     path: '', component: LoginComponent,
@@ -34,6 +36,8 @@ const routes: Routes = [
     ReactiveFormsModule,
     RouterModule.forChild(routes),
     FormsModule,
+
+    MatProgressSpinnerModule,
   ],
   exports:[
     LoginComponent, RegistryComponent,DriverFormContainerComponent
