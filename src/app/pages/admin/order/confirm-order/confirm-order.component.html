@@ -19,6 +19,7 @@
     type="file"
     (change)="selectFile($event)"
     style="display: none"
+    accept="image/*"
   />
   <img mat-card-image id="output" [src]="url" width="450px" height="500px" />
   <p>{{ labelFile }}</p>
