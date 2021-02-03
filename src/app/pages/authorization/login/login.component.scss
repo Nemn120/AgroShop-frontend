@@ -166,19 +166,16 @@
 }
 
 //New styles
-
 .loading {
-    
     //margin-top: 80%;
     margin: 40%;
     //display: flex;
     //justify-content: center;
-   // align-items: center;
-
+    // align-items: center;
 }
 
 @media only screen and (max-width: 1000px) {
-    .img{
-       display: none;
+    .img {
+        display: none;
     }
 }

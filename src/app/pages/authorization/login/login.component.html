@@ -12,10 +12,13 @@
 -->
 
 
+<div *ngIf="loading" class="loading">
+    <mat-progress-spinner mode="determinate"></mat-progress-spinner>
+    <mat-spinner></mat-spinner>
+</div>
 
 
-
-<div class="text-center page" style="margin-top: 10px;">
+<div class="text-center page" style="margin-top: 10px;" *ngIf="!loading">
     <!--
     <div style="text-align: left !important;border-left: 5px;margin-right:15px;margin-left:15px;margin-bottom:15px;;height: 70px;background-color:#E3E3E3;font-weight:bold;"> <span style="color: rgb(0, 0, 0);font-size:45px;font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;"> AgroShop</span></div>
 -->
@@ -124,8 +127,8 @@
     <section class="section section-md">
         <div class="shell">
             <h3>Beneficios</h3>
-            <p>Todo Lo Que Necesitas para Empezar a Vender en Línea Hoy.  Haz Crecer Tu Negocio con AgroShop. Las ventas online te permitiran que las personas ahorro de dinero en transporte hacia las fuentes de destino
-                de los productos y tiempo a la hora de buscar el producto que desea. Esto facilita la decisión de realizar una compra online, ayudándote a aumentar las ventas de tus productos y generando mayor comodidad para tus clientes:
+            <p>Todo Lo Que Necesitas para Empezar a Vender en Línea Hoy. Haz Crecer Tu Negocio con AgroShop. Las ventas online te permitiran que las personas ahorro de dinero en transporte hacia las fuentes de destino de los productos y tiempo a la hora
+                de buscar el producto que desea. Esto facilita la decisión de realizar una compra online, ayudándote a aumentar las ventas de tus productos y generando mayor comodidad para tus clientes:
             </p>
             <div class="range range-30" data-lightgallery="group">
                 <div class="cell-sm-6 cell-md-4">
@@ -418,25 +421,25 @@
                                 <div class="cell-sm-6">
                                     <div class="form-wrap">
                                         <input class="form-input" id="contact-first-name" type="text" name="name" data-constraints="@Required" placeholder="Ingresar Tu nombre">
-                                        
+
                                     </div>
                                 </div>
                                 <div class="cell-sm-6">
                                     <div class="form-wrap">
                                         <input class="form-input" id="contact-last-name" type="text" name="phone" data-constraints="@Numeric" placeholder="Ingresar Tu Telefono">
-                                        
+
                                     </div>
                                 </div>
                                 <div class="cell-xs-12">
                                     <div class="form-wrap">
                                         <textarea class="form-input" id="contact-message" name="message" data-constraints="@Required" placeholder="Ingresar Tu mensaje"></textarea>
-                                        
+
                                     </div>
                                 </div>
                                 <div class="cell-sm-6">
                                     <div class="form-wrap">
                                         <input class="form-input" id="contact-email" type="email" name="email" data-constraints="@Email @Required" placeholder="Ingresar Tu correo">
-                                       
+
                                     </div>
                                 </div>
                                 <div class="cell-sm-6">
