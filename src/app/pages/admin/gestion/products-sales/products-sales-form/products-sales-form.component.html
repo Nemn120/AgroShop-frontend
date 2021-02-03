@@ -17,7 +17,7 @@
         <br>
         <mat-form-field>
             <mat-label>Unidad de Medida</mat-label>
-            <input matInput [(ngModel)]="this.productSalesSelect.measureUnite" placeholder="Arroba, Jaba, Saco, Caja ,..." onkeypress="return event.charCode != 45">
+            <input matInput [(ngModel)]="this.productSalesSelect.measureUnite" placeholder="Arroba, Jaba, Saco, Caja ,..." onkeypress="return !(event.charCode >= 48 && event.charCode <=57) && event.charCode != 45">
         </mat-form-field>
         <br>
         <mat-form-field>
@@ -49,7 +49,7 @@
             <input matInput [(ngModel)]="this.data.availableQuantity">
         </mat-form-field>
         <br>
-        
+
         <mat-form-field>
             <mat-label>Disponibiliad</mat-label>
             <input matInput [(ngModel)]="this.data.statusSales">
