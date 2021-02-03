@@ -10,7 +10,6 @@ import { OrderBean } from 'src/app/_model/OrderBean';
 import { PostulationBean } from 'src/app/_model/PostulationBean';
 import { RestService } from 'src/app/_service/rest.service';
 import { SharedService } from 'src/app/_service/shared.service';
-import Swal from 'sweetalert2';
 import { PostulationDetailComponent } from '../../farmer/postulation-detail/postulation-detail.component';
 import { FormContractComponent } from '../form-contract/form-contract.component';
 import { PostulationApplicantsComponent } from '../postulation-applicants/postulation-applicants.component';
@@ -115,44 +114,26 @@ export class PostulationListComponent implements OnInit {
     });
   }
 
-  public viewApplicants(applicants: any) {
+  public viewApplicants(applicants: any, status: string = 'Pendiente') {
     console.log(applicants);
     const ref = this.dialog.open(PostulationApplicantsComponent, {
       width: 'auto',
       height: 'auto',
       data: applicants,
     });
+    ref.afterClosed().subscribe( result => {
+      this.getPostulationByStatusAndId(status);
+    });
   }
 
   public generateContract(postulation: PostulationBean) {
-     this.dialog.open(FormContractComponent, {
+     const href = this.dialog.open(FormContractComponent, {
       data: postulation,
       width: 'auto',
       height: 'auto'
     });
-  }
-
-  public aceptarPostulation(id: number) {
-    const param = {
-      data: id,
-    };
-
-    Swal.fire({
-      title: 'Aceptar la postulación?',
-      icon: 'warning',
-      showCancelButton: true,
-      confirmButtonColor: 'green',
-      cancelButtonColor: '#d33',
-      confirmButtonText: 'Confirmar',
-    }).then((result) => {
-      if (result.isConfirmed) {
-        this.restService
-          .requestApiRestData('postulation/apf', param)
-          .subscribe((data) => {
-            this.getPostulationByStatusAndId();
-            this.restService.message(data.responseMessage, 'Info');
-          });
-      }
+     href.afterClosed().subscribe( result => {
+      this.getPostulationByStatusAndId('Aceptada');
     });
   }
 

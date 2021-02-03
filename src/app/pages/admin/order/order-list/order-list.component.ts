@@ -45,9 +45,12 @@ export class OrderListComponent implements OnInit {
 
   openConfirmOrden(order: OrderBean) {
     const ord = order != null ? order : new OrderBean();
-    this.dialog.open(ConfirmOrderComponent, {
+    const href = this.dialog.open(ConfirmOrderComponent, {
       width: '500px',
       data: ord,
+    });
+    href.afterClosed().subscribe( result => {
+      this.loadData('Entregado');
     });
   }
 

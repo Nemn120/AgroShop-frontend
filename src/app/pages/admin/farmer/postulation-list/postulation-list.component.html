@@ -42,7 +42,10 @@
           {{ subtitlePerson }}
         </th>
         <td mat-cell *matCellDef="let row">
-          <button (click)="viewApplicants(row)" mat-icon-button>
+          <button
+            (click)="viewApplicants(row, row[0].statusPostulation)"
+            mat-icon-button
+          >
             <mat-icon>person</mat-icon>
           </button>
         </td>

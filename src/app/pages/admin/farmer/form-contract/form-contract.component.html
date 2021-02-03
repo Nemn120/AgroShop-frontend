@@ -5,25 +5,21 @@
 <mat-form-field appearance="outline">
   <input
     matInput
-    placeholder="Contrato001"
+    placeholder="Mi Contrato"
     [(ngModel)]="contract.nameContract"
-  />
-</mat-form-field>
-
-<p>Tiempo del contrato:</p>
-<mat-form-field appearance="outline">
-  <input
-    type="number"
-    matInput
-    placeholder="0"
-    [(ngModel)]="contract.timeContract"
+    required
   />
 </mat-form-field>
 <hr />
 
 <mat-form-field color="accent" appearance="fill">
   <mat-label>Fecha de inicio:</mat-label>
-  <input matInput [matDatepicker]="picker1" [(ngModel)]="contract.initDate" />
+  <input
+    matInput
+    [matDatepicker]="picker1"
+    [(ngModel)]="contract.initDate"
+    required
+  />
   <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
   <mat-datepicker #picker1></mat-datepicker>
 </mat-form-field>
@@ -34,11 +30,18 @@
     matInput
     [matDatepicker]="picker2"
     [(ngModel)]="contract.endContract"
+    required
   />
   <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
   <mat-datepicker #picker2 color="primary"></mat-datepicker>
 </mat-form-field>
 
-<button mat-button color="primary" (click)="generateContract()">
+<button
+  mat-button
+  color="primary"
+  style="background-color: #37966f; color: white"
+  (click)="generateContract()"
+  [disabled]="!isValidateForm()"
+>
   Generar contrato
 </button>

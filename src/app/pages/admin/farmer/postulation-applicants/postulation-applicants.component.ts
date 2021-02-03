@@ -58,13 +58,12 @@ export class PostulationApplicantsComponent implements OnInit {
         this.restService.requestApiRestData('postulation/apf', param)
           .subscribe(
             data => {
-
               this.restService.message(data.responseMessage, 'Info');
+              this.dialogRef.close();
             }
           );
       }
     });
-    this.dialogRef.close();
   }
 
   viewDetailApplication(driver: any) {

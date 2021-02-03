@@ -1,69 +1,85 @@
 <div class="layout-data2">
-    Mis Postulaciones!
-    <div class="button-status">
-        <button *ngFor="let status of statusList" mat-raised-button (click)="getPostulationByStatusAndId(status)">{{status}}</button>
+  Mis Postulaciones!
+  <div class="button-status">
+    <button
+      *ngFor="let status of statusList"
+      mat-raised-button
+      (click)="getPostulationByStatusAndId(status)"
+    >
+      {{ status }}
+    </button>
 
-        <!-- <button mat-raised-button (click)="getPostulationByStatusAndId('Pendiente')">Pendiente</button>
+    <!-- <button mat-raised-button (click)="getPostulationByStatusAndId('Pendiente')">Pendiente</button>
         <button mat-raised-button (click)="getPostulationByStatusAndId('Rechazada')">Rechazada</button>
         <button mat-raised-button (click)="getPostulationByStatusAndId('Aceptada')">Aceptada</button> -->
-    </div>
+  </div>
 </div>
 <div class="layout-data">
-
-    <!-- <mat-form-field>
+  <!-- <mat-form-field>
             <mat-label>Buscar postulación</mat-label>
             <input matInput (keyup)="searchPostulation($event)" placeholder="Ingresar empresa a buscar" #input>
         </mat-form-field> -->
 
-    <div class="mat-elevation-z8">
-        <table mat-table [dataSource]="dataSource" matSort>
+  <div class="mat-elevation-z8">
+    <table mat-table [dataSource]="dataSource" matSort>
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>ID</th>
+        <td mat-cell *matCellDef="let row">{{ row.id }}</td>
+      </ng-container>
 
-            <ng-container matColumnDef="id">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header> ID </th>
-                <td mat-cell *matCellDef="let row"> {{row.id}} </td>
-            </ng-container>
+      <ng-container matColumnDef="statusPostulation">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Estado</th>
+        <td mat-cell *matCellDef="let row">{{ row.statusPostulation }}</td>
+      </ng-container>
 
-            <ng-container matColumnDef="statusPostulation">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header> Estado </th>
-                <td mat-cell *matCellDef="let row"> {{row.statusPostulation}} </td>
-            </ng-container>
+      <ng-container matColumnDef="title">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Oferta</th>
+        <td mat-cell *matCellDef="let row">{{ row.jobOffer.title }}</td>
+      </ng-container>
 
-            <ng-container matColumnDef="title">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header> Oferta </th>
-                <td mat-cell *matCellDef="let row"> {{row.jobOffer.title}} </td>
-            </ng-container>
+      <ng-container matColumnDef="statusOffer">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>
+          Estado de la oferta
+        </th>
+        <td mat-cell *matCellDef="let row">{{ row.jobOffer.statusOffer }}</td>
+      </ng-container>
 
-            <ng-container matColumnDef="statusOffer">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header> Estado de la oferta</th>
-                <td mat-cell *matCellDef="let row"> {{row.jobOffer.statusOffer}} </td>
-            </ng-container>
+      <ng-container matColumnDef="postulationDate">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Fecha</th>
+        <td mat-cell *matCellDef="let row">{{ row.postulationDate | date }}</td>
+      </ng-container>
 
-            <ng-container matColumnDef="postulationDate">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header> Fecha </th>
-                <td mat-cell *matCellDef="let row"> {{row.postulationDate | date}}</td>
-            </ng-container>
+      <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Acciones</th>
+        <td mat-cell *matCellDef="let row">
+          <button mat-icon-button (click)="viewDetailPostulation(row)">
+            <mat-icon>visibility</mat-icon>
+          </button>
+          <button
+            *ngIf="
+              row.statusPostulation === 'Aceptada' && row.haveContract === true
+            "
+            mat-icon-button
+            (click)="dowloadContract(row.id)"
+          >
+            <mat-icon>get_app</mat-icon>
+          </button>
+        </td>
+      </ng-container>
 
-            <ng-container matColumnDef="actions">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header> Acciones </th>
-                <td mat-cell *matCellDef="let row">
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
 
-                    <button mat-icon-button (click)="viewDetailPostulation(row)">
-              <mat-icon>visibility</mat-icon>
-            </button>
-                    <button mat-icon-button (click)="deletePostulation(row.id)">
-              <mat-icon>delete</mat-icon>
-            </button>
-                </td>
-            </ng-container>
+      <!-- <tr class="mat-row" *matNoDataRow>
+        <td class="mat-cell" colspan="4">
+          No data matching the filter "{{ "input.value" }}"
+        </td>
+      </tr> -->
+    </table>
 
-            <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-
-            <tr class="mat-row" *matNoDataRow>
-                <td class="mat-cell" colspan="4">No data matching the filter "{{"input.value"}}"</td>
-            </tr>
-        </table>
-
-        <mat-paginator [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
-    </div>
+    <mat-paginator
+      [pageSize]="10"
+      [pageSizeOptions]="[5, 10, 25, 100]"
+    ></mat-paginator>
+  </div>
 </div>

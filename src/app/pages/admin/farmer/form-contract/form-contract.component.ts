@@ -18,12 +18,13 @@ export class FormContractComponent {
   message: any;
   post = new PostulationBean();
 
+
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: PostulationBean,
     public dialogRef: MatDialogRef<PostulationListComponent>,
     private router: Router,
-    private restService: RestService
-  ) { }
+    private restService: RestService,
+  ) {}
 
   onNoClick(): void {
     this.dialogRef.close();
@@ -34,6 +35,8 @@ export class FormContractComponent {
     this.post.id = this.data.id;
     this.contract.postulation = this.post;
 
+    this.contract.timeContract = this.getTimeContract(this.contract.initDate, this.contract.endContract);
+
     const param = {
       data: this.contract
     };
@@ -41,8 +44,22 @@ export class FormContractComponent {
     this.restService.requestApiRestData('api/contrato/rcontract', param)
       .subscribe( data => {
         this.restService.message(data.responseMessage, 'Info');
+        this.onNoClick();
     });
+  }
 
+  public getTimeContract(init: Date, end: Date): number {
+    const diff = end.getTime() - init.getTime();
+    const days = Math.round(diff / (1000 * 60 * 60 * 24));
+    return Math.round((days) / 30);
+  }
+
+  public isValidateForm() {
+    let resp = true;
+    if (this.contract.nameContract === undefined || this.contract.endContract === undefined || this.contract.initDate === undefined) {
+      resp = false;
+     }
+    return resp;
   }
 
 }
