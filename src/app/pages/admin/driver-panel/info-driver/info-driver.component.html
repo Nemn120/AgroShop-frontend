@@ -1,20 +1,34 @@
-<!-- <mat-dialog-actions align="end">
-    <button mat-button mat-dialog-close cdkFocusInitial>X</button>
-</mat-dialog-actions> -->
 <div class="container">
-    <h1 mat-dialog-title>{{data.user.name}} {{data.user.lastName}}</h1>
-    <div class="img-container">
-        <img class="perfil-img" src="../../../../../assets/images/user.png">
+    <h1>{{data.user.name | titlecase}} {{data.user.lastName | titlecase}}</h1>
+    <h3>{{data.status | uppercase}}</h3>
+    <mat-divider></mat-divider>
+    <div class="content">
+        <div class="item">
+            <h5>{{email}}</h5>
+            <p>Email</p>
+        </div>
+        <div class="item">
+            <h5>{{dni}}</h5>
+            <p>DNI</p>
+        </div>
+        <div class="item">
+            <h5>{{telefono}}</h5>
+            <p>Teléfono</p>
+        </div>
+        <div class="item">
+            <h5>{{fecha | date}}</h5>
+            <p>Fecha</p>
+        </div>
+        <div class="item">
+            <h5>{{direccion | titlecase}}</h5>
+            <p>Dirección</p>
+        </div>
+        <div class="item">
+            <h5>{{licencia}}</h5>
+            <p>Licencia</p>
+        </div>
     </div>
-    <div mat-dialog-content>
-        <p>Fecha de registro: {{data.createDate | date}}</p>
-        <p>Dirección: {{data.user.address}}</p>
-        <p>Email: {{data.user.email}}</p>
-        <p>Celular: {{data.user.cellPhone}}</p>
-        <p>Licencia: {{data.driverLicenseNumber}}</p>
-        <p>Estado: {{data.status}}</p>
-        <p>Calificación: {{data.qualification}}</p>
-        <p>Eexperiencia: {{data.yearsOfExperience}}</p>
-        <p>DNI: {{data.user.documentNumber}}</p>
+    <div class="button">
+        <button mat-stroked-button color="primary" mat-dialog-close>Cerrar</button>
     </div>
 </div>

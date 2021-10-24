@@ -7,24 +7,26 @@ import { MatTableDataSource } from '@angular/material/table';
 import { InfoDriverComponent } from '../info-driver/info-driver.component';
 import { MatDialog } from '@angular/material/dialog';
 // import { Router } from '@angular/router';
+import { element } from 'protractor';
 
 @Component({
   selector: 'app-driver',
   templateUrl: './driver.component.html',
   styleUrls: ['./driver.component.scss']
 })
-export class DriverComponent implements OnInit {
+export class DriverComponent implements OnInit{
 
-  displayedColumns: string[] = ['id', 'datos', 'user.documentNumber', 'user.name', 'user.lastName', 'status'];
+  displayedColumns: string[] = ['id','user.name', 'user.lastName','user.documentNumber', 'status','datos'];
   dataSource: MatTableDataSource<any>;
 
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
-  status: string[] = ['Pendiente', 'Aceptado'];
+  status: string[] = ['Aceptado','Pendiente'];
   state = 'Aceptado';
   ids: number[] = [];
   drivers: any[] = [];
+  dniValue: string = '';
 
   constructor(
     private restService: RestService,
@@ -49,22 +51,24 @@ export class DriverComponent implements OnInit {
       );
   }
 
-  setIds(id: number) {
+  setIds(element: any) {
+    let id: number = element.id;
+    let nombre: string = element.user.name;
     this.ids.push(id);
 
     Swal.fire({
-      title: 'Seguro de cambiar el estado?',
+      title: `¿Activar Usuario ${nombre}?`,
       icon: 'warning',
       showCancelButton: true,
       confirmButtonColor: 'green',
       cancelButtonColor: '#d33',
-      confirmButtonText: 'Cambiar estado'
+      confirmButtonText: 'Activar'
     }).then((result) => {
       if (result.isConfirmed) {
         this.changeStatusDriver(this.ids);
         Swal.fire(
-          'Cambio realizado con éxito!',
-          'El estado se ha cambiado.',
+          'Usuario activado con éxito!',
+          `Usuario ${nombre} activado.`,
           'success'
         );
         this.getListDriverByStatus('Aceptado');
@@ -84,8 +88,10 @@ export class DriverComponent implements OnInit {
   searchDriver(termino: string): any {
     const drivers: any[] = [];
     const dni = termino.toLowerCase();
+    let dniInsert: string = '';
     this.drivers.forEach(driver => {
-      if (driver.user.documentNumber.toLowerCase().includes(dni)) {
+      dniInsert = driver.user.documentNumber?.toLowerCase() || '';
+      if (dniInsert.startsWith(dni)) {
         drivers.push(driver);
       }
     });
@@ -97,13 +103,13 @@ export class DriverComponent implements OnInit {
   openInfoDriverModal(driver: any): void {
     const dialogRef = this.dialog.open(InfoDriverComponent, {
       width: 'auto', height: 'auto',
-      data: driver
+      data: driver,
+      panelClass: 'custom-dialog-container'
     });
   }
-/*
-  openInfoDriverModal(driver: any): void {
 
-    this.router.navigate(['driver/profile',{driver:JSON.stringify(driver)}]);
+  borrar(){
+    this.dniValue = '';
+    this.getListDriverByStatus('Aceptado');
   }
-*/
 }

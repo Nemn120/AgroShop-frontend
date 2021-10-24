@@ -1,19 +1,24 @@
-.button-search {
-    outline: none;
-    border: none;
-    background-color: white;
-    cursor: pointer;
-    float: right;
-    padding-left: 65px;
-    padding-top: 5px;
-    border-radius: 45px;
+th{
+    background-color: #232F34;
+    font-size: 15px;
+    color: white;
 }
 
 .header {
-    float: right;
     display: flex;
-    margin: 1rem;
+    flex-direction: row;
+    justify-content: flex-end;
 }
+
+
+.mat-row .mat-cell {
+    border-bottom: 1px solid transparent;
+    border-top: 1px solid transparent;
+  }
+  
+  .mat-row:hover .mat-cell {
+    border-color: currentColor;
+  }
 
 .header-search {
     background: white;
@@ -25,6 +30,10 @@
     display: flex;
     float: right;
     margin-bottom: 1rem;
+}
+
+mat-icon{
+    cursor: pointer;
 }
 
 .icon-info {
@@ -60,7 +69,8 @@ input::placeholder {
 .mat-card {
     background-color: inherit;
     box-sizing: border-box;
-    padding: 3%;
+    margin: 8px 10px 8px 10px;
+    padding: 0;
     top: 5%;
     box-shadow: none !important;
 }
@@ -95,4 +105,8 @@ th.mat-sort-header-sorted {
         max-width: 100%;
         overflow: auto;
     }
+}
+
+.mat-column-id{
+    width: 8%;
 }
