@@ -1,4 +1,4 @@
-<div class="content-item">
+<!-- <div class="content-item">
     <div class="category-item">
         <div *ngIf="productSales.product.category" class="category-title">{{productSales.product.category.name}}</div>
     </div>
@@ -9,10 +9,10 @@
                     <li><strong>Unidad </strong>{{productSales.measureUnite || 'kg'}}</li>
                     <li><strong>Peso x {{productSales.measureUnite || 'kg'}}: </strong>{{productSales.weight ||'1'}} kg</li>
                     <li><strong>Cantidad Max: </strong>{{productSales.availableQuantity}}</li>
-                    <!--
+                    <
                     <li><strong>Descuento: </strong>10% Mayor a 30U</li>
                     <li><strong>Tipo de envio: </strong>Rapido</li>
-                    -->
+                    
                 </ul>
 
             </div>
@@ -20,7 +20,7 @@
             <img *ngIf="productSales.product._foto==null" class="image-src" src="/assets/images/sin-imagen.jpg">
         </div>
         <div class="item-data">
-            <div class="item-title">{{productSales.product.name}} x {{productSales.measureUnite || 'kg'}}</div>
+            <div class="item-title">{{productSales.product.name}}</div>
             <div class="item-description">
 
                 <div class="item-price">S/. {{productSales.price}}</div>
@@ -31,8 +31,14 @@
                         <input matInput class="input-quantity" [(ngModel)]="productSales.quantitySelect" type="number" onkeypress="return event.charCode >= 48 && event.charCode <=57" min="1">
                     </mat-form-field>
 
-                    <div class="btn-add" *ngIf="this.profile!='FARMER'" (click)="addProduct()">
+                     <div class="btn-add" *ngIf="this.profile!='FARMER'" (click)="addProduct()" color="green">
+                        <mat-icon>add</mat-icon>
                         <i class="fas fa-cart-plus" style="color: white;"></i>
+                    </div> 
+                    <div class="example-button-container btn-add" *ngIf="this.profile!='FARMER'" (click)="addProduct()">
+                        <button mat-mini-fab color="primary">
+                          <mat-icon>add</mat-icon>
+                        </button>
                     </div>
 
                     <button mat-icon-button style="margin-left: 10px;margin-right:20px;background-color: #37966F;
@@ -46,4 +52,45 @@
     </div>
 
 
+</div> -->
+
+<div class="container">
+   <div class="titulo">
+        <span class="nombre-titulo">{{productSales.product.name | titlecase}}</span>
+        <span class="spacer"></span>
+        <div class="example-button-container boton-mapa"  (click)="openProductMap(productSales)">
+            <button mat-mini-fab color="primary">
+              <mat-icon>place</mat-icon>
+            </button>
+        </div> 
+   </div>
+    <div class="image">
+        <img *ngIf="productSales.product._foto!=null" class="image-src" [src]="productSales.product._foto">
+        <img *ngIf="productSales.product._foto==null" class="image-src" src="/assets/images/sin-imagen.jpg">
+        <div class="info">
+            <ul>
+                <li><strong>Unidad </strong>{{(productSales.measureUnite || 'kg' ) | titlecase}}</li>
+                <li><strong>Peso x {{productSales.measureUnite || 'kg'}}: </strong>{{productSales.weight ||'1'}} kg</li>
+                <li><strong>Cantidad Max: </strong>{{productSales.availableQuantity}}</li>
+            </ul>
+        </div>
+    </div>
+    <div class="acciones">
+        <span>S/. {{productSales.price}}</span>
+        <!-- <div >
+            <mat-form-field class="input-quantity" appearance="outline" >
+                <input matInput   [(ngModel)]="productSales.quantitySelect" type="number" onkeypress="return event.charCode >= 48 && event.charCode <=57" min="1">
+              </mat-form-field>
+        </div> -->
+        <mat-form-field style="width:60px; height: 10px;" *ngIf="this.profile!='FARMER'">
+            <input matInput class="input-quantity" [(ngModel)]="productSales.quantitySelect" type="number" onkeypress="return event.charCode >= 48 && event.charCode <=57" min="1">
+        </mat-form-field>
+        <span class="spacer"></span>
+        <div class="example-button-container btn-add" *ngIf="this.profile!='FARMER'" (click)="addProduct()">
+            <button mat-mini-fab color="primary">
+              <mat-icon>add</mat-icon>
+            </button>
+        </div>
+
+    </div>
 </div>

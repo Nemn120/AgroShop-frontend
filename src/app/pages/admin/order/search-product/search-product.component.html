@@ -1,24 +1,30 @@
-<div class="layout-data2">
-    RESULTADOS ENCONTRADOS
-    <!--<button mat-raised-button color="primary" style="float:right;" (click)="openMap()">Ver mapa de productos</button>-->
+<div class="container">
+    <div class="layout-data2">
+        RESULTADOS ENCONTRADOS
+    </div>
+    
+    <div *ngFor="let f of farmerWithProductsList">
+        <div class="entero">
+            <div class="data-farmer">
+                <div *ngIf="f._farmer._isFoto">
+                    <img src="f._farmer._foto">
+                </div>
+                <div *ngIf="!f._farmer._isFoto">
+                    <img class="circulo" src="/assets/images/login/user.png/">
+                </div>
+                <div [routerLink]="['/user/profile',f._farmer.data.user.id,f._farmer.data.id]">{{f._farmer.data.user.username}}</div>
+            </div>
+            <div class="card">
+                <div class="grid-item" *ngFor="let products of f._listOfProductsShowed">
+        
+                    <app-order-store-card [productSales]="products"></app-order-store-card>
+        
+                </div>
+            </div>
+        </div>
+        
+    
+    </div>
+
 </div>
 
-<div *ngFor="let f of farmerWithProductsList">
-    <div class="data-farmer">
-        <div *ngIf="f._farmer._isFoto">
-            <img src="f._farmer._foto">
-        </div>
-        <div *ngIf="!f._farmer._isFoto">
-            <img class="circulo" src="/assets/images/login/user.png/">
-        </div>
-        <div [routerLink]="['/user/profile',f._farmer.data.user.id,f._farmer.data.id]">{{f._farmer.data.user.username}}</div>
-    </div>
-    <div class="card">
-        <div class="grid-item" *ngFor="let products of f._listOfProductsShowed">
-
-            <app-order-store-card [productSales]="products"></app-order-store-card>
-
-        </div>
-    </div>
-
-</div>

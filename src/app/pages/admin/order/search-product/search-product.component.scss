@@ -13,8 +13,33 @@
   grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
   margin-left: 50px;
   width: 250px;
+  
 
 }
+
+.entero {
+  background-color: #fff;  
+  padding: 20px 0px 20px 10px;
+  border-radius: 20px;
+  margin-top: 30px;
+  //position:relative;
+  display:inline-block;
+  width: 100%;
+}
+
+/*.entero-completo {
+  background-color: #fff;  
+  margin-left: 50px;
+  padding: 20px 0px 20px 10px;
+  margin-right: 50px;
+  border-radius: 20px;
+  margin-top: 30px;
+  position:relative;
+  display:inline-block;
+  width: 92%;
+  
+
+}*/
 
 
 .content-item {
@@ -29,7 +54,8 @@
   font-size: 1rem;
   color: #1f520a;
   .category-title {
-      background-color: #bbeaa77d;
+      //background-color: #bbeaa77d;
+      background-color: #fff;
       border-radius: 10px;
       display: block;
       width: max-content;
@@ -139,18 +165,18 @@ li {
 }
 
 .data-farmer{
-  margin-left: 50px;
+  //margin-left: 50px;
   padding: 20px 0px 20px 10px;
-  margin-right: 50px;
-  border: solid 4px rgb(55, 150, 111);
-  border: solid 4px rgb(55, 150, 111);
+  //margin-right: 50px;
+  //border: solid 4px rgb(55, 150, 111);
+  border-bottom: #000;
   border-radius: 20px;
-  margin-top: 30px;
-  height: 30px;
+  //margin-top: 30px;
+  height: 20px;
   display: flex;
   align-items: center;
   font-family: 'Poppins', sans-serif;
-  color: #332927;
+  //color: #332927;
   font-size: 20px;
   font-weight: bold;
   background-color: #fff;
@@ -158,7 +184,8 @@ li {
 
 .card{
   display: flex;
-  position: relative;
+  justify-content: left;
+  flex-wrap: wrap;
   top: 15px;
 }
 
@@ -166,9 +193,13 @@ li {
   height: 40px;
   padding: 5px 0px;
   border-radius: 50%;
-  border: solid 2px rgb(55, 150, 111);
+  //border: solid 2px rgb(55, 150, 111);
   position:relative;
   background-color: white;
   top:5px;
   margin-right:10px ;
+}
+.container{
+  margin:auto;
+  width: 92%;
 }

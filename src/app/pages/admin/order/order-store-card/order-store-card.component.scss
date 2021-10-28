@@ -35,7 +35,7 @@
     height: 210px;
     width: 100%;
 }
-
+/*
 .item-data {
     .item-title {
         text-align: center;
@@ -57,6 +57,7 @@
         .item-quantity {
             width: 50%;
             display: inline-flex;
+            position: absolute;
             .input-quantity {
                 // height: 40px;
                 position: relative;
@@ -72,26 +73,33 @@
                 margin-left: 15px;
                 background-color: rgb(226, 226, 225);
             }
-            .btn-add {
-                background-color: #37966F;
-                color: #fff;
-                display: inline;
-                border: 1px solid transparent;
-                padding: 5px 10px;
-                transition-property: color, background-color, border-color, box-shadow;
-                box-shadow: 2px 15px 50px rgba(41, 44, 61, .1);
-                border-radius: 500px;
-                width: 25px;
-                height: 25px;
-                //margin-left: 25px;
-                margin-left: 30px;
-                margin-top: auto;
-                margin-bottom: auto;
-            }
+           
         }
     }
 }
+*/ 
+.btn-add {
+    /*background-color: #37966F;
+    color: #fff;
+    display: inline;
+    border: 1px solid transparent;
+    padding: 5px 10px;
+    transition-property: color, background-color, border-color, box-shadow;
+    box-shadow: 2px 15px 50px rgba(41, 44, 61, .1);
+    border-radius: 500px;
+    width: 20px;
+    height: 20px;
+    //margin-left: 25px;
+    margin-left: 30px;
+    margin-top: auto;
+    margin-bottom: auto;*/
+    float: right;
+    position: relative;
 
+    
+
+}
+/*
 .image-src:hover {
     opacity: 0.07;
     -webkit-transition: opacity 500ms;
@@ -119,14 +127,14 @@
     left: 0;
     opacity: 0;
 }
-
+*/
 .info h2 {
     text-align: center
 }
-
+/*
 .image-src:hover .info {
     transform: translateX(0);
-}
+}*/
 
 li {
     text-align: left;
@@ -153,4 +161,109 @@ input[type=number]::-webkit-inner-spin-button,
 input[type=number]::-webkit-outer-spin-button {
     -webkit-appearance: none;
     margin: 0;
+}
+
+.container{
+    display:flex;
+    flex-direction: column;
+    height: 300px;
+    padding: 16px!important;
+    background-color: #fff;
+    margin: 15px;
+    border-radius: 5%;
+    width: 225px;
+}
+
+.titulo{
+    display:flex;
+    flex-direction: row;
+    width: 100%;
+    margin-bottom: 5px;
+    align-items: center;
+    
+}
+.nombre-titulo{
+    font-weight: bold;
+}
+.boton-mapa .btn-add{
+    margin-right: 10px;
+} 
+.spacer{
+    flex:1 1 auto;
+}
+
+.acciones{
+    display:flex;
+    flex-direction: row;
+    width: 100%;
+    margin-top: 10px;
+    align-items: center;
+    margin-bottom: 10px;
+    position: relative;
+}
+
+.input-quantity {
+    top: -28px;
+    
+    position: relative;
+    bottom: 15px;
+    vertical-align: middle;
+    display: inline;
+    border: 1px solid #ebebed;
+    border-radius: 20px;
+    //width: 90px!important;
+    //padding: 5px 10px;
+    padding: 5px 5px;
+    width: 50px !important;
+    margin-left: 42px;
+    background-color: rgb(226, 226, 225);
+
+}
+
+.image{
+    border-radius: 10px 10px 0 0;
+    position: relative;
+}
+
+.image:hover {
+    opacity: 1;
+    /*-webkit-transition: opacity 500ms;
+    -moz-transition: opacity 500ms;
+    -o-transition: opacity 500ms;
+    -ms-transition: opacity 500ms;
+    transition: opacity 500ms;*/
+}
+
+.image:hover .info {
+    opacity: .65;
+}
+
+.image .info {
+    margin: auto;
+    color: #1e560a;
+    // text-align: center;
+    background-color: #ebefea;
+    transition: opacity .4s linear;
+    cursor: pointer;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    opacity: 0;
+}
+.image-src:hover {
+    opacity: 0.005;
+    -webkit-transition: opacity 500ms;
+    -moz-transition: opacity 500ms;
+    -o-transition: opacity 500ms;
+    -ms-transition: opacity 500ms;
+    transition: opacity 500ms;
+}
+
+.image-src:hover .info {
+    transform: translateX(0);
+}
+.container:hover {
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, .18);
 }
